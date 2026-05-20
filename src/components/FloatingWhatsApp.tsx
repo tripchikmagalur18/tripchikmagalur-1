@@ -1,8 +1,7 @@
 "use client";
 
  import { useState } from "react";
- 
- const WHATSAPP_LINK = "https://wa.link/6s636h";
+ import { WHATSAPP_LINK } from "@/lib/whatsapp";
  
  const FloatingWhatsApp = () => {
    const [isHovered, setIsHovered] = useState(false);

@@ -9,7 +9,7 @@ import categoryFood from "@/assets/category-food.jpg";
 import categoryStays from "@/assets/category-stays.jpg";
 import sightseeingImg from "@/assets/activity-sightseeing.jpg";
 
-const WHATSAPP_LINK = "https://wa.link/6s636h";
+import { WHATSAPP_LINK } from "@/lib/whatsapp";
 
 const foodExperiences = [
   {

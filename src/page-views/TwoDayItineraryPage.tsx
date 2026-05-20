@@ -8,7 +8,7 @@ import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import { PageJsonLd } from "@/components/page-json-ld";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
-const WHATSAPP_LINK = "https://wa.link/6s636h";
+import { WHATSAPP_LINK } from "@/lib/whatsapp";
 
 const dayPlans = [
   {

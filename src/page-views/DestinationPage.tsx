@@ -12,9 +12,9 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import { destinations } from "@/data/destinations";
 import { Plus, Minus } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { WHATSAPP_LINK } from "@/lib/whatsapp";
 
 const SITE_URL = "https://tripchikmagalur.com";
-const WHATSAPP_LINK = "https://wa.link/6s636h";
 
 interface DestinationPageProps {
   slug: string;

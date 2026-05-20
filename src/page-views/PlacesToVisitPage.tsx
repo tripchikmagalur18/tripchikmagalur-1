@@ -9,7 +9,7 @@ import { PageJsonLd } from "@/components/page-json-ld";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { destinations } from "@/data/destinations";
 
-const WHATSAPP_LINK = "https://wa.link/6s636h";
+import { WHATSAPP_LINK } from "@/lib/whatsapp";
 
 // Curated, ranked list of top places (slugs from destinations.ts)
 const TOP_PLACES = [

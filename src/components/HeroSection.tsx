@@ -1,5 +1,6 @@
 "use client";
 import { imageSrc } from "@/lib/image-src";
+import { WHATSAPP_LINK } from "@/lib/whatsapp";
 
 import { MessageCircle, CheckCircle, Star, Users, Shield } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
@@ -20,8 +21,6 @@ const heroImages = [
   imageSrc(heroImage4),
   imageSrc(heroImage5),
 ];
-
-const WHATSAPP_LINK = "https://wa.link/6s636h";
 
 // Animated number component
 const AnimatedNumber = ({ target, duration = 2000, suffix = "" }: { target: number; duration?: number; suffix?: string }) => {

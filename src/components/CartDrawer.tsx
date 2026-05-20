@@ -3,24 +3,22 @@
 import Link from "next/link";
 import { ShoppingCart, X, Trash2, MessageCircle, Minus, Plus } from "lucide-react";
 import { useCart } from "@/context/CartContext";
+import { whatsappUrl } from "@/lib/whatsapp";
 
 const CartDrawer = () => {
   const { isOpen, closeCart, items, removeItem, updateQuantity, total, clear } = useCart();
 
-  const waText = encodeURIComponent(
-    `Hi Trip Chikmagalur! I'd like to book the following:\n\n${items
-      .map((i, idx) => {
-        const qty = i.quantity ?? 1;
-        const line = i.price * qty;
-        if (i.perPerson) {
-          return `${idx + 1}. ${i.name}\n   • Price: ₹${i.price.toLocaleString()}/person\n   • Members: ${qty}\n   • Subtotal: ₹${line.toLocaleString()}`;
-        }
-        return `${idx + 1}. ${i.name}\n   • Price: ₹${i.price.toLocaleString()}/group\n   • Subtotal: ₹${line.toLocaleString()}`;
-      })
-      .join("\n\n")}\n\n----------------------\nTotal Bill: ₹${total.toLocaleString()}\n\nPlease confirm availability. Thank you!`
-  );
-  // wa.link short links don't forward ?text=, so use wa.me to prefill the cart message
-  const waUrl = `https://wa.me/96551246540?text=${waText}`;
+  const waMessage = `Hi Trip Chikmagalur! I'd like to book the following:\n\n${items
+    .map((i, idx) => {
+      const qty = i.quantity ?? 1;
+      const line = i.price * qty;
+      if (i.perPerson) {
+        return `${idx + 1}. ${i.name}\n   • Price: ₹${i.price.toLocaleString()}/person\n   • Members: ${qty}\n   • Subtotal: ₹${line.toLocaleString()}`;
+      }
+      return `${idx + 1}. ${i.name}\n   • Price: ₹${i.price.toLocaleString()}/group\n   • Subtotal: ₹${line.toLocaleString()}`;
+    })
+    .join("\n\n")}\n\n----------------------\nTotal Bill: ₹${total.toLocaleString()}\n\nPlease confirm availability. Thank you!`;
+  const waUrl = whatsappUrl(waMessage);
 
   return (
     <>

@@ -16,7 +16,7 @@ import muthodiForest from "@/assets/places/muthodi-forest.jpg";
 import ukkudaFalls from "@/assets/places/ukkuda-falls.jpg";
 import bandeKalGudda from "@/assets/places/bande-kal-gudda.jpg";
 
-const WHATSAPP_LINK = "https://wa.link/6s636h";
+import { WHATSAPP_LINK } from "@/lib/whatsapp";
 
 const BookButton = () => {
   const { addItem, items } = useCart();

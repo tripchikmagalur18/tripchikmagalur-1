@@ -8,6 +8,7 @@ import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import { PageJsonLd } from "@/components/page-json-ld";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { cn } from "@/lib/utils";
+import { WHATSAPP_LINK } from "@/lib/whatsapp";
 
 interface BlogItem {
   id: number;
@@ -299,7 +300,7 @@ const BlogPage = () => {
                         {blog.content}
                       </p>
                       <a
-                        href="https://wa.link/6s636h"
+                        href={WHATSAPP_LINK}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 mt-4 text-accent hover:text-accent/80 font-medium text-sm transition-colors"
@@ -326,7 +327,7 @@ const BlogPage = () => {
               Let us help you create the perfect itinerary for your Chikmagalur adventure.
             </p>
             <a
-              href="https://wa.link/6s636h"
+              href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-accent text-white font-medium hover:bg-accent/90 transition-colors"

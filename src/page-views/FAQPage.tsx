@@ -8,6 +8,7 @@ import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import { PageJsonLd } from "@/components/page-json-ld";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { cn } from "@/lib/utils";
+import { WHATSAPP_LINK } from "@/lib/whatsapp";
 
 interface FAQItem {
   id: number;
@@ -231,7 +232,7 @@ const FAQPage = () => {
               Our travel experts are here to help you plan your perfect Chikmagalur adventure.
             </p>
             <a
-              href="https://wa.link/6s636h"
+              href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-accent text-white font-medium hover:bg-accent/90 transition-colors"

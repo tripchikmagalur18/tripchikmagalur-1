@@ -19,7 +19,7 @@ import manikyadharaFalls from "@/assets/places/manikyadhara-falls.jpg";
 import zPoint from "@/assets/places/z-point.jpg";
 import zipLining from "@/assets/places/zip-lining.jpg";
 
-const WHATSAPP_LINK = "https://wa.link/6s636h";
+import { WHATSAPP_LINK } from "@/lib/whatsapp";
 
 const BookButton = () => {
   const { addItem, items } = useCart();

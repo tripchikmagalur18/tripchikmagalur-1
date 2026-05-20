@@ -15,7 +15,7 @@ import kemmanagundi from "@/assets/places/kemmanagundi.jpg";
 import rajBhavan from "@/assets/places/raj-bhavan.jpg";
 import hebbeFalls from "@/assets/places/hebbe-falls.jpg";
 
-const WHATSAPP_LINK = "https://wa.link/6s636h";
+import { WHATSAPP_LINK } from "@/lib/whatsapp";
 
 const BookButton = () => {
   const { addItem, items } = useCart();

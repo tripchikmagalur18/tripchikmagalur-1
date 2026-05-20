@@ -3,7 +3,7 @@
 import { MessageCircle, Mail, Phone, Instagram, Facebook, Twitter } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-const WHATSAPP_LINK = "https://wa.link/6s636h";
+import { WHATSAPP_LINK } from "@/lib/whatsapp";
 
 const ContactSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
