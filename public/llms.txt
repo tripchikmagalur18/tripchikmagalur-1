@@ -1,0 +1,39 @@
+# Trip Chikmagalur
+
+> Curated Chikmagalur tour packages, stays, adventure activities, food guides, and travel itineraries for India's coffee country.
+
+Trip Chikmagalur (Wanderlust_ckm) is a local travel agency offering Chikmagalur trips, homestays, trekking, waterfalls, jeep safaris, and coffee plantation experiences. Bookings happen on WhatsApp (+91 6363131585).
+
+## Pages
+
+- [Home](/): Overview of Chikmagalur tour packages and experiences.
+- [Tour Packages](/chikmagalur-tour-packages): Curated 1–3 day Chikmagalur packages with stays and sightseeing.
+- [Places to Visit](/places-to-visit-in-chikmagalur): Top destinations including Mullayanagiri, Hebbe Falls, Baba Budangiri, Kemmanagundi.
+- [Places Explorer](/places): 5-day itinerary map with featured destinations.
+- [Adventure](/adventure): Trekking, ziplining, ATV, jeep safari and adventure activities.
+- [Stays](/stays): Homestays, resorts and boutique stays in Chikmagalur.
+- [Food](/food): Local Chikmagalur cuisine and food experiences.
+- [Blog](/blog): Travel guides, tips and stories from Chikmagalur.
+- [FAQ](/faq): Common questions about visiting Chikmagalur.
+
+## Itineraries
+
+- [2-Day Itinerary](/2-day-chikmagalur-itinerary): Weekend Chikmagalur trip plan.
+- [Itinerary from Bangalore](/chikmagalur-itinerary-from-bangalore): Road-trip plan from Bangalore.
+- [Full Itinerary](/chikmagalur-itinerary): Complete multi-day Chikmagalur itinerary.
+
+## Travel Info
+
+- [Best Time to Visit](/best-time-to-visit-chikmagalur): Seasonal guide for Chikmagalur travel.
+- [How to Reach](/how-to-reach-chikmagalur): Routes from Bangalore, Mangalore, Mysore.
+- [Weather](/chikmagalur-weather): Year-round Chikmagalur weather guide.
+- [Things to Do](/things-to-do-in-chikmagalur): Top experiences and activities.
+- [Travel Tips](/chikmagalur-travel-tips): Practical tips for visiting.
+- [Trip Budget](/chikmagalur-trip-budget): Cost breakdown for a Chikmagalur trip.
+
+## Optional
+
+- [Trekking Guide](/trekking-in-chikmagalur)
+- [Waterfalls Guide](/waterfalls-in-chikmagalur)
+- [Resorts Guide](/resorts-in-chikmagalur)
+- [Local Food Guide](/chikmagalur-local-food)
