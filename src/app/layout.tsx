@@ -4,7 +4,7 @@ import { Providers } from "@/components/providers";
 import { GlobalJsonLd } from "@/components/global-json-ld";
 import { ChatWidgetScripts } from "@/components/chat-widget-scripts";
 import { buildMetadata, DEFAULT_OG_IMAGE } from "@/lib/seo";
-import Script from "next/script"; // 👈 add this
+import Script from "next/script";
 import "./globals.css";
 
 const inter = Inter({
@@ -56,11 +56,12 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body className="min-h-screen bg-background font-sans antialiased">
 
-        {/* ——— Google Analytics ——— */}
+        {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-TM0X5EPE13"
           strategy="afterInteractive"
         />
+
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
@@ -69,7 +70,17 @@ export default function RootLayout({
             gtag('config', 'G-TM0X5EPE13');
           `}
         </Script>
-        {/* ——————————————————————— */}
+
+        {/* Microsoft Clarity */}
+        <Script id="microsoft-clarity" strategy="afterInteractive">
+          {`
+            (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "wvkq15r67d");
+          `}
+        </Script>
 
         <GlobalJsonLd />
         <Providers>{children}</Providers>
