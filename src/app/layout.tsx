@@ -4,6 +4,7 @@ import { Providers } from "@/components/providers";
 import { GlobalJsonLd } from "@/components/global-json-ld";
 import { ChatWidgetScripts } from "@/components/chat-widget-scripts";
 import { buildMetadata, DEFAULT_OG_IMAGE } from "@/lib/seo";
+import Script from "next/script"; // 👈 add this
 import "./globals.css";
 
 const inter = Inter({
@@ -54,6 +55,22 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body className="min-h-screen bg-background font-sans antialiased">
+
+        {/* ——— Google Analytics ——— */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-TM0X5EPE13"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-TM0X5EPE13');
+          `}
+        </Script>
+        {/* ——————————————————————— */}
+
         <GlobalJsonLd />
         <Providers>{children}</Providers>
         <ChatWidgetScripts />
