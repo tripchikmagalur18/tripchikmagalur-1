@@ -4,7 +4,6 @@ import { imageSrc } from "@/lib/image-src";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import { PageJsonLd } from "@/components/page-json-ld";
 import { ArrowLeft, MapPin, Clock, ShoppingCart } from "lucide-react";
 import { useCart } from "@/context/CartContext";
@@ -145,9 +144,7 @@ const PackageDayThree = () => {
           </div>
         </div>
       </section>
-      <Footer />
-      <FloatingWhatsApp />
-    </main>
+      <Footer />    </main>
   );
 };
 

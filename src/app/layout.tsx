@@ -1,22 +1,21 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { Providers } from "@/components/providers";
 import { GlobalJsonLd } from "@/components/global-json-ld";
-import { ChatWidgetScripts } from "@/components/chat-widget-scripts";
 import { buildMetadata, DEFAULT_OG_IMAGE } from "@/lib/seo";
 import Script from "next/script";
 import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-sans",
   display: "swap",
 });
 
-const playfair = Playfair_Display({
+const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["600", "700"],
-  variable: "--font-playfair",
+  weight: ["500", "600", "700"],
+  variable: "--font-display",
   display: "swap",
 });
 
@@ -55,7 +54,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${playfair.variable}`}
+      className={`${inter.variable} ${plusJakarta.variable}`}
       data-scroll-behavior="smooth"
     >
       <body className="min-h-screen bg-background font-sans antialiased">
@@ -88,7 +87,6 @@ export default function RootLayout({
 
         <GlobalJsonLd />
         <Providers>{children}</Providers>
-        <ChatWidgetScripts />
       </body>
     </html>
   );

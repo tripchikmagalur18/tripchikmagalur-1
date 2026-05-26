@@ -4,7 +4,6 @@ import Link from "next/link";
 import { MapPin, Clock, MessageCircle, Star } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import { PageJsonLd } from "@/components/page-json-ld";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { destinations } from "@/data/destinations";
@@ -280,9 +279,7 @@ const PlacesToVisitPage = () => {
         </div>
       </section>
 
-      <Footer />
-      <FloatingWhatsApp />
-    </main>
+      <Footer />    </main>
   );
 };
 

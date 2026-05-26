@@ -4,7 +4,6 @@ import Link from "next/link";
 import { MessageCircle, Check, Star, Shield, Clock, Users, MapPin } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import { PageJsonLd } from "@/components/page-json-ld";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
@@ -353,9 +352,7 @@ const TourPackagesPage = () => {
         </div>
       </section>
 
-      <Footer />
-      <FloatingWhatsApp />
-    </main>
+      <Footer />    </main>
   );
 };
 

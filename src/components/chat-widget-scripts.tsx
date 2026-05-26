@@ -1,8 +1,44 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import Script from "next/script";
+import { useEffect } from "react";
+
+function setChatWidgetsVisible(visible: boolean) {
+  const display = visible ? "" : "none";
+  const pointerEvents = visible ? "" : "none";
+
+  ["chat-widget-root", "__cw_portal"].forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.style.display = display;
+      el.style.pointerEvents = pointerEvents;
+    }
+  });
+
+  document.querySelectorAll("button, a").forEach((el) => {
+    if (el.textContent?.includes("Chat with Saif")) {
+      (el as HTMLElement).style.display = display;
+      (el as HTMLElement).style.pointerEvents = pointerEvents;
+      const parent = el.parentElement;
+      if (parent && parent !== document.body && parent.childElementCount <= 2) {
+        parent.style.display = display;
+        parent.style.pointerEvents = pointerEvents;
+      }
+    }
+  });
+}
 
 export function ChatWidgetScripts() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
+  useEffect(() => {
+    setChatWidgetsVisible(isHome);
+  }, [isHome]);
+
+  if (!isHome) return null;
+
   return (
     <>
       <Script

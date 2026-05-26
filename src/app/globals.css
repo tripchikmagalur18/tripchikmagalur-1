@@ -1,7 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap");
+/* Fonts loaded via next/font in layout.tsx — Inter (body) + Plus Jakarta Sans (headings) */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -204,7 +201,7 @@ html body dialog::backdrop {
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background text-foreground font-sans antialiased;
   }
 
   html {
@@ -213,6 +210,14 @@ html body dialog::backdrop {
 }
 
 @layer utilities {
+  .font-price {
+    @apply font-sans font-semibold tabular-nums tracking-tight text-foreground;
+  }
+
+  .font-price-unit {
+    @apply font-sans font-normal text-sm text-muted-foreground;
+  }
+
   /* Gradient utilities */
   .gradient-sunset {
     background: linear-gradient(135deg, hsl(var(--sunset)) 0%, hsl(var(--sunset-dark)) 100%);

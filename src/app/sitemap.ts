@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { allDestinationSlugs } from "@/data/destinations";
+import { staySlugs } from "@/data/stays";
 
 const BASE = "https://tripchikmagalur.com";
 
@@ -42,5 +43,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${BASE}/places/${slug}`,
     lastModified,
   }));
-  return [...staticEntries, ...placeEntries];
+  const stayEntries = staySlugs.map((slug) => ({
+    url: `${BASE}/stays/${slug}`,
+    lastModified,
+  }));
+  return [...staticEntries, ...placeEntries, ...stayEntries];
 }

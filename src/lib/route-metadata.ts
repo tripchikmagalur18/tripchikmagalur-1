@@ -19,9 +19,9 @@ const staticMeta: Record<string, SeoInput> = {
     canonical: "/adventure",
   },
   "/stays": {
-    title: "Trip Chikmagalur Resort — Pool, Rooms & Family Stay",
+    title: "Stays in Chikmagalur — Resort & Private Villa | Trip Chikmagalur",
     description:
-      "Book Trip Chikmagalur Resort — swimming pool, modern rooms, game room, playground & palm grove villas from ₹1,500/person. Add guests to cart and checkout on WhatsApp.",
+      "Choose Trip Chikmagalur Resort or Trip Chikmagalur Villa. Book with your check-in date and number of adults — checkout on WhatsApp.",
     canonical: "/stays",
   },
   "/food": {

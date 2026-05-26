@@ -6,7 +6,6 @@ import { useState, useEffect, useRef } from "react";
 import { MapPin, Clock, Navigation, ArrowLeft, Car, Sparkles, Lightbulb, Route, ExternalLink } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import AnimatedCar from "@/components/AnimatedCar";
 import { PageJsonLd } from "@/components/page-json-ld";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -399,9 +398,7 @@ const PlacesPage = () => {
         </div>
       </section>
 
-      <Footer />
-      <FloatingWhatsApp />
-      <PlaceDetailDialog place={selectedPlace} onClose={() => setSelectedPlace(null)} />
+      <Footer />      <PlaceDetailDialog place={selectedPlace} onClose={() => setSelectedPlace(null)} />
     </main>
   );
 };

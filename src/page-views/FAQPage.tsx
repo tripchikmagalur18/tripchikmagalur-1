@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Plus, Minus, HelpCircle } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import { PageJsonLd } from "@/components/page-json-ld";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { cn } from "@/lib/utils";
@@ -243,9 +242,7 @@ const FAQPage = () => {
         </div>
       </section>
 
-      <Footer />
-      <FloatingWhatsApp />
-    </main>
+      <Footer />    </main>
   );
 };
 

@@ -4,7 +4,6 @@ import Link from "next/link";
 import { MessageCircle, Clock, MapPin, Sun, Moon, IndianRupee, Calendar } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import { PageJsonLd } from "@/components/page-json-ld";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
@@ -348,9 +347,7 @@ const TwoDayItineraryPage = () => {
         </div>
       </section>
 
-      <Footer />
-      <FloatingWhatsApp />
-    </main>
+      <Footer />    </main>
   );
 };
 

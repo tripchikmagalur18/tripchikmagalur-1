@@ -6,7 +6,6 @@ import { useState } from "react";
 import { Calendar, IndianRupee, Plus, Minus, ArrowRight, Clock } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import { PageJsonLd } from "@/components/page-json-ld";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { itineraries } from "@/data/itineraries";
@@ -252,9 +251,7 @@ const ItineraryPage = ({ slug }: ItineraryPageProps) => {
         </div>
       </section>
 
-      <Footer />
-      <FloatingWhatsApp />
-    </main>
+      <Footer />    </main>
   );
 };
 

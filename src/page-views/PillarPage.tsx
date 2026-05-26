@@ -5,7 +5,6 @@ import { useState } from "react";
 import { Plus, Minus, ArrowRight, CheckCircle2, Lightbulb, ExternalLink } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import { PageJsonLd } from "@/components/page-json-ld";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { pillarPages, type PillarPageKey } from "@/data/pillarPages";
@@ -307,9 +306,7 @@ const PillarPage = ({ dataKey }: PillarPageProps) => {
         </div>
       </section>
 
-      <Footer />
-      <FloatingWhatsApp />
-    </main>
+      <Footer />    </main>
   );
 };
 

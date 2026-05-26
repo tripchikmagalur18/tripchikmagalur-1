@@ -20,7 +20,7 @@ const offers = [
   {
     image: imageSrc(categoryStays),
     title: "Stays",
-    description: "Stay at our palm grove resort with pool, rooms & family amenities.",
+    description: "Resort with pool or private villa — book with date & adults on WhatsApp.",
     href: "/stays",
   },
 ];

@@ -9,7 +9,12 @@ export type CartItem = {
   link?: string;
   perPerson?: boolean;
   quantity?: number;
+  /** Stay check-in date (YYYY-MM-DD) */
+  checkInDate?: string;
 };
+
+export const isStayCartItem = (item: CartItem) =>
+  item.link === "/stays" || (item.link?.startsWith("/stays/") ?? false);
 
 type CartContextValue = {
   items: CartItem[];
@@ -20,6 +25,7 @@ type CartContextValue = {
   addItem: (item: CartItem) => void;
   removeItem: (id: string) => void;
   updateQuantity: (id: string, quantity: number) => void;
+  updateItem: (id: string, updates: Partial<CartItem>) => void;
   clear: () => void;
   count: number;
   total: number;
@@ -54,11 +60,21 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   }, [items, hydrated]);
 
   const addItem = useCallback((item: CartItem) => {
-    setItems((prev) =>
-      prev.find((i) => i.id === item.id)
-        ? prev
-        : [...prev, { ...item, quantity: item.quantity ?? (item.perPerson ? 1 : 1) }],
-    );
+    setItems((prev) => {
+      const existing = prev.find((i) => i.id === item.id);
+      if (existing) {
+        return prev.map((i) =>
+          i.id === item.id
+            ? {
+                ...i,
+                ...item,
+                quantity: item.quantity ?? i.quantity,
+              }
+            : i,
+        );
+      }
+      return [...prev, { ...item, quantity: item.quantity ?? 1 }];
+    });
     setIsOpen(true);
   }, []);
 
@@ -70,6 +86,10 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     setItems((prev) =>
       prev.map((i) => (i.id === id ? { ...i, quantity: Math.max(1, quantity) } : i)),
     );
+  }, []);
+
+  const updateItem = useCallback((id: string, updates: Partial<CartItem>) => {
+    setItems((prev) => prev.map((i) => (i.id === id ? { ...i, ...updates } : i)));
   }, []);
 
   const clear = useCallback(() => setItems([]), []);
@@ -90,6 +110,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         addItem,
         removeItem,
         updateQuantity,
+        updateItem,
         clear,
         count: items.length,
         total,
