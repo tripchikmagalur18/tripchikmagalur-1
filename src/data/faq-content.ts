@@ -33,14 +33,14 @@ export const faqItems: FaqItem[] = [
     keyword: "top tourist places chikmagalur",
     question: "What are the top tourist places in Chikmagalur?",
     answer:
-      "Must-visit places include Mullayanagiri, Baba Budangiri, Hebbe Falls, Jhari Falls, Kemmanagundi, Hirekolale Lake, Bhadra (Muthodi) Wildlife Sanctuary, Belur–Halebidu temples, and coffee estates. Trip Chikmagalur day packages cover these by day (Day 1 to Day 5).",
+      "Must-visit places include Mullayanagiri, Baba Budangiri, Hebbe Falls, Jhari Falls, Kemmanagundi, Hirekolale Lake, Bhadra (Muthodi) Wildlife Sanctuary, Belur–Halebidu temples, and coffee estates. Our [Chikmagalur tour packages](/chikmagalur-tour-packages) cover these by day — from the [Mullayanagiri trek package](/mullayanagiri-trek-package) to heritage and trek circuits.",
   },
   {
     id: 5,
     keyword: "chikmagalur trekking",
     question: "Is Chikmagalur good for trekking?",
     answer:
-      "Yes — popular treks include Mullayanagiri, Kudremukh, Ethina Bhuja, and Seethalayanagiri. Hire local guides for monsoon treks. Trip Chikmagalur adventure and Day 5 packages include guided routes and transport to trailheads.",
+      "Yes — popular treks include Mullayanagiri, Kudremukh, Ethina Bhuja, and Seethalayanagiri. Hire local guides for monsoon treks. Our [Mullayanagiri trek package](/mullayanagiri-trek-package) and [Sringeri trek package](/sringeri-trek-package) include guided routes and transport to trailheads.",
   },
   {
     id: 6,
@@ -54,7 +54,7 @@ export const faqItems: FaqItem[] = [
     keyword: "mullayanagiri permission booking",
     question: "Do I need permission to visit Mullayanagiri?",
     answer:
-      "During weekends and peak season, online vehicle entry booking may be required to manage traffic at Mullayanagiri. Arrive early morning for parking. Our Day 1 package includes route planning and timing advice.",
+      "During weekends and peak season, online vehicle entry booking may be required to manage traffic at Mullayanagiri. Arrive early morning for parking. Our [Mullayanagiri trek package](/mullayanagiri-trek-package) includes route planning and timing advice.",
   },
   {
     id: 8,
@@ -68,7 +68,7 @@ export const faqItems: FaqItem[] = [
     keyword: "bhadra wildlife safari",
     question: "Is wildlife safari available in Chikmagalur?",
     answer:
-      "Yes — Bhadra Wildlife Sanctuary (Muthodi) offers morning jeep safaris. Book in advance in peak season. Included in Trip Chikmagalur Day 3 Muthodi package along with lakes and hidden falls.",
+      "Yes — Bhadra Wildlife Sanctuary (Muthodi) offers morning jeep safaris. Book in advance in peak season. Included in our [Muthodi safari package](/muthodi-safari-package) along with lakes and hidden falls.",
   },
   {
     id: 10,
@@ -89,7 +89,7 @@ export const faqItems: FaqItem[] = [
     keyword: "how many days chikmagalur",
     question: "How many days are enough for Chikmagalur?",
     answer:
-      "2 days cover main peaks and falls; 3 days add wildlife and offbeat spots; 4–5 days allow heritage (Belur) and Mudigere treks. Trip Chikmagalur offers matching day packages and stay booking for each length.",
+      "2 days cover main peaks and falls; 3 days add wildlife and offbeat spots; 4–5 days allow heritage (Belur) and Mudigere treks. See our [2-day Chikmagalur itinerary](/2-day-chikmagalur-itinerary) and [tour packages](/chikmagalur-tour-packages) for each length.",
   },
   {
     id: 13,
@@ -117,7 +117,7 @@ export const faqItems: FaqItem[] = [
     keyword: "chikmagalur tour package price",
     question: "How much do Chikmagalur tour packages cost?",
     answer:
-      "Trip Chikmagalur day packages: Day 1 Mullayanagiri ₹3,499/group, Day 2 Kemmanagundi ₹4,499, Day 3 Muthodi ₹3,999, Day 4 Belur heritage ₹3,499, Day 5 trek circuit ₹5,999. Prices are per group; add resort or villa stays separately. Book via website cart and WhatsApp.",
+      "Day packages: [Mullayanagiri trek](/mullayanagiri-trek-package) ₹3,499/group, [Kemmangundi tour](/kemmangundi-tour-package) ₹4,499, [Muthodi safari](/muthodi-safari-package) ₹3,999, [Belur heritage](/belur-heritage-tour-package) ₹3,499, [Sringeri trek](/sringeri-trek-package) ₹5,999. Prices are per group; add resort or villa stays separately. Browse all [Chikmagalur tour packages](/chikmagalur-tour-packages) on our site.",
   },
   {
     id: 17,
@@ -145,14 +145,14 @@ export const faqItems: FaqItem[] = [
     keyword: "one day trip chikmagalur from bangalore",
     question: "Can I do a one-day Chikmagalur trip from Bangalore?",
     answer:
-      "A one-day trip is possible but rushed (10+ hours driving). Better options: leave Friday night or start 5 AM Saturday for Mullayanagiri and one fall, or book Day 1 package with local driver while you focus on sightseeing.",
+      "A one-day trip is possible but rushed (10+ hours driving). Better options: leave Friday night or start 5 AM Saturday for Mullayanagiri and one fall, or book our [Mullayanagiri trek package](/mullayanagiri-trek-package) with a local driver while you focus on sightseeing.",
   },
   {
     id: 21,
     keyword: "hebbe falls jeep included",
     question: "Is the Hebbe Falls jeep ride included in your packages?",
     answer:
-      "Hebbe Falls forest jeep access is covered in our Day 2 Kemmanagundi package, which includes Kemmanagundi, Kalhatti, and coordinated jeep trail booking. Jeep fees are part of the group package price.",
+      "Hebbe Falls forest jeep access is covered in our [Kemmangundi tour package](/kemmangundi-tour-package), which includes Kemmanagundi, Kalhatti, and coordinated jeep trail booking. Jeep fees are part of the group package price.",
   },
   {
     id: 22,
@@ -187,7 +187,7 @@ export const faqItems: FaqItem[] = [
     keyword: "chikmagalur honeymoon stay",
     question: "Is Chikmagalur good for a honeymoon?",
     answer:
-      "Yes — misty hills, estate cafés, and private villa or resort stays make Chikmagalur romantic. Book 2–3 nights in winter; add Day 1 or Day 2 packages for guided sightseeing without planning stress.",
+      "Yes — misty hills, estate cafés, and private villa or resort stays make Chikmagalur romantic. Book 2–3 nights in winter; add our [Mullayanagiri trek package](/mullayanagiri-trek-package) or [Kemmangundi tour package](/kemmangundi-tour-package) for guided sightseeing without planning stress.",
   },
   {
     id: 27,
@@ -208,14 +208,14 @@ export const faqItems: FaqItem[] = [
     keyword: "chikmagalur weekend itinerary",
     question: "What is the best weekend itinerary for Chikmagalur?",
     answer:
-      "Classic weekend: Day 1 Mullayanagiri, Baba Budangiri, Jhari Falls; Day 2 Kemmanagundi and Hebbe Falls; stay at our resort or villa between days. See our 2-day itinerary page and matching tour packages.",
+      "Classic weekend: Day 1 Mullayanagiri, Baba Budangiri, Jhari Falls; Day 2 Kemmanagundi and Hebbe Falls; stay at our resort or villa between days. Follow our [2-day Chikmagalur itinerary](/2-day-chikmagalur-itinerary) and book matching [weekend packages](/chikmagalur-weekend-packages).",
   },
   {
     id: 30,
     keyword: "belur halebidu from chikmagalur",
     question: "Can I visit Belur and Halebidu from Chikmagalur?",
     answer:
-      "Yes — both temples are about 1–1.5 hours away. Trip Chikmagalur Day 4 Belur package covers Chennakeshava Temple, Halebidu, Hiremagalur, and Belur Dam in one day (₹3,499/group).",
+      "Yes — both temples are about 1–1.5 hours away. Our [Belur heritage tour package](/belur-heritage-tour-package) covers Chennakeshava Temple, Halebidu, Hiremagalur, and Belur Dam in one day (₹3,499/group).",
   },
 ];
 

@@ -16,7 +16,7 @@ export const blogPosts: BlogPost[] = [
     title: "Best Places to Visit in Chikmagalur (2026 Guide)",
     excerpt: "Top attractions in Karnataka's coffee country — peaks, falls, estates & wildlife",
     content:
-      "Chikmagalur is one of the most beautiful hill stations in Karnataka, known for lush coffee plantations, misty mountains, and scenic waterfalls. Must-visit places include Mullayanagiri Peak (the highest peak in Karnataka), Baba Budangiri hills, Kudremukh National Park, Hebbe Falls, Jhari Falls, Hirekolale Lake, and Kemmanagundi. Trip Chikmagalur offers day-wise tour packages that cover these highlights with transport and local guides. The best time to explore is September to March when weather is pleasant for sightseeing and trekking.",
+      "Chikmagalur is one of the most beautiful hill stations in Karnataka, known for lush coffee plantations, misty mountains, and scenic waterfalls. Must-visit places include Mullayanagiri Peak, Baba Budangiri, Hebbe Falls, Jhari Falls, and Kemmanagundi. Our [Chikmagalur tour packages](/chikmagalur-tour-packages) cover these highlights with transport — start with the [Mullayanagiri trek package](/mullayanagiri-trek-package) or follow our [2-day itinerary](/2-day-chikmagalur-itinerary). The best time to explore is September to March.",
     readTime: "4 min read",
     category: "Destinations",
   },
@@ -26,7 +26,7 @@ export const blogPosts: BlogPost[] = [
     title: "Chikmagalur Trip from Bangalore — Distance, Route & Packages",
     excerpt: "Plan a weekend getaway from Bengaluru with packages, stays & sightseeing",
     content:
-      "A Chikmagalur trip from Bangalore is one of the most popular weekend getaways — about 245 km via Hassan and Belur on NH75, roughly 5–6 hours by car. Many travellers book Chikmagalur tour packages from Bangalore that include private cab, resort or villa stay, and sightseeing to Mullayanagiri, Hebbe Falls, and coffee estates. Start early on Saturday to maximise two full days. Trip Chikmagalur packages start from ₹2,999 per person with WhatsApp booking and custom dates.",
+      "A Chikmagalur trip from Bangalore is one of the most popular weekend getaways — about 245 km via Hassan and Belur on NH75, roughly 5–6 hours by car. Many travellers use [packages from Bangalore](/chikmagalur-tour-packages-from-bangalore) with private cab, stay, and sightseeing to Mullayanagiri and Hebbe Falls. Start early on Saturday and follow our [2-day Chikmagalur itinerary](/2-day-chikmagalur-itinerary). Browse all [tour packages](/chikmagalur-tour-packages) to book day tours on WhatsApp.",
     readTime: "4 min read",
     category: "Travel Guide",
   },
@@ -56,7 +56,7 @@ export const blogPosts: BlogPost[] = [
     title: "Chikmagalur Tour Packages — Day 1 to Day 5 Plans",
     excerpt: "Curated sightseeing packages with cab, guide & add-on stays",
     content:
-      "Chikmagalur tour packages from Trip Chikmagalur cover Mullayanagiri (Day 1), Kemmanagundi & Hebbe Falls (Day 2), Muthodi wildlife (Day 3), Belur heritage (Day 4), and Sringeri–Mudigere treks (Day 5). Prices range from ₹3,499 to ₹5,999 per group with jeep rides and entry coordination. Combine any day package with resort or villa stays for a complete weekend. Book via cart on our website and confirm on WhatsApp.",
+      "Our [Chikmagalur tour packages](/chikmagalur-tour-packages) include the [Mullayanagiri trek package](/mullayanagiri-trek-package), [Kemmangundi tour package](/kemmangundi-tour-package), [Muthodi safari package](/muthodi-safari-package), [Belur heritage tour](/belur-heritage-tour-package), and [Sringeri trek package](/sringeri-trek-package) — ₹3,499 to ₹5,999 per group. Combine any day tour with resort or villa stays. See the full [Chikmagalur itinerary](/chikmagalur-itinerary) for planning.",
     readTime: "3 min read",
     category: "Packages",
   },

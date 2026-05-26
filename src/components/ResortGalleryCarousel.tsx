@@ -16,7 +16,7 @@ import {
   CarouselItem,
   type CarouselApi,
 } from "@/components/ui/carousel";
-import { imageSrc } from "@/lib/image-src";
+import { AppImage } from "@/components/AppImage";
 import type { StayGalleryImage } from "@/data/stays";
 import { cn } from "@/lib/utils";
 
@@ -162,19 +162,18 @@ export function ResortGalleryCarousel({ images, className }: ResortGalleryCarous
           }
         : {})}
     >
-      <img
-        src={imageSrc(img.src)}
+      <AppImage
+        src={img.src}
         alt={img.alt}
+        fill={mode === "inline"}
+        width={mode === "inline" ? undefined : img.src.width}
+        height={mode === "inline" ? undefined : img.src.height}
+        sizes={mode === "inline" ? "(max-width: 768px) 100vw, 50vw" : "100vw"}
+        priority={index === 0}
         className={cn(
           "select-none pointer-events-none",
-          mode === "inline"
-            ? "absolute inset-0 w-full h-full object-cover"
-            : "max-h-[calc(100dvh-11rem)] max-w-full w-auto h-auto object-contain",
+          mode === "inline" ? "object-cover" : "max-h-[calc(100dvh-11rem)] w-auto h-auto object-contain",
         )}
-        loading={index === 0 ? "eager" : "lazy"}
-        decoding={index === 0 ? "sync" : "async"}
-        fetchPriority={index === 0 ? "high" : "low"}
-        draggable={false}
       />
       {mode === "inline" && (
         <>

@@ -9,6 +9,7 @@ import PackagesSection from "@/components/PackagesSection";
 import GallerySection from "@/components/GallerySection";
 import WhyChooseUsSection from "@/components/WhyChooseUsSection";
 import PartnersSection from "@/components/PartnersSection";
+import HomeFAQSection from "@/components/HomeFAQSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
@@ -25,6 +26,7 @@ const Index = () => {
       <PackagesSection />
       <GallerySection />
       <WhyChooseUsSection />
+      <HomeFAQSection />
       <PartnersSection />
       <ContactSection />
       <Footer />

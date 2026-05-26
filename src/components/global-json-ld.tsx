@@ -7,7 +7,7 @@ const organizationSchema = {
   name: "Trip Chikmagalur",
   alternateName: "Wanderlust_ckm",
   url: SITE_URL,
-  logo: `${SITE_URL}/favicon.ico`,
+  logo: `${SITE_URL}/icon-512.png`,
   description:
     "Leading travel agency offering Chikmagalur tour packages, adventure activities, coffee plantation tours, and homestay experiences in Karnataka's coffee country.",
   address: {

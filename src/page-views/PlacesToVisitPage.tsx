@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { PageJsonLd } from "@/components/page-json-ld";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { AspectImage } from "@/components/AspectImage";
 import { destinations } from "@/data/destinations";
 
 import { WHATSAPP_LINK } from "@/lib/whatsapp";
@@ -151,11 +152,10 @@ const PlacesToVisitPage = () => {
                   href={`/places/${p.slug}`}
                   className="md:w-2/5 flex-shrink-0 block aspect-[4/3] overflow-hidden rounded-2xl"
                 >
-                  <img
+                  <AspectImage
                     src={p.hero.image}
                     alt={p.hero.alt}
-                    loading="lazy"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="group-hover:scale-105 transition-transform duration-500"
                   />
                 </Link>
                 <div className="md:w-3/5">

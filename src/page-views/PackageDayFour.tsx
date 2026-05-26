@@ -1,7 +1,7 @@
 "use client";
-import { imageSrc } from "@/lib/image-src";
 
 import Link from "next/link";
+import { AspectImage } from "@/components/AspectImage";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { PageJsonLd } from "@/components/page-json-ld";
@@ -34,7 +34,7 @@ const BookButton = () => {
 const places = [
   {
     name: "Belur Chennakeshava Temple",
-    image: imageSrc(chennakeshava),
+    image: chennakeshava,
     distance: "30.8 km from Chikmagalur",
     time: "1 hr 8 min",
     description:
@@ -42,7 +42,7 @@ const places = [
   },
   {
     name: "Halebidu Hoysaleshwara Temple",
-    image: imageSrc(hoysaleshwara),
+    image: hoysaleshwara,
     distance: "34.6 km from Chikmagalur",
     time: "1 hr 30 min",
     description:
@@ -50,7 +50,7 @@ const places = [
   },
   {
     name: "Hiremagalur Kodanda Rama Temple",
-    image: imageSrc(hiremangalore),
+    image: hiremangalore,
     distance: "9 km from Chikmagalur",
     time: "20 min",
     description:
@@ -58,7 +58,7 @@ const places = [
   },
   {
     name: "Belur Dam",
-    image: imageSrc(belurDam),
+    image: belurDam,
     distance: "22.6 km from Chikmagalur",
     time: "44 min",
     description:
@@ -122,14 +122,11 @@ const PackageDayFour = () => {
                 key={place.name}
                 className="group bg-card rounded-2xl overflow-hidden border border-border hover:shadow-xl transition-all duration-300"
               >
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
-                    src={place.image}
-                    alt={place.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                  />
-                </div>
+                <AspectImage
+                  src={place.image}
+                  alt={place.name}
+                  className="group-hover:scale-105 transition-transform duration-500"
+                />
                 <div className="p-5">
                   <div className="flex items-center gap-2 text-sunset text-xs font-bold mb-2">
                     <span className="bg-sunset/10 px-2 py-0.5 rounded-full">Stop {index + 1}</span>

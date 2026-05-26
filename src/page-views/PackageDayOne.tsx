@@ -1,7 +1,7 @@
 "use client";
-import { imageSrc } from "@/lib/image-src";
 
 import Link from "next/link";
+import { AspectImage } from "@/components/AspectImage";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { PageJsonLd } from "@/components/page-json-ld";
@@ -14,7 +14,6 @@ import mullayangiri from "@/assets/places/mullayangiri.webp";
 import seethalayanagiri from "@/assets/places/seethalayanagiri.webp";
 import honnamanaFalls from "@/assets/places/honnamana-falls.webp";
 import babaBudangiri from "@/assets/places/baba-budangiri.webp";
-import manikyadharaFalls from "@/assets/places/manikyadhara-falls.webp";
 import zPoint from "@/assets/places/z-point.webp";
 import zipLining from "@/assets/places/zip-lining.webp";
 
@@ -41,63 +40,56 @@ const BookButton = () => {
 const places = [
   {
     name: "Siri Nature Roost",
-    image: imageSrc(siriNatureRoost),
+    image: siriNatureRoost,
     distance: "3.2 km from Chikmagalur",
     time: "11 min",
     description: "Siri Nature Roost is the best coffee point in Chikmagalur. The girl lying in the statue is the younger girl Siri, who gave the city its name — Chikmagaluru.",
   },
   {
     name: "Jhari Falls (Butter Falls)",
-    image: imageSrc(jhariFalls),
+    image: jhariFalls,
     distance: "23.8 km from Chikmagalur",
     time: "48 min",
     description: "Also known as Sageer Ahmed Falls, this waterfall is hidden in an estate. To reach it, you take a thrilling 4.5 km jeep adventure ride through the coffee plantations.",
   },
   {
     name: "Mullayangiri (Highest Peak)",
-    image: imageSrc(mullayangiri),
+    image: mullayangiri,
     distance: "33.4 km from Chikmagalur",
     time: "70 min",
     description: "Mullayangiri is the highest peak in Karnataka at 6,400 ft. Best visited in winter for stunning views. A religious temple sits at the very tip of the peak.",
   },
   {
     name: "Seethalayanagiri Temple & Cave",
-    image: imageSrc(seethalayanagiri),
+    image: seethalayanagiri,
     distance: "19.4 km from Chikmagalur",
     time: "40 min",
     description: "A cave on the left side of the temple worships Lord Rama and Goddess Sita. Popularly known as the 'way to heaven' due to its stunning mountain surroundings.",
   },
   {
     name: "Honnamana Falls",
-    image: imageSrc(honnamanaFalls),
+    image: honnamanaFalls,
     distance: "22.6 km from Chikmagalur",
     time: "44 min",
     description: "A lovely waterfall located enroute to Baba Budangiri hills. A must-stop point with beautiful cascading waters surrounded by lush greenery.",
   },
   {
     name: "Baba Budangiri",
-    image: imageSrc(babaBudangiri),
+    image: babaBudangiri,
     distance: "30.8 km from Chikmagalur",
     time: "1 hr 8 min",
     description: "Also known as Dattapeeta and Chandradrona, this is where Baba Budan started the first coffee plantation in India. From here, coffee spread across the country.",
   },
   {
-    name: "Manikyadhara Falls",
-    image: imageSrc(manikyadharaFalls),
-    distance: "34.6 km from Chikmagalur",
-    time: "1 hr 30 min",
-    description: "Manikyadhara translates to 'stream of pearls'. When sunlight hits the water, droplets sparkle like pearls. The falls never dry up even in summer.",
-  },
-  {
     name: "Z Point (Sunset Point)",
-    image: imageSrc(zPoint),
+    image: zPoint,
     distance: "37.9 km from Chikmagalur",
     time: "1 hr 27 min",
     description: "One of the most beautiful viewpoints for sunsets near Baba Budangiri. It captures the essence of nature's beauty with panoramic mountain views.",
   },
   {
     name: "Zip Lining (Mubarak Homestay)",
-    image: imageSrc(zipLining),
+    image: zipLining,
     distance: "27.9 km from Chikmagalur",
     time: "54 min",
     description: "Zip lining is one of the most thrilling adventures in Chikmagalur. The craze for this adventure is rapidly growing. Located at Mubarak Homestay.",
@@ -111,7 +103,7 @@ const PackageDayOne = () => {
           "@context": "https://schema.org",
           "@type": "TouristTrip",
           name: "Chikmagalur Day Explorer — 1 Day Tour Package",
-          description: "9-stop one-day Chikmagalur tour covering Mullayanagiri, Baba Budangiri, Jhari Falls, coffee estates and adventure activities.",
+          description: "8-stop one-day Chikmagalur tour covering Mullayanagiri, Baba Budangiri, Jhari Falls, coffee estates and adventure activities.",
           touristType: ["Adventure", "Family", "Couples", "Friends"],
           itinerary: places.map((p, i) => ({ "@type": "ListItem", position: i + 1, name: p.name })),
           offers: {
@@ -133,7 +125,7 @@ const PackageDayOne = () => {
           <div className="mb-12">
             <span className="text-sunset font-medium text-sm uppercase tracking-[0.2em]">Day 1</span>
             <h1 className="text-4xl md:text-5xl font-display font-bold text-foreground mt-2">Mullayangiri Package</h1>
-            <p className="text-muted-foreground mt-3 text-lg max-w-2xl">Explore 9 stunning locations in one action-packed day — from misty peaks to hidden waterfalls and thrilling adventures.</p>
+            <p className="text-muted-foreground mt-3 text-lg max-w-2xl">Explore 8 stunning locations in one action-packed day — from misty peaks to hidden waterfalls and thrilling adventures.</p>
             <div className="flex items-center gap-4 mt-4">
               <span className="text-3xl font-bold text-foreground">₹3,499</span>
               <span className="text-muted-foreground">/group</span>
@@ -144,14 +136,11 @@ const PackageDayOne = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {places.map((place, index) => (
               <div key={place.name} className="group bg-card rounded-2xl overflow-hidden border border-border hover:shadow-xl transition-all duration-300">
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
-                    src={place.image}
-                    alt={place.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                  />
-                </div>
+                <AspectImage
+                  src={place.image}
+                  alt={place.name}
+                  className="group-hover:scale-105 transition-transform duration-500"
+                />
                 <div className="p-5">
                   <div className="flex items-center gap-2 text-sunset text-xs font-bold mb-2">
                     <span className="bg-sunset/10 px-2 py-0.5 rounded-full">Stop {index + 1}</span>

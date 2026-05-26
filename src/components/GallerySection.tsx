@@ -8,16 +8,19 @@ import trekImg from "@/assets/activity-trek.webp";
 import campingImg from "@/assets/activity-camping.webp";
 import sightseeingImg from "@/assets/activity-sightseeing.webp";
 import heroImg from "@/assets/hero-chikmagalur.webp";
-import { imageSrc } from "@/lib/image-src";
+import type { StaticImageData } from "next/image";
+import { AppImage } from "@/components/AppImage";
 
-const galleryImages = [
-  { src: imageSrc(heroImg), alt: "Chikmagalur Mountains", rotation: -3 },
-  { src: imageSrc(sightseeingImg), alt: "Hebbe Falls", rotation: 4 },
-  { src: imageSrc(trekImg), alt: "Mullayanagiri Trek", rotation: -2 },
-  { src: imageSrc(jeepImg), alt: "Jeep Safari", rotation: 5 },
-  { src: imageSrc(campingImg), alt: "Campfire Night", rotation: -4 },
-  { src: imageSrc(ziplineImg), alt: "Ziplining Adventure", rotation: 3 },
-  { src: imageSrc(atvImg), alt: "ATV Ride", rotation: -5 },
+const GALLERY_SIZES = "(max-width: 768px) 256px, 288px";
+
+const galleryImages: { src: StaticImageData; alt: string; rotation: number }[] = [
+  { src: heroImg, alt: "Misty Chikmagalur mountain panorama at sunrise over coffee country", rotation: -3 },
+  { src: sightseeingImg, alt: "Hebbe Falls cascading through Kemmangundi coffee estate Chikmagalur", rotation: 4 },
+  { src: trekImg, alt: "Mullayanagiri trek summit view above clouds in Chikmagalur", rotation: -2 },
+  { src: jeepImg, alt: "Jeep safari on Western Ghats trail near Chikmagalur waterfalls", rotation: 5 },
+  { src: campingImg, alt: "Campfire night camping experience in Chikmagalur hills", rotation: -4 },
+  { src: ziplineImg, alt: "Ziplining adventure across valley in Chikmagalur", rotation: 3 },
+  { src: atvImg, alt: "ATV off-road adventure ride in Chikmagalur terrain", rotation: -5 },
 ];
 
 const GallerySection = () => {
@@ -153,20 +156,22 @@ const GallerySection = () => {
                 onMouseLeave={() => setHoveredIndex(null)}
               >
                 {/* Card with shadow */}
-                <div 
-                  className="w-64 h-80 md:w-72 md:h-96 rounded-2xl overflow-hidden transition-all duration-500"
+                <div
+                  className="relative w-64 h-80 md:w-72 md:h-96 rounded-2xl overflow-hidden transition-all duration-500"
                   style={{
-                    boxShadow: isHovered 
-                      ? '0 20px 40px -12px rgba(0,0,0,0.5)' 
-                      : '0 10px 30px -10px rgba(0,0,0,0.4)',
+                    boxShadow: isHovered
+                      ? "0 20px 40px -12px rgba(0,0,0,0.5)"
+                      : "0 10px 30px -10px rgba(0,0,0,0.4)",
                   }}
                 >
-                  <img
+                  <AppImage
                     src={image.src}
                     alt={image.alt}
-                    className="w-full h-full object-cover transition-transform duration-700"
+                    fill
+                    sizes={GALLERY_SIZES}
+                    className="transition-transform duration-700"
                     style={{
-                      transform: isHovered ? 'scale(1.05)' : 'scale(1)',
+                      transform: isHovered ? "scale(1.05)" : "scale(1)",
                     }}
                   />
                   

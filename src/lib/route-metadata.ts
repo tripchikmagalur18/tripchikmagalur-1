@@ -24,7 +24,7 @@ const staticMeta: Record<string, SeoInput> = {
   "/": {
     title: "Chikmagalur Tour Packages 2026 | Stays, Treks & Adventures — Trip Chikmagalur",
     description:
-      "Book Chikmagalur tour packages from Bangalore — Mullayanagiri trek, Hebbe Falls, resort & villa stays, jeep safaris & coffee estates. Expert guides, best prices.",
+      "Book Chikmagalur tour packages from ₹3,499. Mullayanagiri trek, Kemmangundi, waterfalls & jeep safari. Govt. verified, 5000+ travelers. Book via WhatsApp instantly.",
     canonical: "/",
     keywords: HOME_KEYWORDS,
     subject: "Chikmagalur tour packages and travel planning",
@@ -169,6 +169,11 @@ export function metadataForPath(canonical: string): Metadata {
   });
 }
 
+/** App Router `generateMetadata` — self-referencing canonical at https://tripchikmagalur.com */
+export async function generateMetadataForPath(canonical: string): Promise<Metadata> {
+  return metadataForPath(canonical);
+}
+
 export function metadataForTravelInfo(key: keyof typeof travelInfo): Metadata {
   const data = travelInfo[key];
   return buildMetadata({
@@ -227,7 +232,7 @@ export async function metadataForDestination(slug: string): Promise<Metadata> {
     title: d.title,
     description: d.description,
     canonical: `/places/${d.slug}`,
-    ogImage: absoluteAssetUrl(d.hero.image),
+    ogImage: absoluteAssetUrl(imageSrc(d.hero.image)),
     keywords: pageKeywords(
       d.primaryKeyword,
       "places to visit in Chikmagalur",

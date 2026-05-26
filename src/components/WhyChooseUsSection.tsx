@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { AppImage } from "@/components/AppImage";
 import whyChooseUsImage from "@/assets/why-choose-us.webp";
-import { imageSrc } from "@/lib/image-src";
 
 const WhyChooseUsSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -27,11 +27,13 @@ const WhyChooseUsSection = () => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <img
-            src={imageSrc(whyChooseUsImage)}
-            alt="Best travel partner in Chikmagalur - Certified and recognised by WTTC"
+          <AppImage
+            src={whyChooseUsImage}
+            alt="Best travel partner in Chikmagalur — certified and recognised by WTTC"
+            width={whyChooseUsImage.width}
+            height={whyChooseUsImage.height}
+            sizes="(max-width: 1152px) 100vw, 1152px"
             className="w-full h-auto"
-            loading="lazy"
           />
         </div>
       </div>

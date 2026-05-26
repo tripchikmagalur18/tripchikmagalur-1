@@ -1,66 +1,12 @@
 "use client";
-import { imageSrc } from "@/lib/image-src";
 
 import { Heart } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-import ishaPhoto from "@/assets/testimonial-isha.webp";
-import rahulPhoto from "@/assets/testimonial-rahul.webp";
-import priyaPhoto from "@/assets/testimonial-priya.webp";
-import arjunPhoto from "@/assets/testimonial-arjun.webp";
-import meeraPhoto from "@/assets/testimonial-meera.webp";
-import vikramPhoto from "@/assets/testimonial-vikram.webp";
-
-const testimonials = [
-  {
-    id: 1,
-    name: "Isha Sharma",
-    handle: "@travelwithisha",
-    photo: imageSrc(ishaPhoto),
-    review: "Walking through the coffee fields of Chikmagalur as the morning mist lifted was pure magic. The team made every moment special!",
-    likes: 234,
-  },
-  {
-    id: 2,
-    name: "Rahul Menon",
-    handle: "@rahul.adventures",
-    photo: imageSrc(rahulPhoto),
-    review: "The jeep safari through the Western Ghats was absolutely thrilling! Professional guides and breathtaking views at every turn.",
-    likes: 189,
-  },
-  {
-    id: 3,
-    name: "Priya Nair",
-    handle: "@priya_explores",
-    photo: imageSrc(priyaPhoto),
-    review: "Best travel experience I've ever had. The homestay was cozy, food was authentic, and the sunrise trek was unforgettable.",
-    likes: 312,
-  },
-  {
-    id: 4,
-    name: "Arjun Reddy",
-    handle: "@arjun.wanderlust",
-    photo: imageSrc(arjunPhoto),
-    review: "Camping under the stars with the sounds of nature was therapeutic. Trip Chikmagalur knows how to create memories!",
-    likes: 156,
-  },
-  {
-    id: 5,
-    name: "Meera Krishnan",
-    handle: "@meera.travels",
-    photo: imageSrc(meeraPhoto),
-    review: "The zipline adventure was the highlight of my trip! Safe, exciting, and the views from up there were absolutely stunning.",
-    likes: 278,
-  },
-  {
-    id: 6,
-    name: "Vikram Singh",
-    handle: "@vikram_explorer",
-    photo: imageSrc(vikramPhoto),
-    review: "From the coffee plantation tour to the waterfall trek, everything was perfectly organized. Will definitely come back!",
-    likes: 201,
-  },
-];
+import { AppImage } from "@/components/AppImage";
+import { testimonials } from "@/data/testimonials";
+import { JsonLd } from "@/components/json-ld";
+import { buildReviewSchemas } from "@/lib/review-schema";
 
 const TestimonialCard = ({ 
   testimonial, 
@@ -110,10 +56,12 @@ const TestimonialCard = ({
     >
       {/* Header with photo and name */}
       <div className="flex items-center gap-4 mb-4">
-        <img 
-          src={testimonial.photo} 
-          alt={testimonial.name}
-          className="w-12 h-12 rounded-full object-cover shadow-lg ring-2 ring-white/20"
+        <AppImage
+          src={testimonial.photo}
+          alt={`${testimonial.name} — Trip Chikmagalur customer review photo`}
+          width={48}
+          height={48}
+          className="w-12 h-12 rounded-full object-cover shadow-lg ring-2 ring-white/20 shrink-0"
         />
         <div>
           <p className="font-semibold text-foreground">{testimonial.name}</p>
@@ -215,10 +163,11 @@ const TestimonialSection = () => {
   const duplicatedTestimonials = [...testimonials, ...testimonials, ...testimonials];
 
   return (
-    <section 
+    <section
       ref={sectionRef}
       className="py-24 bg-muted/30 relative overflow-hidden"
     >
+      <JsonLd data={buildReviewSchemas()} />
       {/* Background decorative elements */}
       <div className="absolute top-1/4 left-0 w-96 h-96 bg-sunset/5 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 right-0 w-64 h-64 bg-teal/5 rounded-full blur-3xl" />

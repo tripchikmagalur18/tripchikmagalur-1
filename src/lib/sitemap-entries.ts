@@ -4,6 +4,8 @@ import { staySlugs } from "@/data/stays";
 import { itineraries } from "@/data/itineraries";
 import { travelInfo } from "@/data/travelInfo";
 import { pillarPages } from "@/data/pillarPages";
+import { locationPages } from "@/data/location-pages";
+import { blogLongSlugs } from "@/data/blog-long-posts";
 
 export const SITE_ORIGIN = "https://tripchikmagalur.com";
 
@@ -25,32 +27,20 @@ function entry(
   };
 }
 
-const staticPages: Array<{
+/** Additional routes beyond core static + package pages (see app/sitemap.ts) */
+const extendedStaticPages: Array<{
   path: string;
   priority: number;
   changeFrequency?: SitemapEntry["changeFrequency"];
   lastModified?: Date;
 }> = [
-  { path: "", priority: 1, changeFrequency: "weekly" },
-  { path: "chikmagalur-tour-packages", priority: 0.95, changeFrequency: "weekly" },
   { path: "stays", priority: 0.95, changeFrequency: "weekly", lastModified: CONTENT_UPDATE },
   { path: "adventure", priority: 0.9, changeFrequency: "weekly" },
   { path: "places", priority: 0.9, changeFrequency: "weekly" },
   { path: "food", priority: 0.85 },
-  { path: "faq", priority: 0.8 },
-  { path: "blog", priority: 0.75 },
-  { path: "2-day-chikmagalur-itinerary", priority: 0.95, changeFrequency: "weekly" },
-  { path: "places-to-visit-in-chikmagalur", priority: 0.9 },
   { path: "resorts-in-chikmagalur", priority: 0.85 },
-  { path: "package/day-1", priority: 0.85, changeFrequency: "monthly" },
-  { path: "package/day-2", priority: 0.85, changeFrequency: "monthly" },
-  { path: "package/day-3", priority: 0.85, changeFrequency: "monthly" },
-  { path: "package/day-4", priority: 0.85, changeFrequency: "monthly" },
-  { path: "package/day-5", priority: 0.85, changeFrequency: "monthly" },
   { path: "chikmagalur-itinerary", priority: 0.9 },
   { path: "chikmagalur-itinerary-from-bangalore", priority: 0.9 },
-  { path: "best-time-to-visit-chikmagalur", priority: 0.85 },
-  { path: "how-to-reach-chikmagalur", priority: 0.85 },
   { path: "chikmagalur-weather", priority: 0.8 },
   { path: "things-to-do-in-chikmagalur", priority: 0.85 },
   { path: "chikmagalur-travel-tips", priority: 0.8 },
@@ -58,10 +48,14 @@ const staticPages: Array<{
   { path: "trekking-in-chikmagalur", priority: 0.85 },
   { path: "waterfalls-in-chikmagalur", priority: 0.85 },
   { path: "chikmagalur-trip-budget", priority: 0.8 },
+  { path: "chikmagalur-tour-packages-from-bangalore", priority: 0.9, changeFrequency: "weekly" },
+  { path: "chikmagalur-tour-packages-from-mangalore", priority: 0.85 },
+  { path: "chikmagalur-weekend-packages", priority: 0.9, changeFrequency: "weekly" },
 ];
 
-export function buildSitemap(): MetadataRoute.Sitemap {
-  const staticEntries = staticPages.map((p) =>
+/** Sitemap entries for stays, places, blog articles, itineraries, etc. */
+export function buildExtendedSitemapEntries(): MetadataRoute.Sitemap {
+  const staticEntries = extendedStaticPages.map((p) =>
     entry(p.path, {
       priority: p.priority,
       changeFrequency: p.changeFrequency,
@@ -99,12 +93,27 @@ export function buildSitemap(): MetadataRoute.Sitemap {
     }),
   );
 
+  const locationEntries = Object.keys(locationPages).map((slug) =>
+    entry(slug, { priority: 0.88, changeFrequency: "monthly" }),
+  );
+
+  const blogArticleEntries = blogLongSlugs.map((slug) =>
+    entry(`blog/${slug}`, { priority: 0.8, changeFrequency: "monthly" }),
+  );
+
   return [
     ...staticEntries,
+    ...locationEntries,
+    ...blogArticleEntries,
     ...itineraryEntries,
     ...travelEntries,
     ...pillarEntries,
     ...placeEntries,
     ...stayEntries,
   ];
+}
+
+/** @deprecated Use app/sitemap.ts — kept for any legacy imports */
+export function buildSitemap(): MetadataRoute.Sitemap {
+  return buildExtendedSitemapEntries();
 }

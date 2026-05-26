@@ -5,7 +5,10 @@ import { Plus, Minus, HelpCircle } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import Link from "next/link";
+import { LinkedText } from "@/components/LinkedText";
 import { faqItems } from "@/data/faq-content";
+import { faqContextualLinks, faqLinkSuffix } from "@/lib/contextual-links";
 import { cn } from "@/lib/utils";
 import { WHATSAPP_LINK } from "@/lib/whatsapp";
 
@@ -32,8 +35,15 @@ const FAQPage = () => {
               Chikmagalur Travel <span className="text-gradient-gold">FAQs</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-              Everything you need to know about planning your perfect trip to Chikmagalur. 
-              Find answers to common questions about activities, weather, and travel tips.
+              Everything you need to know about planning your trip — from{" "}
+              <Link href="/chikmagalur-tour-packages" className="text-accent font-medium hover:underline">
+                tour packages
+              </Link>{" "}
+              and our{" "}
+              <Link href="/2-day-chikmagalur-itinerary" className="text-accent font-medium hover:underline">
+                2-day itinerary
+              </Link>{" "}
+              to stays and adventure activities.
             </p>
           </div>
         </div>
@@ -107,7 +117,14 @@ const FAQPage = () => {
                       className="px-5 md:px-6 pb-5 md:pb-6 text-muted-foreground leading-relaxed"
                       itemProp="text"
                     >
-                      {faq.answer}
+                      <LinkedText
+                        text={
+                          faq.answer +
+                          (faq.answer.includes("](/")
+                            ? ""
+                            : faqLinkSuffix(faqContextualLinks[faq.id] ?? []))
+                        }
+                      />
                     </p>
                   </div>
                 </article>

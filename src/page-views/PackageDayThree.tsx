@@ -1,7 +1,7 @@
 "use client";
-import { imageSrc } from "@/lib/image-src";
 
 import Link from "next/link";
+import { AspectImage } from "@/components/AspectImage";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { PageJsonLd } from "@/components/page-json-ld";
@@ -38,42 +38,42 @@ const BookButton = () => {
 const places = [
   {
     name: "Hirekolale Lake",
-    image: imageSrc(hirekolaleLake),
+    image: hirekolaleLake,
     distance: "10 km from Chikmagalur",
     time: "25 min",
     description: "Built as a water supply and irrigation source for Chikmagalur town. The lake is enclosed with gorgeous surroundings and offers a serene retreat.",
   },
   {
     name: "Estate Café, Mallandur",
-    image: imageSrc(estateCafe),
+    image: estateCafe,
     distance: "23.7 km from Chikmagalur",
     time: "54 min",
     description: "The perfect place for a date, family dinner, or hangout with friends. A must-visit café in Mallandur with great ambiance and food.",
   },
   {
     name: "Mallandur Shooting Point",
-    image: imageSrc(mallandurShootingPoint),
+    image: mallandurShootingPoint,
     distance: "30.8 km from Chikmagalur",
     time: "1 hr 8 min",
     description: "Just 2 km from town, the route passes through coffee estates and forest, opening suddenly to a vast hilltop with stunning panoramic views.",
   },
   {
     name: "Muthodi Forest Safari",
-    image: imageSrc(muthodiForest),
+    image: muthodiForest,
     distance: "34.6 km from Chikmagalur",
     time: "1 hr 30 min",
     description: "Experience a thrilling forest safari along the Somavahini River. See the British guest house and the largest teak tree in the region.",
   },
   {
     name: "Ukkuda Falls",
-    image: imageSrc(ukkudaFalls),
+    image: ukkudaFalls,
     distance: "19.4 km from Chikmagalur",
     time: "40 min",
     description: "Verdant green environments with high biodiversity — many species of animals, birds, and plants to explore. A hidden gem known to few.",
   },
   {
     name: "Bande Kal Gudda",
-    image: imageSrc(bandeKalGudda),
+    image: bandeKalGudda,
     distance: "22.6 km from Chikmagalur",
     time: "44 min",
     description: "A stunning hill reaching approximately 3,500 feet above sea level, offering a breathtaking escape into nature's embrace. Best during monsoon.",
@@ -122,7 +122,7 @@ const PackageDayThree = () => {
             {places.map((place, index) => (
               <div key={place.name} className="group bg-card rounded-2xl overflow-hidden border border-border hover:shadow-xl transition-all duration-300">
                 <div className="aspect-[4/3] overflow-hidden">
-                  <img src={place.image} alt={place.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                  <AspectImage src={place.image} alt={place.name} className="group-hover:scale-105 transition-transform duration-500" />
                 </div>
                 <div className="p-5">
                   <div className="flex items-center gap-2 text-sunset text-xs font-bold mb-2">

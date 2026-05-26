@@ -1,24 +1,31 @@
 import Link from "next/link";
-import { imageSrc } from "@/lib/image-src";
+import type { StaticImageData } from "next/image";
+import { AppImage } from "@/components/AppImage";
 import categoryFood from "@/assets/category-food.webp";
 import categoryStays from "@/assets/category-stays.webp";
 import categoryAdventure from "@/assets/category-adventure.webp";
 
-const offers = [
+const offers: {
+  image: StaticImageData;
+  title: string;
+  description: string;
+  href: string;
+  imageClassName?: string;
+}[] = [
   {
-    image: imageSrc(categoryFood),
+    image: categoryFood,
     title: "Food",
     description: "Savor authentic Malnad delicacies and fresh coffee from local estates.",
     href: "/food",
   },
   {
-    image: imageSrc(categoryAdventure),
+    image: categoryAdventure,
     title: "Adventure",
     description: "From trekking to ziplining, experience thrilling activities in the Western Ghats.",
     href: "/adventure",
   },
   {
-    image: imageSrc(categoryStays),
+    image: categoryStays,
     title: "Stays",
     description: "Resort with pool or private villa — book with date & adults on WhatsApp.",
     href: "/stays",
@@ -52,13 +59,14 @@ const OffersSection = () => {
             >
               {/* Round Image Card */}
               <div className="relative w-24 h-24 sm:w-40 sm:h-40 md:w-52 md:h-52 rounded-full overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer group-hover:scale-105 group-hover:-translate-y-2">
-                {/* Image */}
-                <img
+                <AppImage
                   src={offer.image}
-                  alt={offer.title}
+                  alt={`${offer.title} — Trip Chikmagalur`}
+                  fill
+                  sizes="(max-width: 640px) 96px, (max-width: 768px) 160px, 208px"
                   className={
                     offer.imageClassName ??
-                    "w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    "object-cover transition-transform duration-700 group-hover:scale-110"
                   }
                 />
                 

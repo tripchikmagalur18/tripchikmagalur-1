@@ -9,8 +9,12 @@ import Footer from "@/components/Footer";
 import { PageJsonLd } from "@/components/page-json-ld";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { destinations } from "@/data/destinations";
+import { AppImage } from "@/components/AppImage";
+import { AspectImage } from "@/components/AspectImage";
 import { Plus, Minus } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { imageSrc } from "@/lib/image-src";
+import { absoluteAssetUrl } from "@/lib/seo";
 import { WHATSAPP_LINK } from "@/lib/whatsapp";
 
 const SITE_URL = "https://tripchikmagalur.com";
@@ -37,7 +41,7 @@ const DestinationPage = ({ slug }: DestinationPageProps) => {
     "@type": "TouristAttraction",
     name: d.h1,
     description: d.description,
-    image: `${SITE_URL}${d.hero.image}`,
+    image: absoluteAssetUrl(imageSrc(d.hero.image)),
     url: `${SITE_URL}${canonical}`,
     address: {
       "@type": "PostalAddress",
@@ -83,12 +87,13 @@ const DestinationPage = ({ slug }: DestinationPageProps) => {
 
       {/* Hero */}
       <section className="relative h-[55vh] md:h-[65vh] overflow-hidden">
-        <img
+        <AppImage
           src={d.hero.image}
           alt={d.hero.alt}
-          width={1600}
-          height={900}
-          className="w-full h-full object-cover"
+          fill
+          sizes="100vw"
+          priority
+          className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-background/10" />
         <div className="absolute inset-0 flex items-end">
@@ -275,14 +280,11 @@ const DestinationPage = ({ slug }: DestinationPageProps) => {
                     href={`/places/${rel.slug}`}
                     className="group glass rounded-2xl overflow-hidden transition-all hover:scale-[1.02]"
                   >
-                    <div className="aspect-[4/3] overflow-hidden">
-                      <img
-                        src={rel.hero.image}
-                        alt={rel.hero.alt}
-                        className="w-full h-full object-cover transition-transform group-hover:scale-110"
-                        loading="lazy"
-                      />
-                    </div>
+                    <AspectImage
+                      src={rel.hero.image}
+                      alt={rel.hero.alt}
+                      className="transition-transform group-hover:scale-110"
+                    />
                     <div className="p-4">
                       <h3 className="font-display font-semibold text-foreground group-hover:text-primary transition-colors">
                         {rel.primaryKeyword}

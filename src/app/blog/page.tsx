@@ -3,7 +3,9 @@ import { JsonLd } from "@/components/json-ld";
 import { blogBreadcrumbs, buildBlogListingSchema } from "@/lib/content-schema";
 import { metadataForPath } from "@/lib/route-metadata";
 
-export const metadata = metadataForPath("/blog");
+export async function generateMetadata() {
+  return metadataForPath("/blog");
+}
 
 export default function Page() {
   return (

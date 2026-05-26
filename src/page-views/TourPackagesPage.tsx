@@ -19,7 +19,7 @@ const packages = [
     rating: 4.8,
     reviews: 412,
     highlights: [
-      "9 destinations in one action-packed day",
+      "8 destinations in one action-packed day",
       "Mullayanagiri sunrise + Baba Budangiri",
       "Jhari Falls (Buttermilk Falls) jeep ride",
       "Coffee estate visit + Hirekolale Lake sunset",

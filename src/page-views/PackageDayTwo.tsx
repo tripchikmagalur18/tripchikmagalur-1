@@ -1,7 +1,7 @@
 "use client";
-import { imageSrc } from "@/lib/image-src";
 
 import Link from "next/link";
+import { AspectImage } from "@/components/AspectImage";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { PageJsonLd } from "@/components/page-json-ld";
@@ -37,35 +37,35 @@ const BookButton = () => {
 const places = [
   {
     name: "Deviramma Temple",
-    image: imageSrc(devirammaTemple),
+    image: devirammaTemple,
     distance: "20 km from Chikmagalur",
     time: "30 min",
     description: "Deviramma temple is located atop Devigiri hill, open only during Deepavali. Legend says Mysore Palace initiated celebrations based on lighting from this hill.",
   },
   {
     name: "Kalhatti Falls",
-    image: imageSrc(kalhattiFalls),
+    image: kalhattiFalls,
     distance: "58 km from Chikmagalur",
     time: "1 hr 28 min",
     description: "Kalhatti Falls is a stunning waterfall on the headwaters of the river, located 10 km from Kemmanagundi hill station in Tarikere Taluk.",
   },
   {
     name: "Kemmanagundi",
-    image: imageSrc(kemmanagundi),
+    image: kemmanagundi,
     distance: "62.2 km from Chikmagalur",
     time: "1 hr 34 min",
     description: "Known for vibrant night sky vistas from the Sunset View Point, Kemmanagundi is a tranquil hill station surrounded by lush forest.",
   },
   {
     name: "Raj Bhavan (Rose Garden)",
-    image: imageSrc(rajBhavan),
+    image: rajBhavan,
     distance: "34 km from Chikmagalur",
     time: "54 min",
     description: "A perfect place for spending time with loved ones, featuring beautiful flower gardens. One of the most amazing places to visit in Chikmagalur.",
   },
   {
     name: "Hebbe Falls",
-    image: imageSrc(hebbeFalls),
+    image: hebbeFalls,
     distance: "65 km from Chikmagalur",
     time: "1 hr 45 min",
     description: "Inside a coffee estate, reachable by walk or four-wheeler. Hebbe Falls gushes down from a height of 551 ft in two spectacular stages.",
@@ -114,7 +114,7 @@ const PackageDayTwo = () => {
             {places.map((place, index) => (
               <div key={place.name} className="group bg-card rounded-2xl overflow-hidden border border-border hover:shadow-xl transition-all duration-300">
                 <div className="aspect-[4/3] overflow-hidden">
-                  <img src={place.image} alt={place.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                  <AspectImage src={place.image} alt={place.name} className="group-hover:scale-105 transition-transform duration-500" />
                 </div>
                 <div className="p-5">
                   <div className="flex items-center gap-2 text-sunset text-xs font-bold mb-2">

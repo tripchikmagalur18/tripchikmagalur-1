@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "images:webp": "node scripts/convert-to-webp.mjs"
+    "images:webp": "node scripts/convert-to-webp.mjs",
+    "favicon": "node scripts/generate-favicon.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
@@ -69,6 +70,7 @@
     "autoprefixer": "^10.4.21",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
+    "png-to-ico": "^2.1.8",
     "postcss": "^8.5.6",
     "sharp": "^0.34.5",
     "tailwindcss": "^3.4.17",

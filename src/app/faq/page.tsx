@@ -3,7 +3,9 @@ import { JsonLd } from "@/components/json-ld";
 import { buildFaqPageSchema, faqBreadcrumbs } from "@/lib/content-schema";
 import { metadataForPath } from "@/lib/route-metadata";
 
-export const metadata = metadataForPath("/faq");
+export async function generateMetadata() {
+  return metadataForPath("/faq");
+}
 
 export default function Page() {
   return (

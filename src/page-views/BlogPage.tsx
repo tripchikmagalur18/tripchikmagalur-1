@@ -5,7 +5,11 @@ import { Plus, Minus, BookOpen, Clock } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import Link from "next/link";
+import { LinkedText } from "@/components/LinkedText";
 import { blogPosts } from "@/data/blog-posts";
+import { blogLongPosts } from "@/data/blog-long-posts";
+import { blogContextualLinks, LINKS } from "@/lib/contextual-links";
 import { cn } from "@/lib/utils";
 import { WHATSAPP_LINK } from "@/lib/whatsapp";
 
@@ -40,9 +44,39 @@ const BlogPage = () => {
               Chikmagalur <span className="text-gradient-gold">Travel Guide</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-              Expert tips, itineraries, and insider knowledge to help you plan 
-              an unforgettable trip to Karnataka's coffee paradise.
+              Expert tips and itineraries to plan your trip — browse{" "}
+              <Link href="/chikmagalur-tour-packages" className="text-accent font-medium hover:underline">
+                tour packages
+              </Link>
+              , our{" "}
+              <Link href="/2-day-chikmagalur-itinerary" className="text-accent font-medium hover:underline">
+                2-day weekend plan
+              </Link>
+              , and guided day tours across the Western Ghats.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured long-form guides */}
+      <section className="pb-10">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <h2 className="text-2xl font-display font-bold text-foreground mb-4 text-center">
+            In-depth travel guides
+          </h2>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {Object.values(blogLongPosts).map((post) => (
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}`}
+                className="glass-card-light p-5 rounded-2xl hover:ring-2 hover:ring-accent/20 transition-all block"
+              >
+                <span className="text-xs text-accent font-medium">{post.category}</span>
+                <h3 className="font-semibold text-foreground mt-1 mb-2">{post.title}</h3>
+                <p className="text-sm text-muted-foreground line-clamp-2">{post.excerpt}</p>
+                <span className="text-sm text-accent font-medium mt-2 inline-block">Read full guide →</span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -148,15 +182,35 @@ const BlogPage = () => {
                         className="text-muted-foreground leading-relaxed pt-4"
                         itemProp="articleBody"
                       >
-                        {blog.content}
+                        <LinkedText text={blog.content} />
                       </p>
+                      {(() => {
+                        const links =
+                          blogContextualLinks[blog.id] ?? [
+                            LINKS.packages,
+                            LINKS.itinerary,
+                          ];
+                        return links.length > 0 ? (
+                        <p className="text-sm text-muted-foreground mt-3">
+                          Plan next:{" "}
+                          {links.map((l, i, arr) => (
+                            <span key={l.href}>
+                              <Link href={l.href} className="text-accent font-medium hover:underline">
+                                {l.label}
+                              </Link>
+                              {i < arr.length - 1 ? " · " : ""}
+                            </span>
+                          ))}
+                        </p>
+                        ) : null;
+                      })()}
                       <a
                         href={WHATSAPP_LINK}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 mt-4 text-accent hover:text-accent/80 font-medium text-sm transition-colors"
                       >
-                        Plan this trip →
+                        Plan this trip on WhatsApp →
                       </a>
                     </div>
                   </div>
@@ -175,7 +229,15 @@ const BlogPage = () => {
               Ready to explore Chikmagalur?
             </h2>
             <p className="text-muted-foreground mb-6">
-              Let us help you create the perfect itinerary for your Chikmagalur adventure.
+              Start with our{" "}
+              <Link href="/2-day-chikmagalur-itinerary" className="text-accent font-medium hover:underline">
+                2-day itinerary
+              </Link>{" "}
+              or pick a{" "}
+              <Link href="/mullayanagiri-trek-package" className="text-accent font-medium hover:underline">
+                day package
+              </Link>{" "}
+              — we help on WhatsApp.
             </p>
             <a
               href={WHATSAPP_LINK}

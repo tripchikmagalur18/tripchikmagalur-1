@@ -9,54 +9,64 @@ import jeepImg from "@/assets/activity-jeep.webp";
 import trekImg from "@/assets/activity-trek.webp";
 import campingImg from "@/assets/activity-camping.webp";
 import sightseeingImg from "@/assets/activity-sightseeing.webp";
-import { imageSrc } from "@/lib/image-src";
+import type { StaticImageData } from "next/image";
+import { AppImage } from "@/components/AppImage";
 
 type Activity = {
   id: string;
   title: string;
-  image: string;
+  image: StaticImageData;
   description: string;
   price?: number;
+};
+
+const activityAlts: Record<string, string> = {
+  Ziplining: "Ziplining in Chikmagalur Western Ghats — canopy adventure over coffee estates",
+  "ATV Bikes": "ATV off-road ride in Chikmagalur hills — adventure activity booking",
+  "Jeep Adventure": "Jeep safari on misty Chikmagalur mountain trails to waterfalls",
+  Trekking: "Trekking in Chikmagalur — Mullayanagiri and Western Ghats peak hikes",
+  "Fire Camping": "Campfire camping experience in Chikmagalur under starlit skies",
+  "Sight Visiting": "Sightseeing tour to Chikmagalur waterfalls and hidden viewpoints",
 };
 
 const activities: Activity[] = [
   {
     id: "act-zipline",
     title: "Ziplining",
-    image: imageSrc(ziplineImg),
+    image: ziplineImg,
     description: "Soar through the forest canopy",
     price: 299,
   },
   {
     id: "act-atv",
     title: "ATV Bikes",
-    image: imageSrc(atvImg),
+    image: atvImg,
     description: "Off-road adventure thrills",
     price: 299,
   },
   {
     id: "act-jeep",
     title: "Jeep Adventure",
-    image: imageSrc(jeepImg),
+    image: jeepImg,
     description: "Explore misty mountain trails",
     price: 349,
   },
   {
     id: "act-trek",
     title: "Trekking",
-    image: imageSrc(trekImg),
+    image: trekImg,
     description: "Conquer scenic peaks",
   },
   {
     id: "act-camping",
     title: "Fire Camping",
-    image: imageSrc(campingImg),
+    image: campingImg,
     description: "Starlit nights in nature",
   },
   {
     id: "act-sightseeing",
     title: "Sight Visiting",
-    image: imageSrc(sightseeingImg),
+    image: sightseeingImg,
     description: "Discover hidden waterfalls",
   },
 ];
@@ -123,11 +133,12 @@ const ActivitiesSection = () => {
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div className="aspect-[4/5] relative overflow-hidden rounded-3xl">
-                  <img
+                  <AppImage
                     src={activity.image}
-                    alt={`${activity.title} activity in Chikmagalur - adventure tourism`}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
+                    alt={activityAlts[activity.title] ?? `${activity.title} in Chikmagalur`}
+                    fill
+                    sizes="(max-width: 1024px) 50vw, 33vw"
+                    className="transition-transform duration-700 group-hover:scale-105"
                   />
                   
                   {/* Gradient overlay */}

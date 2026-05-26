@@ -1,7 +1,7 @@
 "use client";
-import { imageSrc } from "@/lib/image-src";
 
 import Link from "next/link";
+import { AspectImage } from "@/components/AspectImage";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { PageJsonLd } from "@/components/page-json-ld";
@@ -35,7 +35,7 @@ const BookButton = () => {
 const places = [
   {
     name: "Siddhartha Hegde Park",
-    image: imageSrc(siddharthaPark),
+    image: siddharthaPark,
     distance: "19.4 km from Chikmagalur",
     time: "40 min",
     description:
@@ -43,7 +43,7 @@ const places = [
   },
   {
     name: "Devaramane Betta Viewpoint",
-    image: imageSrc(devaramane),
+    image: devaramane,
     distance: "59 km from Chikmagalur",
     time: "1 hr 28 min",
     description:
@@ -51,7 +51,7 @@ const places = [
   },
   {
     name: "Abbi Waterfalls",
-    image: imageSrc(abbiFalls),
+    image: abbiFalls,
     distance: "152 km from Chikmagalur",
     time: "3 hr 51 min",
     description:
@@ -59,7 +59,7 @@ const places = [
   },
   {
     name: "Ethina Bhuja Trek",
-    image: imageSrc(ethinaBhuja),
+    image: ethinaBhuja,
     distance: "51 km from Chikmagalur",
     time: "1 hr 16 min",
     description:
@@ -67,7 +67,7 @@ const places = [
   },
   {
     name: "Scenic Mudigere Range",
-    image: imageSrc(mallandur),
+    image: mallandur,
     distance: "30.8 km from Chikmagalur",
     time: "1 hr 8 min",
     description:
@@ -133,14 +133,11 @@ const PackageDayFive = () => {
                 key={place.name}
                 className="group bg-card rounded-2xl overflow-hidden border border-border hover:shadow-xl transition-all duration-300"
               >
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
-                    src={place.image}
-                    alt={place.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                  />
-                </div>
+                <AspectImage
+                  src={place.image}
+                  alt={place.name}
+                  className="group-hover:scale-105 transition-transform duration-500"
+                />
                 <div className="p-5">
                   <div className="flex items-center gap-2 text-sunset text-xs font-bold mb-2">
                     <span className="bg-sunset/10 px-2 py-0.5 rounded-full">Stop {index + 1}</span>

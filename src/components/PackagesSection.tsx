@@ -1,7 +1,8 @@
 "use client";
-import { imageSrc } from "@/lib/image-src";
 
 import Link from "next/link";
+import type { StaticImageData } from "next/image";
+import { AppImage } from "@/components/AppImage";
 import { Sparkles, MessageCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useState, useCallback } from "react";
 
@@ -15,14 +16,14 @@ const packages = [
     duration: "Day 1",
     price: "₹3,499",
     popular: true,
-    image: imageSrc(heroAdventure),
-    link: "/package/day-1",
+    image: heroAdventure,
+    link: "/mullayanagiri-trek-package",
     highlights: [
       "Siri Nature Roost Coffee Point",
       "Jhari (Butter) Falls Jeep Ride",
       "Mullayangiri — Karnataka's Highest Peak",
       "Seethalayyangiri & Honnamana Halla Falls",
-      "Baba Budangiri & Manikyadhara Falls",
+      "Baba Budangiri",
       "Z Point Sunset & Zip Lining",
     ],
   },
@@ -30,8 +31,8 @@ const packages = [
     name: "Kemmangundi Package",
     duration: "Day 2",
     price: "₹4,499",
-    image: imageSrc(heroChikmagalur),
-    link: "/package/day-2",
+    image: heroChikmagalur,
+    link: "/kemmangundi-tour-package",
     highlights: [
       "Deviramma Temple Hilltop",
       "Kalhatti Falls",
@@ -44,8 +45,8 @@ const packages = [
     name: "Muthodi Package",
     duration: "Day 3",
     price: "₹3,999",
-    image: imageSrc(heroMist),
-    link: "/package/day-3",
+    image: heroMist,
+    link: "/muthodi-safari-package",
     highlights: [
       "Hirekolale Lake Sunset",
       "Muthodi Forest Safari",
@@ -58,8 +59,8 @@ const packages = [
     name: "Belur Package",
     duration: "Day 4",
     price: "₹3,499",
-    image: imageSrc(heroChikmagalur),
-    link: "/package/day-4",
+    image: heroChikmagalur,
+    link: "/belur-heritage-tour-package",
     highlights: [
       "Belur Chennakeshava Temple",
       "Halebidu Hoysaleshwara Temple",
@@ -71,8 +72,8 @@ const packages = [
     name: "Sringeri & Trek Package",
     duration: "Day 5",
     price: "₹5,999",
-    image: imageSrc(heroMist),
-    link: "/package/day-5",
+    image: heroMist,
+    link: "/sringeri-trek-package",
     highlights: [
       "Siddhartha Hegde Park",
       "Devaramane Betta Viewpoint",
@@ -206,21 +207,21 @@ const PackagesSection = () => {
 
                   {/* Image */}
                   <div className="w-full px-4 pt-4">
-                    <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden">
-                      <img
+                    <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden">
+                      <AppImage
                         src={pkg.image}
-                        alt={`${pkg.name} - Chikmagalur tour`}
-                        className="w-full h-full object-cover"
-                        loading="lazy"
+                        alt={`${pkg.name} — guided Chikmagalur day tour with transport and local guide`}
+                        fill
+                        sizes="280px"
                       />
                     </div>
                   </div>
 
                   {/* Content */}
                   <div className="p-5 pb-6 flex flex-col items-center w-full">
-                    <h3 className="text-lg font-display font-bold text-foreground mb-0.5">
+                    <h2 className="text-lg font-display font-bold text-foreground mb-0.5">
                       {pkg.name}
-                    </h3>
+                    </h2>
                     <p className="text-muted-foreground text-xs mb-3">{pkg.duration}</p>
 
                     {/* Highlights */}

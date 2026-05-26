@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { PageJsonLd } from "@/components/page-json-ld";
 import { allStays } from "@/data/stays";
-import { imageSrc } from "@/lib/image-src";
+import { AppImage } from "@/components/AppImage";
 
 const focusRing =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunset focus-visible:ring-offset-2 focus-visible:ring-offset-background";
@@ -51,11 +51,12 @@ const StaysPage = () => {
                 className={`group block rounded-2xl border border-border bg-card overflow-hidden shadow-sm hover:shadow-md hover:border-sunset/40 transition ${focusRing}`}
               >
                 <div className="relative aspect-[16/10] overflow-hidden bg-muted">
-                  <img
-                    src={imageSrc(stay.coverImage)}
+                  <AppImage
+                    src={stay.coverImage}
                     alt={stay.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="transition-transform duration-500 group-hover:scale-105"
                   />
                   <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-black/55 backdrop-blur-sm text-white text-xs font-medium">
                     {stay.categoryLabel}

@@ -10,7 +10,7 @@ import hirekolale from "@/assets/place-hirekolale.webp";
 import muthodi from "@/assets/place-muthodi.webp";
 import estateCafe from "@/assets/place-estate-cafe.webp";
 import jhariFalls from "@/assets/place-jhari-falls.webp";
-import { imageSrc } from "@/lib/image-src";
+import type { StaticImageData } from "next/image";
 
 export interface DestinationFAQ {
   q: string;
@@ -24,7 +24,7 @@ export interface DestinationData {
   description: string; // <160 chars
   h1: string;
   hero: {
-    image: string;
+    image: StaticImageData;
     alt: string; // include keyword
   };
   intro: string; // first 100 words must include primary keyword
@@ -55,7 +55,7 @@ export const destinations: Record<string, DestinationData> = {
       "Mullayanagiri trek guide — Karnataka's highest peak (1,930m). Route, timings, entry fee, difficulty, best season & expert tips for a safe summit.",
     h1: "Mullayanagiri Trek — Complete Guide to Karnataka's Highest Peak",
     hero: {
-      image: imageSrc(mullayangiri),
+      image: mullayangiri,
       alt: "Mullayanagiri trek summit view with mist rolling over Western Ghats peaks in Chikmagalur",
     },
     intro:
@@ -131,7 +131,7 @@ export const destinations: Record<string, DestinationData> = {
       "Hebbe Falls Chikmagalur — 168 ft two-tier waterfall near Kemmanagundi. Jeep route, entry fee, best season, timings & safety tips for travelers.",
     h1: "Hebbe Falls Chikmagalur — Complete Visitor Guide",
     hero: {
-      image: imageSrc(hebbeFalls),
+      image: hebbeFalls,
       alt: "Hebbe Falls Chikmagalur cascading two-tier waterfall surrounded by green Western Ghats forest",
     },
     intro:
@@ -205,7 +205,7 @@ export const destinations: Record<string, DestinationData> = {
       "Kemmanagundi hill station guide — Z Point sunset, Rajbhavan, Hebbe Falls nearby. How to reach, where to stay, best time & itinerary tips.",
     h1: "Kemmanagundi — Karnataka's Quiet Hill Station Getaway",
     hero: {
-      image: imageSrc(kemmanagundi),
+      image: kemmanagundi,
       alt: "Kemmanagundi hill station rolling green hills and viewpoint with morning mist in Chikmagalur",
     },
     intro:
@@ -280,7 +280,7 @@ export const destinations: Record<string, DestinationData> = {
       "Baba Budangiri guide — sacred dargah, Manikyadhara Falls, trek route, best time to visit & how to reach from Chikmagalur and Bangalore.",
     h1: "Baba Budangiri — Sacred Peaks & Trek Guide",
     hero: {
-      image: imageSrc(bababudangiri),
+      image: bababudangiri,
       alt: "Baba Budangiri Chikmagalur sacred peaks with dargah cave and rolling Western Ghats backdrop",
     },
     intro:
@@ -356,7 +356,7 @@ export const destinations: Record<string, DestinationData> = {
       "Kalhatti Falls Chikmagalur — sacred 400 ft cascade with Veerabhadra temple. How to reach, timings, entry, best season & travel tips.",
     h1: "Kalhatti Falls — Sacred Cascade Near Kemmanagundi",
     hero: {
-      image: imageSrc(kalhattiFalls),
+      image: kalhattiFalls,
       alt: "Kalhatti Falls Chikmagalur 400 ft sacred waterfall cascading beside Veerabhadra temple",
     },
     intro:
@@ -430,7 +430,7 @@ export const destinations: Record<string, DestinationData> = {
       "Hirekolale Lake Chikmagalur — best sunset spot 10 km from town. How to reach, ideal timings, photography tips & nearby attractions.",
     h1: "Hirekolale Lake — Chikmagalur's Best Sunset Spot",
     hero: {
-      image: imageSrc(hirekolale),
+      image: hirekolale,
       alt: "Hirekolale Lake Chikmagalur sunset reflection with Western Ghats hills in background",
     },
     intro:
@@ -504,7 +504,7 @@ export const destinations: Record<string, DestinationData> = {
       "Kudremukh National Park guide — horse-face peak trek, wildlife, permits, entry fee & how to reach from Chikmagalur. Plan your visit.",
     h1: "Kudremukh National Park — Trek, Wildlife & Permits",
     hero: {
-      image: imageSrc(muthodi),
+      image: muthodi,
       alt: "Kudremukh National Park rolling green grasslands with horse-face peak in Western Ghats Karnataka",
     },
     intro:
@@ -580,7 +580,7 @@ export const destinations: Record<string, DestinationData> = {
       "Bhadra Wildlife Sanctuary guide — tiger safari, jeep timings, booking, best time & how to reach from Chikmagalur. Plan your wildlife trip.",
     h1: "Bhadra Wildlife Sanctuary — Tiger Reserve Travel Guide",
     hero: {
-      image: imageSrc(muthodi),
+      image: muthodi,
       alt: "Bhadra Wildlife Sanctuary Muthodi tiger reserve forest road in Chikmagalur Karnataka",
     },
     intro:
@@ -654,7 +654,7 @@ export const destinations: Record<string, DestinationData> = {
       "Coffee plantation Chikmagalur guide — estate tours, harvest season, tasting, best estate stays under ₹2500. Plan your coffee escape.",
     h1: "Coffee Plantations in Chikmagalur — Tours, Tastings & Stays",
     hero: {
-      image: imageSrc(estateCafe),
+      image: estateCafe,
       alt: "Coffee plantation Chikmagalur Arabica estate with red coffee cherries and shade trees",
     },
     intro:
@@ -728,7 +728,7 @@ export const destinations: Record<string, DestinationData> = {
       "Jhari Falls (Buttermilk Falls) Chikmagalur — jeep route, entry fee, best time, what to expect. Plan your hidden waterfall trip.",
     h1: "Jhari Falls Chikmagalur — The Hidden Buttermilk Falls",
     hero: {
-      image: imageSrc(jhariFalls),
+      image: jhariFalls,
       alt: "Jhari Falls Chikmagalur Buttermilk Falls cascading through dense green forest",
     },
     intro:

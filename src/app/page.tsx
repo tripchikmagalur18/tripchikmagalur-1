@@ -3,7 +3,9 @@ import { JsonLd } from "@/components/json-ld";
 import { homePageSchema } from "@/lib/home-schema";
 import { metadataForPath } from "@/lib/route-metadata";
 
-export const metadata = metadataForPath("/");
+export async function generateMetadata() {
+  return metadataForPath("/");
+}
 
 export default function Page() {
   return (
