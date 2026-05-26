@@ -4,13 +4,13 @@ import { WHATSAPP_LINK } from "@/lib/whatsapp";
 
 import { MessageCircle, CheckCircle, Star, Users, Shield } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import heroImage1 from "@/assets/hero-chikmagalur.jpg";
-import heroImage2 from "@/assets/hero-mist.jpg";
-import heroImage3 from "@/assets/hero-adventure.jpg";
-import heroImage4 from "@/assets/hero-waterfall.jpg";
-import heroImage5 from "@/assets/hero-plantations.jpg";
-import heroImage6 from "@/assets/hero-jeep-adventure.jpg";
-import heroImage7 from "@/assets/hero-atv-adventure.jpg";
+import heroImage1 from "@/assets/hero-chikmagalur.webp";
+import heroImage2 from "@/assets/hero-mist.webp";
+import heroImage3 from "@/assets/hero-adventure.webp";
+import heroImage4 from "@/assets/hero-waterfall.webp";
+import heroImage5 from "@/assets/hero-plantations.webp";
+import heroImage6 from "@/assets/hero-jeep-adventure.webp";
+import heroImage7 from "@/assets/hero-atv-adventure.webp";
 
 const heroImages = [
   imageSrc(heroImage1),

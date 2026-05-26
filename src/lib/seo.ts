@@ -1,9 +1,17 @@
 import type { Metadata } from "next";
 
 export const SITE_URL = "https://tripchikmagalur.com";
+export const SITE_NAME = "Trip Chikmagalur";
+export const SITE_TAGLINE = "Chikmagalur Tour Packages, Stays & Adventures";
 
-export const DEFAULT_OG_IMAGE =
-  "https://storage.googleapis.com/gpt-engineer-file-uploads/qoN8gF9Ct6Rzz2WPb28F0WvdTdc2/social-images/social-1770538726089-Mullayanagiri_–_Karnataka’s_Highest_Peak_Hidden_in_the_Clouds.jpeg";
+export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.webp`;
+
+export const GEO_META = {
+  "geo.region": "IN-KA",
+  "geo.placename": "Chikmagalur, Karnataka, India",
+  "geo.position": "13.3161;75.7720",
+  ICBM: "13.3161, 75.7720",
+} as const;
 
 export interface BreadcrumbItem {
   name: string;
@@ -18,6 +26,14 @@ export interface SeoInput {
   ogType?: "website" | "article";
   breadcrumbs?: BreadcrumbItem[];
   noindex?: boolean;
+  keywords?: string[];
+  /** Short topical label for meta subject (optional). */
+  subject?: string;
+}
+
+export function absoluteAssetUrl(src: string): string {
+  if (src.startsWith("http")) return src;
+  return `${SITE_URL}${src.startsWith("/") ? src : `/${src}`}`;
 }
 
 export const normalizePath = (path: string): string => {
@@ -36,6 +52,8 @@ export const buildMetadata = ({
   ogImage = DEFAULT_OG_IMAGE,
   ogType = "website",
   noindex = false,
+  keywords,
+  subject,
 }: SeoInput): Metadata => {
   const path = normalizePath(canonical);
   const fullCanonical = `${SITE_URL}${path === "/" ? "" : path}`;
@@ -43,7 +61,32 @@ export const buildMetadata = ({
   return {
     title,
     description,
-    robots: noindex ? { index: false, follow: false } : undefined,
+    applicationName: SITE_NAME,
+    generator: "Next.js",
+    referrer: "origin-when-cross-origin",
+    formatDetection: {
+      email: false,
+      address: false,
+      telephone: false,
+    },
+    ...(keywords?.length ? { keywords } : {}),
+    authors: [{ name: "Trip Chikmagalur — Wanderlust_ckm", url: SITE_URL }],
+    creator: SITE_NAME,
+    publisher: SITE_NAME,
+    category: "Travel",
+    robots: noindex
+      ? { index: false, follow: false }
+      : {
+          index: true,
+          follow: true,
+          googleBot: {
+            index: true,
+            follow: true,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+            "max-video-preview": -1,
+          },
+        },
     alternates: {
       canonical: fullCanonical,
       languages: {
@@ -54,24 +97,35 @@ export const buildMetadata = ({
     openGraph: {
       type: ogType,
       locale: "en_IN",
-      siteName: "Trip Chikmagalur",
+      alternateLocale: ["en_US"],
+      siteName: SITE_NAME,
       url: fullCanonical,
       title,
       description,
+      countryName: "India",
       images: [
         {
           url: ogImage,
           width: 1200,
           height: 630,
+          alt: `${title ?? SITE_NAME} — Chikmagalur tour packages & travel guide`,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
       site: "@tripchikmagalur",
+      creator: "@tripchikmagalur",
       title,
       description,
       images: [ogImage],
+    },
+    other: {
+      ...GEO_META,
+      "content-language": "en-IN",
+      coverage: "India",
+      target: "Chikmagalur, Karnataka, India",
+      ...(subject ? { subject } : {}),
     },
   };
 };

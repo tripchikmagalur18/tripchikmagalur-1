@@ -4,94 +4,10 @@ import { useState } from "react";
 import { Plus, Minus, HelpCircle } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { PageJsonLd } from "@/components/page-json-ld";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { faqItems } from "@/data/faq-content";
 import { cn } from "@/lib/utils";
 import { WHATSAPP_LINK } from "@/lib/whatsapp";
-
-interface FAQItem {
-  id: number;
-  question: string;
-  answer: string;
-}
-
-const faqs: FAQItem[] = [
-  {
-    id: 1,
-    question: "What is Chikmagalur famous for?",
-    answer: "Chikmagalur is famous for its lush coffee plantations, scenic Western Ghats landscapes, waterfalls, trekking trails, and peaceful hill station vibes. It is also known as the Coffee Land of Karnataka.",
-  },
-  {
-    id: 2,
-    question: "How do I reach Chikmagalur from Bangalore?",
-    answer: "Chikmagalur can be reached by road, rail, and air. The nearest airport is Mangalore International Airport, and the nearest railway station is Kadur. Buses, taxis, and self-drive options are easily available from Bangalore (245 km).",
-  },
-  {
-    id: 3,
-    question: "What is the best time to visit Chikmagalur?",
-    answer: "October to March is the best time to visit Chikmagalur due to pleasant weather, clear views, and ideal conditions for sightseeing and trekking. Monsoon (June-August) offers lush greenery and flowing waterfalls.",
-  },
-  {
-    id: 4,
-    question: "What are the top tourist places in Chikmagalur?",
-    answer: "Mullayanagiri Peak, Baba Budangiri Hills, Hebbe Falls, Jhari Waterfalls, Kemmanagundi, Bhadra Wildlife Sanctuary, and coffee plantations are must-visit attractions in Chikmagalur.",
-  },
-  {
-    id: 5,
-    question: "Is Chikmagalur good for trekking?",
-    answer: "Yes, Chikmagalur is a trekking paradise with popular treks like Mullayanagiri, Kudremukh, Seethalayanagiri, and Ballalarayana Durga Fort offering breathtaking views and adventure.",
-  },
-  {
-    id: 6,
-    question: "Is Chikmagalur suitable for family trips?",
-    answer: "Absolutely. Chikmagalur offers calm lakes, waterfalls, wildlife sanctuaries, viewpoints, and coffee estate stays ideal for families and couples seeking peaceful getaways.",
-  },
-  {
-    id: 7,
-    question: "Do I need permission to visit Mullayanagiri?",
-    answer: "Yes, during weekends and peak seasons, online vehicle entry booking is required to manage crowd and traffic at Mullayanagiri and nearby hills.",
-  },
-  {
-    id: 8,
-    question: "What activities can tourists do in Chikmagalur?",
-    answer: "Tourists can enjoy coffee plantation walks, jeep safaris, trekking, birdwatching, wildlife safaris, river rafting, camping, and photography throughout the region.",
-  },
-  {
-    id: 9,
-    question: "Is wildlife safari available in Chikmagalur?",
-    answer: "Yes, Bhadra Wildlife Sanctuary offers safari experiences with chances to spot elephants, leopards, tigers, and diverse bird species in their natural habitat.",
-  },
-  {
-    id: 10,
-    question: "What local food should I try in Chikmagalur?",
-    answer: "Tourists should try Malnad cuisine such as akki rotti, kadambalu, spicy curries, filter coffee, and locally grown estate coffee for an authentic taste of the region.",
-  },
-  {
-    id: 11,
-    question: "Is Chikmagalur safe for solo travelers?",
-    answer: "Yes, Chikmagalur is safe for solo travelers. Many prefer renting bikes or scooters to explore coffee trails and nearby viewpoints independently.",
-  },
-  {
-    id: 12,
-    question: "How many days are enough for Chikmagalur?",
-    answer: "A 2 to 4-day trip is ideal to cover major attractions, waterfalls, trekking spots, and coffee estate experiences comfortably without rushing.",
-  },
-  {
-    id: 13,
-    question: "Are ATMs and mobile networks available in Chikmagalur?",
-    answer: "ATMs and mobile networks are available in town areas but may be limited in forest and hill regions. Carrying cash is recommended for remote areas.",
-  },
-  {
-    id: 14,
-    question: "Is Chikmagalur crowded during peak season?",
-    answer: "Yes, during December, January, and long weekends, tourist spots can be crowded. Planning early and booking accommodations in advance is advisable.",
-  },
-  {
-    id: 15,
-    question: "Are there offbeat places in Chikmagalur?",
-    answer: "Yes, peaceful spots like Seethalayanagiri, Jhari Falls, hidden coffee trails, and lesser-known viewpoints offer crowd-free experiences for explorers.",
-  },
-];
 
 const FAQPage = () => {
   const [openId, setOpenId] = useState<number | null>(null);
@@ -100,27 +16,8 @@ const FAQPage = () => {
     setOpenId(openId === id ? null : id);
   };
 
-  // Generate FAQ Schema for SEO
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
-    })),
-  };
-
   return (
     <main className="min-h-screen bg-gradient-to-b from-mist to-background">
-      <PageJsonLd schema={faqSchema} breadcrumbs={[
-          { name: "Home", path: "/" },
-          { name: "FAQ", path: "/faq" },
-        ]} />
-      
       <Navbar />
       
       {/* Hero Section */}
@@ -154,7 +51,7 @@ const FAQPage = () => {
               className="mb-8"
             />
             <div className="space-y-4">
-              {faqs.map((faq, index) => (
+              {faqItems.map((faq, index) => (
                 <article
                   key={faq.id}
                   className={cn(
@@ -200,7 +97,7 @@ const FAQPage = () => {
                     id={`faq-answer-${faq.id}`}
                     className={cn(
                       "overflow-hidden transition-all duration-300 ease-out",
-                      openId === faq.id ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                      openId === faq.id ? "max-h-[480px] opacity-100" : "max-h-0 opacity-0"
                     )}
                     itemScope
                     itemProp="acceptedAnswer"

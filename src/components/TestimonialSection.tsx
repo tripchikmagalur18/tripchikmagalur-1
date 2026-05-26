@@ -4,12 +4,12 @@ import { imageSrc } from "@/lib/image-src";
 import { Heart } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-import ishaPhoto from "@/assets/testimonial-isha.jpg";
-import rahulPhoto from "@/assets/testimonial-rahul.jpg";
-import priyaPhoto from "@/assets/testimonial-priya.jpg";
-import arjunPhoto from "@/assets/testimonial-arjun.jpg";
-import meeraPhoto from "@/assets/testimonial-meera.jpg";
-import vikramPhoto from "@/assets/testimonial-vikram.jpg";
+import ishaPhoto from "@/assets/testimonial-isha.webp";
+import rahulPhoto from "@/assets/testimonial-rahul.webp";
+import priyaPhoto from "@/assets/testimonial-priya.webp";
+import arjunPhoto from "@/assets/testimonial-arjun.webp";
+import meeraPhoto from "@/assets/testimonial-meera.webp";
+import vikramPhoto from "@/assets/testimonial-vikram.webp";
 
 const testimonials = [
   {

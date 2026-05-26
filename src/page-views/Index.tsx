@@ -13,8 +13,6 @@ import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import LeadFormPopup from "@/components/LeadFormPopup";
-import { PageJsonLd } from "@/components/page-json-ld";
-
 const Index = () => {
   return (
     <main className="overflow-x-hidden">

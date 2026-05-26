@@ -16,7 +16,6 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ResortGalleryCarousel } from "@/components/ResortGalleryCarousel";
 import { StayBookingDialog } from "@/components/StayBookingDialog";
-import { PageJsonLd } from "@/components/page-json-ld";
 import { useCart } from "@/context/CartContext";
 import { formatBookingDate, stayLineTotal, stayNights } from "@/lib/booking-date";
 import type { Stay } from "@/data/stays";
@@ -170,13 +169,6 @@ export default function StayDetailPage({ stay }: StayDetailPageProps) {
 
   return (
     <>
-      <a
-        href="#book-stay"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-sunset focus:text-white"
-      >
-        Skip to booking
-      </a>
-
       <StayBookingDialog
         open={bookingOpen}
         onOpenChange={setBookingOpen}
@@ -192,13 +184,6 @@ export default function StayDetailPage({ stay }: StayDetailPageProps) {
       />
 
       <main id="main-content" className="min-h-screen bg-background pt-[4.5rem] sm:pt-20 pb-24 lg:pb-10">
-        <PageJsonLd
-          breadcrumbs={[
-            { name: "Home", path: "/" },
-            { name: "Stays", path: "/stays" },
-            { name: name, path: stayPath },
-          ]}
-        />
         <Navbar />
 
         <div className="container mx-auto max-w-6xl px-4 sm:px-6">

@@ -8,11 +8,11 @@ import { PageJsonLd } from "@/components/page-json-ld";
 import { ArrowLeft, MapPin, Clock, ShoppingCart } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 
-import devirammaTemple from "@/assets/places/deviramma-temple.jpg";
-import kalhattiFalls from "@/assets/places/kalhatti-falls.jpg";
-import kemmanagundi from "@/assets/places/kemmanagundi.jpg";
-import rajBhavan from "@/assets/places/raj-bhavan.jpg";
-import hebbeFalls from "@/assets/places/hebbe-falls.jpg";
+import devirammaTemple from "@/assets/places/deviramma-temple.webp";
+import kalhattiFalls from "@/assets/places/kalhatti-falls.webp";
+import kemmanagundi from "@/assets/places/kemmanagundi.webp";
+import rajBhavan from "@/assets/places/raj-bhavan.webp";
+import hebbeFalls from "@/assets/places/hebbe-falls.webp";
 
 import { WHATSAPP_LINK } from "@/lib/whatsapp";
 

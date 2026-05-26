@@ -8,10 +8,10 @@ import { PageJsonLd } from "@/components/page-json-ld";
 import { ArrowLeft, MapPin, Clock, ShoppingCart } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 
-import chennakeshava from "@/assets/place-chennakeshava.jpg";
-import hoysaleshwara from "@/assets/place-hoysaleshwara.jpg";
-import hiremangalore from "@/assets/place-hiremangalore.jpg";
-import belurDam from "@/assets/place-belur-dam.jpg";
+import chennakeshava from "@/assets/place-chennakeshava.webp";
+import hoysaleshwara from "@/assets/place-hoysaleshwara.webp";
+import hiremangalore from "@/assets/place-hiremangalore.webp";
+import belurDam from "@/assets/place-belur-dam.webp";
 
 const BookButton = () => {
   const { addItem, items } = useCart();

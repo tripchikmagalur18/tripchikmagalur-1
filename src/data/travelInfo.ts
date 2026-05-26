@@ -72,7 +72,7 @@ export const travelInfo: Record<string, TravelInfoData> = {
     related: [
       { label: "How to reach Chikmagalur", path: "/how-to-reach-chikmagalur" },
       { label: "Chikmagalur weather", path: "/chikmagalur-weather" },
-      { label: "Chikmagalur 2-day itinerary", path: "/chikmagalur-2-days-itinerary" },
+      { label: "Chikmagalur 2-day itinerary", path: "/2-day-chikmagalur-itinerary" },
       { label: "Top places to visit", path: "/places" },
     ],
     lastUpdated: "2026-04-26",
@@ -266,7 +266,7 @@ export const travelInfo: Record<string, TravelInfoData> = {
     related: [
       { label: "Top places to visit", path: "/places" },
       { label: "Adventure activities", path: "/adventure" },
-      { label: "Chikmagalur 2-day itinerary", path: "/chikmagalur-2-days-itinerary" },
+      { label: "Chikmagalur 2-day itinerary", path: "/2-day-chikmagalur-itinerary" },
       { label: "Coffee plantation guide", path: "/places/coffee-plantations-chikmagalur" },
     ],
     lastUpdated: "2026-04-26",

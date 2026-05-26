@@ -1,14 +1,15 @@
 import { JsonLd } from "@/components/json-ld";
+import { SITE_URL } from "@/lib/seo";
 
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "TravelAgency",
   name: "Trip Chikmagalur",
   alternateName: "Wanderlust_ckm",
-  url: "https://tripchikmagalur.com",
-  logo: "https://tripchikmagalur.com/favicon.ico",
+  url: SITE_URL,
+  logo: `${SITE_URL}/favicon.ico`,
   description:
-    "Leading travel agency offering the best Chikmagalur tour packages, adventure activities, coffee plantation tours, and homestay experiences in Karnataka's coffee country.",
+    "Leading travel agency offering Chikmagalur tour packages, adventure activities, coffee plantation tours, and homestay experiences in Karnataka's coffee country.",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Chikmagalur",
@@ -29,16 +30,14 @@ const organizationSchema = {
     opens: "08:00",
     closes: "22:00",
   },
-  sameAs: ["https://wa.me/916363131585"],
+  sameAs: [
+    "https://wa.me/916363131585",
+    "https://www.instagram.com/wanderlust_ckm",
+    "https://www.facebook.com/wanderlustckm",
+  ],
   areaServed: {
     "@type": "Place",
     name: "Chikmagalur, Karnataka, India",
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    reviewCount: "5000",
-    bestRating: "5",
   },
 };
 
@@ -46,22 +45,29 @@ const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "Trip Chikmagalur",
-  url: "https://tripchikmagalur.com",
-  description: "Best Chikmagalur tour packages, trips, homestays and adventure activities",
+  url: SITE_URL,
+  description: "Chikmagalur tour packages, stays, adventure activities and travel guides",
   publisher: {
     "@type": "Organization",
     name: "Trip Chikmagalur",
+  },
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: `${SITE_URL}/places?q={search_term_string}`,
+    },
+    "query-input": "required name=search_term_string",
   },
 };
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://tripchikmagalur.com/#localbusiness",
+  "@id": `${SITE_URL}/#localbusiness`,
   name: "Trip Chikmagalur",
-  image:
-    "https://storage.googleapis.com/gpt-engineer-file-uploads/qoN8gF9Ct6Rzz2WPb28F0WvdTdc2/uploads/1770538588035-trip_chikmagalur.png",
-  url: "https://tripchikmagalur.com",
+  image: `${SITE_URL}/og-image.webp`,
+  url: SITE_URL,
   telephone: "+91-6363131585",
   priceRange: "₹₹",
   address: {
@@ -72,12 +78,6 @@ const localBusinessSchema = {
     addressCountry: "IN",
   },
   geo: { "@type": "GeoCoordinates", latitude: "13.3161", longitude: "75.7720" },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    reviewCount: "5000",
-    bestRating: "5",
-  },
 };
 
 export function GlobalJsonLd() {

@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { Providers } from "@/components/providers";
 import { GlobalJsonLd } from "@/components/global-json-ld";
-import { buildMetadata, DEFAULT_OG_IMAGE } from "@/lib/seo";
+import { buildMetadata, DEFAULT_OG_IMAGE, SITE_NAME, SITE_TAGLINE } from "@/lib/seo";
+import { HOME_KEYWORDS } from "@/lib/seo-keywords";
 import Script from "next/script";
 import "./globals.css";
 
@@ -22,27 +23,22 @@ const plusJakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL("https://tripchikmagalur.com"),
   ...buildMetadata({
-    title: "Best Chikmagalur Tour Packages | Trip Chikmagalur",
+    title: "Chikmagalur Tour Packages 2026 | Stays, Treks & Adventures — Trip Chikmagalur",
     description:
-      "Explore affordable Chikmagalur tour packages with stays, sightseeing, trekking, waterfalls and adventure activities.",
+      "Book Chikmagalur tour packages from Bangalore — Mullayanagiri trek, Hebbe Falls, resort & villa stays, jeep safaris & coffee estates. Expert guides, best prices.",
     canonical: "/",
     ogImage: DEFAULT_OG_IMAGE,
+    keywords: HOME_KEYWORDS,
+    subject: SITE_TAGLINE,
   }),
-  keywords: [
-    "Chikmagalur tour packages",
-    "Chikmagalur trip",
-    "Mullayanagiri trek",
-    "places to visit in Chikmagalur",
-  ],
-  authors: [{ name: "Trip Chikmagalur - Wanderlust_ckm" }],
-  other: {
-    "geo.region": "IN-KA",
-    "geo.placename": "Chikmagalur, Karnataka, India",
-    "geo.position": "13.3161;75.7720",
-    ICBM: "13.3161, 75.7720",
-  },
   icons: {
-    icon: "https://storage.googleapis.com/gpt-engineer-file-uploads/qoN8gF9Ct6Rzz2WPb28F0WvdTdc2/uploads/1770538588035-trip_chikmagalur.png",
+    icon: "/favicon.ico",
+  },
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    title: SITE_NAME,
+    statusBarStyle: "default",
   },
 };
 
@@ -53,7 +49,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="en-IN"
       className={`${inter.variable} ${plusJakarta.variable}`}
       data-scroll-behavior="smooth"
     >

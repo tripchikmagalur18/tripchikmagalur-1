@@ -26,6 +26,11 @@ const nextConfig: NextConfig = {
         destination: "https://tripchikmagalur.com/:path*",
         permanent: true,
       },
+      {
+        source: "/chikmagalur-2-days-itinerary",
+        destination: "/2-day-chikmagalur-itinerary",
+        permanent: true,
+      },
     ];
   },
   async headers() {

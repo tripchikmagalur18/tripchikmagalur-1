@@ -108,7 +108,7 @@ export const itineraries: Record<string, ItineraryData> = {
         a: "For DIY road trips, no. For Bhadra safari (mandatory guide), Kudremukh trek (mandatory) and combined-day logistics, a local operator is recommended.",
       },
     ],
-    related: ["chikmagalur-2-days-itinerary", "chikmagalur-itinerary-from-bangalore", "chikmagalur-weekend-trip-plan"],
+    related: ["chikmagalur-2-days-itinerary", "chikmagalur-itinerary-from-bangalore", "2-day-chikmagalur-itinerary"],
     lastUpdated: "2026-04-26",
   },
 
@@ -176,7 +176,7 @@ export const itineraries: Record<string, ItineraryData> = {
         a: "Yes, with one swap — replace the long Mullayanagiri sunrise with a relaxed late-morning visit. Hebbe Falls jeep ride is a hit with children.",
       },
     ],
-    related: ["chikmagalur-itinerary-from-bangalore", "chikmagalur-weekend-trip-plan", "chikmagalur-itinerary"],
+    related: ["chikmagalur-itinerary-from-bangalore", "2-day-chikmagalur-itinerary", "chikmagalur-itinerary"],
     lastUpdated: "2026-04-26",
   },
 
@@ -253,7 +253,7 @@ export const itineraries: Record<string, ItineraryData> = {
         a: "Not recommended — a one-day round trip means 11+ hours of driving plus minimal sightseeing. Stick to 2 days minimum.",
       },
     ],
-    related: ["chikmagalur-2-days-itinerary", "chikmagalur-weekend-trip-plan", "chikmagalur-itinerary"],
+    related: ["chikmagalur-2-days-itinerary", "2-day-chikmagalur-itinerary", "chikmagalur-itinerary"],
     lastUpdated: "2026-04-26",
   },
 };

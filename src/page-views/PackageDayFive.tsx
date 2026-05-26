@@ -8,11 +8,11 @@ import { PageJsonLd } from "@/components/page-json-ld";
 import { ArrowLeft, MapPin, Clock, ShoppingCart } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 
-import siddharthaPark from "@/assets/place-siddhartha-park.jpg";
-import devaramane from "@/assets/place-devaramane.jpg";
-import abbiFalls from "@/assets/place-abbi-falls.jpg";
-import ethinaBhuja from "@/assets/place-ethina-bhuja.jpg";
-import mallandur from "@/assets/place-mallandur.jpg";
+import siddharthaPark from "@/assets/place-siddhartha-park.webp";
+import devaramane from "@/assets/place-devaramane.webp";
+import abbiFalls from "@/assets/place-abbi-falls.webp";
+import ethinaBhuja from "@/assets/place-ethina-bhuja.webp";
+import mallandur from "@/assets/place-mallandur.webp";
 
 const BookButton = () => {
   const { addItem, items } = useCart();

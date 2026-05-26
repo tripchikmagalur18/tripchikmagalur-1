@@ -8,12 +8,12 @@ import { PageJsonLd } from "@/components/page-json-ld";
 import { ArrowLeft, MapPin, Clock, ShoppingCart } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 
-import hirekolaleLake from "@/assets/places/hirekolale-lake.jpg";
-import estateCafe from "@/assets/places/estate-cafe.jpg";
-import mallandurShootingPoint from "@/assets/places/mallandur-shooting-point.jpg";
-import muthodiForest from "@/assets/places/muthodi-forest.jpg";
-import ukkudaFalls from "@/assets/places/ukkuda-falls.jpg";
-import bandeKalGudda from "@/assets/places/bande-kal-gudda.jpg";
+import hirekolaleLake from "@/assets/places/hirekolale-lake.webp";
+import estateCafe from "@/assets/places/estate-cafe.webp";
+import mallandurShootingPoint from "@/assets/places/mallandur-shooting-point.webp";
+import muthodiForest from "@/assets/places/muthodi-forest.webp";
+import ukkudaFalls from "@/assets/places/ukkuda-falls.webp";
+import bandeKalGudda from "@/assets/places/bande-kal-gudda.webp";
 
 import { WHATSAPP_LINK } from "@/lib/whatsapp";
 

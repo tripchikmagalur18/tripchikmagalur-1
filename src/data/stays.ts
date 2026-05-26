@@ -1,32 +1,32 @@
 import type { StaticImageData } from "next/image";
 
-import heroPool from "@/assets/resort/hero-pool.png";
-import villaExterior from "@/assets/resort/villa-exterior.png";
-import roomTriple from "@/assets/resort/room-triple.png";
-import roomSuite from "@/assets/resort/room-suite.png";
-import roomDouble from "@/assets/resort/room-double.png";
-import roomDorm from "@/assets/resort/room-dorm.png";
-import gameRoom from "@/assets/resort/game-room.png";
-import playground from "@/assets/resort/playground.png";
-import playgroundSwings from "@/assets/resort/playground-swings.png";
-import foosball from "@/assets/resort/foosball.png";
-import photoSpot from "@/assets/resort/photo-spot.png";
-import cottage from "@/assets/resort/cottage.png";
+import heroPool from "@/assets/resort/hero-pool.webp";
+import villaExterior from "@/assets/resort/villa-exterior.webp";
+import roomTriple from "@/assets/resort/room-triple.webp";
+import roomSuite from "@/assets/resort/room-suite.webp";
+import roomDouble from "@/assets/resort/room-double.webp";
+import roomDorm from "@/assets/resort/room-dorm.webp";
+import gameRoom from "@/assets/resort/game-room.webp";
+import playground from "@/assets/resort/playground.webp";
+import playgroundSwings from "@/assets/resort/playground-swings.webp";
+import foosball from "@/assets/resort/foosball.webp";
+import photoSpot from "@/assets/resort/photo-spot.webp";
+import cottage from "@/assets/resort/cottage.webp";
 
-import villa01 from "@/assets/villa/villa-01.png";
-import villa03 from "@/assets/villa/villa-03.png";
-import villa04 from "@/assets/villa/villa-04.png";
-import villa05 from "@/assets/villa/villa-05.png";
-import villa06 from "@/assets/villa/villa-06.png";
-import villa07 from "@/assets/villa/villa-07.png";
-import villa08 from "@/assets/villa/villa-08.png";
-import villa09 from "@/assets/villa/villa-09.png";
-import villa10 from "@/assets/villa/villa-10.png";
-import villa11 from "@/assets/villa/villa-11.png";
-import villa12 from "@/assets/villa/villa-12.png";
-import villa13 from "@/assets/villa/villa-13.png";
-import villa14 from "@/assets/villa/villa-14.png";
-import villa15 from "@/assets/villa/villa-15.png";
+import villa01 from "@/assets/villa/villa-01.webp";
+import villa03 from "@/assets/villa/villa-03.webp";
+import villa04 from "@/assets/villa/villa-04.webp";
+import villa05 from "@/assets/villa/villa-05.webp";
+import villa06 from "@/assets/villa/villa-06.webp";
+import villa07 from "@/assets/villa/villa-07.webp";
+import villa08 from "@/assets/villa/villa-08.webp";
+import villa09 from "@/assets/villa/villa-09.webp";
+import villa10 from "@/assets/villa/villa-10.webp";
+import villa11 from "@/assets/villa/villa-11.webp";
+import villa12 from "@/assets/villa/villa-12.webp";
+import villa13 from "@/assets/villa/villa-13.webp";
+import villa14 from "@/assets/villa/villa-14.webp";
+import villa15 from "@/assets/villa/villa-15.webp";
 
 export type StayGalleryImage = {
   src: StaticImageData;

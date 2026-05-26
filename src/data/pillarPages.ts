@@ -334,7 +334,7 @@ export const pillarPages: Record<string, PillarPageData> = {
       { label: "Hebbe Falls full guide", path: "/places/hebbe-falls" },
       { label: "Jhari Falls", path: "/places/jhari-falls" },
       { label: "Top places to visit", path: "/places" },
-      { label: "Chikmagalur 2-day itinerary", path: "/chikmagalur-2-days-itinerary" },
+      { label: "Chikmagalur 2-day itinerary", path: "/2-day-chikmagalur-itinerary" },
     ],
     outboundLinks: [
       {
@@ -490,7 +490,7 @@ export const pillarPages: Record<string, PillarPageData> = {
       { label: "Chikmagalur stays", path: "/stays" },
       { label: "Coffee plantations guide", path: "/places/coffee-plantations-chikmagalur" },
       { label: "Chikmagalur trip budget", path: "/chikmagalur-trip-budget" },
-      { label: "Chikmagalur 2-day itinerary", path: "/chikmagalur-2-days-itinerary" },
+      { label: "Chikmagalur 2-day itinerary", path: "/2-day-chikmagalur-itinerary" },
     ],
     outboundLinks: [
       {
@@ -608,7 +608,7 @@ export const pillarPages: Record<string, PillarPageData> = {
       },
     ],
     related: [
-      { label: "Chikmagalur 2-day itinerary", path: "/chikmagalur-2-days-itinerary" },
+      { label: "Chikmagalur 2-day itinerary", path: "/2-day-chikmagalur-itinerary" },
       { label: "Resorts & coffee stays", path: "/resorts-in-chikmagalur" },
       { label: "How to reach Chikmagalur", path: "/how-to-reach-chikmagalur" },
       { label: "Travel tips", path: "/chikmagalur-travel-tips" },

@@ -1,7 +1,10 @@
 import { notFound } from "next/navigation";
 import StayDetailPage from "@/page-views/StayDetailPage";
+import { JsonLd } from "@/components/json-ld";
 import { getStayBySlug, staySlugs } from "@/data/stays";
-import { buildMetadata } from "@/lib/seo";
+import { metadataForStay } from "@/lib/route-metadata";
+import { buildStayLodgingSchema } from "@/lib/stay-schema";
+import { buildBreadcrumbSchema } from "@/lib/seo";
 
 export function generateStaticParams() {
   return staySlugs.map((slug) => ({ slug }));
@@ -11,14 +14,7 @@ type Props = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
-  const stay = getStayBySlug(slug);
-  if (!stay) return {};
-
-  return buildMetadata({
-    title: `${stay.name} — Book Stay in Chikmagalur | Trip Chikmagalur`,
-    description: `${stay.description.slice(0, 155)}… From ₹${stay.pricePerPerson.toLocaleString("en-IN")}/adult/night.`,
-    canonical: `/stays/${stay.slug}`,
-  });
+  return metadataForStay(slug);
 }
 
 export default async function Page({ params }: Props) {
@@ -26,5 +22,19 @@ export default async function Page({ params }: Props) {
   const stay = getStayBySlug(slug);
   if (!stay) notFound();
 
-  return <StayDetailPage stay={stay} />;
+  return (
+    <>
+      <JsonLd
+        data={[
+          buildStayLodgingSchema(stay),
+          buildBreadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Stays", path: "/stays" },
+            { name: stay.name, path: `/stays/${stay.slug}` },
+          ]),
+        ]}
+      />
+      <StayDetailPage stay={stay} />
+    </>
+  );
 }

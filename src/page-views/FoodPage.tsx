@@ -5,9 +5,9 @@ import Link from "next/link";
 import { ArrowLeft, Clock, Utensils } from "lucide-react";
 import { PageJsonLd } from "@/components/page-json-ld";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import categoryFood from "@/assets/category-food.jpg";
-import categoryStays from "@/assets/category-stays.jpg";
-import sightseeingImg from "@/assets/activity-sightseeing.jpg";
+import categoryFood from "@/assets/category-food.webp";
+import categoryStays from "@/assets/category-stays.webp";
+import sightseeingImg from "@/assets/activity-sightseeing.webp";
 
 import { WHATSAPP_LINK } from "@/lib/whatsapp";
 

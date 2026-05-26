@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import ziplineImg from "@/assets/activity-zipline.jpg";
-import atvImg from "@/assets/activity-atv.jpg";
-import jeepImg from "@/assets/activity-jeep.jpg";
-import trekImg from "@/assets/activity-trek.jpg";
-import campingImg from "@/assets/activity-camping.jpg";
-import sightseeingImg from "@/assets/activity-sightseeing.jpg";
-import heroImg from "@/assets/hero-chikmagalur.jpg";
+import ziplineImg from "@/assets/activity-zipline.webp";
+import atvImg from "@/assets/activity-atv.webp";
+import jeepImg from "@/assets/activity-jeep.webp";
+import trekImg from "@/assets/activity-trek.webp";
+import campingImg from "@/assets/activity-camping.webp";
+import sightseeingImg from "@/assets/activity-sightseeing.webp";
+import heroImg from "@/assets/hero-chikmagalur.webp";
 import { imageSrc } from "@/lib/image-src";
 
 const galleryImages = [

@@ -1,147 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { Plus, Minus, BookOpen, Clock, Calendar } from "lucide-react";
+import { Plus, Minus, BookOpen, Clock } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { PageJsonLd } from "@/components/page-json-ld";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { blogPosts } from "@/data/blog-posts";
 import { cn } from "@/lib/utils";
 import { WHATSAPP_LINK } from "@/lib/whatsapp";
 
-interface BlogItem {
-  id: number;
-  title: string;
-  excerpt: string;
-  content: string;
-  readTime: string;
-  category: string;
-}
-
-const blogs: BlogItem[] = [
-  {
-    id: 1,
-    title: "Best Places to Visit in Chikmagalur",
-    excerpt: "Discover the top attractions in Karnataka's coffee country",
-    content: "Chikmagalur is one of the most beautiful hill stations in Karnataka, known for lush coffee plantations, misty mountains, and scenic waterfalls. Some of the best places to visit include Mullayanagiri Peak (the highest peak in Karnataka), Baba Budangiri hills, Kudremukh National Park, Hebbe Falls, Jhari Falls, Hirekolale Lake, and Kemmangundi. These attractions make Chikmagalur a perfect destination for nature lovers, photographers, couples, and families. The best time to explore these tourist places is from September to March when the weather is pleasant and ideal for sightseeing.",
-    readTime: "4 min read",
-    category: "Destinations",
-  },
-  {
-    id: 2,
-    title: "Chikmagalur Trip from Bangalore",
-    excerpt: "Your complete guide to the perfect weekend getaway",
-    content: "A Chikmagalur trip from Bangalore is one of the most popular weekend getaways. Located around 245 km from Bangalore, Chikmagalur can be reached by car, bus, or private cab. The scenic drive through Hassan and Belur adds to the experience. Many travelers prefer booking Chikmagalur tour packages from Bangalore that include transport, hotels, and sightseeing for a hassle-free journey. Start early to make the most of your trip and enjoy the beautiful countryside views along the way.",
-    readTime: "3 min read",
-    category: "Travel Guide",
-  },
-  {
-    id: 3,
-    title: "Best Time to Visit Chikmagalur",
-    excerpt: "Plan your trip during the ideal season",
-    content: "The best time to visit Chikmagalur is from September to March when the weather is cool and pleasant. Monsoon season from June to August transforms Chikmagalur into a green paradise with flowing waterfalls, while summer months are ideal for sightseeing and coffee estate visits. Each season offers a unique experience – misty mornings in winter, lush greenery in monsoon, and clear skies in summer for panoramic views.",
-    readTime: "2 min read",
-    category: "Planning",
-  },
-  {
-    id: 4,
-    title: "Chikmagalur Budget Trip Guide",
-    excerpt: "Experience the hills without breaking the bank",
-    content: "A budget trip to Chikmagalur is easy to plan with affordable homestays, shared transportation, and local eateries. Budget travelers can enjoy waterfalls, trekking spots, and scenic viewpoints without spending much. A 2 to 3-day budget itinerary makes Chikmagalur an ideal low-cost hill station trip. Consider staying in local homestays, eating at small restaurants, and using public transport or shared cabs to minimize expenses.",
-    readTime: "3 min read",
-    category: "Budget Travel",
-  },
-  {
-    id: 5,
-    title: "Chikmagalur Tour Packages",
-    excerpt: "Curated experiences for every type of traveler",
-    content: "Chikmagalur tour packages are available for couples, families, groups, and solo travelers. These packages usually include accommodation, sightseeing, transportation, and optional meals. Customized packages help travelers explore Chikmagalur comfortably. Whether you're looking for a romantic getaway, family vacation, or adventure trip, there's a package that suits your needs and budget.",
-    readTime: "2 min read",
-    category: "Packages",
-  },
-  {
-    id: 6,
-    title: "Chikmagalur Travel Packages with Hotels",
-    excerpt: "Stay comfortably while exploring the coffee hills",
-    content: "Travel packages with hotels in Chikmagalur include budget hotels, luxury resorts, coffee estate stays, and homestays. These packages are ideal for travelers looking for comfort and convenience. From cozy homestays nestled in coffee plantations to luxury resorts with stunning valley views, Chikmagalur offers accommodation options for every budget and preference.",
-    readTime: "3 min read",
-    category: "Accommodation",
-  },
-  {
-    id: 7,
-    title: "Chikmagalur Honeymoon Packages",
-    excerpt: "Create romantic memories in the hills",
-    content: "Chikmagalur honeymoon packages offer romantic stays, private sightseeing, coffee plantation walks, and peaceful surroundings. It is one of the best honeymoon destinations in Karnataka. The misty mountains, scenic viewpoints, and private estate stays create the perfect atmosphere for couples to celebrate their new beginning together.",
-    readTime: "3 min read",
-    category: "Romance",
-  },
-  {
-    id: 8,
-    title: "Chikmagalur Family Tour Packages",
-    excerpt: "Fun-filled adventures for all ages",
-    content: "Family tour packages in Chikmagalur include comfortable hotels, safe transport, and easy sightseeing options suitable for kids and elders. A 3-day itinerary works best for families. Activities like gentle nature walks, waterfall visits, and wildlife safaris ensure everyone has a memorable experience.",
-    readTime: "3 min read",
-    category: "Family",
-  },
-  {
-    id: 9,
-    title: "Chikmagalur Group Tour Packages",
-    excerpt: "Perfect getaway for friends and teams",
-    content: "Group tour packages are perfect for friends, corporate teams, and college groups. These packages include group-friendly resorts, trekking, jeep rides, and campfire experiences. Bond with your group over adventure activities during the day and enjoy campfire nights under the stars.",
-    readTime: "2 min read",
-    category: "Groups",
-  },
-  {
-    id: 10,
-    title: "2 Days Chikmagalur Itinerary",
-    excerpt: "Make the most of your weekend trip",
-    content: "A 2-day Chikmagalur itinerary covers Mullayanagiri, Baba Budangiri, Hebbe Falls, and Hirekolale Lake. It is ideal for weekend travelers. Day 1 can focus on the peaks and viewpoints, while Day 2 explores waterfalls and coffee estates before heading back.",
-    readTime: "4 min read",
-    category: "Itinerary",
-  },
-  {
-    id: 11,
-    title: "3 Days Chikmagalur Itinerary",
-    excerpt: "A relaxed exploration of coffee country",
-    content: "A 3-day itinerary allows relaxed exploration of waterfalls, coffee estates, wildlife sanctuaries, and scenic viewpoints. With an extra day, you can include a visit to Bhadra Wildlife Sanctuary, explore hidden trails, or simply relax at your coffee estate stay.",
-    readTime: "4 min read",
-    category: "Itinerary",
-  },
-  {
-    id: 12,
-    title: "Waterfalls in Chikmagalur",
-    excerpt: "Chase the cascading beauty of the Western Ghats",
-    content: "Chikmagalur is famous for waterfalls like Hebbe Falls, Jhari Falls, Kalhatti Falls, and Manikyadhara Falls, especially during monsoon season. Each waterfall offers a unique experience – from the twin cascades of Hebbe Falls to the spiritual significance of Manikyadhara Falls.",
-    readTime: "3 min read",
-    category: "Nature",
-  },
-  {
-    id: 13,
-    title: "Coffee Plantation Tours in Chikmagalur",
-    excerpt: "Experience the journey from bean to cup",
-    content: "Coffee plantation tours are a unique experience in Chikmagalur where visitors can learn about coffee cultivation and processing while enjoying peaceful estate walks. Known as the birthplace of coffee in India, Chikmagalur offers authentic plantation experiences where you can see coffee growing, learn about processing, and taste freshly brewed estate coffee.",
-    readTime: "4 min read",
-    category: "Experience",
-  },
-  {
-    id: 14,
-    title: "Best Resorts & Homestays in Chikmagalur",
-    excerpt: "Find your perfect stay in the hills",
-    content: "Chikmagalur offers a wide range of resorts and homestays from budget-friendly to luxury coffee estate resorts, suitable for all types of travelers. Whether you prefer a family-run homestay with home-cooked Malnad cuisine or a luxury resort with infinity pools overlooking the valley, you'll find the perfect accommodation for your trip.",
-    readTime: "3 min read",
-    category: "Accommodation",
-  },
-  {
-    id: 15,
-    title: "Why Chikmagalur is the Best Hill Station in Karnataka",
-    excerpt: "Discover what makes this destination special",
-    content: "Chikmagalur combines natural beauty, adventure activities, cultural heritage, and peaceful escapes all in one destination. From the highest peak in Karnataka to ancient temples, from coffee trails to wildlife safaris, Chikmagalur offers experiences that no other hill station in Karnataka can match. Its proximity to Bangalore makes it the perfect weekend getaway for city dwellers seeking nature's embrace.",
-    readTime: "4 min read",
-    category: "Features",
-  },
-];
-
-const categories = ["All", ...new Set(blogs.map((blog) => blog.category))];
+const categories = ["All", ...new Set(blogPosts.map((blog) => blog.category))];
 
 const BlogPage = () => {
   const [openId, setOpenId] = useState<number | null>(null);
@@ -153,28 +21,11 @@ const BlogPage = () => {
 
   const filteredBlogs =
     selectedCategory === "All"
-      ? blogs
-      : blogs.filter((blog) => blog.category === selectedCategory);
-
-  // Generate Article Schema for SEO
-  const blogSchema = {
-    "@context": "https://schema.org",
-    "@type": "Blog",
-    blogPost: blogs.map((blog) => ({
-      "@type": "BlogPosting",
-      headline: blog.title,
-      description: blog.excerpt,
-      articleBody: blog.content,
-    })),
-  };
+      ? blogPosts
+      : blogPosts.filter((blog) => blog.category === selectedCategory);
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-mist to-background">
-      <PageJsonLd schema={blogSchema} breadcrumbs={[
-          { name: "Home", path: "/" },
-          { name: "Blog", path: "/blog" },
-        ]} />
-
       <Navbar />
 
       {/* Hero Section */}
@@ -233,6 +84,7 @@ const BlogPage = () => {
               {filteredBlogs.map((blog, index) => (
                 <article
                   key={blog.id}
+                  id={`post-${blog.id}`}
                   className={cn(
                     "glass-card-light overflow-hidden transition-all duration-300",
                     openId === blog.id && "ring-2 ring-accent/20"
@@ -288,7 +140,7 @@ const BlogPage = () => {
                     id={`blog-content-${blog.id}`}
                     className={cn(
                       "overflow-hidden transition-all duration-300 ease-out",
-                      openId === blog.id ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+                      openId === blog.id ? "max-h-[1200px] opacity-100" : "max-h-0 opacity-0"
                     )}
                   >
                     <div className="px-5 md:px-6 pb-5 md:pb-6 border-t border-border/50">

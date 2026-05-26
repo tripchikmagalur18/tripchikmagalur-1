@@ -1,15 +1,15 @@
 // Centralized data for all /places/[slug] destination pages.
 // Each entry powers one SEO landing page via DestinationPage template.
 
-import mullayangiri from "@/assets/place-mullayangiri.jpg";
-import hebbeFalls from "@/assets/place-hebbe-falls.jpg";
-import kemmanagundi from "@/assets/place-kemmanagundi.jpg";
-import bababudangiri from "@/assets/place-bababudangiri.jpg";
-import kalhattiFalls from "@/assets/place-kalhatti-falls.jpg";
-import hirekolale from "@/assets/place-hirekolale.jpg";
-import muthodi from "@/assets/place-muthodi.jpg";
-import estateCafe from "@/assets/place-estate-cafe.jpg";
-import jhariFalls from "@/assets/place-jhari-falls.jpg";
+import mullayangiri from "@/assets/place-mullayangiri.webp";
+import hebbeFalls from "@/assets/place-hebbe-falls.webp";
+import kemmanagundi from "@/assets/place-kemmanagundi.webp";
+import bababudangiri from "@/assets/place-bababudangiri.webp";
+import kalhattiFalls from "@/assets/place-kalhatti-falls.webp";
+import hirekolale from "@/assets/place-hirekolale.webp";
+import muthodi from "@/assets/place-muthodi.webp";
+import estateCafe from "@/assets/place-estate-cafe.webp";
+import jhariFalls from "@/assets/place-jhari-falls.webp";
 import { imageSrc } from "@/lib/image-src";
 
 export interface DestinationFAQ {

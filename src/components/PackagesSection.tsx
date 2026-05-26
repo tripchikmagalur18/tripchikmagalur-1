@@ -5,9 +5,9 @@ import Link from "next/link";
 import { Sparkles, MessageCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useState, useCallback } from "react";
 
-import heroAdventure from "@/assets/hero-adventure.jpg";
-import heroChikmagalur from "@/assets/hero-chikmagalur.jpg";
-import heroMist from "@/assets/hero-mist.jpg";
+import heroAdventure from "@/assets/hero-adventure.webp";
+import heroChikmagalur from "@/assets/hero-chikmagalur.webp";
+import heroMist from "@/assets/hero-mist.webp";
 
 const packages = [
   {

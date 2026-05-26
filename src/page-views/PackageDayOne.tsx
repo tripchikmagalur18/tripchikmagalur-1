@@ -8,15 +8,15 @@ import { PageJsonLd } from "@/components/page-json-ld";
 import { ArrowLeft, MapPin, Clock, ShoppingCart } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 
-import siriNatureRoost from "@/assets/places/siri-nature-roost.jpg";
-import jhariFalls from "@/assets/places/jhari-falls.jpg";
-import mullayangiri from "@/assets/places/mullayangiri.jpg";
-import seethalayanagiri from "@/assets/places/seethalayanagiri.jpg";
-import honnamanaFalls from "@/assets/places/honnamana-falls.jpg";
-import babaBudangiri from "@/assets/places/baba-budangiri.jpg";
-import manikyadharaFalls from "@/assets/places/manikyadhara-falls.jpg";
-import zPoint from "@/assets/places/z-point.jpg";
-import zipLining from "@/assets/places/zip-lining.jpg";
+import siriNatureRoost from "@/assets/places/siri-nature-roost.webp";
+import jhariFalls from "@/assets/places/jhari-falls.webp";
+import mullayangiri from "@/assets/places/mullayangiri.webp";
+import seethalayanagiri from "@/assets/places/seethalayanagiri.webp";
+import honnamanaFalls from "@/assets/places/honnamana-falls.webp";
+import babaBudangiri from "@/assets/places/baba-budangiri.webp";
+import manikyadharaFalls from "@/assets/places/manikyadhara-falls.webp";
+import zPoint from "@/assets/places/z-point.webp";
+import zipLining from "@/assets/places/zip-lining.webp";
 
 import { WHATSAPP_LINK } from "@/lib/whatsapp";
 

@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { imageSrc } from "@/lib/image-src";
-import categoryFood from "@/assets/category-food.jpg";
-import categoryStays from "@/assets/category-stays.jpg";
-import categoryAdventure from "@/assets/category-adventure.jpg";
+import categoryFood from "@/assets/category-food.webp";
+import categoryStays from "@/assets/category-stays.webp";
+import categoryAdventure from "@/assets/category-adventure.webp";
 
 const offers = [
   {

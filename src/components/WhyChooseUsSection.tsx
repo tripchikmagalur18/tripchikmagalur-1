@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import whyChooseUsImage from "@/assets/why-choose-us.png";
+import whyChooseUsImage from "@/assets/why-choose-us.webp";
 import { imageSrc } from "@/lib/image-src";
 
 const WhyChooseUsSection = () => {
