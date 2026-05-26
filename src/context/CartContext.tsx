@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState, ReactNode, useCallback } from "react";
+import { stayLineTotal } from "@/lib/booking-date";
 
 export type CartItem = {
   id: string;
@@ -11,6 +12,8 @@ export type CartItem = {
   quantity?: number;
   /** Stay check-in date (YYYY-MM-DD) */
   checkInDate?: string;
+  /** Stay check-out date (YYYY-MM-DD) */
+  checkOutDate?: string;
 };
 
 export const isStayCartItem = (item: CartItem) =>
@@ -97,7 +100,10 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const closeCart = useCallback(() => setIsOpen(false), []);
   const toggleCart = useCallback(() => setIsOpen((v) => !v), []);
 
-  const total = items.reduce((sum, i) => sum + i.price * (i.quantity ?? 1), 0);
+  const total = items.reduce(
+    (sum, i) => sum + (isStayCartItem(i) ? stayLineTotal(i) : i.price * (i.quantity ?? 1)),
+    0,
+  );
 
   return (
     <CartContext.Provider

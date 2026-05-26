@@ -18,7 +18,7 @@ import { ResortGalleryCarousel } from "@/components/ResortGalleryCarousel";
 import { StayBookingDialog } from "@/components/StayBookingDialog";
 import { PageJsonLd } from "@/components/page-json-ld";
 import { useCart } from "@/context/CartContext";
-import { formatBookingDate } from "@/lib/booking-date";
+import { formatBookingDate, stayLineTotal, stayNights } from "@/lib/booking-date";
 import type { Stay } from "@/data/stays";
 import { imageSrc } from "@/lib/image-src";
 
@@ -55,13 +55,19 @@ export default function StayDetailPage({ stay }: StayDetailPageProps) {
   const cartItem = items.find((i) => i.id === cartId);
   const adults = cartItem?.quantity ?? 2;
   const checkInDate = cartItem?.checkInDate;
-  const lineTotal = pricePerPerson * adults;
+  const checkOutDate = cartItem?.checkOutDate;
+  const nights = stayNights(checkInDate, checkOutDate);
+  const lineTotal = cartItem
+    ? stayLineTotal(cartItem)
+    : pricePerPerson * adults;
 
   const handleBookingConfirm = ({
-    checkInDate: date,
+    checkInDate: checkIn,
+    checkOutDate: checkOut,
     adults: guestCount,
   }: {
     checkInDate: string;
+    checkOutDate: string;
     adults: number;
   }) => {
     addItem({
@@ -70,7 +76,8 @@ export default function StayDetailPage({ stay }: StayDetailPageProps) {
       price: pricePerPerson,
       perPerson: true,
       quantity: guestCount,
-      checkInDate: date,
+      checkInDate: checkIn,
+      checkOutDate: checkOut,
       link: stayPath,
     });
   };
@@ -92,13 +99,20 @@ export default function StayDetailPage({ stay }: StayDetailPageProps) {
 
       {inCart && (
         <div className="rounded-xl border border-border bg-muted/40 p-3 space-y-2 text-sm">
-          {checkInDate ? (
-            <div className="flex items-center gap-2 text-foreground">
-              <Calendar className="w-4 h-4 text-sunset shrink-0" aria-hidden="true" />
-              <span>{formatBookingDate(checkInDate)}</span>
-            </div>
+          {checkInDate && checkOutDate ? (
+            <>
+              <div className="flex items-center gap-2 text-foreground">
+                <Calendar className="w-4 h-4 text-sunset shrink-0" aria-hidden="true" />
+                <span>
+                  {formatBookingDate(checkInDate)} → {formatBookingDate(checkOutDate)}
+                </span>
+              </div>
+              <p className="text-xs text-muted-foreground pl-6">
+                {nights} {nights === 1 ? "night" : "nights"}
+              </p>
+            </>
           ) : (
-            <p className="text-xs text-sunset font-medium">Check-in date required</p>
+            <p className="text-xs text-sunset font-medium">Check-in & check-out dates required</p>
           )}
           <div className="flex items-center gap-2 text-foreground">
             <Users className="w-4 h-4 text-sunset shrink-0" aria-hidden="true" />
@@ -112,7 +126,7 @@ export default function StayDetailPage({ stay }: StayDetailPageProps) {
             className={`inline-flex items-center gap-1.5 text-xs font-medium text-sunset hover:underline min-h-11 ${focusRing}`}
           >
             <Pencil className="w-3.5 h-3.5" aria-hidden="true" />
-            {checkInDate ? "Edit booking details" : "Add check-in date"}
+            {checkInDate && checkOutDate ? "Edit booking details" : "Add stay dates"}
           </button>
         </div>
       )}
@@ -148,7 +162,7 @@ export default function StayDetailPage({ stay }: StayDetailPageProps) {
 
       {!compact && (
         <p className="text-xs text-center text-muted-foreground">
-          You&apos;ll choose your date and number of adults next
+          You&apos;ll choose check-in, check-out, and number of adults next
         </p>
       )}
     </div>
@@ -170,7 +184,8 @@ export default function StayDetailPage({ stay }: StayDetailPageProps) {
         pricePerPerson={pricePerPerson}
         minAdults={minGuests}
         maxAdults={maxGuests}
-        initialDate={cartItem?.checkInDate}
+        initialCheckIn={cartItem?.checkInDate}
+        initialCheckOut={cartItem?.checkOutDate}
         initialAdults={cartItem?.quantity ?? 2}
         submitLabel={inCart ? "Update booking" : "Add to Cart"}
         onConfirm={handleBookingConfirm}
@@ -284,13 +299,14 @@ export default function StayDetailPage({ stay }: StayDetailPageProps) {
         >
           <div className="flex items-center gap-3 px-4 pt-3">
             <div className="flex-1 min-w-0">
-              {inCart && checkInDate ? (
+              {inCart && checkInDate && checkOutDate ? (
                 <>
                   <p className="text-xs text-muted-foreground truncate">
-                    {formatBookingDate(checkInDate)}
+                    {nights} {nights === 1 ? "night" : "nights"} · {adults}{" "}
+                    {adults === 1 ? "adult" : "adults"}
                   </p>
                   <p className="text-sm font-sans font-semibold text-sunset tabular-nums truncate">
-                    {adults} adults · ₹{lineTotal.toLocaleString("en-IN")}
+                    ₹{lineTotal.toLocaleString("en-IN")}
                   </p>
                 </>
               ) : (
@@ -298,7 +314,7 @@ export default function StayDetailPage({ stay }: StayDetailPageProps) {
                   <p className="text-xs text-muted-foreground truncate">
                     ₹{pricePerPerson.toLocaleString("en-IN")}/adult/night
                   </p>
-                  <p className="text-sm text-muted-foreground truncate">Tap to pick date & adults</p>
+                  <p className="text-sm text-muted-foreground truncate">Tap to pick dates & adults</p>
                 </>
               )}
             </div>

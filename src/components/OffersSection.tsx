@@ -22,6 +22,8 @@ const offers = [
     title: "Stays",
     description: "Resort with pool or private villa — book with date & adults on WhatsApp.",
     href: "/stays",
+    imageClassName:
+      "w-full h-full object-cover scale-[1.18] object-[center_72%] transition-transform duration-700 group-hover:scale-[1.28]",
   },
 ];
 
@@ -54,7 +56,10 @@ const OffersSection = () => {
                 <img
                   src={offer.image}
                   alt={offer.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className={
+                    offer.imageClassName ??
+                    "w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  }
                 />
                 
                 {/* Subtle overlay on hover */}

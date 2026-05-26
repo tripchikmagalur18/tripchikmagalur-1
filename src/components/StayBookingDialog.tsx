@@ -10,13 +10,19 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { todayLocalISO } from "@/lib/booking-date";
+import {
+  addDaysToISO,
+  nightsBetween,
+  stayLineTotal,
+  todayLocalISO,
+} from "@/lib/booking-date";
 
 const focusRing =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunset focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 
 export type StayBookingDetails = {
   checkInDate: string;
+  checkOutDate: string;
   adults: number;
 };
 
@@ -27,7 +33,8 @@ type StayBookingDialogProps = {
   pricePerPerson: number;
   minAdults: number;
   maxAdults: number;
-  initialDate?: string;
+  initialCheckIn?: string;
+  initialCheckOut?: string;
   initialAdults?: number;
   submitLabel?: string;
   onConfirm: (details: StayBookingDetails) => void;
@@ -40,32 +47,58 @@ export function StayBookingDialog({
   pricePerPerson,
   minAdults,
   maxAdults,
-  initialDate,
+  initialCheckIn,
+  initialCheckOut,
   initialAdults = 2,
   submitLabel = "Add to Cart",
   onConfirm,
 }: StayBookingDialogProps) {
-  const dateId = useId();
+  const checkInId = useId();
+  const checkOutId = useId();
   const adultsId = useId();
   const hintId = useId();
   const minDate = todayLocalISO();
 
-  const [checkInDate, setCheckInDate] = useState(initialDate ?? "");
+  const [checkInDate, setCheckInDate] = useState(initialCheckIn ?? "");
+  const [checkOutDate, setCheckOutDate] = useState(initialCheckOut ?? "");
   const [adults, setAdults] = useState(initialAdults);
 
   useEffect(() => {
     if (!open) return;
-    setCheckInDate(initialDate ?? "");
+    setCheckInDate(initialCheckIn ?? "");
+    setCheckOutDate(initialCheckOut ?? "");
     setAdults(initialAdults);
-  }, [open, initialDate, initialAdults]);
+  }, [open, initialCheckIn, initialCheckOut, initialAdults]);
 
-  const lineTotal = pricePerPerson * adults;
-  const canSubmit = checkInDate.length > 0 && adults >= minAdults && adults <= maxAdults;
+  const checkOutMin = checkInDate ? addDaysToISO(checkInDate, 1) : addDaysToISO(minDate, 1);
+
+  const handleCheckInChange = (value: string) => {
+    setCheckInDate(value);
+    if (checkOutDate && value && checkOutDate <= value) {
+      setCheckOutDate(addDaysToISO(value, 1));
+    }
+  };
+
+  const nights =
+    checkInDate && checkOutDate ? nightsBetween(checkInDate, checkOutDate) : 0;
+  const lineTotal = stayLineTotal({
+    price: pricePerPerson,
+    quantity: adults,
+    checkInDate: checkInDate || undefined,
+    checkOutDate: checkOutDate || undefined,
+  });
+
+  const canSubmit =
+    checkInDate.length > 0 &&
+    checkOutDate.length > 0 &&
+    checkOutDate > checkInDate &&
+    adults >= minAdults &&
+    adults <= maxAdults;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!canSubmit) return;
-    onConfirm({ checkInDate, adults });
+    onConfirm({ checkInDate, checkOutDate, adults });
     onOpenChange(false);
   };
 
@@ -79,21 +112,50 @@ export function StayBookingDialog({
           </DialogHeader>
 
           <div className="px-5 pb-5 space-y-5">
-            <div>
-              <label htmlFor={dateId} className="flex items-center gap-2 text-sm font-medium text-foreground mb-2">
-                <Calendar className="w-4 h-4 text-sunset shrink-0" aria-hidden="true" />
-                Check-in date
-              </label>
-              <input
-                id={dateId}
-                type="date"
-                required
-                min={minDate}
-                value={checkInDate}
-                onChange={(e) => setCheckInDate(e.target.value)}
-                className={`w-full min-h-11 px-3 rounded-xl border border-border bg-background text-foreground text-base ${focusRing}`}
-              />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label
+                  htmlFor={checkInId}
+                  className="flex items-center gap-2 text-sm font-medium text-foreground mb-2"
+                >
+                  <Calendar className="w-4 h-4 text-sunset shrink-0" aria-hidden="true" />
+                  Check-in
+                </label>
+                <input
+                  id={checkInId}
+                  type="date"
+                  required
+                  min={minDate}
+                  value={checkInDate}
+                  onChange={(e) => handleCheckInChange(e.target.value)}
+                  className={`w-full min-h-11 px-3 rounded-xl border border-border bg-background text-foreground text-base ${focusRing}`}
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor={checkOutId}
+                  className="flex items-center gap-2 text-sm font-medium text-foreground mb-2"
+                >
+                  <Calendar className="w-4 h-4 text-sunset shrink-0" aria-hidden="true" />
+                  Check-out
+                </label>
+                <input
+                  id={checkOutId}
+                  type="date"
+                  required
+                  min={checkOutMin}
+                  value={checkOutDate}
+                  disabled={!checkInDate}
+                  onChange={(e) => setCheckOutDate(e.target.value)}
+                  className={`w-full min-h-11 px-3 rounded-xl border border-border bg-background text-foreground text-base disabled:opacity-50 disabled:cursor-not-allowed ${focusRing}`}
+                />
+              </div>
             </div>
+            {checkInDate && checkOutDate && nights > 0 && (
+              <p className="text-xs text-muted-foreground -mt-2">
+                {nights} {nights === 1 ? "night" : "nights"}
+              </p>
+            )}
 
             <fieldset className="border-0 p-0 m-0">
               <legend
@@ -138,7 +200,7 @@ export function StayBookingDialog({
 
             <div
               className="flex items-center justify-between py-3 px-3 rounded-xl bg-muted/50 border border-border"
-              aria-label={`Estimated total ₹${lineTotal.toLocaleString("en-IN")} for ${adults} adults`}
+              aria-label={`Estimated total ₹${lineTotal.toLocaleString("en-IN")}`}
             >
               <span className="text-sm text-muted-foreground">Estimated total</span>
               <span className="text-lg font-sans font-semibold tabular-nums text-sunset">
@@ -146,7 +208,9 @@ export function StayBookingDialog({
               </span>
             </div>
             <p className="text-xs text-muted-foreground -mt-3">
-              ₹{pricePerPerson.toLocaleString("en-IN")} per adult per night
+              ₹{pricePerPerson.toLocaleString("en-IN")} × {adults}{" "}
+              {adults === 1 ? "adult" : "adults"}
+              {nights > 0 ? ` × ${nights} ${nights === 1 ? "night" : "nights"}` : ""}
             </p>
           </div>
 

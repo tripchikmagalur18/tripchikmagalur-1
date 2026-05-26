@@ -4,7 +4,7 @@ import { useEffect, useId, useRef } from "react";
 import Link from "next/link";
 import { ShoppingCart, X, Trash2, MessageCircle, Minus, Plus } from "lucide-react";
 import { useCart, isStayCartItem } from "@/context/CartContext";
-import { formatBookingDate } from "@/lib/booking-date";
+import { formatBookingDate, stayLineTotal, stayNights } from "@/lib/booking-date";
 import { whatsappUrl } from "@/lib/whatsapp";
 
 const focusRing =
@@ -21,10 +21,16 @@ const CartDrawer = () => {
       const qty = i.quantity ?? 1;
       const line = i.price * qty;
       if (isStayCartItem(i)) {
-        const dateLine = i.checkInDate
-          ? `\n   • Check-in: ${formatBookingDate(i.checkInDate)}`
-          : "";
-        return `${idx + 1}. ${i.name}${dateLine}\n   • Adults: ${qty}\n   • Price: ₹${i.price.toLocaleString("en-IN")}/adult/night\n   • Subtotal: ₹${line.toLocaleString("en-IN")}`;
+        const nights = stayNights(i.checkInDate, i.checkOutDate);
+        const stayTotal = stayLineTotal(i);
+        const dateLines = [
+          i.checkInDate ? `\n   • Check-in: ${formatBookingDate(i.checkInDate)}` : "",
+          i.checkOutDate ? `\n   • Check-out: ${formatBookingDate(i.checkOutDate)}` : "",
+          i.checkInDate && i.checkOutDate
+            ? `\n   • ${nights} ${nights === 1 ? "night" : "nights"}`
+            : "",
+        ].join("");
+        return `${idx + 1}. ${i.name}${dateLines}\n   • Adults: ${qty}\n   • Rate: ₹${i.price.toLocaleString("en-IN")}/adult/night\n   • Subtotal: ₹${stayTotal.toLocaleString("en-IN")}`;
       }
       if (i.perPerson) {
         return `${idx + 1}. ${i.name}\n   • Price: ₹${i.price.toLocaleString("en-IN")}/person\n   • Members: ${qty}\n   • Subtotal: ₹${line.toLocaleString("en-IN")}`;
@@ -107,8 +113,9 @@ const CartDrawer = () => {
             <ul className="space-y-3" role="list">
               {items.map((item) => {
                 const qty = item.quantity ?? 1;
-                const lineTotal = item.price * qty;
                 const isStay = isStayCartItem(item);
+                const nights = isStay ? stayNights(item.checkInDate, item.checkOutDate) : 1;
+                const lineTotal = isStay ? stayLineTotal(item) : item.price * qty;
                 return (
                   <li
                     key={item.id}
@@ -127,9 +134,20 @@ const CartDrawer = () => {
                         <p className="font-medium text-foreground">{item.name}</p>
                       )}
                       {isStay && item.checkInDate && (
-                        <p className="text-xs text-muted-foreground mt-1.5 flex items-center gap-1">
-                          <span className="font-medium text-foreground">Check-in:</span>
+                        <p className="text-xs text-muted-foreground mt-1.5">
+                          <span className="font-medium text-foreground">Check-in:</span>{" "}
                           {formatBookingDate(item.checkInDate)}
+                        </p>
+                      )}
+                      {isStay && item.checkOutDate && (
+                        <p className="text-xs text-muted-foreground mt-0.5">
+                          <span className="font-medium text-foreground">Check-out:</span>{" "}
+                          {formatBookingDate(item.checkOutDate)}
+                        </p>
+                      )}
+                      {isStay && item.checkInDate && item.checkOutDate && (
+                        <p className="text-xs text-muted-foreground mt-0.5">
+                          {nights} {nights === 1 ? "night" : "nights"}
                         </p>
                       )}
 
@@ -137,7 +155,7 @@ const CartDrawer = () => {
                         ₹{lineTotal.toLocaleString("en-IN")}
                         <span className="text-muted-foreground font-normal text-xs ml-1">
                           {isStay
-                            ? `(₹${item.price.toLocaleString("en-IN")}/night × ${qty} adults)`
+                            ? `(₹${item.price.toLocaleString("en-IN")} × ${qty} × ${nights} ${nights === 1 ? "night" : "nights"})`
                             : item.perPerson
                               ? `(₹${item.price.toLocaleString("en-IN")}/P × ${qty})`
                               : "/group"}
