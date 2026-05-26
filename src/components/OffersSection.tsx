@@ -20,7 +20,7 @@ const offers = [
   {
     image: imageSrc(categoryStays),
     title: "Stays",
-    description: "Rest in comfortable homestays nestled in coffee plantations.",
+    description: "Stay at our palm grove resort with pool, rooms & family amenities.",
     href: "/stays",
   },
 ];

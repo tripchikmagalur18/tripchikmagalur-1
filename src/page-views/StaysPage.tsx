@@ -1,112 +1,102 @@
 "use client";
-import { imageSrc } from "@/lib/image-src";
 
+import { useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, MapPin, Star, Users } from "lucide-react";
+import {
+  ArrowLeft,
+  MapPin,
+  Star,
+  Users,
+  Minus,
+  Plus,
+  ShoppingCart,
+  Check,
+} from "lucide-react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import { PageJsonLd } from "@/components/page-json-ld";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import categoryStays from "@/assets/category-stays.jpg";
-import campingImg from "@/assets/activity-camping.jpg";
-import sightseeingImg from "@/assets/activity-sightseeing.jpg";
-
-import { WHATSAPP_LINK } from "@/lib/whatsapp";
-
-const stays = [
-  {
-    title: "Coffee Estate Homestay",
-    image: imageSrc(categoryStays),
-    description: "Wake up to the aroma of fresh coffee in a cozy homestay nestled within lush coffee plantations.",
-    location: "Aldur, Chikmagalur",
-    rating: 4.8,
-    guests: "2-6 guests",
-    price: "₹3,500/night",
-  },
-  {
-    title: "Mountain View Resort",
-    image: imageSrc(sightseeingImg),
-    description: "Luxury resort with panoramic views of the Western Ghats and world-class amenities.",
-    location: "Mullayanagiri Road",
-    rating: 4.9,
-    guests: "2-4 guests",
-    price: "₹6,000/night",
-  },
-  {
-    title: "Forest Camping Site",
-    image: imageSrc(campingImg),
-    description: "Experience glamping under the stars with comfortable tents and bonfire nights.",
-    location: "Baba Budangiri",
-    rating: 4.7,
-    guests: "2-8 guests",
-    price: "₹2,500/night",
-  },
-  {
-    title: "Heritage Bungalow",
-    image: imageSrc(categoryStays),
-    description: "Stay in a beautifully restored colonial-era bungalow with modern comforts and vintage charm.",
-    location: "Chikmagalur Town",
-    rating: 4.6,
-    guests: "4-10 guests",
-    price: "₹8,000/night",
-  },
-  {
-    title: "Riverside Cottage",
-    image: imageSrc(sightseeingImg),
-    description: "Peaceful cottage by the river with private sit-outs and nature trails.",
-    location: "Kemmanagundi",
-    rating: 4.8,
-    guests: "2-4 guests",
-    price: "₹4,000/night",
-  },
-  {
-    title: "Treehouse Retreat",
-    image: imageSrc(campingImg),
-    description: "Unique treehouse accommodation surrounded by dense forest and wildlife.",
-    location: "Kudremukh",
-    rating: 4.9,
-    guests: "2 guests",
-    price: "₹5,500/night",
-  },
-];
+import { imageSrc } from "@/lib/image-src";
+import { useCart } from "@/context/CartContext";
+import { palmGroveResort, RESORT_CART_ID } from "@/data/resort";
 
 const StaysPage = () => {
+  const { addItem, items, openCart } = useCart();
+  const [guests, setGuests] = useState(2);
+  const inCart = items.some((i) => i.id === RESORT_CART_ID);
+  const cartItem = items.find((i) => i.id === RESORT_CART_ID);
+  const displayGuests = inCart ? (cartItem?.quantity ?? guests) : guests;
+
+  const { name, tagline, location, pricePerPerson, minGuests, maxGuests, rating, heroImage, description, highlights, amenities, gallery } =
+    palmGroveResort;
+
+  const lineTotal = pricePerPerson * displayGuests;
+
+  const handleAddToCart = () => {
+    addItem({
+      id: RESORT_CART_ID,
+      name,
+      price: pricePerPerson,
+      perPerson: true,
+      quantity: guests,
+      link: "/stays",
+    });
+  };
+
+  const decreaseGuests = () => setGuests((g) => Math.max(minGuests, g - 1));
+  const increaseGuests = () => setGuests((g) => Math.min(maxGuests, g + 1));
+
   return (
     <main className="min-h-screen bg-background">
-      <PageJsonLd breadcrumbs={[
+      <PageJsonLd
+        breadcrumbs={[
           { name: "Home", path: "/" },
           { name: "Stays", path: "/stays" },
-        ]} />
-      {/* Header */}
-      <div className="relative h-[40vh] overflow-hidden">
+        ]}
+      />
+      <Navbar />
+
+      {/* Hero */}
+      <div className="relative h-[50vh] md:h-[60vh] overflow-hidden">
         <img
-          src={imageSrc(categoryStays)}
-          alt="Stays in Chikmagalur"
+          src={imageSrc(heroImage)}
+          alt={`${name} — pool and palm grove`}
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-black/50 to-black/30" />
-        
+
         <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-16">
-          <Link 
-            href="/" 
-            className="absolute top-6 left-6 inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors"
+          <Link
+            href="/"
+            className="absolute top-24 md:top-28 left-6 inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors"
           >
             <ArrowLeft className="w-5 h-5" />
             Back to Home
           </Link>
-          
-          <span className="text-sunset font-medium text-sm uppercase tracking-[0.2em] mb-4">
-            Rest & Relax
+
+          <div className="flex flex-wrap items-center gap-3 mb-3">
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-sm text-white text-xs">
+              <Star className="w-3.5 h-3.5 fill-sunset text-sunset" />
+              {rating}
+            </span>
+            <span className="text-white/80 text-sm flex items-center gap-1">
+              <MapPin className="w-3.5 h-3.5" />
+              {location}
+            </span>
+          </div>
+
+          <span className="text-sunset font-medium text-sm uppercase tracking-[0.2em] mb-2">
+            Resort Stay
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white">
-            Stays & Homestays
+            {name}
           </h1>
-          <p className="text-white/70 mt-4 max-w-2xl text-lg">
-            Find your perfect retreat among coffee plantations, mountains, and forests.
-          </p>
+          <p className="text-white/70 mt-3 max-w-2xl text-lg">{tagline}</p>
         </div>
       </div>
 
-      {/* Stays Grid */}
-      <section className="py-16 px-4 md:px-8">
+      <section className="py-12 md:py-16 px-4 md:px-8">
         <div className="container mx-auto max-w-7xl">
           <Breadcrumbs
             items={[
@@ -115,53 +105,156 @@ const StaysPage = () => {
             ]}
             className="mb-8"
           />
-          <div className="grid grid-cols-1 gap-4">
-            {stays.map((stay, index) => (
-              <div
-                key={stay.title}
-                className="group relative overflow-hidden rounded-2xl bg-card border border-border animate-fade-up flex h-28 md:h-36"
-                style={{ animationDelay: `${index * 80}ms` }}
-              >
-                <div className="w-28 md:w-40 shrink-0 overflow-hidden relative">
-                  <img
-                    src={stay.image}
-                    alt={stay.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute top-2 left-2 flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-black/50 backdrop-blur-sm text-white text-[10px]">
-                    <Star className="w-3 h-3 fill-sunset text-sunset" />
-                    {stay.rating}
-                  </div>
-                </div>
 
-                <div className="flex flex-col justify-center flex-1 p-3 md:p-4 min-w-0">
-                  <span className="text-muted-foreground text-[10px] md:text-xs flex items-center gap-1 mb-1">
-                    <MapPin className="w-3 h-3" />
-                    {stay.location}
-                  </span>
-                  <h3 className="text-sm md:text-lg font-display font-bold text-foreground truncate">{stay.title}</h3>
-                  <div className="flex items-center gap-2 mt-1">
-                    <span className="text-[10px] md:text-xs text-muted-foreground flex items-center gap-1">
-                      <Users className="w-3 h-3" />
-                      {stay.guests}
-                    </span>
-                    <span className="text-sunset text-xs md:text-sm font-bold">{stay.price}</span>
-                  </div>
-                </div>
-
-                <a
-                  href={WHATSAPP_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="self-center shrink-0 mr-3 md:mr-4 px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-sunset text-white text-[10px] md:text-sm font-medium hover:bg-sunset/90 transition-colors"
-                >
-                  Book
-                </a>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-12">
+            {/* Main content */}
+            <div className="lg:col-span-2 space-y-12">
+              <div>
+                <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-4">
+                  About the resort
+                </h2>
+                <p className="text-muted-foreground text-lg leading-relaxed">{description}</p>
               </div>
-            ))}
+
+              <div>
+                <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-6">
+                  Highlights
+                </h2>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {highlights.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-start gap-3 p-4 rounded-2xl border border-border bg-card"
+                    >
+                      <span className="mt-0.5 w-2 h-2 rounded-full bg-sunset shrink-0" />
+                      <span className="text-foreground text-sm md:text-base">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-6">
+                  Amenities
+                </h2>
+                <div className="flex flex-wrap gap-2">
+                  {amenities.map((item) => (
+                    <span
+                      key={item}
+                      className="px-3 py-1.5 rounded-full border border-border bg-muted/50 text-sm text-foreground"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-6">
+                  Gallery
+                </h2>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+                  {gallery.map((img) => (
+                    <div
+                      key={img.label}
+                      className="group relative aspect-[4/3] overflow-hidden rounded-2xl"
+                    >
+                      <img
+                        src={imageSrc(img.src)}
+                        alt={img.alt}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                      <span className="absolute bottom-2 left-2 text-white text-xs md:text-sm font-medium">
+                        {img.label}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Booking card */}
+            <div className="lg:col-span-1">
+              <div className="sticky top-24 rounded-2xl border border-border bg-card p-6 shadow-lg space-y-6">
+                <div>
+                  <p className="text-sm text-muted-foreground">From</p>
+                  <p className="text-3xl font-display font-bold text-foreground">
+                    ₹{pricePerPerson.toLocaleString()}
+                    <span className="text-base font-normal text-muted-foreground"> / person / night</span>
+                  </p>
+                </div>
+
+                <div>
+                  <label className="flex items-center gap-2 text-sm font-medium text-foreground mb-3">
+                    <Users className="w-4 h-4 text-sunset" />
+                    Number of people
+                  </label>
+                  <div className="flex items-center justify-between p-3 rounded-xl border border-border bg-background">
+                    <button
+                      type="button"
+                      onClick={decreaseGuests}
+                      disabled={inCart || guests <= minGuests}
+                      className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-foreground hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed transition"
+                      aria-label="Decrease number of people"
+                    >
+                      <Minus className="w-4 h-4" />
+                    </button>
+                    <span className="text-2xl font-display font-bold text-foreground tabular-nums">
+                      {inCart ? cartItem?.quantity ?? guests : guests}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={inCart ? () => openCart() : increaseGuests}
+                      disabled={!inCart && guests >= maxGuests}
+                      className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-foreground hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed transition"
+                      aria-label={inCart ? "Open cart to change guests" : "Increase number of people"}
+                    >
+                      <Plus className="w-4 h-4" />
+                    </button>
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-2">
+                    {minGuests}–{maxGuests} guests · adjust in cart after adding
+                  </p>
+                </div>
+
+                <div className="flex items-center justify-between py-3 border-t border-border">
+                  <span className="text-sm text-muted-foreground">Estimated total</span>
+                  <span className="text-xl font-bold text-sunset">₹{lineTotal.toLocaleString()}</span>
+                </div>
+
+                {inCart ? (
+                  <button
+                    type="button"
+                    onClick={openCart}
+                    className="w-full inline-flex items-center justify-center gap-2 bg-muted text-foreground py-3.5 rounded-full font-medium transition hover:bg-muted/80"
+                  >
+                    <Check className="w-5 h-5 text-sunset" />
+                    View in Cart
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={handleAddToCart}
+                    className="w-full inline-flex items-center justify-center gap-2 bg-sunset hover:bg-sunset/90 text-white py-3.5 rounded-full font-medium transition"
+                  >
+                    <ShoppingCart className="w-5 h-5" />
+                    Add to Cart
+                  </button>
+                )}
+
+                <p className="text-xs text-center text-muted-foreground">
+                  Checkout via WhatsApp — we&apos;ll confirm availability
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
+
+      <Footer />
+      <FloatingWhatsApp />
     </main>
   );
 };

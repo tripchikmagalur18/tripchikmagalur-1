@@ -13,7 +13,8 @@ const CartDrawer = () => {
       const qty = i.quantity ?? 1;
       const line = i.price * qty;
       if (i.perPerson) {
-        return `${idx + 1}. ${i.name}\n   • Price: ₹${i.price.toLocaleString()}/person\n   • Members: ${qty}\n   • Subtotal: ₹${line.toLocaleString()}`;
+        const unit = i.link === "/stays" ? "/person/night" : "/person";
+        return `${idx + 1}. ${i.name}\n   • Price: ₹${i.price.toLocaleString()}${unit}\n   • Members: ${qty}\n   • Subtotal: ₹${line.toLocaleString()}`;
       }
       return `${idx + 1}. ${i.name}\n   • Price: ₹${i.price.toLocaleString()}/group\n   • Subtotal: ₹${line.toLocaleString()}`;
     })
@@ -85,7 +86,9 @@ const CartDrawer = () => {
                       <p className="text-sm text-sunset font-semibold mt-1">
                         ₹{lineTotal.toLocaleString()}
                         <span className="text-muted-foreground font-normal text-xs ml-1">
-                          {item.perPerson ? `(₹${item.price}/P × ${qty})` : "/group"}
+                          {item.perPerson
+                            ? `(₹${item.price}${item.link === "/stays" ? "/night" : "/P"} × ${qty})`
+                            : "/group"}
                         </span>
                       </p>
 

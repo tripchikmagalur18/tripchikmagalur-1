@@ -19,9 +19,9 @@ const staticMeta: Record<string, SeoInput> = {
     canonical: "/adventure",
   },
   "/stays": {
-    title: "Best Chikmagalur Homestays & Resorts — Coffee Estate Stays",
+    title: "Trip Chikmagalur Resort — Pool, Rooms & Family Stay",
     description:
-      "Discover top-rated homestays, coffee estate stays, hilltop resorts and luxury cottages in Chikmagalur. Verified properties with great views, food & hospitality.",
+      "Book Trip Chikmagalur Resort — swimming pool, modern rooms, game room, playground & palm grove villas from ₹1,500/person. Add guests to cart and checkout on WhatsApp.",
     canonical: "/stays",
   },
   "/food": {
