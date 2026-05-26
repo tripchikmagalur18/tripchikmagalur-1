@@ -15,6 +15,8 @@ const staticPaths = [
   "package/day-1",
   "package/day-2",
   "package/day-3",
+  "package/day-4",
+  "package/day-5",
   "chikmagalur-itinerary",
   "chikmagalur-2-days-itinerary",
   "chikmagalur-itinerary-from-bangalore",

@@ -60,6 +60,18 @@ const staticMeta: Record<string, SeoInput> = {
       "Day 3 Chikmagalur tour package itinerary with lakes, plantation cafes, and Bhadra wildlife experiences.",
     canonical: "/package/day-3",
   },
+  "/package/day-4": {
+    title: "Day 4 Belur Heritage Tour Package | Trip Chikmagalur",
+    description:
+      "Day 4 Chikmagalur tour package — Belur Chennakeshava Temple, Halebidu Hoysaleshwara Temple, Hiremagalur and Belur Dam.",
+    canonical: "/package/day-4",
+  },
+  "/package/day-5": {
+    title: "Day 5 Sringeri & Trek Tour Package | Trip Chikmagalur",
+    description:
+      "Day 5 Chikmagalur tour package — Devaramane Betta, Ethina Bhuja trek, Abbi Falls, Siddhartha Hegde Park and Mudigere views.",
+    canonical: "/package/day-5",
+  },
   "/places": {
     title: "Top Places to Visit in Chikmagalur — 30+ Destinations | Trip Chikmagalur",
     description:
