@@ -6,9 +6,11 @@ import { AppImage } from "@/components/AppImage";
 import { Sparkles, MessageCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useState, useCallback } from "react";
 
-import heroAdventure from "@/assets/hero-adventure.webp";
-import heroChikmagalur from "@/assets/hero-chikmagalur.webp";
-import heroMist from "@/assets/hero-mist.webp";
+import packageMullayanagiri from "@/assets/packages/package-mullayanagiri.webp";
+import packageBelur from "@/assets/packages/package-belur.webp";
+import packageMuthodi from "@/assets/packages/package-muthodi.webp";
+import packageSringeri from "@/assets/packages/package-sringeri.webp";
+import packageKemmangundi from "@/assets/packages/package-kemmangundi.webp";
 
 const packages = [
   {
@@ -16,7 +18,7 @@ const packages = [
     duration: "Day 1",
     price: "₹3,499",
     popular: true,
-    image: heroAdventure,
+    image: packageMullayanagiri,
     link: "/mullayanagiri-trek-package",
     highlights: [
       "Siri Nature Roost Coffee Point",
@@ -31,7 +33,7 @@ const packages = [
     name: "Kemmangundi Package",
     duration: "Day 2",
     price: "₹4,499",
-    image: heroChikmagalur,
+    image: packageKemmangundi,
     link: "/kemmangundi-tour-package",
     highlights: [
       "Deviramma Temple Hilltop",
@@ -45,7 +47,7 @@ const packages = [
     name: "Muthodi Package",
     duration: "Day 3",
     price: "₹3,999",
-    image: heroMist,
+    image: packageMuthodi,
     link: "/muthodi-safari-package",
     highlights: [
       "Hirekolale Lake Sunset",
@@ -59,7 +61,7 @@ const packages = [
     name: "Belur Package",
     duration: "Day 4",
     price: "₹3,499",
-    image: heroChikmagalur,
+    image: packageBelur,
     link: "/belur-heritage-tour-package",
     highlights: [
       "Belur Chennakeshava Temple",
@@ -72,7 +74,7 @@ const packages = [
     name: "Sringeri & Trek Package",
     duration: "Day 5",
     price: "₹5,999",
-    image: heroMist,
+    image: packageSringeri,
     link: "/sringeri-trek-package",
     highlights: [
       "Siddhartha Hegde Park",
@@ -213,6 +215,7 @@ const PackagesSection = () => {
                         alt={`${pkg.name} — guided Chikmagalur day tour with transport and local guide`}
                         fill
                         sizes="280px"
+                        className="object-cover"
                       />
                     </div>
                   </div>
