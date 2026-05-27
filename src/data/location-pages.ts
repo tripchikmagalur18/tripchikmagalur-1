@@ -33,6 +33,12 @@ export const locationPages: Record<string, LocationPageData> = {
           "DIY fuel share often runs ₹1,200–2,000 per person round trip; guided packages save planning time and include local entry coordination. Peak season is December–January — book stays three weeks ahead. See our 2-day itinerary and Bangalore route guide for toll and breakfast stop tips.",
         ],
       },
+      {
+        h2: "Bangalore weekend vs 3-day trip",
+        paragraphs: [
+          "Two days covers Mullayanagiri and Hebbe Falls — see our 2-day Chikmagalur itinerary. Add a third day for Bhadra safari and estate time via our 3-day Chikmagalur itinerary. Honeymoon and corporate groups often extend to three nights for a slower pace.",
+        ],
+      },
     ],
     packageLinks: [
       { label: "Mullayanagiri trek package", href: "/mullayanagiri-trek-package" },
@@ -96,6 +102,184 @@ export const locationPages: Record<string, LocationPageData> = {
       { label: "Weekend 2-day itinerary", href: "/2-day-chikmagalur-itinerary" },
       { label: "Tour packages hub", href: "/chikmagalur-tour-packages" },
       { label: "Packages from Bangalore", href: "/chikmagalur-tour-packages-from-bangalore" },
+    ],
+  },
+  "chikmagalur-honeymoon-packages": {
+    slug: "chikmagalur-honeymoon-packages",
+    title: "Chikmagalur Honeymoon Packages — Romantic Stays & Private Tours (2026)",
+    metaDescription:
+      "Chikmagalur honeymoon packages with private villa or resort stay, Mullayanagiri sunrise, estate cafés & couple-friendly tours from ₹3,499. Book on WhatsApp.",
+    keyword: "Chikmagalur honeymoon packages",
+    h1: "Chikmagalur Honeymoon Packages",
+    intro:
+      "Chikmagalur honeymoon packages combine misty Western Ghats mornings, coffee-estate ambience, and quiet viewpoints without the crowds of mainstream hill stations. Couples typically book two to three nights — private villa with kitchen, or resort with pool — and add guided day tours for Mullayanagiri, Baba Budangiri, and sunset at Hirekolale Lake.",
+    sections: [
+      {
+        h2: "What makes Chikmagalur ideal for honeymoons",
+        paragraphs: [
+          "Unlike packed tourist towns, Chikmagalur spreads stays across estates and valleys — you get privacy, filter coffee on the veranda, and short drives to peaks. Winter (October–February) brings mist and comfortable trekking; post-monsoon waterfalls run strong through October.",
+          "Trip Chikmagalur Villa suits couples wanting a full kitchen and living space; Resort adds pool and gardens for relaxed afternoons between sightseeing days.",
+        ],
+      },
+      {
+        h2: "Suggested 3-night honeymoon plan",
+        paragraphs: [
+          "Day 1: Arrive, check in, evening at Hirekolale Lake. Day 2: Mullayanagiri trek package at sunrise — Baba Budangiri, Jhari Falls jeep, Z Point sunset. Day 3: Kemmangundi tour package with Hebbe Falls and Raj Bhavan roses. Day 4: Slow coffee plantation walk and departure.",
+          "Total tour cost for two guided days is ₹7,998 per group (₹3,499 + ₹4,499), plus stay from ₹1,200–1,500 per adult per night. Customise dates and add ziplining on WhatsApp.",
+        ],
+      },
+      {
+        h2: "Booking tips for couples",
+        paragraphs: [
+          "Book December–January three weeks ahead. Request quiet villa rooms away from group blocks. Pack layers — summit mornings are cold, afternoons warm. See our honeymoon travel blog and FAQ on resort vs villa pricing.",
+        ],
+      },
+    ],
+    packageLinks: [
+      { label: "Mullayanagiri trek package", href: "/mullayanagiri-trek-package" },
+      { label: "Resort & villa stays", href: "/stays" },
+      { label: "3-day itinerary", href: "/3-day-chikmagalur-itinerary" },
+    ],
+  },
+  "chikmagalur-corporate-outing-packages": {
+    slug: "chikmagalur-corporate-outing-packages",
+    title: "Chikmagalur Corporate Outing Packages — Team Treks & Stays (2026)",
+    metaDescription:
+      "Corporate outing packages in Chikmagalur: team treks, jeep safaris, resort/villa stays, adventure add-ons. From ₹3,499/group. WhatsApp quotes for 10–50 people.",
+    keyword: "Chikmagalur corporate outing packages",
+    h1: "Chikmagalur Corporate Outing Packages",
+    intro:
+      "Corporate outing packages in Chikmagalur work well for Bangalore and Mysore teams — half-day drive, structured team activities, and estate stays that fit 15–40 people. Trip Chikmagalur coordinates transport, day tours, adventure add-ons (ATV, zipline, jeep safari), and split billing for resort or villa nights.",
+    sections: [
+      {
+        h2: "Popular corporate day plans",
+        paragraphs: [
+          "Option A — Peaks day: Mullayanagiri trek package (₹3,499/group) with early start, team photo at summit, Baba Budangiri stop, estate lunch. Option B — Nature day: Muthodi safari package (₹3,999/group) plus Hirekolale Lake sunset for mixed fitness levels.",
+          "Option C — Two-day offsite: Day 1 Mullayanagiri circuit, Day 2 Kemmangundi and Hebbe Falls — mirrors our weekend packages with villa stay for large groups splitting per-person cost.",
+        ],
+      },
+      {
+        h2: "Stay and logistics for teams",
+        paragraphs: [
+          "Trip Chikmagalur Villa handles 8–12 guests with multiple bedrooms; multiple villas or resort rooms scale for larger teams. We advise Friday depart / Sunday return from Bangalore to maximise working-week alignment. GST invoices available on request via WhatsApp.",
+        ],
+      },
+      {
+        h2: "Adventure add-ons for team bonding",
+        paragraphs: [
+          "Ziplining, ATV, camping, and fishing on our Adventure page pair with morning sightseeing. Monsoon outings need flexible waterfall scheduling — we share live route updates. Read the corporate outing blog for sample budgets and safety briefings.",
+        ],
+      },
+    ],
+    packageLinks: [
+      { label: "Weekend packages", href: "/chikmagalur-weekend-packages" },
+      { label: "Adventure activities", href: "/adventure" },
+      { label: "Packages from Bangalore", href: "/chikmagalur-tour-packages-from-bangalore" },
+    ],
+  },
+  "homestays-in-chikmagalur": {
+    slug: "homestays-in-chikmagalur",
+    title: "Homestays in Chikmagalur — Estate Stays, Villas & Resort (2026)",
+    metaDescription:
+      "Book homestays in Chikmagalur: coffee estate ambience, Trip Chikmagalur Villa (₹1,200/adult/night) & Resort with pool (₹1,500). Compare types & book on WhatsApp.",
+    keyword: "homestays in Chikmagalur",
+    h1: "Homestays in Chikmagalur — Estate Stays & Group Villas",
+    intro:
+      "Homestays in Chikmagalur range from family-run estate rooms to full private villas with kitchens — the style most travellers picture when they search coffee-country accommodation. Trip Chikmagalur operates a resort with pool and a multi-bedroom villa designed for groups, couples, and families who want homestay-like privacy with verified booking support.",
+    sections: [
+      {
+        h2: "Types of homestays in coffee country",
+        paragraphs: [
+          "Estate homestays: rooms inside working plantations, often with estate walks and filter coffee included. Boutique villas: entire property for your group — ideal for corporate teams and families. Resort-style stays: pool, playground, and AC rooms when you want hotel amenities near town.",
+        ],
+      },
+      {
+        h2: "Trip Chikmagalur stay options",
+        paragraphs: [
+          "Trip Chikmagalur Villa — from ₹1,200 per adult per night, full kitchen, living area, multiple bedrooms — best for groups splitting cost. Trip Chikmagalur Resort — from ₹1,500 per adult per night, pool and family rooms. Add any day tour package from our tour packages hub.",
+        ],
+      },
+      {
+        h2: "How to choose and book",
+        paragraphs: [
+          "Pick villa for privacy and self-catering; resort for pool and kids. Peak season (Dec–Jan): book three weeks ahead. Pair stays with Mullayanagiri and Kemmangundi packages for a complete weekend. See resorts guide and stays page for photos and date picker.",
+        ],
+      },
+    ],
+    packageLinks: [
+      { label: "Book stays", href: "/stays" },
+      { label: "Resorts in Chikmagalur guide", href: "/resorts-in-chikmagalur" },
+      { label: "Weekend packages", href: "/chikmagalur-weekend-packages" },
+    ],
+  },
+  "coffee-plantation-tour-chikmagalur": {
+    slug: "coffee-plantation-tour-chikmagalur",
+    title: "Coffee Plantation Tour Chikmagalur — Estate Walks & Tasting (2026)",
+    metaDescription:
+      "Coffee plantation tour in Chikmagalur: estate walks, Arabica vs Robusta, processing demo & tasting. Combine with tour packages from ₹3,499. Book WhatsApp.",
+    keyword: "coffee plantation tour Chikmagalur",
+    h1: "Coffee Plantation Tour — Chikmagalur",
+    intro:
+      "A coffee plantation tour in Chikmagalur explains why this district is called the Coffee Land of Karnataka — estate walks under shade trees, cherry-to-cup processing, and filter coffee tasting on the veranda. Most visitors combine a plantation stop with the Mullayanagiri trek package or a dedicated estate café afternoon on day three.",
+    sections: [
+      {
+        h2: "What you learn on an estate tour",
+        paragraphs: [
+          "Guides cover Arabica vs Robusta plots, monsoon flowering, picking seasons (Nov–Feb peak), wet processing, drying patios, and how Chikmagalur altitude affects flavour notes. Tours run 60–90 minutes and pair well with homestay check-in afternoons.",
+        ],
+      },
+      {
+        h2: "Best season and timing",
+        paragraphs: [
+          "October–March offers clear estate paths and comfortable walks. Monsoon is lush but muddy — wear shoes with grip. Many estates close walk-ins during harvest — our packages coordinate estate access with sightseeing days.",
+        ],
+      },
+      {
+        h2: "Book plantation tour with sightseeing",
+        paragraphs: [
+          "Day 1 Mullayanagiri package includes estate coordination; Day 3 Muthodi package adds estate café stops. For food-focused travellers, see the Chikmagalur food guide and local Malnad dishes on our Food page.",
+        ],
+      },
+    ],
+    packageLinks: [
+      { label: "Mullayanagiri trek package", href: "/mullayanagiri-trek-package" },
+      { label: "Food guide", href: "/food" },
+      { label: "All tour packages", href: "/chikmagalur-tour-packages" },
+    ],
+  },
+  "chikmagalur-tour-packages-from-mysore": {
+    slug: "chikmagalur-tour-packages-from-mysore",
+    title: "Chikmagalur Tour Packages from Mysore — Hill Trip Deals (2026)",
+    metaDescription:
+      "Chikmagalur tour packages from Mysore — ~170 km, 3.5–4 hr drive. Mullayanagiri, Hebbe Falls & stays from ₹3,499/group. Book cab + guide on WhatsApp.",
+    keyword: "Chikmagalur tour packages from Mysore",
+    h1: "Chikmagalur Tour Packages from Mysore",
+    intro:
+      "Mysore is a convenient gateway to Chikmagalur — roughly 170 km via Hassan or Kadur routes, about three and a half to four hours by car. Mysore families and weekend travellers often skip Bangalore traffic and reach Mullayanagiri the same morning with an early start.",
+    sections: [
+      {
+        h2: "Route and drive tips from Mysore",
+        paragraphs: [
+          "Common routes pass Hassan or Channarayapatna depending on road work — NH serviceable year-round, ghats after Hassan need cautious night driving. Fuel and breakfast stops at Hassan town. Self-drive groups can book only local day packages once in Chikmagalur.",
+        ],
+      },
+      {
+        h2: "Recommended packages from Mysore",
+        paragraphs: [
+          "Two-day plan: Mullayanagiri trek package day one, Kemmangundi tour package day two — same structure as our 2-day itinerary. Three-day plan adds Muthodi safari package for wildlife. Villa stay from ₹1,200/adult/night suits Mysore groups of six or more.",
+        ],
+      },
+      {
+        h2: "Mysore vs Bangalore travellers",
+        paragraphs: [
+          "Shorter distance than Bangalore means less fatigue — ideal for families with children and senior parents. Combine with Belur heritage tour package if you want Hoysala temples on the outbound or return leg via Hassan.",
+        ],
+      },
+    ],
+    packageLinks: [
+      { label: "Mullayanagiri trek package", href: "/mullayanagiri-trek-package" },
+      { label: "2-day itinerary", href: "/2-day-chikmagalur-itinerary" },
+      { label: "Belur heritage tour", href: "/belur-heritage-tour-package" },
     ],
   },
 };

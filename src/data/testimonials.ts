@@ -88,7 +88,8 @@ export const testimonials: Testimonial[] = [
 
 export const AGGREGATE_RATING = {
   ratingValue: 4.9,
-  reviewCount: 5000,
+  /** Matches published Review schema items on site */
+  reviewCount: testimonials.length,
   bestRating: 5,
   worstRating: 1,
 } as const;

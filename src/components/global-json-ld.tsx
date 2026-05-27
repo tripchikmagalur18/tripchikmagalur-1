@@ -51,14 +51,6 @@ const websiteSchema = {
     "@type": "Organization",
     name: "Trip Chikmagalur",
   },
-  potentialAction: {
-    "@type": "SearchAction",
-    target: {
-      "@type": "EntryPoint",
-      urlTemplate: `${SITE_URL}/places?q={search_term_string}`,
-    },
-    "query-input": "required name=search_term_string",
-  },
 };
 
 const localBusinessSchema = {

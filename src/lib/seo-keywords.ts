@@ -13,7 +13,16 @@ export const GLOBAL_KEYWORDS = [
   "Chikmagalur villa stay",
   "Chikmagalur adventure activities",
   "Chikmagalur from Bangalore",
-  "coffee plantation Chikmagalur",
+  "Chikmagalur from Mysore",
+  "Chikmagalur honeymoon packages",
+  "Chikmagalur corporate outing",
+  "homestays in Chikmagalur",
+  "coffee plantation tour Chikmagalur",
+  "Chikmagalur weekend packages",
+  "3 day Chikmagalur itinerary",
+  "2 day Chikmagalur itinerary",
+  "Kemmangundi tour",
+  "Bhadra wildlife safari",
   "Western Ghats Karnataka",
 ] as const;
 

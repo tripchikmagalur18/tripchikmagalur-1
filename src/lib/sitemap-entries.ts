@@ -27,7 +27,7 @@ function entry(
   };
 }
 
-/** Additional routes beyond core static + package pages (see app/sitemap.ts) */
+/** Hub pages only — itineraries, travelInfo, pillarPages, and locationPages add their own slugs */
 const extendedStaticPages: Array<{
   path: string;
   priority: number;
@@ -38,19 +38,6 @@ const extendedStaticPages: Array<{
   { path: "adventure", priority: 0.9, changeFrequency: "weekly" },
   { path: "places", priority: 0.9, changeFrequency: "weekly" },
   { path: "food", priority: 0.85 },
-  { path: "resorts-in-chikmagalur", priority: 0.85 },
-  { path: "chikmagalur-itinerary", priority: 0.9 },
-  { path: "chikmagalur-itinerary-from-bangalore", priority: 0.9 },
-  { path: "chikmagalur-weather", priority: 0.8 },
-  { path: "things-to-do-in-chikmagalur", priority: 0.85 },
-  { path: "chikmagalur-travel-tips", priority: 0.8 },
-  { path: "chikmagalur-local-food", priority: 0.8 },
-  { path: "trekking-in-chikmagalur", priority: 0.85 },
-  { path: "waterfalls-in-chikmagalur", priority: 0.85 },
-  { path: "chikmagalur-trip-budget", priority: 0.8 },
-  { path: "chikmagalur-tour-packages-from-bangalore", priority: 0.9, changeFrequency: "weekly" },
-  { path: "chikmagalur-tour-packages-from-mangalore", priority: 0.85 },
-  { path: "chikmagalur-weekend-packages", priority: 0.9, changeFrequency: "weekly" },
 ];
 
 /** Sitemap entries for stays, places, blog articles, itineraries, etc. */

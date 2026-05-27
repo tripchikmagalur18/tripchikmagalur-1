@@ -108,7 +108,7 @@ export const itineraries: Record<string, ItineraryData> = {
         a: "For DIY road trips, no. For Bhadra safari (mandatory guide), Kudremukh trek (mandatory) and combined-day logistics, a local operator is recommended.",
       },
     ],
-    related: ["chikmagalur-2-days-itinerary", "chikmagalur-itinerary-from-bangalore", "2-day-chikmagalur-itinerary"],
+    related: ["chikmagalur-2-days-itinerary", "chikmagalur-itinerary-from-bangalore", "2-day-chikmagalur-itinerary", "3-day-chikmagalur-itinerary"],
     lastUpdated: "2026-04-26",
   },
 
@@ -255,6 +255,76 @@ export const itineraries: Record<string, ItineraryData> = {
     ],
     related: ["chikmagalur-2-days-itinerary", "2-day-chikmagalur-itinerary", "chikmagalur-itinerary"],
     lastUpdated: "2026-04-26",
+  },
+
+  "3-day-chikmagalur-itinerary": {
+    slug: "3-day-chikmagalur-itinerary",
+    primaryKeyword: "3 day Chikmagalur itinerary",
+    title: "3 Day Chikmagalur Itinerary — Relaxed Coffee Hills Plan (2026)",
+    description:
+      "Best 3 day Chikmagalur itinerary: Mullayanagiri, Hebbe Falls, Bhadra safari, coffee estates & hidden falls. Day-by-day timings, ₹4,500+ budget & package links.",
+    h1: "3 Day Chikmagalur Itinerary — Complete Plan",
+    intro:
+      "A 3 day Chikmagalur itinerary is the best choice when you want peaks, waterfalls, wildlife, and estate time without rushing a Sunday drive back. This plan sequences Mullayanagiri and Baba Budangiri on day one, Kemmangundi and Hebbe Falls on day two, and Bhadra safari plus Jhari Falls on day three — matching our bookable day packages so you can add transport and guide support on WhatsApp.",
+    audience: "Families, friend groups, and Bangalore/Mysore weekend travellers with an extra day",
+    totalDays: 3,
+    days: [
+      {
+        title: "Day 1 — Mullayanagiri, Baba Budangiri & sunset",
+        summary: "Sunrise peak, sacred hills, Jhari jeep and Z Point.",
+        stops: [
+          { time: "5:30 AM", place: "Mullayanagiri sunrise", note: "26 km from town", placeSlug: "mullayanagiri-trek" },
+          { time: "9:00 AM", place: "Baba Budangiri", note: "Cave dargah + viewpoints", placeSlug: "baba-budangiri" },
+          { time: "1:00 PM", place: "Lunch in town", note: "Malnad thali" },
+          { time: "3:00 PM", place: "Jhari (Butter) Falls", note: "Estate jeep segment", placeSlug: "jhari-falls" },
+          { time: "6:00 PM", place: "Z Point or Hirekolale Lake", note: "Sunset", placeSlug: "hirekolale-lake" },
+        ],
+        stay: "Trip Chikmagalur Resort or Villa",
+      },
+      {
+        title: "Day 2 — Kemmangundi & Hebbe Falls",
+        summary: "Hill station loop with jeep to Hebbe and Kalhatti.",
+        stops: [
+          { time: "7:30 AM", place: "Drive to Kemmangundi", note: "Allow 2 hrs with ghats", placeSlug: "kemmanagundi" },
+          { time: "10:00 AM", place: "Hebbe Falls jeep", note: "Shared 4x4 through estate", placeSlug: "hebbe-falls" },
+          { time: "1:30 PM", place: "Raj Bhavan & lunch", note: "Rose garden stop", placeSlug: "kemmanagundi" },
+          { time: "4:00 PM", place: "Kalhatti Falls", note: "Temple cascade", placeSlug: "kalhatti-falls" },
+          { time: "6:30 PM", place: "Return to stay", note: "Early night before safari" },
+        ],
+        stay: "Same resort or villa",
+      },
+      {
+        title: "Day 3 — Bhadra safari, estate café & departure",
+        summary: "Wildlife morning and relaxed checkout.",
+        stops: [
+          { time: "6:30 AM", place: "Muthodi jeep safari", note: "Book morning slot", placeSlug: "bhadra-wildlife-sanctuary" },
+          { time: "11:00 AM", place: "Estate café & coffee walk", note: "Tasting + brunch", placeSlug: "coffee-plantations-chikmagalur" },
+          { time: "2:00 PM", place: "Checkout & depart", note: "Drive to Bangalore/Mysore" },
+        ],
+      },
+    ],
+    budget: "₹5,500 – ₹9,500 per person (3 days, mid-range with packages)",
+    bestTime: "October to March",
+    faqs: [
+      {
+        q: "Is 3 days enough for Chikmagalur?",
+        a: "Yes — three days covers Mullayanagiri, Hebbe Falls, Baba Budangiri, a coffee estate, and Bhadra safari without the rush of a 2-day trip.",
+      },
+      {
+        q: "How much do 3-day Chikmagalur tour packages cost?",
+        a: "Our three day tours as packages total ₹11,997 per group (₹3,499 + ₹4,499 + ₹3,999) plus stays from ₹1,200/adult/night. Groups split per-person cost.",
+      },
+      {
+        q: "Can I follow this 3-day plan from Bangalore?",
+        a: "Leave Friday night or Saturday dawn, follow days 1–3, return Monday evening. See packages from Bangalore for drive tips.",
+      },
+      {
+        q: "What should I book in advance for a 3-day trip?",
+        a: "Resort or villa dates, Mullayanagiri day package, and Bhadra safari slot — December–January fills fastest.",
+      },
+    ],
+    related: ["chikmagalur-itinerary", "2-day-chikmagalur-itinerary", "chikmagalur-tour-packages-from-bangalore"],
+    lastUpdated: "2026-05-26",
   },
 };
 

@@ -228,6 +228,191 @@ export const blogLongPosts: Record<string, BlogLongPost> = {
       },
     ],
   },
+  "chikmagalur-honeymoon-guide": {
+    slug: "chikmagalur-honeymoon-guide",
+    keyword: "Chikmagalur honeymoon packages",
+    title: "Chikmagalur Honeymoon Guide — Romantic Stays, Tours & Budget (2026)",
+    metaDescription:
+      "Plan a Chikmagalur honeymoon: best stays, 3-night itinerary, Mullayanagiri sunrise, estate cafés & costs. Villa from ₹1,200/night. Book packages on WhatsApp.",
+    excerpt: "Romantic stays, 3-night plan, sunrise treks and realistic honeymoon budgets",
+    readTime: "11 min read",
+    category: "Couples",
+    intro:
+      "Chikmagalur is one of Karnataka's best honeymoon destinations — coffee mist, quiet estate roads, and viewpoints without the commercial crush of larger hill stations. This guide covers where to stay, a proven 3-night plan, and how our [honeymoon packages page](/chikmagalur-honeymoon-packages) maps to bookable tours.",
+    relatedLinks: [
+      { label: "Honeymoon packages", href: "/chikmagalur-honeymoon-packages" },
+      { label: "Stays", href: "/stays" },
+      { label: "Mullayanagiri trek package", href: "/mullayanagiri-trek-package" },
+    ],
+    sections: [
+      {
+        h2: "Best stays for couples",
+        paragraphs: [
+          "Trip Chikmagalur Villa offers privacy, kitchen, and multi-room layout for longer stays. Resort adds pool and gardens — popular for couples who want resort amenities. Book peak season (Dec–Jan) three weeks ahead.",
+        ],
+      },
+      {
+        h2: "3-night honeymoon itinerary",
+        paragraphs: [
+          "Night 1: Arrive, Hirekolale Lake sunset. Day 2: [Mullayanagiri trek package](/mullayanagiri-trek-package) sunrise circuit. Day 3: [Kemmangundi tour package](/kemmangundi-tour-package) with Hebbe Falls. Day 4: Estate walk and departure. Tour total ₹7,998/group for two guided days.",
+        ],
+      },
+      {
+        h2: "Honeymoon budget in Chikmagalur",
+        paragraphs: [
+          "Mid-range couples: ₹12,000–18,000 total for 3 nights including stay (₹1,200–1,500/adult/night), two day packages, and meals. Luxury seekers add adventure zipline and private cab from Bangalore — see [packages from Bangalore](/chikmagalur-tour-packages-from-bangalore).",
+        ],
+      },
+    ],
+  },
+  "chikmagalur-corporate-outing-guide": {
+    slug: "chikmagalur-corporate-outing-guide",
+    keyword: "Chikmagalur corporate outing",
+    title: "Chikmagalur Corporate Outing — Team Packages, Stays & Budget (2026)",
+    metaDescription:
+      "Plan a Chikmagalur corporate outing: team treks, safari, villa stays for 15–40 people, adventure add-ons & sample budgets. Quotes on WhatsApp.",
+    excerpt: "Team day plans, villa scaling, adventure add-ons and GST-friendly booking",
+    readTime: "10 min read",
+    category: "Corporate",
+    intro:
+      "Bangalore teams choose Chikmagalur for corporate outings because the drive is manageable, activities scale from easy lake walks to Mullayanagiri treks, and villa stays split costs cleanly. Use our [corporate outing packages](/chikmagalur-corporate-outing-packages) page to align transport and day tours.",
+    relatedLinks: [
+      { label: "Corporate packages", href: "/chikmagalur-corporate-outing-packages" },
+      { label: "Weekend packages", href: "/chikmagalur-weekend-packages" },
+      { label: "Adventure", href: "/adventure" },
+    ],
+    sections: [
+      {
+        h2: "One-day vs two-day corporate plans",
+        paragraphs: [
+          "One day: Mullayanagiri package morning + estate lunch + adventure ATV afternoon. Two days: add Kemmangundi–Hebbe on Sunday — same structure as [weekend packages](/chikmagalur-weekend-packages). Villa fits 8–12 per unit; book multiple units for larger teams.",
+        ],
+      },
+      {
+        h2: "Sample per-person budget (20 people)",
+        paragraphs: [
+          "Tours ₹11,997/group split across cars, not per person — for 20 guests in 2–3 groups, day tours can land under ₹1,500/person. Villa ₹1,200/adult/night × 2 nights ≈ ₹4,800/person at full occupancy. Food ₹800–1,200/day. Total often ₹8,000–12,000/person all-inclusive.",
+        ],
+      },
+      {
+        h2: "Safety and monsoon planning",
+        paragraphs: [
+          "Brief teams on ghat driving and waterfall jeep rules. Monsoon: swap Jhari for safer viewpoints. We share live route updates on WhatsApp for corporate dates.",
+        ],
+      },
+    ],
+  },
+  "chikmagalur-trip-from-mysore": {
+    slug: "chikmagalur-trip-from-mysore",
+    keyword: "Chikmagalur trip from Mysore",
+    title: "Chikmagalur Trip from Mysore — Distance, Route & Packages (2026)",
+    metaDescription:
+      "Chikmagalur from Mysore: ~170 km, 3.5–4 hr drive, 2–3 day packages, Mullayanagiri & Hebbe Falls. Tour packages from ₹3,499/group.",
+    excerpt: "Drive routes from Mysore, 2-day plan and package links for Mysore travellers",
+    readTime: "9 min read",
+    category: "Travel Guide",
+    intro:
+      "A Chikmagalur trip from Mysore is shorter than from Bangalore — roughly 170 km through Hassan, about three and a half to four hours — making it ideal for families who want hills without a six-hour haul. See dedicated [packages from Mysore](/chikmagalur-tour-packages-from-mysore) for booking.",
+    relatedLinks: [
+      { label: "Packages from Mysore", href: "/chikmagalur-tour-packages-from-mysore" },
+      { label: "2-day itinerary", href: "/2-day-chikmagalur-itinerary" },
+      { label: "Belur heritage tour", href: "/belur-heritage-tour-package" },
+    ],
+    sections: [
+      {
+        h2: "Best route Mysore to Chikmagalur",
+        paragraphs: [
+          "Via Hassan is most common — good highway until ghats near Chikmagalur. Start by 6 AM Saturday to reach Mullayanagiri parking before 9 AM if skipping sunrise. Fuel and breakfast at Hassan.",
+        ],
+      },
+      {
+        h2: "2-day plan from Mysore",
+        paragraphs: [
+          "Saturday: [Mullayanagiri trek package](/mullayanagiri-trek-package). Sunday: [Kemmangundi tour package](/kemmangundi-tour-package), return evening. Add Belur temples on route if you have extra half-day.",
+        ],
+      },
+      {
+        h2: "3-day plan for Mysore groups",
+        paragraphs: [
+          "Add [Muthodi safari package](/muthodi-safari-package) on day three — full [3-day itinerary](/3-day-chikmagalur-itinerary) with villa stay.",
+        ],
+      },
+    ],
+  },
+  "coffee-plantation-tour-guide": {
+    slug: "coffee-plantation-tour-guide",
+    keyword: "coffee plantation tour Chikmagalur",
+    title: "Coffee Plantation Tour Chikmagalur — Estates, Tasting & Seasons (2026)",
+    metaDescription:
+      "Coffee plantation tour in Chikmagalur: what to expect, best season, Arabica vs Robusta & pairing with tour packages. Estate walks from town.",
+    excerpt: "Estate tour content, harvest seasons and how to book with sightseeing",
+    readTime: "8 min read",
+    category: "Experiences",
+    intro:
+      "The coffee plantation tour is a core Chikmagalur experience — shade-grown Arabica, wet processing sheds, and filter coffee on the veranda. This guide explains seasons, what guides cover, and how to book via our [coffee plantation tour page](/coffee-plantation-tour-chikmagalur) plus day packages.",
+    relatedLinks: [
+      { label: "Coffee plantation tour", href: "/coffee-plantation-tour-chikmagalur" },
+      { label: "Food guide", href: "/food" },
+      { label: "Mullayanagiri package", href: "/mullayanagiri-trek-package" },
+    ],
+    sections: [
+      {
+        h2: "What happens on an estate walk",
+        paragraphs: [
+          "Typical tours: 60–90 minutes covering varietals, picking seasons (Nov–Feb peak), processing, and tasting. Wear closed shoes; monsoon paths get slippery.",
+        ],
+      },
+      {
+        h2: "Best season for plantation tours",
+        paragraphs: [
+          "October–March: dry paths and clear views. Monsoon: lush photos but limited access during heavy rain. Harvest months offer the most educational visits if estates allow guests.",
+        ],
+      },
+      {
+        h2: "Combine with sightseeing packages",
+        paragraphs: [
+          "Day 1 Mullayanagiri package coordinates estate stops; Day 3 Muthodi package includes café time. Homestay travellers often walk estates on check-in afternoon — see [homestays in Chikmagalur](/homestays-in-chikmagalur).",
+        ],
+      },
+    ],
+  },
+  "3-day-chikmagalur-itinerary-guide": {
+    slug: "3-day-chikmagalur-itinerary-guide",
+    keyword: "3 day Chikmagalur itinerary",
+    title: "3 Day Chikmagalur Itinerary — Day-by-Day Plan & Costs (2026)",
+    metaDescription:
+      "3 day Chikmagalur itinerary: Mullayanagiri, Hebbe Falls, Bhadra safari & estates. Hour-by-hour plan, ₹5,500+ budget & bookable packages.",
+    excerpt: "Full 3-day schedule with package links and budget breakdown",
+    readTime: "13 min read",
+    category: "Itinerary",
+    intro:
+      "This [3 day Chikmagalur itinerary](/3-day-chikmagalur-itinerary) adds Bhadra wildlife and Jhari Falls without compressing peak days — the upgrade from a rushed 2-day weekend. Each day maps to a bookable package below.",
+    relatedLinks: [
+      { label: "3-day itinerary page", href: "/3-day-chikmagalur-itinerary" },
+      { label: "Mullayanagiri package", href: "/mullayanagiri-trek-package" },
+      { label: "Muthodi safari package", href: "/muthodi-safari-package" },
+    ],
+    sections: [
+      {
+        h2: "Day 1 — Peaks and Jhari",
+        paragraphs: [
+          "5:30 AM Mullayanagiri sunrise, Baba Budangiri by 9 AM, Jhari jeep afternoon, Z Point or Hirekolale sunset. Book [Mullayanagiri trek package](/mullayanagiri-trek-package) (₹3,499/group).",
+        ],
+      },
+      {
+        h2: "Day 2 — Kemmangundi and Hebbe",
+        paragraphs: [
+          "Early start to Kemmangundi, Hebbe jeep 10 AM, Raj Bhavan roses, Kalhatti Falls. [Kemmangundi tour package](/kemmangundi-tour-package) at ₹4,499/group.",
+        ],
+      },
+      {
+        h2: "Day 3 — Safari and departure",
+        paragraphs: [
+          "6:30 AM [Muthodi safari package](/muthodi-safari-package) (₹3,999/group), estate brunch, checkout by 2 PM. Three package days total ₹11,997/group plus stays.",
+        ],
+      },
+    ],
+  },
 };
 
 export const blogLongSlugs = Object.keys(blogLongPosts);

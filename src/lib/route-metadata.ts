@@ -118,9 +118,9 @@ const staticMeta: Record<string, SeoInput> = {
     subject: "Places to visit in Chikmagalur",
   },
   "/chikmagalur-tour-packages": {
-    title: "Chikmagalur Tour Packages — Best Deals from ₹2,999 (2026)",
+    title: "Chikmagalur Tour Packages — Best Deals from ₹3,499 (2026) | Trip Chikmagalur",
     description:
-      "Book Chikmagalur tour packages from ₹2,999 — 1, 2 & 3-day plans with Mullayanagiri, Hebbe Falls, stays & jeep rides. Customisable trips from Bangalore & Mysore.",
+      "Book Chikmagalur tour packages from ₹3,499/group — Mullayanagiri, Kemmangundi, Muthodi safari, Belur & Sringeri treks. Weekend, honeymoon & corporate plans from Bangalore, Mysore & Mangalore.",
     canonical: "/chikmagalur-tour-packages",
     keywords: PACKAGES_KEYWORDS,
     subject: "Chikmagalur tour packages and pricing",

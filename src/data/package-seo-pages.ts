@@ -67,6 +67,12 @@ export const packageSeoPages: Record<string, PackageSeoPage> = {
           "We are based in Chikmagalur with 5,000+ travellers served and government-verified operations. Explore our FAQ, compare the Kemmangundi package for day two, or read the Mullayanagiri trek guide on our blog for packing lists and safety tips.",
         ],
       },
+      {
+        h2: "Mullayanagiri trek package — FAQs",
+        paragraphs: [
+          "Is the Mullayanagiri trek package per person? No — ₹3,499 covers your whole group with cab and guide coordination. Do I need trekking experience? The summit steps are easy to moderate; sunrise timing matters more than fitness. Can I combine with a honeymoon or corporate stay? Yes — add resort or villa nights on the Stays page and book multiple days via WhatsApp.",
+        ],
+      },
     ],
   },
   "kemmangundi-tour-package": {
@@ -108,6 +114,12 @@ export const packageSeoPages: Record<string, PackageSeoPage> = {
           "Start early from your stay — Kemmangundi is roughly 60–65 km from Chikmagalur town and ghat sections slow average speed. Carry a light jacket; Z Point and Kemmangundi viewpoints get windy at sunset. Read our Kemmangundi destination page and 2-day itinerary for hour-by-hour planning from Bangalore.",
         ],
       },
+      {
+        h2: "Hebbe Falls jeep — common questions",
+        paragraphs: [
+          "Is Hebbe Falls open in monsoon? Usually yes with estate jeep access; heavy rain may pause jeeps temporarily. How long is the jeep ride? Roughly 30–45 minutes each way through coffee estates. Can Kemmangundi pair with Mullayanagiri same day? Not recommended — book as day two of our 2-day or 3-day Chikmagalur itinerary.",
+        ],
+      },
     ],
   },
   "muthodi-safari-package": {
@@ -147,6 +159,12 @@ export const packageSeoPages: Record<string, PackageSeoPage> = {
           "Families with children, birders, and groups who have already done peaks on day one/two. Price is ₹3,999 per group. Link with our blog post on Bhadra safari and the full places directory for distances from town.",
         ],
       },
+      {
+        h2: "Bhadra safari booking FAQs",
+        paragraphs: [
+          "What time is the Muthodi jeep safari? Morning slots around 6:30 AM offer the best wildlife sightings. Is safari included in ₹3,999? Package includes transport and coordination; forest gate fees are confirmed on WhatsApp for your date. Ideal for 3-day itineraries after peak days.",
+        ],
+      },
     ],
   },
   "belur-heritage-tour-package": {
@@ -177,6 +195,12 @@ export const packageSeoPages: Record<string, PackageSeoPage> = {
         h2: "Logistics from Chikmagalur",
         paragraphs: [
           "Belur is roughly 40 km from Chikmagalur town — an easy day trip without extreme ghats. The package includes private cab and guide support for ₹3,499 per group. Combine with a weekday stay to avoid weekend temple crowds.",
+        ],
+      },
+      {
+        h2: "Belur Halebidu tour FAQs",
+        paragraphs: [
+          "How long do temples take? Allow 2–3 hours for Belur carvings and 1.5–2 hours at Halebidu. Dress code? Modest clothing; footwear off inside sanctums. Good for Mysore–Chikmagalur route? Yes — many Mysore travellers add temples on the Hassan leg.",
         ],
       },
     ],
@@ -210,6 +234,12 @@ export const packageSeoPages: Record<string, PackageSeoPage> = {
         h2: "Package value at ₹5,999 per group",
         paragraphs: [
           "Longer driving distances toward Mudigere and Sringeri side make this a full 10–12 hour day. The price includes cab, driver, and guide coordination for the listed stops. Pair with our offbeat places blog and trekking pillar page for training and packing guidance.",
+        ],
+      },
+      {
+        h2: "Sringeri trek package FAQs",
+        paragraphs: [
+          "Who is this package for? Fit groups wanting Devaramane and Ethina Bhuja beyond mainstream Mullayanagiri crowds. Fitness level? Moderate to challenging — carry water and trekking shoes. Can seniors join? Mullayanagiri package is easier; this day suits active adults.",
         ],
       },
     ],

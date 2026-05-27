@@ -12,8 +12,8 @@ const travelAgency = {
   image: `${SITE_URL}/og-image.webp`,
   description:
     "Chikmagalur tour packages, resort and villa stays, adventure activities, and local travel guides in Karnataka's coffee country.",
-  telephone: "+91-9008000000",
-  email: "tripchikmagalur@gmail.com",
+  telephone: "+91-6363131585",
+  email: "wanderlustckm@gmail.com",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Chikmagalur",
@@ -33,8 +33,9 @@ const travelAgency = {
   ],
   priceRange: "₹₹",
   sameAs: [
-    "https://www.instagram.com/tripchikmagalur",
-    "https://www.facebook.com/tripchikmagalur",
+    "https://wa.me/916363131585",
+    "https://www.instagram.com/wanderlust_ckm",
+    "https://www.facebook.com/wanderlustckm",
   ],
   ...buildTravelAgencyReviewsField(),
 };
