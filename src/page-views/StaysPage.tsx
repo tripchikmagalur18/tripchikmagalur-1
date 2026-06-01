@@ -38,12 +38,12 @@ const StaysPage = () => {
             Choose your stay
           </h1>
           <p className="text-muted-foreground text-sm mt-2 max-w-xl">
-            Pick a resort or private villa in Chikmagalur. Select dates and adults when you add to
-            cart.
+            Pick a resort, villa, homestay, or Stay SR in Chikmagalur. Select dates and adults when
+            you add to cart.
           </p>
         </header>
 
-        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6" role="list">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6" role="list">
           {allStays.map((stay) => (
             <li key={stay.slug}>
               <Link

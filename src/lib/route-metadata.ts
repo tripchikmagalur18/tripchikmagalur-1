@@ -38,9 +38,9 @@ const staticMeta: Record<string, SeoInput> = {
     subject: "Chikmagalur adventure and outdoor activities",
   },
   "/stays": {
-    title: "Stays in Chikmagalur — Resort with Pool & Private Villa (2026)",
+    title: "Stays in Chikmagalur — Resort, Villa, Homestay & Stay SR (2026)",
     description:
-      "Book Trip Chikmagalur Resort (₹1,500/adult/night) or Private Villa (₹1,200/adult/night). Pool, AC rooms, kitchen villa — pick dates & adults, checkout on WhatsApp.",
+      "Book Trip Chikmagalur Resort (₹1,500), Villa (₹1,200), Homestay (₹799) or Stay SR (₹799) per adult/night. Pool, kitchen villa, group rooms, balcony guest house — WhatsApp booking.",
     canonical: "/stays",
     keywords: STAYS_KEYWORDS,
     subject: "Chikmagalur resort and villa accommodation",

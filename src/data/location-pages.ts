@@ -196,7 +196,7 @@ export const locationPages: Record<string, LocationPageData> = {
       {
         h2: "Trip Chikmagalur stay options",
         paragraphs: [
-          "Trip Chikmagalur Villa — from ₹1,200 per adult per night, full kitchen, living area, multiple bedrooms — best for groups splitting cost. Trip Chikmagalur Resort — from ₹1,500 per adult per night, pool and family rooms. Add any day tour package from our tour packages hub.",
+          "Trip Chikmagalur Homestay — from ₹799 per adult per night, group dorm rooms and private doubles. Trip Chikmagalur Stay SR — from ₹799 per adult per night, twin rooms and balcony guest house. Trip Chikmagalur Villa — from ₹1,200 per adult per night, full kitchen and multiple bedrooms. Trip Chikmagalur Resort — from ₹1,500 per adult per night, pool and family rooms. Add any day tour package from our tour packages hub.",
         ],
       },
       {
@@ -207,7 +207,8 @@ export const locationPages: Record<string, LocationPageData> = {
       },
     ],
     packageLinks: [
-      { label: "Book stays", href: "/stays" },
+      { label: "Trip Chikmagalur Homestay", href: "/stays/trip-chikmagalur-homestay" },
+      { label: "All stays", href: "/stays" },
       { label: "Resorts in Chikmagalur guide", href: "/resorts-in-chikmagalur" },
       { label: "Weekend packages", href: "/chikmagalur-weekend-packages" },
     ],

@@ -137,4 +137,18 @@ export const STAY_KEYWORDS: Record<string, string[]> = {
     "villa with kitchen Chikmagalur",
     "Chikmagalur villa for family",
   ),
+  "trip-chikmagalur-homestay": pageKeywords(
+    "Trip Chikmagalur Homestay",
+    "homestay in Chikmagalur",
+    "budget stay Chikmagalur",
+    "group stay Chikmagalur homestay",
+    "Chikmagalur dormitory stay",
+  ),
+  "trip-chikmagalur-stay-sr": pageKeywords(
+    "Trip Chikmagalur Stay SR",
+    "guest house Chikmagalur",
+    "Chikmagalur stay SR",
+    "balcony stay Chikmagalur",
+    "mid budget hotel Chikmagalur",
+  ),
 };

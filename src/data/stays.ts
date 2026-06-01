@@ -28,6 +28,25 @@ import villa13 from "@/assets/villa/villa-13.webp";
 import villa14 from "@/assets/villa/villa-14.webp";
 import villa15 from "@/assets/villa/villa-15.webp";
 
+import homestayCover from "@/assets/homestay/double-room-02.webp";
+import homestayDorm01 from "@/assets/homestay/group-dorm-01.webp";
+import homestayDorm02 from "@/assets/homestay/group-dorm-02.webp";
+import homestayDorm03 from "@/assets/homestay/group-dorm-03.webp";
+import homestayDouble01 from "@/assets/homestay/double-room-01.webp";
+import homestayDouble02 from "@/assets/homestay/double-room-02.webp";
+import homestayDouble03 from "@/assets/homestay/double-room-03.webp";
+import homestayDouble04 from "@/assets/homestay/double-room-04.webp";
+
+import staySrCover from "@/assets/stay-sr/exterior.webp";
+import staySrBalcony from "@/assets/stay-sr/balcony-egg-chair.webp";
+import staySrBedroomWindow from "@/assets/stay-sr/bedroom-window.webp";
+import staySrBedroomYellow from "@/assets/stay-sr/bedroom-yellow.webp";
+import staySrTwinRoom from "@/assets/stay-sr/twin-room.webp";
+import staySrBedDetail from "@/assets/stay-sr/bed-detail.webp";
+import staySrCommonArea from "@/assets/stay-sr/common-area.webp";
+import staySrBathroomVanity from "@/assets/stay-sr/bathroom-vanity.webp";
+import staySrBathroomBlue from "@/assets/stay-sr/bathroom-blue.webp";
+
 export type StayGalleryImage = {
   src: StaticImageData;
   alt: string;
@@ -55,6 +74,8 @@ export type Stay = {
 
 export const RESORT_CART_ID = "stay-trip-chikmagalur-resort";
 export const VILLA_CART_ID = "stay-trip-chikmagalur-villa";
+export const HOMESTAY_CART_ID = "stay-trip-chikmagalur-homestay";
+export const STAY_SR_CART_ID = "stay-trip-chikmagalur-stay-sr";
 
 export const tripChikmagalurResort: Stay = {
   id: RESORT_CART_ID,
@@ -155,7 +176,164 @@ export const tripChikmagalurVilla: Stay = {
   ],
 };
 
-export const allStays: Stay[] = [tripChikmagalurResort, tripChikmagalurVilla];
+export const tripChikmagalurHomestay: Stay = {
+  id: HOMESTAY_CART_ID,
+  slug: "trip-chikmagalur-homestay",
+  name: "Trip Chikmagalur Homestay",
+  shortName: "Homestay",
+  tagline: "Clean group rooms & private doubles — budget-friendly coffee-country stay",
+  location: "Chikmagalur, Karnataka",
+  pricePerPerson: 799,
+  minGuests: 1,
+  maxGuests: 8,
+  rating: 4.7,
+  categoryLabel: "Homestay",
+  coverImage: homestayCover,
+  description:
+    "Trip Chikmagalur Homestay offers hygienic, well-lit rooms for friends, families, and budget travellers — spacious group dorm-style beds for large parties and private double rooms with wardrobes, balcony access, and ensuite bathrooms. Ceiling fans, polished floors, and a calm residential setting keep your hill-station trip affordable without sacrificing comfort.",
+  highlights: [
+    "Group dorm rooms with multiple single beds",
+    "Private double bedrooms with balcony views",
+    "Clean white linens and daily housekeeping",
+    "In-room washbasin on select floors",
+    "Ceiling fans & bright natural lighting",
+    "Ideal for students, trek groups & weekend gangs",
+  ],
+  amenities: [
+    "Group & private rooms",
+    "Hot water bathrooms",
+    "Ceiling fans",
+    "Wardrobe storage",
+    "Balcony access (select rooms)",
+    "Parking nearby",
+    "Power backup",
+  ],
+  gallery: [
+    {
+      src: homestayDouble02,
+      alt: "Private double bedroom at Trip Chikmagalur Homestay with balcony access and white linens",
+      label: "Double Room",
+    },
+    {
+      src: homestayDouble01,
+      alt: "Double bed room with wooden furniture and garden view at Trip Chikmagalur Homestay",
+      label: "Balcony Room",
+    },
+    {
+      src: homestayDouble04,
+      alt: "Bright double bedroom with dark wood headboard at Trip Chikmagalur Homestay",
+      label: "Bedroom",
+    },
+    {
+      src: homestayDouble03,
+      alt: "Minimal double room with wardrobe at Trip Chikmagalur Homestay",
+      label: "Private Room",
+    },
+    {
+      src: homestayDorm01,
+      alt: "Group dormitory room with six single beds at Trip Chikmagalur Homestay",
+      label: "Group Stay",
+    },
+    {
+      src: homestayDorm02,
+      alt: "Spacious group accommodation with multiple beds and large windows at Trip Chikmagalur Homestay",
+      label: "Group Room",
+    },
+    {
+      src: homestayDorm03,
+      alt: "Large group room with beds, ceiling fans and in-room washbasin at Trip Chikmagalur Homestay",
+      label: "Dormitory",
+    },
+  ],
+};
+
+export const tripChikmagalurStaySr: Stay = {
+  id: STAY_SR_CART_ID,
+  slug: "trip-chikmagalur-stay-sr",
+  name: "Trip Chikmagalur Stay SR",
+  shortName: "Stay SR",
+  tagline: "Modern guest house with balconies, twin rooms & green views",
+  location: "Chikmagalur, Karnataka",
+  pricePerPerson: 799,
+  minGuests: 1,
+  maxGuests: 6,
+  rating: 4.8,
+  categoryLabel: "Guest House",
+  coverImage: staySrCover,
+  description:
+    "Trip Chikmagalur Stay SR is a cheerful three-storey guest house surrounded by trees — peach-and-stone exterior, private balconies with a hanging egg chair, twin and double bedrooms with yellow accent walls, and spotless marble-style bathrooms. Ideal for couples, small families, and friends who want a mid-budget stay with character, hot water, and a relaxed common seating area.",
+  highlights: [
+    "Three-storey house with balcony & egg swing chair",
+    "Twin-share & double bedrooms with bright interiors",
+    "Modern bathrooms with hot water",
+    "Common seating area with garden views",
+    "Quiet residential lane near Chikmagalur town",
+    "Parking at the property gate",
+  ],
+  amenities: [
+    "Private & twin bedrooms",
+    "Hot water bathrooms",
+    "Balcony seating",
+    "Common hall",
+    "Ceiling fans",
+    "Parking",
+    "Power backup",
+  ],
+  gallery: [
+    {
+      src: staySrCover,
+      alt: "Trip Chikmagalur Stay SR exterior — modern three-storey guest house with balconies",
+      label: "Exterior",
+    },
+    {
+      src: staySrBalcony,
+      alt: "Wicker hanging egg chair on balcony overlooking green trees at Trip Chikmagalur Stay SR",
+      label: "Balcony",
+    },
+    {
+      src: staySrBedroomWindow,
+      alt: "Double bedroom with yellow accent wall and curtained window at Trip Chikmagalur Stay SR",
+      label: "Bedroom",
+    },
+    {
+      src: staySrBedroomYellow,
+      alt: "Cozy double room with checkered bedding and yellow wall at Trip Chikmagalur Stay SR",
+      label: "Double Room",
+    },
+    {
+      src: staySrTwinRoom,
+      alt: "Twin bedroom with floral green bedding at Trip Chikmagalur Stay SR",
+      label: "Twin Room",
+    },
+    {
+      src: staySrBedDetail,
+      alt: "Neatly made bed with patterned linens at Trip Chikmagalur Stay SR",
+      label: "Room Detail",
+    },
+    {
+      src: staySrCommonArea,
+      alt: "Common seating area with chairs and large window at Trip Chikmagalur Stay SR",
+      label: "Common Area",
+    },
+    {
+      src: staySrBathroomVanity,
+      alt: "Modern bathroom with marble tiles and geometric mirror at Trip Chikmagalur Stay SR",
+      label: "Bathroom",
+    },
+    {
+      src: staySrBathroomBlue,
+      alt: "Bathroom with blue marble-pattern tiles and hot water at Trip Chikmagalur Stay SR",
+      label: "Bathroom 2",
+    },
+  ],
+};
+
+export const allStays: Stay[] = [
+  tripChikmagalurResort,
+  tripChikmagalurVilla,
+  tripChikmagalurHomestay,
+  tripChikmagalurStaySr,
+];
 
 export const staySlugs = allStays.map((s) => s.slug);
 
