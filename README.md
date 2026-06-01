@@ -41,3 +41,4 @@ All original paths are preserved (26 static + 10 `/places/[slug]` + 404).
 - `src/components/` — shared UI
 - `src/data/` — content (destinations, itineraries, etc.)
 - `public/` — static assets, Google verification files
+npn run dev
