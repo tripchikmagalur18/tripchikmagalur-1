@@ -1,6 +1,6 @@
 "use client";
 
-import { JsonLd } from "@/components/json-ld";
+import { JsonLd } from "@/components/JsonLd";
 import { buildBreadcrumbSchema, type BreadcrumbItem } from "@/lib/seo";
 
 interface PageJsonLdProps {

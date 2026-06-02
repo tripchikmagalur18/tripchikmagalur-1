@@ -2,7 +2,6 @@ import { notFound } from "next/navigation";
 import BlogArticlePage from "@/page-views/BlogArticlePage";
 import { blogLongPosts, blogLongSlugs } from "@/data/blog-long-posts";
 import { buildMetadata } from "@/lib/seo";
-import { pageKeywords } from "@/lib/seo-keywords";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -25,7 +24,6 @@ export async function generateMetadata({ params }: Props) {
     title: `${post.title} | Trip Chikmagalur Blog`,
     description: post.metaDescription,
     canonical: `/blog/${post.slug}`,
-    keywords: pageKeywords(post.keyword),
     ogType: "article",
   });
 }

@@ -89,7 +89,7 @@ const ContactSection = () => {
           {/* Social Links */}
           <div className={`flex justify-center gap-4 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {[
-              { icon: Instagram, href: "https://www.instagram.com/trip_chikmagalur?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+              { icon: Instagram, href: "https://instagram.com/trip_chikmagalur" },
               { icon: Facebook, href: "https://facebook.com/wanderlustckm" },
               { icon: Twitter, href: "https://twitter.com/wanderlustckm" },
             ].map((social, index) => (

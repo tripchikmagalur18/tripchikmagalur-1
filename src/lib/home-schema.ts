@@ -1,5 +1,5 @@
 import { homeFaqItems, homePackages } from "@/data/home-packages";
-import { buildTravelAgencyReviewsField } from "@/lib/review-schema";
+import { buildReviewSchemas, buildTravelAgencyReviewsField } from "@/lib/review-schema";
 import { SITE_URL } from "@/lib/seo";
 
 const travelAgency = {
@@ -34,7 +34,7 @@ const travelAgency = {
   priceRange: "₹₹",
   sameAs: [
     "https://wa.me/916363131585",
-    "https://www.instagram.com/wanderlust_ckm",
+    "https://instagram.com/trip_chikmagalur",
     "https://www.facebook.com/wanderlustckm",
   ],
   ...buildTravelAgencyReviewsField(),
@@ -101,4 +101,10 @@ const webPage = {
   },
 };
 
-export const homePageSchema = [travelAgency, ...tourPackages, faqPage, webPage];
+export const homePageSchema = [
+  travelAgency,
+  ...tourPackages,
+  faqPage,
+  webPage,
+  ...buildReviewSchemas(),
+];

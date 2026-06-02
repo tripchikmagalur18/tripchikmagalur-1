@@ -9,8 +9,8 @@ import { packageSeoPages, type PackageSeoPage } from "@/data/package-seo-pages";
 import { ShoppingCart, MessageCircle } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { WHATSAPP_LINK } from "@/lib/whatsapp";
-import { SITE_URL } from "@/lib/seo";
 import { PackageOfferPrice } from "@/components/PackageOfferPrice";
+import { buildPackagePageSchemas } from "@/lib/package-page-schema";
 
 function BookCta({ page }: { page: PackageSeoPage }) {
   const { addItem, items } = useCart();
@@ -56,27 +56,10 @@ export default function SeoPackagePage({ slug }: { slug: string }) {
   const page = packageSeoPages[slug];
   if (!page) return null;
 
-  const tripSchema = {
-    "@context": "https://schema.org",
-    "@type": "TouristTrip",
-    name: page.h1,
-    description: page.intro,
-    url: `${SITE_URL}/${page.slug}`,
-    touristType: ["Adventure", "Family", "Couples"],
-    offers: {
-      "@type": "Offer",
-      price: String(page.price),
-      priceCurrency: "INR",
-      availability: "https://schema.org/InStock",
-      url: `${SITE_URL}/${page.slug}`,
-    },
-    provider: { "@type": "TravelAgency", name: "Trip Chikmagalur", url: SITE_URL },
-  };
-
   return (
     <main className="overflow-x-hidden">
       <PageJsonLd
-        schema={tripSchema}
+        schema={buildPackagePageSchemas(page)}
         breadcrumbs={[
           { name: "Home", path: "/" },
           { name: "Tour Packages", path: "/chikmagalur-tour-packages" },

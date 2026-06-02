@@ -1,5 +1,5 @@
 import Index from "@/page-views/Index";
-import { JsonLd } from "@/components/json-ld";
+import { JsonLd } from "@/components/JsonLd";
 import { homePageSchema } from "@/lib/home-schema";
 import { metadataForPath } from "@/lib/route-metadata";
 

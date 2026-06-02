@@ -1,5 +1,5 @@
 import BlogPage from "@/page-views/BlogPage";
-import { JsonLd } from "@/components/json-ld";
+import { JsonLd } from "@/components/JsonLd";
 import { blogBreadcrumbs, buildBlogListingSchema } from "@/lib/content-schema";
 import { metadataForPath } from "@/lib/route-metadata";
 

@@ -34,10 +34,7 @@ const extendedStaticPages: Array<{
   changeFrequency?: SitemapEntry["changeFrequency"];
   lastModified?: Date;
 }> = [
-  { path: "stays", priority: 0.95, changeFrequency: "weekly", lastModified: CONTENT_UPDATE },
-  { path: "adventure", priority: 0.9, changeFrequency: "weekly" },
   { path: "places", priority: 0.9, changeFrequency: "weekly" },
-  { path: "food", priority: 0.85 },
 ];
 
 /** Sitemap entries for stays, places, blog articles, itineraries, etc. */

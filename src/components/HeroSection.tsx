@@ -24,6 +24,16 @@ const heroSlides: StaticImageData[] = [
   heroImage5,
 ];
 
+const HERO_ALTS = [
+  "Misty sunrise view over Chikmagalur coffee estates",
+  "Morning mist rolling over Chikmagalur hill ranges",
+  "Jeep adventure safari on Chikmagalur mountain trails",
+  "Adventure activities in Chikmagalur",
+  "ATV off-road ride through Chikmagalur",
+  "Waterfall trekking experience in Chikmagalur",
+  "Coffee plantation tour in Chikmagalur Karnataka",
+] as const;
+
 const HERO_SIZES = "100vw";
 
 const STAT_TARGETS = {
@@ -154,7 +164,7 @@ const HeroSection = () => {
           >
             <AppImage
               src={slide}
-              alt=""
+              alt={HERO_ALTS[index]}
               fill
               sizes={HERO_SIZES}
               priority={index === 0}

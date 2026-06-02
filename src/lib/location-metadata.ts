@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
-import { pageKeywords } from "@/lib/seo-keywords";
 import { locationPages } from "@/data/location-pages";
 
 export async function generateMetadataForLocation(slug: string): Promise<Metadata> {
@@ -21,7 +20,5 @@ export function metadataForLocation(slug: string): Metadata {
     title: page.title,
     description: page.metaDescription,
     canonical: `/${page.slug}`,
-    keywords: pageKeywords(page.keyword),
-    subject: page.keyword,
   });
 }

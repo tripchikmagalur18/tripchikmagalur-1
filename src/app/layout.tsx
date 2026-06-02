@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { Providers } from "@/components/providers";
 import { GlobalJsonLd } from "@/components/global-json-ld";
-import { buildMetadata, DEFAULT_OG_IMAGE, SITE_NAME, SITE_TAGLINE } from "@/lib/seo";
-import { HOME_KEYWORDS } from "@/lib/seo-keywords";
+import { buildMetadata, DEFAULT_OG_IMAGE, SITE_NAME } from "@/lib/seo";
 import Script from "next/script";
 import "./globals.css";
 
@@ -29,8 +28,6 @@ export async function generateMetadata(): Promise<Metadata> {
         "Book Chikmagalur tour packages from ₹3,499. Mullayanagiri trek, Kemmangundi, waterfalls & jeep safari. Govt. verified, 5000+ travelers. Book via WhatsApp instantly.",
       canonical: "/",
       ogImage: DEFAULT_OG_IMAGE,
-      keywords: HOME_KEYWORDS,
-      subject: SITE_TAGLINE,
     }),
     icons: {
       icon: [

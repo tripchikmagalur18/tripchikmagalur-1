@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import StayDetailPage from "@/page-views/StayDetailPage";
-import { JsonLd } from "@/components/json-ld";
+import { JsonLd } from "@/components/JsonLd";
 import { getStayBySlug, staySlugs } from "@/data/stays";
 import { metadataForStay } from "@/lib/route-metadata";
 import { buildStayLodgingSchema } from "@/lib/stay-schema";

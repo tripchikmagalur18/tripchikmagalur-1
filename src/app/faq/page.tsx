@@ -1,5 +1,5 @@
 import FAQPage from "@/page-views/FAQPage";
-import { JsonLd } from "@/components/json-ld";
+import { JsonLd } from "@/components/JsonLd";
 import { buildFaqPageSchema, faqBreadcrumbs } from "@/lib/content-schema";
 import { metadataForPath } from "@/lib/route-metadata";
 

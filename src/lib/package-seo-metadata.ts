@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
-import { pageKeywords } from "@/lib/seo-keywords";
 import { packageSeoPages } from "@/data/package-seo-pages";
 
 export async function generateMetadataForPackageSeo(slug: string): Promise<Metadata> {
@@ -21,8 +20,6 @@ export function metadataForPackageSeo(slug: string): Metadata {
     title: page.title,
     description: page.metaDescription,
     canonical: `/${page.slug}`,
-    keywords: pageKeywords(page.keyword, page.h1),
-    subject: page.keyword,
     ogType: "website",
   });
 }

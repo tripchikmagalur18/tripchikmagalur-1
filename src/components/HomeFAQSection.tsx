@@ -32,6 +32,7 @@ const HomeFAQSection = () => {
                   className="w-full flex items-center justify-between gap-4 p-5 text-left"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                   aria-expanded={isOpen}
+                  aria-controls={`faq-answer-${index}`}
                 >
                   <h3 className="font-display font-semibold text-foreground text-base md:text-lg">
                     {faq.question}
@@ -42,11 +43,16 @@ const HomeFAQSection = () => {
                     <Plus className="w-5 h-5 text-muted-foreground shrink-0" />
                   )}
                 </button>
-                {isOpen && (
+                <div
+                  id={`faq-answer-${index}`}
+                  className={`overflow-hidden transition-[max-height] duration-300 ease-in-out ${
+                    isOpen ? "max-h-[480px]" : "max-h-0"
+                  }`}
+                >
                   <div className="px-5 pb-5 text-muted-foreground text-sm leading-relaxed border-t border-border/60 pt-4">
                     {faq.answer}
                   </div>
-                )}
+                </div>
               </div>
             );
           })}

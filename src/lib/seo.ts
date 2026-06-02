@@ -10,7 +10,6 @@ export const GEO_META = {
   "geo.region": "IN-KA",
   "geo.placename": "Chikmagalur, Karnataka, India",
   "geo.position": "13.3161;75.7720",
-  ICBM: "13.3161, 75.7720",
 } as const;
 
 export interface BreadcrumbItem {
@@ -26,9 +25,6 @@ export interface SeoInput {
   ogType?: "website" | "article";
   breadcrumbs?: BreadcrumbItem[];
   noindex?: boolean;
-  keywords?: string[];
-  /** Short topical label for meta subject (optional). */
-  subject?: string;
 }
 
 export function absoluteAssetUrl(src: string): string {
@@ -52,8 +48,6 @@ export const buildMetadata = ({
   ogImage = DEFAULT_OG_IMAGE,
   ogType = "website",
   noindex = false,
-  keywords,
-  subject,
 }: SeoInput): Metadata => {
   const path = normalizePath(canonical);
   const fullCanonical = `${SITE_URL}${path === "/" ? "" : path}`;
@@ -62,18 +56,7 @@ export const buildMetadata = ({
     title,
     description,
     applicationName: SITE_NAME,
-    generator: "Next.js",
-    referrer: "origin-when-cross-origin",
-    formatDetection: {
-      email: false,
-      address: false,
-      telephone: false,
-    },
-    ...(keywords?.length ? { keywords } : {}),
     authors: [{ name: "Trip Chikmagalur — Wanderlust_ckm", url: SITE_URL }],
-    creator: SITE_NAME,
-    publisher: SITE_NAME,
-    category: "Travel",
     robots: noindex
       ? { index: false, follow: false }
       : {
@@ -122,10 +105,6 @@ export const buildMetadata = ({
     },
     other: {
       ...GEO_META,
-      "content-language": "en-IN",
-      coverage: "India",
-      target: "Chikmagalur, Karnataka, India",
-      ...(subject ? { subject } : {}),
     },
   };
 };
