@@ -611,37 +611,6 @@ html body dialog::backdrop {
   animation: shimmer 2s infinite;
 }
 
-@keyframes monsoon-rain {
-  0% {
-    transform: translateY(0);
-    opacity: 0;
-  }
-  15% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(120px);
-    opacity: 0;
-  }
-}
-
-@keyframes monsoon-shimmer {
-  0% {
-    transform: translateX(-120%) skewX(-12deg);
-  }
-  100% {
-    transform: translateX(220%) skewX(-12deg);
-  }
-}
-
-.animate-monsoon-rain {
-  animation: monsoon-rain linear infinite;
-}
-
-.animate-monsoon-shimmer {
-  animation: monsoon-shimmer 4s ease-in-out infinite;
-}
-
 /* Stagger animations */
 .stagger-1 { animation-delay: 0.1s; }
 .stagger-2 { animation-delay: 0.2s; }

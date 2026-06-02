@@ -67,13 +67,13 @@ const ContactSection = () => {
           {/* Contact Info */}
           <div className={`flex flex-wrap justify-center gap-8 mb-12 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <a
-              href="mailto:wanderlustckm@gmail.com"
+              href="mailto:tripchikmagalur18@gmail.com"
               className="flex items-center gap-3 text-white/70 hover:text-white transition-colors"
             >
               <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
                 <Mail className="w-5 h-5" />
               </div>
-              <span>wanderlustckm@gmail.com</span>
+              <span>tripchikmagalur18@gmail.com</span>
             </a>
             <a
               href="tel:+916363131585"

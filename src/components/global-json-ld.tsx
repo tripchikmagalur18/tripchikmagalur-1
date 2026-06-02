@@ -22,7 +22,7 @@ const organizationSchema = {
     longitude: "75.7720",
   },
   telephone: "+91-6363131585",
-  email: "wanderlustckm@gmail.com",
+  email: "tripchikmagalur18@gmail.com",
   priceRange: "₹₹",
   openingHoursSpecification: {
     "@type": "OpeningHoursSpecification",

@@ -13,7 +13,7 @@ const travelAgency = {
   description:
     "Chikmagalur tour packages, resort and villa stays, adventure activities, and local travel guides in Karnataka's coffee country.",
   telephone: "+91-6363131585",
-  email: "wanderlustckm@gmail.com",
+  email: "tripchikmagalur18@gmail.com",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Chikmagalur",

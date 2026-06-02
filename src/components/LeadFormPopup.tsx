@@ -2,13 +2,13 @@
 
 import { useState, useEffect } from "react";
 import { X, User, Phone, Mail, Sparkles } from "lucide-react";
-import { supabase } from "@/integrations/backend/client";
-import { useToast } from "@/hooks/use-toast";
 import { leadFormSchema } from "@/lib/validations/lead";
-import { ZodError } from "zod";
+import { LEAD_SUCCESS_MESSAGE, submitLeadEnquiry } from "@/lib/lead-enquiry";
+
+const focusRing =
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunset focus-visible:ring-offset-2 focus-visible:ring-offset-transparent";
 
 const LeadFormPopup = () => {
-  const { toast } = useToast();
   const [isVisible, setIsVisible] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -21,7 +21,6 @@ const LeadFormPopup = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   useEffect(() => {
-    // Check if popup was already shown in this session
     const hasSeenPopup = sessionStorage.getItem("hasSeenLeadPopup");
     if (hasSeenPopup) return;
 
@@ -44,8 +43,7 @@ const LeadFormPopup = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFieldErrors({});
-    
-    // Client-side validation
+
     const validation = leadFormSchema.safeParse(formData);
     if (!validation.success) {
       const errors: Record<string, string> = {};
@@ -59,39 +57,17 @@ const LeadFormPopup = () => {
     }
 
     setIsSubmitting(true);
-    
+
     try {
-      const { error } = await supabase
-        .from('leads')
-        .insert({
-          name: validation.data.name,
-          phone: validation.data.phone,
-          email: validation.data.email,
-        });
-
-      if (error) {
-        // Handle rate limiting error from database
-        if (error.message.includes('Rate limit')) {
-          throw new Error('Please wait a few minutes before submitting again.');
-        }
-        throw error;
-      }
-
+      await submitLeadEnquiry(validation.data);
       setIsSubmitted(true);
-      toast({
-        title: "Success!",
-        description: "We'll get back to you with amazing offers soon!",
-      });
-      
-      setTimeout(() => {
-        handleClose();
-      }, 2000);
+      setTimeout(() => handleClose(), 4000);
     } catch (error) {
-      const message = error instanceof Error ? error.message : "Something went wrong. Please try again.";
-      toast({
-        title: "Oops!",
-        description: message,
-        variant: "destructive",
+      setFieldErrors({
+        form:
+          error instanceof Error
+            ? error.message
+            : "Could not send enquiry. Please call +91 6363131585.",
       });
     } finally {
       setIsSubmitting(false);
@@ -99,149 +75,202 @@ const LeadFormPopup = () => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (fieldErrors[name]) {
+      setFieldErrors((prev) => {
+        const next = { ...prev };
+        delete next[name];
+        return next;
+      });
+    }
   };
 
   if (!isVisible) return null;
 
   return (
     <div
-      className={`fixed inset-0 z-[100] flex items-center justify-center p-4 transition-all duration-300 ${
+      className={`fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-3 sm:p-4 transition-all duration-300 ${
         isClosing ? "opacity-0" : "opacity-100"
       }`}
+      role="presentation"
     >
-      {/* Backdrop */}
       <div
         className="absolute inset-0 bg-black/60 backdrop-blur-sm"
         onClick={handleClose}
+        aria-hidden="true"
       />
 
-      {/* Popup Card */}
       <div
-        className={`relative w-full max-w-md transform transition-all duration-500 ease-out ${
-          isClosing
-            ? "scale-95 opacity-0 translate-y-4"
-            : "scale-100 opacity-100 translate-y-0"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="lead-popup-title"
+        className={`relative w-full max-w-md max-h-[92dvh] overflow-y-auto overscroll-contain transform transition-all duration-500 ease-out ${
+          isClosing ? "scale-95 opacity-0 translate-y-4" : "scale-100 opacity-100 translate-y-0"
         }`}
         style={{
           animation: isClosing ? "" : "popup-bounce 0.6s ease-out",
         }}
       >
-        {/* Glassmorphic Card */}
         <div className="relative overflow-hidden rounded-2xl glass-dark shadow-2xl">
-          {/* Decorative gradient orbs */}
-          <div className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-sunset/30 to-transparent rounded-full blur-3xl" />
-          <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-gradient-to-tr from-teal-500/20 to-transparent rounded-full blur-3xl" />
+          <div className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-sunset/30 to-transparent rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-gradient-to-tr from-teal-500/20 to-transparent rounded-full blur-3xl pointer-events-none" />
 
-          {/* Close Button */}
           <button
+            type="button"
             onClick={handleClose}
-            className="absolute top-4 right-4 p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors duration-200 group z-10"
-            aria-label="Close popup"
+            className={`absolute top-3 right-3 sm:top-4 sm:right-4 min-w-11 min-h-11 p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors z-10 ${focusRing}`}
+            aria-label="Close enquiry form"
           >
-            <X className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" />
+            <X className="w-5 h-5 text-white/60 hover:text-white transition-colors" />
           </button>
 
-          {/* Content */}
-          <div className="p-8 pt-6">
+          <div className="p-6 sm:p-8 pt-5 sm:pt-6">
             {!isSubmitted ? (
               <>
-                {/* Header */}
-                <div className="text-center mb-6">
-                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-sunset/20 to-sunset/5 border border-sunset/20 mb-4 animate-pulse">
-                    <Sparkles className="w-7 h-7 text-sunset" />
+                <div className="text-center mb-5 sm:mb-6 pr-8">
+                  <div className="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-sunset/20 to-sunset/5 border border-sunset/20 mb-3 sm:mb-4">
+                    <Sparkles className="w-6 h-6 sm:w-7 sm:h-7 text-sunset" />
                   </div>
-                  <h2 className="text-2xl font-display font-bold text-white mb-2">
-                    Get Exclusive Offers! ✨
+                  <h2
+                    id="lead-popup-title"
+                    className="text-xl sm:text-2xl font-display font-bold text-white mb-2"
+                  >
+                    Plan Your Chikmagalur Trip
                   </h2>
-                  <p className="text-white/60 text-sm">
-                    Sign up for the best Chikmagalur travel deals
+                  <p className="text-white/60 text-sm leading-relaxed">
+                    Share your details — our team will contact you shortly on WhatsApp or email.
                   </p>
                 </div>
 
-                {/* Form */}
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  {/* Name Input */}
-                  <div className="space-y-1">
+                <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+                  <div className="space-y-1.5">
+                    <label htmlFor="lead-name" className="text-xs font-medium text-white/70 pl-1">
+                      Name <span className="text-sunset">*</span>
+                    </label>
                     <div className="relative group">
                       <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                        <User className={`w-5 h-5 transition-colors ${fieldErrors.name ? 'text-destructive' : 'text-white/40 group-focus-within:text-sunset'}`} />
+                        <User
+                          className={`w-5 h-5 ${fieldErrors.name ? "text-destructive" : "text-white/40 group-focus-within:text-sunset"}`}
+                          aria-hidden="true"
+                        />
                       </div>
                       <input
+                        id="lead-name"
                         type="text"
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
-                        placeholder="Your Name"
-                        className={`w-full pl-12 pr-4 py-3.5 rounded-xl bg-white/5 border text-white placeholder:text-white/40 focus:outline-none focus:bg-white/10 transition-all duration-200 ${fieldErrors.name ? 'border-destructive' : 'border-white/10 focus:border-sunset/50'}`}
+                        placeholder="Your full name"
+                        required
+                        autoComplete="name"
+                        aria-invalid={!!fieldErrors.name}
+                        aria-describedby={fieldErrors.name ? "lead-name-error" : undefined}
+                        className={`w-full pl-12 pr-4 py-3.5 min-h-12 rounded-xl bg-white/5 border text-white text-base placeholder:text-white/40 focus:outline-none focus:bg-white/10 transition-all ${fieldErrors.name ? "border-destructive" : "border-white/10 focus:border-sunset/50"} ${focusRing}`}
                       />
                     </div>
-                    {fieldErrors.name && <p className="text-destructive text-xs pl-4">{fieldErrors.name}</p>}
+                    {fieldErrors.name && (
+                      <p id="lead-name-error" className="text-destructive text-xs pl-1" role="alert">
+                        {fieldErrors.name}
+                      </p>
+                    )}
                   </div>
 
-                  {/* Phone Input */}
-                  <div className="space-y-1">
+                  <div className="space-y-1.5">
+                    <label htmlFor="lead-phone" className="text-xs font-medium text-white/70 pl-1">
+                      Phone <span className="text-sunset">*</span>
+                    </label>
                     <div className="relative group">
                       <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                        <Phone className={`w-5 h-5 transition-colors ${fieldErrors.phone ? 'text-destructive' : 'text-white/40 group-focus-within:text-sunset'}`} />
+                        <Phone
+                          className={`w-5 h-5 ${fieldErrors.phone ? "text-destructive" : "text-white/40 group-focus-within:text-sunset"}`}
+                          aria-hidden="true"
+                        />
                       </div>
                       <input
+                        id="lead-phone"
                         type="tel"
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        placeholder="Phone Number"
-                        className={`w-full pl-12 pr-4 py-3.5 rounded-xl bg-white/5 border text-white placeholder:text-white/40 focus:outline-none focus:bg-white/10 transition-all duration-200 ${fieldErrors.phone ? 'border-destructive' : 'border-white/10 focus:border-sunset/50'}`}
+                        placeholder="10-digit mobile number"
+                        required
+                        autoComplete="tel"
+                        inputMode="tel"
+                        aria-invalid={!!fieldErrors.phone}
+                        aria-describedby={fieldErrors.phone ? "lead-phone-error" : undefined}
+                        className={`w-full pl-12 pr-4 py-3.5 min-h-12 rounded-xl bg-white/5 border text-white text-base placeholder:text-white/40 focus:outline-none focus:bg-white/10 transition-all ${fieldErrors.phone ? "border-destructive" : "border-white/10 focus:border-sunset/50"} ${focusRing}`}
                       />
                     </div>
-                    {fieldErrors.phone && <p className="text-destructive text-xs pl-4">{fieldErrors.phone}</p>}
+                    {fieldErrors.phone && (
+                      <p id="lead-phone-error" className="text-destructive text-xs pl-1" role="alert">
+                        {fieldErrors.phone}
+                      </p>
+                    )}
                   </div>
 
-                  {/* Email Input */}
-                  <div className="space-y-1">
+                  <div className="space-y-1.5">
+                    <label htmlFor="lead-email" className="text-xs font-medium text-white/70 pl-1">
+                      Email <span className="text-sunset">*</span>
+                    </label>
                     <div className="relative group">
                       <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                        <Mail className={`w-5 h-5 transition-colors ${fieldErrors.email ? 'text-destructive' : 'text-white/40 group-focus-within:text-sunset'}`} />
+                        <Mail
+                          className={`w-5 h-5 ${fieldErrors.email ? "text-destructive" : "text-white/40 group-focus-within:text-sunset"}`}
+                          aria-hidden="true"
+                        />
                       </div>
                       <input
+                        id="lead-email"
                         type="email"
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        placeholder="Email Address"
-                        className={`w-full pl-12 pr-4 py-3.5 rounded-xl bg-white/5 border text-white placeholder:text-white/40 focus:outline-none focus:bg-white/10 transition-all duration-200 ${fieldErrors.email ? 'border-destructive' : 'border-white/10 focus:border-sunset/50'}`}
+                        placeholder="you@example.com"
+                        required
+                        autoComplete="email"
+                        inputMode="email"
+                        aria-invalid={!!fieldErrors.email}
+                        aria-describedby={fieldErrors.email ? "lead-email-error" : undefined}
+                        className={`w-full pl-12 pr-4 py-3.5 min-h-12 rounded-xl bg-white/5 border text-white text-base placeholder:text-white/40 focus:outline-none focus:bg-white/10 transition-all ${fieldErrors.email ? "border-destructive" : "border-white/10 focus:border-sunset/50"} ${focusRing}`}
                       />
                     </div>
-                    {fieldErrors.email && <p className="text-destructive text-xs pl-4">{fieldErrors.email}</p>}
+                    {fieldErrors.email && (
+                      <p id="lead-email-error" className="text-destructive text-xs pl-1" role="alert">
+                        {fieldErrors.email}
+                      </p>
+                    )}
                   </div>
 
-                  {/* Submit Button */}
+                  {fieldErrors.form && (
+                    <p className="text-destructive text-xs text-center" role="alert">
+                      {fieldErrors.form}
+                    </p>
+                  )}
+
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-4 mt-2 rounded-xl bg-gradient-to-r from-sunset to-orange-500 text-white font-semibold text-lg shadow-lg shadow-sunset/25 hover:shadow-sunset/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100"
+                    className={`w-full py-4 min-h-12 mt-1 rounded-xl bg-gradient-to-r from-sunset to-orange-500 text-white font-semibold text-base sm:text-lg shadow-lg shadow-sunset/25 hover:shadow-sunset/40 hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100 ${focusRing}`}
                   >
-                    {isSubmitting ? "Sending..." : "Get My Offers 🎉"}
+                    {isSubmitting ? "Sending…" : "Submit enquiry"}
                   </button>
                 </form>
 
-                {/* Footer */}
-                <p className="text-center text-white/40 text-xs mt-4">
-                  We respect your privacy. No spam, ever.
+                <p className="text-center text-white/40 text-xs mt-4 leading-relaxed px-2">
+                  Your details are sent securely to our team — no WhatsApp app will open on your
+                  device.
                 </p>
               </>
             ) : (
-              /* Success State */
-              <div className="text-center py-8">
-                <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-green-500/20 to-green-500/5 border border-green-500/20 mb-4">
+              <div className="text-center py-6 sm:py-8 px-2">
+                <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-green-500/20 to-green-500/5 border border-green-500/20 mb-4">
                   <svg
-                    className="w-10 h-10 text-green-400 animate-success-check"
+                    className="w-8 h-8 sm:w-10 sm:h-10 text-green-400"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
+                    aria-hidden="true"
                   >
                     <path
                       strokeLinecap="round"
@@ -251,11 +280,11 @@ const LeadFormPopup = () => {
                     />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-display font-bold text-white mb-2">
-                  Thank You! 🎊
+                <h3 className="text-xl sm:text-2xl font-display font-bold text-white mb-3">
+                  Enquiry received
                 </h3>
-                <p className="text-white/60">
-                  We'll send you amazing deals soon!
+                <p className="text-white/80 text-sm sm:text-base leading-relaxed max-w-sm mx-auto">
+                  {LEAD_SUCCESS_MESSAGE}
                 </p>
               </div>
             )}
@@ -276,19 +305,6 @@ const LeadFormPopup = () => {
             opacity: 1;
             transform: scale(1) translateY(0);
           }
-        }
-        
-        @keyframes success-check {
-          0% {
-            stroke-dasharray: 0, 100;
-          }
-          100% {
-            stroke-dasharray: 100, 0;
-          }
-        }
-        
-        .animate-success-check path {
-          animation: success-check 0.5s ease-out forwards;
         }
       `}</style>
     </div>
