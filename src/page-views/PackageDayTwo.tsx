@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { AspectImage } from "@/components/AspectImage";
+import { PackageOfferPrice } from "@/components/PackageOfferPrice";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { PageJsonLd } from "@/components/page-json-ld";
@@ -101,10 +102,7 @@ const PackageDayTwo = () => {
             <span className="text-sunset font-medium text-sm uppercase tracking-[0.2em]">Day 2</span>
             <h1 className="text-4xl md:text-5xl font-display font-bold text-foreground mt-2">Kemmangundi Package</h1>
             <p className="text-muted-foreground mt-3 text-lg max-w-2xl">Includes all Day 1 locations plus 5 more incredible destinations on Day 2 — hill stations, waterfalls, and rose gardens.</p>
-            <div className="flex items-center gap-4 mt-4">
-              <span className="text-3xl font-bold text-foreground">₹4,499</span>
-              <span className="text-muted-foreground">/group</span>
-            </div>
+            <PackageOfferPrice price={4499} size="md" align="start" className="mt-4" />
           </div>
 
           <p className="text-sm text-sunset font-medium mb-6 bg-sunset/10 inline-block px-4 py-2 rounded-full">✨ Day 1 includes all Day Explorer locations</p>

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { AspectImage } from "@/components/AspectImage";
+import { PackageOfferPrice } from "@/components/PackageOfferPrice";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { PageJsonLd } from "@/components/page-json-ld";
@@ -120,10 +121,7 @@ const PackageDayFive = () => {
               Treks, waterfalls, and hill-country viewpoints — an adventure-focused day across the Mudigere and
               Western Ghats belt.
             </p>
-            <div className="flex items-center gap-4 mt-4">
-              <span className="text-3xl font-bold text-foreground">₹5,999</span>
-              <span className="text-muted-foreground">/group</span>
-            </div>
+            <PackageOfferPrice price={5999} size="md" align="start" className="mt-4" />
           </div>
 
           <h2 className="text-2xl font-display font-bold text-foreground mb-6">Day 5 Destinations</h2>

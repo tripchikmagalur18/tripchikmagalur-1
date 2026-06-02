@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { AspectImage } from "@/components/AspectImage";
+import { PackageOfferPrice } from "@/components/PackageOfferPrice";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { PageJsonLd } from "@/components/page-json-ld";
@@ -109,10 +110,7 @@ const PackageDayThree = () => {
             <span className="text-sunset font-medium text-sm uppercase tracking-[0.2em]">Day 3</span>
             <h1 className="text-4xl md:text-5xl font-display font-bold text-foreground mt-2">Muthodi Package</h1>
             <p className="text-muted-foreground mt-3 text-lg max-w-2xl">The ultimate 3-day Chikmagalur experience — includes all Day 1 & 2 locations plus 6 more destinations on Day 3.</p>
-            <div className="flex items-center gap-4 mt-4">
-              <span className="text-3xl font-bold text-foreground">₹3,999</span>
-              <span className="text-muted-foreground">/group</span>
-            </div>
+            <PackageOfferPrice price={3999} size="md" align="start" className="mt-4" />
           </div>
 
           <p className="text-sm text-sunset font-medium mb-6 bg-sunset/10 inline-block px-4 py-2 rounded-full">✨ Includes all Day 1 & Day 2 locations</p>

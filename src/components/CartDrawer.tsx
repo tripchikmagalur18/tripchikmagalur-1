@@ -6,6 +6,7 @@ import { ShoppingCart, X, Trash2, MessageCircle, Minus, Plus } from "lucide-reac
 import { useCart, isStayCartItem } from "@/context/CartContext";
 import { formatBookingDate, stayLineTotal, stayNights } from "@/lib/booking-date";
 import { whatsappUrl } from "@/lib/whatsapp";
+import { CartSuggestions } from "@/components/CartSuggestions";
 
 const focusRing =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunset focus-visible:ring-offset-2 focus-visible:ring-offset-background";
@@ -110,6 +111,7 @@ const CartDrawer = () => {
               <p className="text-sm mt-1">Add a stay, package, or activity to get started.</p>
             </div>
           ) : (
+            <>
             <ul className="space-y-3" role="list">
               {items.map((item) => {
                 const qty = item.quantity ?? 1;
@@ -206,6 +208,8 @@ const CartDrawer = () => {
                 );
               })}
             </ul>
+            <CartSuggestions />
+            </>
           )}
         </div>
 

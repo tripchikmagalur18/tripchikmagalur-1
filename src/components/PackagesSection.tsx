@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { AppImage } from "@/components/AppImage";
+import { PackageOfferPrice } from "@/components/PackageOfferPrice";
+import { formatPackageInr, getPackageOfferPrices } from "@/lib/package-offer-price";
 import { useCart } from "@/context/CartContext";
 import { Sparkles, MessageCircle, ChevronLeft, ChevronRight, ShoppingCart } from "lucide-react";
 import { useEffect, useState, useCallback, useRef } from "react";
@@ -18,7 +20,6 @@ const packages = [
     name: "Mullayangiri Package",
     duration: "Day 1",
     price: 3499,
-    priceLabel: "₹3,499",
     popular: true,
     image: packageMullayanagiri,
     link: "/mullayanagiri-trek-package",
@@ -37,7 +38,6 @@ const packages = [
     name: "Kemmangundi Package",
     duration: "Day 2",
     price: 4499,
-    priceLabel: "₹4,499",
     image: packageKemmangundi,
     link: "/kemmangundi-tour-package",
     packageDayLink: "/package/day-2",
@@ -54,7 +54,6 @@ const packages = [
     name: "Muthodi Package",
     duration: "Day 3",
     price: 3999,
-    priceLabel: "₹3,999",
     image: packageMuthodi,
     link: "/muthodi-safari-package",
     packageDayLink: "/package/day-3",
@@ -71,7 +70,6 @@ const packages = [
     name: "Belur Package",
     duration: "Day 4",
     price: 3499,
-    priceLabel: "₹3,499",
     image: packageBelur,
     link: "/belur-heritage-tour-package",
     packageDayLink: "/package/day-4",
@@ -87,7 +85,6 @@ const packages = [
     name: "Sringeri & Trek Package",
     duration: "Day 5",
     price: 5999,
-    priceLabel: "₹5,999",
     image: packageSringeri,
     link: "/sringeri-trek-package",
     packageDayLink: "/package/day-5",
@@ -238,7 +235,7 @@ const PackagesSection = () => {
                 <article
                   role="button"
                   tabIndex={0}
-                  aria-label={`${pkg.name}, ${pkg.priceLabel} per group. ${isActive ? "Open package details" : "Select package"}`}
+                  aria-label={`${pkg.name}, ${formatPackageInr(pkg.price)} per group, offer was ${formatPackageInr(getPackageOfferPrices(pkg.price).scratchedPrice)}. ${isActive ? "Open package details" : "Select package"}`}
                   onClick={() => handleCardClick(index, pkg.link)}
                   onKeyDown={(e) => {
                     if (e.key === "Enter" || e.key === " ") {
@@ -290,11 +287,8 @@ const PackagesSection = () => {
                       ))}
                     </ul>
 
-                    <div className="mb-1">
-                      <span className="text-2xl font-bold text-sunset">{pkg.priceLabel}</span>
-                      <span className="text-muted-foreground text-xs ml-1">/group</span>
-                    </div>
-                    <p className="text-[10px] text-muted-foreground/80 italic mb-4">
+                    <PackageOfferPrice price={pkg.price} size="sm" className="mb-3" />
+                    <p className="text-[10px] text-muted-foreground/80 italic mb-4 -mt-1">
                       *Terms and conditions apply on places
                     </p>
 

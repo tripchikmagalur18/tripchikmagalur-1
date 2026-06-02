@@ -10,6 +10,7 @@ import { ShoppingCart, MessageCircle } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { WHATSAPP_LINK } from "@/lib/whatsapp";
 import { SITE_URL } from "@/lib/seo";
+import { PackageOfferPrice } from "@/components/PackageOfferPrice";
 
 function BookCta({ page }: { page: PackageSeoPage }) {
   const { addItem, items } = useCart();
@@ -96,10 +97,7 @@ export default function SeoPackagePage({ slug }: { slug: string }) {
             <p className="text-sunset text-sm font-medium uppercase tracking-wider">{page.duration} tour</p>
             <h1 className="text-3xl md:text-4xl font-display font-bold text-foreground mt-2">{page.h1}</h1>
             <p className="text-lg text-muted-foreground mt-4 leading-relaxed">{page.intro}</p>
-            <p className="mt-4 text-2xl font-bold text-foreground">
-              ₹{page.price.toLocaleString("en-IN")}
-              <span className="text-base font-normal text-muted-foreground"> /group</span>
-            </p>
+            <PackageOfferPrice price={page.price} size="md" align="start" className="mt-4" />
           </header>
 
           {page.sections.map((section) => (
