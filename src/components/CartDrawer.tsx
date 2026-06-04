@@ -5,6 +5,8 @@ import Link from "next/link";
 import { ShoppingCart, X, Trash2, MessageCircle, Minus, Plus } from "lucide-react";
 import { useCart, isStayCartItem } from "@/context/CartContext";
 import { formatBookingDate, stayLineTotal, stayNights } from "@/lib/booking-date";
+import { createNextBookingId } from "@/lib/booking-id";
+import { buildCartWhatsAppMessage } from "@/lib/cart-whatsapp";
 import { whatsappUrl } from "@/lib/whatsapp";
 import { CartSuggestions } from "@/components/CartSuggestions";
 
@@ -17,29 +19,11 @@ const CartDrawer = () => {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
 
-  const waMessage = `Hi Trip Chikmagalur! I'd like to book the following:\n\n${items
-    .map((i, idx) => {
-      const qty = i.quantity ?? 1;
-      const line = i.price * qty;
-      if (isStayCartItem(i)) {
-        const nights = stayNights(i.checkInDate, i.checkOutDate);
-        const stayTotal = stayLineTotal(i);
-        const dateLines = [
-          i.checkInDate ? `\n   • Check-in: ${formatBookingDate(i.checkInDate)}` : "",
-          i.checkOutDate ? `\n   • Check-out: ${formatBookingDate(i.checkOutDate)}` : "",
-          i.checkInDate && i.checkOutDate
-            ? `\n   • ${nights} ${nights === 1 ? "night" : "nights"}`
-            : "",
-        ].join("");
-        return `${idx + 1}. ${i.name}${dateLines}\n   • Adults: ${qty}\n   • Rate: ₹${i.price.toLocaleString("en-IN")}/adult/night\n   • Subtotal: ₹${stayTotal.toLocaleString("en-IN")}`;
-      }
-      if (i.perPerson) {
-        return `${idx + 1}. ${i.name}\n   • Price: ₹${i.price.toLocaleString("en-IN")}/person\n   • Members: ${qty}\n   • Subtotal: ₹${line.toLocaleString("en-IN")}`;
-      }
-      return `${idx + 1}. ${i.name}\n   • Price: ₹${i.price.toLocaleString()}/group\n   • Subtotal: ₹${line.toLocaleString()}`;
-    })
-    .join("\n\n")}\n\n----------------------\nTotal Bill: ₹${total.toLocaleString()}\n\nPlease confirm availability. Thank you!`;
-  const waUrl = whatsappUrl(waMessage);
+  const handleWhatsAppCheckout = () => {
+    const bookingId = createNextBookingId();
+    const message = buildCartWhatsAppMessage(items, total, bookingId);
+    window.open(whatsappUrl(message), "_blank", "noopener,noreferrer");
+  };
 
   useEffect(() => {
     if (!isOpen) return;
@@ -224,15 +208,14 @@ const CartDrawer = () => {
                 ₹{total.toLocaleString("en-IN")}
               </span>
             </div>
-            <a
-              href={waUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`flex items-center justify-center gap-2 bg-sunset hover:bg-sunset/90 text-white py-3.5 rounded-full font-medium text-sm transition min-h-11 ${focusRing}`}
+            <button
+              type="button"
+              onClick={handleWhatsAppCheckout}
+              className={`w-full flex items-center justify-center gap-2 bg-sunset hover:bg-sunset/90 text-white py-3.5 rounded-full font-medium text-sm transition min-h-11 ${focusRing}`}
             >
               <MessageCircle className="w-5 h-5 shrink-0" aria-hidden="true" />
               Checkout via WhatsApp
-            </a>
+            </button>
             <button
               type="button"
               onClick={clear}
