@@ -1,12 +1,13 @@
 "use client";
 
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { AppImage } from "@/components/AppImage";
+import { PackageKnowMoreModal } from "@/components/PackageKnowMoreModal";
 import { PackageOfferPrice } from "@/components/PackageOfferPrice";
+import { getPackageDetail } from "@/data/package-places";
 import { formatPackageInr, getPackageOfferPrices } from "@/lib/package-offer-price";
 import { useCart } from "@/context/CartContext";
-import { Sparkles, MessageCircle, ChevronLeft, ChevronRight, ShoppingCart } from "lucide-react";
+import { Sparkles, Info, ChevronLeft, ChevronRight, ShoppingCart } from "lucide-react";
 import { useEffect, useState, useCallback, useRef } from "react";
 
 import packageMullayanagiri from "@/assets/packages/package-mullayanagiri.webp";
@@ -107,7 +108,9 @@ const PackagesSection = () => {
   const { addItem, items } = useCart();
   const [activeIndex, setActiveIndex] = useState(0);
   const [visible, setVisible] = useState(false);
+  const [knowMoreCartId, setKnowMoreCartId] = useState<string | null>(null);
   const swipeRef = useRef(false);
+  const knowMoreDetail = knowMoreCartId ? getPackageDetail(knowMoreCartId) : null;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -305,14 +308,17 @@ const PackagesSection = () => {
                         <ShoppingCart className="w-3.5 h-3.5 shrink-0" />
                         {inCart ? "Added" : "Add to Cart"}
                       </button>
-                      <Link
-                        href={pkg.link}
-                        onClick={(e) => e.stopPropagation()}
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setKnowMoreCartId(pkg.cartId);
+                        }}
                         className={`${btnBase} backdrop-blur-md bg-sunset/20 border border-sunset/30 text-sunset hover:bg-sunset/30 hover:border-sunset/50`}
                       >
-                        <MessageCircle className="w-3.5 h-3.5 shrink-0" />
+                        <Info className="w-3.5 h-3.5 shrink-0" />
                         Know More
-                      </Link>
+                      </button>
                     </div>
                   </div>
                 </article>
@@ -353,6 +359,11 @@ const PackagesSection = () => {
           </button>
         </div>
       </div>
+
+      <PackageKnowMoreModal
+        detail={knowMoreDetail ?? null}
+        onClose={() => setKnowMoreCartId(null)}
+      />
     </section>
   );
 };

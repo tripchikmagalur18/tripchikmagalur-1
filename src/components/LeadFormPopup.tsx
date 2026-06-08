@@ -139,7 +139,7 @@ const LeadFormPopup = () => {
                     Plan Your Chikmagalur Trip
                   </h2>
                   <p className="text-white/60 text-sm leading-relaxed">
-                    Share your details — our team will contact you shortly on WhatsApp or email.
+                    Share your details — we send them to our team on WhatsApp instantly.
                   </p>
                 </div>
 
@@ -258,8 +258,8 @@ const LeadFormPopup = () => {
                 </form>
 
                 <p className="text-center text-white/40 text-xs mt-4 leading-relaxed px-2">
-                  Your details are sent securely to our team — no WhatsApp app will open on your
-                  device.
+                  Submitted securely — delivered to our WhatsApp via CallMeBot. The WhatsApp app will
+                  not open on your device.
                 </p>
               </>
             ) : (

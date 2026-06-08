@@ -14,6 +14,21 @@ export type Database = {
   }
   public: {
     Tables: {
+      cart_bookings: {
+        Row: {
+          created_at: string
+          id: number
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+        }
+        Update: {
+          created_at?: string
+          id?: number
+        }
+        Relationships: []
+      }
       leads: {
         Row: {
           created_at: string

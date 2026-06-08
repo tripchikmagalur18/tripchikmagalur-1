@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useId, useRef } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
 import { ShoppingCart, X, Trash2, MessageCircle, Minus, Plus } from "lucide-react";
 import { useCart, isStayCartItem } from "@/context/CartContext";
 import { formatBookingDate, stayLineTotal, stayNights } from "@/lib/booking-date";
-import { createNextBookingId } from "@/lib/booking-id";
+import { reserveBookingId } from "@/lib/booking-id";
 import { buildCartWhatsAppMessage } from "@/lib/cart-whatsapp";
 import { whatsappUrl } from "@/lib/whatsapp";
 import { CartSuggestions } from "@/components/CartSuggestions";
@@ -18,11 +18,18 @@ const CartDrawer = () => {
   const titleId = useId();
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
+  const [checkoutLoading, setCheckoutLoading] = useState(false);
 
-  const handleWhatsAppCheckout = () => {
-    const bookingId = createNextBookingId();
-    const message = buildCartWhatsAppMessage(items, total, bookingId);
-    window.open(whatsappUrl(message), "_blank", "noopener,noreferrer");
+  const handleWhatsAppCheckout = async () => {
+    if (checkoutLoading || items.length === 0) return;
+    setCheckoutLoading(true);
+    try {
+      const bookingId = await reserveBookingId();
+      const message = buildCartWhatsAppMessage(items, total, bookingId);
+      window.open(whatsappUrl(message), "_blank", "noopener,noreferrer");
+    } finally {
+      setCheckoutLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -210,11 +217,12 @@ const CartDrawer = () => {
             </div>
             <button
               type="button"
+              disabled={checkoutLoading}
               onClick={handleWhatsAppCheckout}
-              className={`w-full flex items-center justify-center gap-2 bg-sunset hover:bg-sunset/90 text-white py-3.5 rounded-full font-medium text-sm transition min-h-11 ${focusRing}`}
+              className={`w-full flex items-center justify-center gap-2 bg-sunset hover:bg-sunset/90 disabled:opacity-70 disabled:cursor-not-allowed text-white py-3.5 rounded-full font-medium text-sm transition min-h-11 ${focusRing}`}
             >
               <MessageCircle className="w-5 h-5 shrink-0" aria-hidden="true" />
-              Checkout via WhatsApp
+              {checkoutLoading ? "Generating booking ID…" : "Checkout via WhatsApp"}
             </button>
             <button
               type="button"

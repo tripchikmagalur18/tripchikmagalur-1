@@ -51,8 +51,14 @@ export async function POST(request: Request) {
   const notify = await notifyLeadEnquiry(data);
 
   if (!notify.whatsapp && !notify.email) {
+    const callMeBotHint = process.env.CALLMEBOT_API_KEY
+      ? " WhatsApp delivery failed — activate CallMeBot on +91 6363131585 and use the real API key from the bot (not the example 123123 unless that is yours)."
+      : "";
     return NextResponse.json(
-      { error: "Could not deliver enquiry. Please try again or call +91 6363131585." },
+      {
+        error: `Could not deliver enquiry.${callMeBotHint} Please try again or call +91 6363131585.`,
+        ...(process.env.NODE_ENV === "development" ? { details: notify.errors } : {}),
+      },
       { status: 502 },
     );
   }

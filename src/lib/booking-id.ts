@@ -1,25 +1,58 @@
-const BOOKING_SEQ_KEY = "tripchikmagalur_booking_seq";
-const MIN_ID = 1000;
-const MAX_ID = 9999;
+export const BOOKING_ID_START = 1349;
 
-/** Next 4-digit booking ID (1000–9999), ascending per browser via localStorage. */
-export function createNextBookingId(): string {
-  if (typeof window === "undefined") {
-    return String(MIN_ID + Math.floor(Math.random() * (MAX_ID - MIN_ID + 1)));
-  }
+const LOCAL_SEQ_KEY = "tripchikmagalur_booking_seq";
 
+export function formatBookingId(id: number): string {
+  return `#${id}`;
+}
+
+function readLocalLastId(): number {
   try {
-    const stored = localStorage.getItem(BOOKING_SEQ_KEY);
-    const current = stored ? parseInt(stored, 10) : MIN_ID - 1;
-    const next =
-      !Number.isFinite(current) || current < MIN_ID - 1
-        ? MIN_ID
-        : current >= MAX_ID
-          ? MIN_ID
-          : current + 1;
-    localStorage.setItem(BOOKING_SEQ_KEY, String(next));
-    return String(next);
+    const stored = localStorage.getItem(LOCAL_SEQ_KEY);
+    const parsed = stored ? parseInt(stored, 10) : BOOKING_ID_START - 1;
+    if (Number.isFinite(parsed) && parsed >= BOOKING_ID_START - 1) {
+      return parsed;
+    }
   } catch {
-    return String(MIN_ID + Math.floor(Math.random() * (MAX_ID - MIN_ID + 1)));
+    /* ignore */
   }
+  return BOOKING_ID_START - 1;
+}
+
+function writeLocalLastId(id: number) {
+  try {
+    localStorage.setItem(LOCAL_SEQ_KEY, String(id));
+  } catch {
+    /* ignore */
+  }
+}
+
+/** Last-resort per-browser counter — only used if the server API is unreachable. */
+function reserveLocalBookingId(): number {
+  const next = readLocalLastId() + 1;
+  writeLocalLastId(next);
+  return next;
+}
+
+/**
+ * Reserves the next booking ID on checkout (#1349, #1350, #1351, …).
+ * Server assigns the global sequence; client storage only tracks the last seen ID.
+ */
+export async function reserveBookingId(): Promise<string> {
+  try {
+    const res = await fetch("/api/booking-id", {
+      method: "POST",
+      cache: "no-store",
+    });
+
+    if (res.ok) {
+      const payload = (await res.json()) as { id: number; bookingId?: string };
+      writeLocalLastId(payload.id);
+      return payload.bookingId ?? formatBookingId(payload.id);
+    }
+  } catch {
+    /* server unreachable */
+  }
+
+  return formatBookingId(reserveLocalBookingId());
 }

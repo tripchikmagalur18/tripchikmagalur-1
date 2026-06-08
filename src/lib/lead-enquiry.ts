@@ -7,7 +7,7 @@ export const LEAD_SUCCESS_MESSAGE =
   "Thank you! Your enquiry has been received. Our team will contact you shortly.";
 
 export function formatLeadEnquiryMessage(data: LeadFormData): string {
-  return `New Trip ckm Enquiry
+  return `*New Trip Chikmagalur Enquiry*
 
 Name: ${data.name}
 Phone: ${data.phone}

@@ -1,7 +1,7 @@
 import type { LeadFormData } from "@/lib/validations/lead";
 import { formatLeadEnquiryMessage, LEAD_EMAIL } from "@/lib/lead-enquiry";
 
-const NOTIFY_PHONE = process.env.LEAD_WHATSAPP_PHONE ?? "+916363131585";
+const DEFAULT_NOTIFY_PHONE = "+916363131585";
 
 export type NotifyResult = {
   whatsapp: boolean;
@@ -10,17 +10,44 @@ export type NotifyResult = {
   errors: string[];
 };
 
-async function tryCallMeBot(message: string): Promise<boolean> {
-  const apiKey = process.env.CALLMEBOT_API_KEY;
-  if (!apiKey) return false;
+function normalizeNotifyPhone(raw: string): string {
+  const trimmed = raw.trim();
+  if (trimmed.startsWith("+")) return trimmed;
+  const digits = trimmed.replace(/\D/g, "");
+  if (digits.length === 10) return `+91${digits}`;
+  return `+${digits}`;
+}
 
-  const phone = encodeURIComponent(NOTIFY_PHONE);
+function isCallMeBotFailure(body: string): boolean {
+  const lower = body.toLowerCase();
+  return (
+    lower.includes("apikey is invalid") ||
+    lower.includes("invalid apikey") ||
+    lower.includes("api key is invalid") ||
+    lower.includes("please create a new one")
+  );
+}
+
+/** Sends lead popup data to your WhatsApp via CallMeBot (server-side GET). */
+async function tryCallMeBot(message: string): Promise<{ ok: boolean; detail?: string }> {
+  const apiKey = process.env.CALLMEBOT_API_KEY?.trim();
+  if (!apiKey) return { ok: false, detail: "CALLMEBOT_API_KEY not set" };
+
+  const phone = encodeURIComponent(
+    normalizeNotifyPhone(process.env.LEAD_WHATSAPP_PHONE ?? DEFAULT_NOTIFY_PHONE),
+  );
   const text = encodeURIComponent(message);
-  const url = `https://api.callmebot.com/whatsapp.php?phone=${phone}&text=${text}&apikey=${encodeURIComponent(apiKey)}`;
+  const url = `https://api.callmebot.com/whatsapp.php?source=nextjs&phone=${phone}&text=${text}&apikey=${encodeURIComponent(apiKey)}`;
 
   const res = await fetch(url, { method: "GET", cache: "no-store" });
   const body = await res.text();
-  return res.ok && !body.toLowerCase().includes("error");
+
+  if (!res.ok || isCallMeBotFailure(body)) {
+    const snippet = body.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().slice(0, 160);
+    return { ok: false, detail: snippet || `HTTP ${res.status}` };
+  }
+
+  return { ok: true };
 }
 
 async function tryWhatsAppCloudApi(message: string): Promise<boolean> {
@@ -28,7 +55,10 @@ async function tryWhatsAppCloudApi(message: string): Promise<boolean> {
   const phoneNumberId = process.env.WHATSAPP_PHONE_NUMBER_ID;
   if (!token || !phoneNumberId) return false;
 
-  const to = NOTIFY_PHONE.replace(/\D/g, "");
+  const notifyPhone = normalizeNotifyPhone(
+    process.env.LEAD_WHATSAPP_PHONE ?? DEFAULT_NOTIFY_PHONE,
+  );
+  const to = notifyPhone.replace(/\D/g, "");
   const res = await fetch(`https://graph.facebook.com/v21.0/${phoneNumberId}/messages`, {
     method: "POST",
     headers: {
@@ -73,7 +103,7 @@ async function tryResendEmail(message: string, data: LeadFormData): Promise<bool
   return res.ok;
 }
 
-/** Sends enquiry to WhatsApp (server-side) and/or email — no browser WhatsApp UI. */
+/** Popup enquiry → WhatsApp (CallMeBot) with optional email fallback. */
 export async function notifyLeadEnquiry(data: LeadFormData): Promise<NotifyResult> {
   const message = formatLeadEnquiryMessage(data);
   const result: NotifyResult = {
@@ -83,23 +113,31 @@ export async function notifyLeadEnquiry(data: LeadFormData): Promise<NotifyResul
     errors: [],
   };
 
-  const whatsappCloud = await tryWhatsAppCloudApi(message).catch((e) => {
-    result.errors.push(`WhatsApp API: ${e instanceof Error ? e.message : "failed"}`);
-    return false;
-  });
-  if (whatsappCloud) {
-    result.whatsapp = true;
-    result.channels.push("whatsapp_cloud");
+  if (process.env.CALLMEBOT_API_KEY?.trim()) {
+    const callMeBot = await tryCallMeBot(message).catch((e) => ({
+      ok: false,
+      detail: e instanceof Error ? e.message : "CallMeBot request failed",
+    }));
+    if (callMeBot.ok) {
+      result.whatsapp = true;
+      result.channels.push("callmebot");
+    } else {
+      result.errors.push(
+        callMeBot.detail
+          ? `CallMeBot: ${callMeBot.detail}`
+          : "CallMeBot: message not delivered",
+      );
+    }
   }
 
   if (!result.whatsapp) {
-    const callMeBot = await tryCallMeBot(message).catch((e) => {
-      result.errors.push(`CallMeBot: ${e instanceof Error ? e.message : "failed"}`);
+    const whatsappCloud = await tryWhatsAppCloudApi(message).catch((e) => {
+      result.errors.push(`WhatsApp API: ${e instanceof Error ? e.message : "failed"}`);
       return false;
     });
-    if (callMeBot) {
+    if (whatsappCloud) {
       result.whatsapp = true;
-      result.channels.push("callmebot");
+      result.channels.push("whatsapp_cloud");
     }
   }
 
@@ -117,7 +155,7 @@ export async function notifyLeadEnquiry(data: LeadFormData): Promise<NotifyResul
 
 export function isLeadNotifyConfigured(): boolean {
   return Boolean(
-    process.env.CALLMEBOT_API_KEY ||
+    process.env.CALLMEBOT_API_KEY?.trim() ||
       (process.env.WHATSAPP_ACCESS_TOKEN && process.env.WHATSAPP_PHONE_NUMBER_ID) ||
       process.env.RESEND_API_KEY,
   );
