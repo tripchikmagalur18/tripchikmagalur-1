@@ -206,10 +206,10 @@ const PackagesSection = () => {
         </div>
 
         <div
-          className={`relative flex items-center justify-center transition-all duration-700 ${
+          className={`relative flex items-center justify-center touch-pan-y transition-all duration-700 ${
             visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
           }`}
-          style={{ height: "520px", maxWidth: "600px", margin: "0 auto" }}
+          style={{ height: "min(520px, 70dvh)", maxWidth: "600px", margin: "0 auto" }}
           onTouchStart={(e) => setTouchStart(e.touches[0].clientX)}
           onTouchEnd={(e) => {
             if (touchStart === null) return;

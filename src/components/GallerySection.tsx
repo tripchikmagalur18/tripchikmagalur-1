@@ -8,19 +8,29 @@ import trekImg from "@/assets/activity-trek.webp";
 import campingImg from "@/assets/activity-camping.webp";
 import sightseeingImg from "@/assets/activity-sightseeing.webp";
 import heroImg from "@/assets/hero-chikmagalur.webp";
+import galleryHouseOfPepperCamping from "@/assets/gallery/gallery-house-of-pepper-camping.webp";
+import galleryMullayanagiriSunset from "@/assets/gallery/gallery-mullayanagiri-sunset.webp";
+import galleryWaterfallTrek from "@/assets/gallery/gallery-waterfall-trek.webp";
+import galleryAboveCloudsSummit from "@/assets/gallery/gallery-above-clouds-summit.webp";
+import galleryResortPoolVilla from "@/assets/gallery/gallery-resort-pool-villa.webp";
 import type { StaticImageData } from "next/image";
 import { AppImage } from "@/components/AppImage";
 
 const GALLERY_SIZES = "(max-width: 768px) 256px, 288px";
 
-const galleryImages: { src: StaticImageData; alt: string; rotation: number }[] = [
-  { src: heroImg, alt: "Misty Chikmagalur mountain panorama at sunrise over coffee country", rotation: -3 },
-  { src: sightseeingImg, alt: "Hebbe Falls cascading through Kemmangundi coffee estate Chikmagalur", rotation: 4 },
-  { src: trekImg, alt: "Mullayanagiri trek summit view above clouds in Chikmagalur", rotation: -2 },
-  { src: jeepImg, alt: "Jeep safari on Western Ghats trail near Chikmagalur waterfalls", rotation: 5 },
-  { src: campingImg, alt: "Campfire night camping experience in Chikmagalur hills", rotation: -4 },
-  { src: ziplineImg, alt: "Ziplining adventure across valley in Chikmagalur", rotation: 3 },
-  { src: atvImg, alt: "ATV off-road adventure ride in Chikmagalur terrain", rotation: -5 },
+const galleryImages: { src: StaticImageData; alt: string; caption: string; rotation: number }[] = [
+  { src: heroImg, alt: "Misty Chikmagalur mountain panorama at sunrise over coffee country Karnataka", caption: "Coffee country sunrise", rotation: -3 },
+  { src: galleryAboveCloudsSummit, alt: "Trekkers standing above the clouds at Mullayanagiri summit Chikmagalur Karnataka", caption: "Above the clouds — Mullayanagiri", rotation: 4 },
+  { src: galleryMullayanagiriSunset, alt: "Friends celebrating sunset at Mullayanagiri peak viewpoint on Chikmagalur tour package", caption: "Sunset at Mullayanagiri peak", rotation: -2 },
+  { src: galleryWaterfallTrek, alt: "Adventure waterfall trekking in lush Western Ghats forest near Chikmagalur", caption: "Waterfall trek adventure", rotation: 5 },
+  { src: sightseeingImg, alt: "Hebbe Falls cascading through Kemmangundi coffee estate Chikmagalur", caption: "Hebbe Falls — Kemmangundi", rotation: -4 },
+  { src: galleryResortPoolVilla, alt: "Trip Chikmagalur resort with swimming pool and luxury villa stay in coffee hills", caption: "Resort with pool — Chikmagalur", rotation: 3 },
+  { src: galleryHouseOfPepperCamping, alt: "Luxury camping tents at House of Pepper Coffee homestay in Chikmagalur plantation", caption: "House of Pepper Coffee camping", rotation: -5 },
+  { src: trekImg, alt: "Mullayanagiri trek summit trail through misty hills in Chikmagalur", caption: "Mullayanagiri trek trail", rotation: 2 },
+  { src: jeepImg, alt: "Jeep safari on Western Ghats mountain trail near Chikmagalur waterfalls", caption: "Jeep safari adventure", rotation: -3 },
+  { src: campingImg, alt: "Campfire night camping experience in Chikmagalur Western Ghats hills", caption: "Night camping in the hills", rotation: 4 },
+  { src: ziplineImg, alt: "Ziplining adventure across valley in Chikmagalur Karnataka", caption: "Zipline adventure", rotation: -2 },
+  { src: atvImg, alt: "ATV off-road adventure ride through Chikmagalur coffee plantation trails", caption: "ATV off-road ride", rotation: 5 },
 ];
 
 const GallerySection = () => {
@@ -53,44 +63,25 @@ const GallerySection = () => {
     return () => observer.disconnect();
   }, []);
 
-  const handleMouseDown = (e: React.MouseEvent) => {
-    if (!scrollContainerRef.current) return;
+  const handlePointerDown = (e: React.PointerEvent) => {
+    if (e.pointerType !== "mouse" || !scrollContainerRef.current) return;
     setIsDragging(true);
     setIsPaused(true);
     setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
     setScrollLeft(scrollContainerRef.current.scrollLeft);
   };
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging || !scrollContainerRef.current) return;
-    e.preventDefault();
+  const handlePointerMove = (e: React.PointerEvent) => {
+    if (e.pointerType !== "mouse" || !isDragging || !scrollContainerRef.current) return;
     const x = e.pageX - scrollContainerRef.current.offsetLeft;
     const walk = (x - startX) * 1.5;
     scrollContainerRef.current.scrollLeft = scrollLeft - walk;
   };
 
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
-
-  const handleMouseLeave = () => {
+  const endDrag = () => {
     setIsDragging(false);
     setIsPaused(false);
     setHoveredIndex(null);
-  };
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    if (!scrollContainerRef.current) return;
-    setIsPaused(true);
-    setStartX(e.touches[0].pageX - scrollContainerRef.current.offsetLeft);
-    setScrollLeft(scrollContainerRef.current.scrollLeft);
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!scrollContainerRef.current) return;
-    const x = e.touches[0].pageX - scrollContainerRef.current.offsetLeft;
-    const walk = (x - startX) * 1.5;
-    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
   };
 
   return (
@@ -121,15 +112,17 @@ const GallerySection = () => {
       {/* Scrolling Gallery with Tilted Cards */}
       <div
         ref={scrollContainerRef}
-        className={`relative py-8 overflow-x-auto scrollbar-hide cursor-grab ${isDragging ? 'cursor-grabbing' : ''}`}
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseLeave}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
+        className={`relative py-8 overflow-x-auto scrollbar-hide touch-pan-x overscroll-x-contain ${
+          isDragging ? "cursor-grabbing" : "md:cursor-grab"
+        }`}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={endDrag}
+        onPointerLeave={endDrag}
+        onPointerCancel={endDrag}
+        onTouchStart={() => setIsPaused(true)}
         onTouchEnd={() => setIsPaused(false)}
-        style={{ scrollBehavior: isDragging ? 'auto' : 'smooth' }}
+        style={{ scrollBehavior: isDragging ? "auto" : "smooth", WebkitOverflowScrolling: "touch" }}
       >
         <div
           className={`flex gap-8 ${isPaused || isDragging ? "" : "animate-slide-left-slow"}`}
@@ -189,7 +182,7 @@ const GallerySection = () => {
                       opacity: isHovered ? 1 : 0.8,
                     }}
                   >
-                    <p className="text-white font-semibold text-lg">{image.alt}</p>
+                    <p className="text-white font-semibold text-lg">{image.caption}</p>
                   </div>
                 </div>
                 

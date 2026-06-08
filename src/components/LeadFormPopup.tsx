@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { X, User, Phone, Mail, Sparkles } from "lucide-react";
 import { leadFormSchema } from "@/lib/validations/lead";
 import { LEAD_SUCCESS_MESSAGE, submitLeadEnquiry } from "@/lib/lead-enquiry";
+import { useBodyScrollLock } from "@/hooks/use-body-scroll-lock";
 
 const focusRing =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunset focus-visible:ring-offset-2 focus-visible:ring-offset-transparent";
@@ -19,6 +20,8 @@ const LeadFormPopup = () => {
   });
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  useBodyScrollLock(isVisible && !isClosing);
 
   useEffect(() => {
     const hasSeenPopup = sessionStorage.getItem("hasSeenLeadPopup");
@@ -96,7 +99,7 @@ const LeadFormPopup = () => {
       role="presentation"
     >
       <div
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/60 max-md:backdrop-blur-none md:backdrop-blur-sm"
         onClick={handleClose}
         aria-hidden="true"
       />

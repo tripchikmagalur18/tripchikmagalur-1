@@ -19,6 +19,7 @@ import {
 import { AppImage } from "@/components/AppImage";
 import type { StayGalleryImage } from "@/data/stays";
 import { cn } from "@/lib/utils";
+import { useBodyScrollLock } from "@/hooks/use-body-scroll-lock";
 
 const focusRing =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunset focus-visible:ring-offset-2 focus-visible:ring-offset-background";
@@ -114,11 +115,11 @@ export function ResortGalleryCarousel({ images, className }: ResortGalleryCarous
     lightboxApi.scrollTo(lightboxIndex, true);
   }, [lightboxOpen, lightboxApi, lightboxIndex]);
 
+  useBodyScrollLock(lightboxOpen);
+
   useEffect(() => {
     if (!lightboxOpen) return;
 
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
     closeButtonRef.current?.focus();
 
     const onKeyDown = (e: KeyboardEvent) => {
@@ -129,7 +130,6 @@ export function ResortGalleryCarousel({ images, className }: ResortGalleryCarous
     document.addEventListener("keydown", onKeyDown);
 
     return () => {
-      document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", onKeyDown);
     };
   }, [lightboxOpen, closeLightbox, lightboxApi]);

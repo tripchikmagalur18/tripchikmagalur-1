@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useBodyScrollLock } from "@/hooks/use-body-scroll-lock";
 import { X, MapPin, Clock, ShoppingCart } from "lucide-react";
 import { AspectImage } from "@/components/AspectImage";
 import { PackageOfferPrice } from "@/components/PackageOfferPrice";
@@ -23,12 +24,12 @@ export function PackageKnowMoreModal({ detail, onClose }: PackageKnowMoreModalPr
   const isOpen = detail !== null;
   const inCart = detail ? items.some((i) => i.id === detail.cartId) : false;
 
+  useBodyScrollLock(isOpen);
+
   useEffect(() => {
     if (!isOpen) return;
 
     previousFocusRef.current = document.activeElement as HTMLElement | null;
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
 
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -37,7 +38,6 @@ export function PackageKnowMoreModal({ detail, onClose }: PackageKnowMoreModalPr
     closeRef.current?.focus();
 
     return () => {
-      document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", onKeyDown);
       previousFocusRef.current?.focus();
     };
@@ -60,7 +60,7 @@ export function PackageKnowMoreModal({ detail, onClose }: PackageKnowMoreModalPr
       role="presentation"
     >
       <div
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/60 max-md:backdrop-blur-none md:backdrop-blur-sm"
         onClick={onClose}
         aria-hidden="true"
       />
@@ -114,7 +114,7 @@ export function PackageKnowMoreModal({ detail, onClose }: PackageKnowMoreModalPr
         </div>
 
         {/* Places list */}
-        <div className="flex-1 overflow-y-auto overscroll-contain px-4 sm:px-6 py-5">
+        <div className="flex-1 overflow-y-auto overscroll-contain touch-pan-y [-webkit-overflow-scrolling:touch] px-4 sm:px-6 py-5">
           <p className="text-sm font-medium text-muted-foreground mb-4">
             {detail.places.length} places included · distances from Chikmagalur (Ckm)
           </p>

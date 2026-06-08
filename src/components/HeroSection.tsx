@@ -126,6 +126,9 @@ const HeroSection = () => {
   }, []);
 
   useEffect(() => {
+    const finePointer = window.matchMedia("(pointer: fine)");
+    if (!finePointer.matches) return;
+
     const handleMouseMove = (e: MouseEvent) => {
       if (!heroRef.current) return;
       const rect = heroRef.current.getBoundingClientRect();
@@ -135,10 +138,10 @@ const HeroSection = () => {
     };
 
     const hero = heroRef.current;
-    if (hero) {
-      hero.addEventListener("mousemove", handleMouseMove);
-      return () => hero.removeEventListener("mousemove", handleMouseMove);
-    }
+    if (!hero) return;
+
+    hero.addEventListener("mousemove", handleMouseMove, { passive: true });
+    return () => hero.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   return (

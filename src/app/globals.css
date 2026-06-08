@@ -202,10 +202,19 @@ html body dialog::backdrop {
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
   }
 
   html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  button,
+  a,
+  [role="button"] {
+    touch-action: manipulation;
   }
 }
 

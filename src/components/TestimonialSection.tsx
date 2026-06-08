@@ -118,43 +118,24 @@ const TestimonialSection = () => {
     return () => observer.disconnect();
   }, []);
 
-  const handleMouseDown = (e: React.MouseEvent) => {
-    if (!scrollContainerRef.current) return;
+  const handlePointerDown = (e: React.PointerEvent) => {
+    if (e.pointerType !== "mouse" || !scrollContainerRef.current) return;
     setIsDragging(true);
     setIsPaused(true);
     setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
     setScrollLeft(scrollContainerRef.current.scrollLeft);
   };
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging || !scrollContainerRef.current) return;
-    e.preventDefault();
+  const handlePointerMove = (e: React.PointerEvent) => {
+    if (e.pointerType !== "mouse" || !isDragging || !scrollContainerRef.current) return;
     const x = e.pageX - scrollContainerRef.current.offsetLeft;
     const walk = (x - startX) * 1.5;
     scrollContainerRef.current.scrollLeft = scrollLeft - walk;
   };
 
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
-
-  const handleMouseLeave = () => {
+  const endDrag = () => {
     setIsDragging(false);
     setIsPaused(false);
-  };
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    if (!scrollContainerRef.current) return;
-    setIsPaused(true);
-    setStartX(e.touches[0].pageX - scrollContainerRef.current.offsetLeft);
-    setScrollLeft(scrollContainerRef.current.scrollLeft);
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!scrollContainerRef.current) return;
-    const x = e.touches[0].pageX - scrollContainerRef.current.offsetLeft;
-    const walk = (x - startX) * 1.5;
-    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
   };
 
   // Duplicate testimonials for seamless infinite scroll
@@ -187,19 +168,17 @@ const TestimonialSection = () => {
       {/* Carousel Container */}
       <div 
         ref={scrollContainerRef}
-        className={`relative overflow-x-auto scrollbar-hide transition-all duration-1000 delay-300 cursor-grab ${
-          isDragging ? 'cursor-grabbing' : ''
-        } ${
-          isVisible ? 'opacity-100' : 'opacity-0'
-        }`}
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseLeave}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
+        className={`relative overflow-x-auto scrollbar-hide transition-all duration-1000 delay-300 touch-pan-x overscroll-x-contain ${
+          isDragging ? "cursor-grabbing" : "md:cursor-grab"
+        } ${isVisible ? "opacity-100" : "opacity-0"}`}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={endDrag}
+        onPointerLeave={endDrag}
+        onPointerCancel={endDrag}
+        onTouchStart={() => setIsPaused(true)}
         onTouchEnd={() => setIsPaused(false)}
-        style={{ scrollBehavior: isDragging ? 'auto' : 'smooth' }}
+        style={{ scrollBehavior: isDragging ? "auto" : "smooth", WebkitOverflowScrolling: "touch" }}
       >
         {/* Gradient masks for smooth edges */}
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-muted/30 to-transparent z-10 pointer-events-none" />
