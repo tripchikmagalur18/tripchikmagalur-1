@@ -4,9 +4,9 @@ import { useState } from "react";
 import { Phone } from "lucide-react";
 import { PHONE_LINK } from "@/lib/whatsapp";
 
-/** Teal gradient — matches site chat/support accent used alongside the Saif chat widget */
+/** WhatsApp green — matches FloatingWhatsApp and chat widget */
 const CALL_BUTTON_CLASS =
-  "min-w-14 min-h-14 w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(174,72%,40%)] focus-visible:ring-offset-2 bg-gradient-to-br from-[hsl(174,72%,40%)] to-[hsl(195,80%,45%)]";
+  "min-w-14 min-h-14 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2";
 
 type FloatingCallButtonProps = {
   positionClassName?: string;
