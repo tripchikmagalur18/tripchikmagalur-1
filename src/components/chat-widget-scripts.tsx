@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import Script from "next/script";
 import { useEffect } from "react";
+import { useCart } from "@/context/CartContext";
 
 function setChatWidgetsVisible(visible: boolean) {
   const display = visible ? "" : "none";
@@ -32,10 +33,11 @@ function setChatWidgetsVisible(visible: boolean) {
 export function ChatWidgetScripts() {
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const { isOpen: isCartOpen } = useCart();
 
   useEffect(() => {
-    setChatWidgetsVisible(isHome);
-  }, [isHome]);
+    setChatWidgetsVisible(isHome && !isCartOpen);
+  }, [isHome, isCartOpen]);
 
   if (!isHome) return null;
 
