@@ -3,9 +3,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Third-party chat widget container - force floating bottom-right */
+/* Third-party chat widget — constrain known roots only (avoid broad body > div rules on iOS) */
 #chat-widget-root,
-body > div:has(> dialog):not(:has(main)) {
+#__cw_portal {
   position: fixed !important;
   bottom: 16px !important;
   right: 16px !important;
@@ -14,8 +14,8 @@ body > div:has(> dialog):not(:has(main)) {
   width: auto !important;
   height: auto !important;
   max-width: min(400px, calc(100vw - 32px));
-  max-height: calc(100vh - 32px);
-  z-index: 2147483600;
+  max-height: calc(100dvh - 32px);
+  z-index: 40;
   pointer-events: auto;
 }
 
@@ -35,10 +35,11 @@ html body dialog[open] {
   width: min(380px, calc(100vw - 32px)) !important;
   max-width: calc(100vw - 32px) !important;
   height: auto !important;
-  max-height: min(560px, calc(100vh - 120px)) !important;
+  max-height: min(560px, calc(100dvh - 120px)) !important;
   border: none !important;
   background: transparent !important;
   overflow: hidden !important;
+  z-index: 40 !important;
 }
 
 html body dialog::backdrop {
@@ -52,7 +53,18 @@ html body dialog::backdrop {
     bottom: 80px !important;
     inset: auto 8px 80px auto !important;
     width: calc(100vw - 16px) !important;
-    max-height: calc(100vh - 100px) !important;
+    max-height: calc(100dvh - 100px) !important;
+  }
+}
+
+/* Safe-area padding for fixed bottom UI (iOS notch/home indicator) */
+.safe-bottom-fixed {
+  bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+}
+
+@media (max-width: 640px) {
+  .safe-bottom-fixed {
+    bottom: calc(5rem + env(safe-area-inset-bottom, 0px));
   }
 }
 
@@ -202,19 +214,70 @@ html body dialog::backdrop {
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    overflow-x: hidden;
+    overflow-x: clip;
     -webkit-overflow-scrolling: touch;
+    -webkit-tap-highlight-color: transparent;
   }
 
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+    overflow-x: clip;
   }
 
   button,
   a,
   [role="button"] {
     touch-action: manipulation;
+  }
+
+  /* Lighter glass on touch devices — backdrop-blur is costly on iOS Safari */
+  @media (hover: none), (pointer: coarse) {
+    .glass,
+    .glass-dark,
+    .glass-light,
+    .glass-card,
+    .glass-card-light,
+    .glass-button,
+    .testimonial-card,
+    .testimonial-card-hovered {
+      -webkit-backdrop-filter: none !important;
+      backdrop-filter: none !important;
+    }
+
+    .glass-dark {
+      background: hsl(0 0% 0% / 0.72) !important;
+    }
+
+    .glass-card {
+      background: hsl(0 0% 100% / 0.18) !important;
+    }
+
+    .glass-card-light,
+    .testimonial-card {
+      background: hsl(0 0% 100% / 0.92) !important;
+    }
+
+    .glass-button {
+      background: hsl(0 0% 100% / 0.22) !important;
+    }
+
+    .animate-mist-drift-1,
+    .animate-mist-drift-2,
+    .animate-mist-drift-3,
+    .animate-bloom-pulse {
+      animation: none !important;
+      opacity: 0 !important;
+    }
+
+    .animate-carousel-slow,
+    .animate-slide-left-slow {
+      animation: none !important;
+    }
+
+    .testimonial-card {
+      animation: none !important;
+    }
   }
 }
 

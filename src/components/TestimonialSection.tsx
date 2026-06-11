@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { AppImage } from "@/components/AppImage";
 import { testimonials } from "@/data/testimonials";
+import { useCoarsePointer } from "@/hooks/use-coarse-pointer";
 
 const TestimonialCard = ({ 
   testimonial, 
@@ -93,6 +94,7 @@ const TestimonialCard = ({
 };
 
 const TestimonialSection = () => {
+  const isTouchDevice = useCoarsePointer();
   const sectionRef = useRef<HTMLElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -100,6 +102,7 @@ const TestimonialSection = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+  const autoScroll = !isTouchDevice && !isPaused && !isDragging;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -160,7 +163,7 @@ const TestimonialSection = () => {
             What Our Travelers Say
           </h2>
           <p className="text-muted-foreground mt-4 text-sm">
-            Drag to explore →
+            {isTouchDevice ? "Swipe to explore →" : "Drag to explore →"}
           </p>
         </div>
       </div>
@@ -168,7 +171,7 @@ const TestimonialSection = () => {
       {/* Carousel Container */}
       <div 
         ref={scrollContainerRef}
-        className={`relative overflow-x-auto scrollbar-hide transition-all duration-1000 delay-300 touch-pan-x overscroll-x-contain ${
+        className={`relative overflow-x-auto scrollbar-hide transition-all duration-1000 delay-300 touch-pan-x overscroll-x-contain [-webkit-overflow-scrolling:touch] ${
           isDragging ? "cursor-grabbing" : "md:cursor-grab"
         } ${isVisible ? "opacity-100" : "opacity-0"}`}
         onPointerDown={handlePointerDown}
@@ -176,19 +179,17 @@ const TestimonialSection = () => {
         onPointerUp={endDrag}
         onPointerLeave={endDrag}
         onPointerCancel={endDrag}
-        onTouchStart={() => setIsPaused(true)}
-        onTouchEnd={() => setIsPaused(false)}
-        style={{ scrollBehavior: isDragging ? "auto" : "smooth", WebkitOverflowScrolling: "touch" }}
+        style={{ scrollBehavior: isDragging ? "auto" : "auto" }}
       >
         {/* Gradient masks for smooth edges */}
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-muted/30 to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-muted/30 to-transparent z-10 pointer-events-none" />
         
         {/* Scrolling testimonials - Super slow 40s cycle */}
-        <div 
-          className={`flex py-4 ${isPaused || isDragging ? '' : 'animate-carousel-slow'}`}
-          style={{ 
-            animationPlayState: isPaused || isDragging ? 'paused' : 'running',
+        <div
+          className={`flex py-4 ${autoScroll ? "animate-carousel-slow" : ""}`}
+          style={{
+            animationPlayState: autoScroll ? "running" : "paused",
           }}
         >
           {duplicatedTestimonials.map((testimonial, index) => (

@@ -21,7 +21,7 @@ const webPage = {
   "@type": "WebPage",
   name: "Best Chikmagalur Tour Packages — Trip Chikmagalur",
   description:
-    "Book Chikmagalur tour packages from ₹3,499. Mullayanagiri trek, Kemmangundi, waterfalls & jeep safari. Govt. verified, 5000+ travelers.",
+    "Book Chikmagalur tour packages from ₹3,499. Mullayanagiri trek, Kemmangundi, waterfalls & jeep safari. Govt. verified, 500+ travellers.",
   url: SITE_URL,
   isPartOf: {
     "@type": "WebSite",

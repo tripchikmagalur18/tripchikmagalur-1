@@ -15,6 +15,7 @@ import galleryAboveCloudsSummit from "@/assets/gallery/gallery-above-clouds-summ
 import galleryResortPoolVilla from "@/assets/gallery/gallery-resort-pool-villa.webp";
 import type { StaticImageData } from "next/image";
 import { AppImage } from "@/components/AppImage";
+import { useCoarsePointer } from "@/hooks/use-coarse-pointer";
 
 const GALLERY_SIZES = "(max-width: 768px) 256px, 288px";
 
@@ -34,6 +35,7 @@ const galleryImages: { src: StaticImageData; alt: string; caption: string; rotat
 ];
 
 const GallerySection = () => {
+  const isTouchDevice = useCoarsePointer();
   const [isPaused, setIsPaused] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
@@ -84,6 +86,8 @@ const GallerySection = () => {
     setHoveredIndex(null);
   };
 
+  const autoScroll = !isTouchDevice && !isPaused && !isDragging;
+
   return (
     <section 
       ref={sectionRef}
@@ -104,7 +108,7 @@ const GallerySection = () => {
             Glimpses of the magical experiences awaiting you in Chikmagalur
           </p>
           <p className="text-muted-foreground/60 mt-2 text-sm">
-            Drag to explore →
+            {isTouchDevice ? "Swipe to explore →" : "Drag to explore →"}
           </p>
         </div>
       </div>
@@ -112,7 +116,7 @@ const GallerySection = () => {
       {/* Scrolling Gallery with Tilted Cards */}
       <div
         ref={scrollContainerRef}
-        className={`relative py-8 overflow-x-auto scrollbar-hide touch-pan-x overscroll-x-contain ${
+        className={`relative py-8 overflow-x-auto scrollbar-hide touch-pan-x overscroll-x-contain [-webkit-overflow-scrolling:touch] ${
           isDragging ? "cursor-grabbing" : "md:cursor-grab"
         }`}
         onPointerDown={handlePointerDown}
@@ -120,14 +124,12 @@ const GallerySection = () => {
         onPointerUp={endDrag}
         onPointerLeave={endDrag}
         onPointerCancel={endDrag}
-        onTouchStart={() => setIsPaused(true)}
-        onTouchEnd={() => setIsPaused(false)}
-        style={{ scrollBehavior: isDragging ? "auto" : "smooth", WebkitOverflowScrolling: "touch" }}
+        style={{ scrollBehavior: "auto" }}
       >
         <div
-          className={`flex gap-8 ${isPaused || isDragging ? "" : "animate-slide-left-slow"}`}
+          className={`flex gap-8 ${autoScroll ? "animate-slide-left-slow" : ""}`}
           style={{
-            animationPlayState: isPaused || isDragging ? "paused" : "running",
+            animationPlayState: autoScroll ? "running" : "paused",
             width: "max-content",
           }}
         >

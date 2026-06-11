@@ -12,13 +12,12 @@ type FloatingCallButtonProps = {
   positionClassName?: string;
 };
 
-const FloatingCallButton = ({ positionClassName = "bottom-6" }: FloatingCallButtonProps) => {
+const FloatingCallButton = ({ positionClassName = "safe-bottom-fixed" }: FloatingCallButtonProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div
-      className={`fixed left-4 sm:left-6 z-50 flex items-center gap-3 ${positionClassName}`}
-      style={{ marginBottom: "env(safe-area-inset-bottom, 0px)" }}
+      className={`fixed left-4 sm:left-6 z-40 flex items-center gap-3 ${positionClassName}`}
     >
       <a
         href={PHONE_LINK}

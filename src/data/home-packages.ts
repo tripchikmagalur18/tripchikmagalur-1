@@ -81,7 +81,7 @@ export const homeFaqItems = [
   {
     question: "Is Trip Chikmagalur government verified?",
     answer:
-      "Trip Chikmagalur is a verified local tour operator with experienced guides, safety-certified adventure equipment, and transparent pricing. We have served over 5,000 travellers and work with Tourism Department of India and WTTC certified partners.",
+      "Trip Chikmagalur is a verified local tour operator with experienced guides, safety-certified adventure equipment, and transparent pricing. We have served 500+ travellers and work with Tourism Department of India and WTTC certified partners.",
   },
   {
     question: "What is the best time to visit Chikmagalur?",

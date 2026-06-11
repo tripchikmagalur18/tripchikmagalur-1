@@ -87,7 +87,7 @@ export function ChatWidgetScripts() {
     if (!p) {
       p = document.createElement("div");
       p.id = PORTAL_ID;
-      p.style.cssText = "position:fixed;inset:auto;right:0;bottom:0;width:0;height:0;z-index:2147483600;";
+      p.style.cssText = "position:fixed;inset:auto;right:0;bottom:0;width:0;height:0;z-index:40;";
       document.body.appendChild(p);
     }
     return p;
@@ -104,9 +104,9 @@ export function ChatWidgetScripts() {
     s.setProperty("margin", "0", "important");
     s.setProperty("width", isMobile() ? "calc(100vw - 16px)" : "min(380px, calc(100vw - 32px))", "important");
     s.setProperty("max-width", "calc(100vw - 16px)", "important");
-    s.setProperty("height", isMobile() ? "calc(100vh - 100px)" : "min(560px, calc(100vh - 120px))", "important");
-    s.setProperty("max-height", isMobile() ? "calc(100vh - 100px)" : "min(560px, calc(100vh - 120px))", "important");
-    s.setProperty("z-index", "2147483600", "important");
+    s.setProperty("height", isMobile() ? "calc(100dvh - 100px)" : "min(560px, calc(100dvh - 120px))", "important");
+    s.setProperty("max-height", isMobile() ? "calc(100dvh - 100px)" : "min(560px, calc(100dvh - 120px))", "important");
+    s.setProperty("z-index", "40", "important");
     s.setProperty("pointer-events", "auto", "important");
     s.setProperty("border-radius", "16px", "important");
     s.setProperty("box-shadow", "0 20px 60px rgba(0,0,0,0.2)", "important");
@@ -131,15 +131,22 @@ export function ChatWidgetScripts() {
     document.querySelectorAll("body dialog[open]").forEach(applyStyles);
   }
   var raf = null;
+  var lastScan = 0;
   function schedule() {
     if (raf) return;
-    raf = requestAnimationFrame(function () { raf = null; scan(); });
+    raf = requestAnimationFrame(function () {
+      raf = null;
+      var now = Date.now();
+      if (now - lastScan < 120) return;
+      lastScan = now;
+      scan();
+    });
   }
   new MutationObserver(schedule).observe(document.documentElement, {
     childList: true, subtree: true, attributes: true,
     attributeFilter: ["open", "style", "class", "aria-hidden"]
   });
-  window.addEventListener("resize", schedule);
+  window.addEventListener("resize", schedule, { passive: true });
   schedule();
 })();`}
       </Script>

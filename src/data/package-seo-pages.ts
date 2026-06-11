@@ -64,7 +64,7 @@ export const packageSeoPages: Record<string, PackageSeoPage> = {
         h2: "Why book with Trip Chikmagalur?",
         paragraphs: [
           "Self-driving tourists often underestimate ghat distances between Mullayanagiri, Baba Budangiri, and Jhari Falls — a full loop can exceed 120 km of winding road in one day. Our package sequences stops to reduce backtracking and accounts for jeep wait times at estate waterfalls.",
-          "We are based in Chikmagalur with 5,000+ travellers served and government-verified operations. Explore our FAQ, compare the Kemmangundi package for day two, or read the Mullayanagiri trek guide on our blog for packing lists and safety tips.",
+          "We are based in Chikmagalur with 500+ travellers served and government-verified operations. Explore our FAQ, compare the Kemmangundi package for day two, or read the Mullayanagiri trek guide on our blog for packing lists and safety tips.",
         ],
       },
       {

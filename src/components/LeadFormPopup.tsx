@@ -99,7 +99,7 @@ const LeadFormPopup = () => {
       role="presentation"
     >
       <div
-        className="absolute inset-0 bg-black/60 max-md:backdrop-blur-none md:backdrop-blur-sm"
+        className="absolute inset-0 bg-black/60 max-md:backdrop-blur-none md:backdrop-blur-sm touch-none"
         onClick={handleClose}
         aria-hidden="true"
       />

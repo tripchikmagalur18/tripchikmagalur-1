@@ -60,7 +60,7 @@ export function PackageKnowMoreModal({ detail, onClose }: PackageKnowMoreModalPr
       role="presentation"
     >
       <div
-        className="absolute inset-0 bg-black/60 max-md:backdrop-blur-none md:backdrop-blur-sm"
+        className="absolute inset-0 bg-black/60 max-md:backdrop-blur-none md:backdrop-blur-sm touch-none"
         onClick={onClose}
         aria-hidden="true"
       />

@@ -58,7 +58,7 @@ const CartDrawer = () => {
     <>
       <div
         onClick={closeCart}
-        className="fixed inset-0 z-[60] bg-black/50 max-md:backdrop-blur-none md:backdrop-blur-sm animate-in fade-in duration-200"
+        className="fixed inset-0 z-[60] bg-black/50 max-md:backdrop-blur-none md:backdrop-blur-sm animate-in fade-in duration-200 touch-none"
         aria-hidden="true"
       />
 

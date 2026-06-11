@@ -12,7 +12,7 @@ export function buildBusinessSchema() {
     name: "Trip Chikmagalur",
     alternateName: "Wanderlust CKM",
     description:
-      "Government-verified local tour operator in Chikmagalur offering day packages, treks, jeep safaris, adventure activities, and stays in the Western Ghats. Trusted by 5,000+ travelers.",
+      "Government-verified local tour operator in Chikmagalur offering day packages, treks, jeep safaris, adventure activities, and stays in the Western Ghats. Trusted by 500+ travellers.",
     url: SITE_URL,
     logo: {
       "@type": "ImageObject",

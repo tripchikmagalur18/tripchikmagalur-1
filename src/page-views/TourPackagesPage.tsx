@@ -72,8 +72,8 @@ const packages = [
 
 const trustSignals = [
   { icon: Shield, label: "Govt. Approved", sub: "Karnataka Tourism" },
-  { icon: Star, label: "4.9 / 5 Rating", sub: "1,400+ reviews" },
-  { icon: Users, label: "10,000+ Travellers", sub: "Since 2018" },
+  { icon: Star, label: "4.9 / 5 Rating", sub: "500+ reviews" },
+  { icon: Users, label: "500+ Travellers", sub: "Since 2018" },
   { icon: Clock, label: "24x7 Support", sub: "WhatsApp + Phone" },
 ];
 
@@ -151,7 +151,7 @@ const TourPackagesPage = () => {
             </h1>
             <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
               Hand-crafted Chikmagalur tour packages covering Mullayanagiri, Baba Budangiri, Hebbe Falls,
-              coffee estates and hidden waterfalls. Govt.-approved operator, 4.9★ rated by 1,400+ travellers,
+              coffee estates and hidden waterfalls. Govt.-approved operator, 4.9★ rated by 500+ travellers,
               fully customisable, with 24x7 WhatsApp support.
             </p>
 

@@ -154,14 +154,14 @@ const HeroSection = () => {
         {heroSlides.map((slide, index) => (
           <div
             key={slide.src}
-            className={`absolute inset-0 transition-all duration-[2000ms] ease-in-out ${
-              index === currentImageIndex ? "opacity-100 scale-[1.04]" : "opacity-0 scale-100"
+            className={`absolute inset-0 transition-opacity duration-[2000ms] ease-in-out max-md:transition-opacity md:transition-all ${
+              index === currentImageIndex ? "opacity-100 md:scale-[1.04]" : "opacity-0 scale-100"
             }`}
             style={{
               transform:
                 index === currentImageIndex
-                  ? `scale(1.04) translate(${mousePosition.x * 0.3}px, ${mousePosition.y * 0.3}px)`
-                  : "scale(1)",
+                  ? `translate(${mousePosition.x * 0.3}px, ${mousePosition.y * 0.3}px)`
+                  : undefined,
             }}
             aria-hidden={index !== currentImageIndex}
           >
@@ -187,7 +187,7 @@ const HeroSection = () => {
         <div className="glass-card px-4 py-2 animate-float-gentle hover-glow" style={{ animationDelay: "1s" }}>
           <div className="flex items-center gap-2">
             <Users className="w-4 h-4 text-sunset" />
-            <span className="font-semibold text-white text-sm">500+ Travelers</span>
+            <span className="font-semibold text-white text-sm">500+ Travellers</span>
           </div>
         </div>
         <div className="glass-card px-4 py-2 animate-float-gentle hover-glow" style={{ animationDelay: "2s" }}>
@@ -226,7 +226,7 @@ const HeroSection = () => {
         ))}
       </div>
 
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden max-md:hidden">
         <div
           className="absolute bottom-0 left-0 right-0 h-[40%] bg-gradient-to-t from-white/10 via-white/5 to-transparent animate-mist-drift-1"
           style={{ filter: "blur(40px)" }}
@@ -242,7 +242,7 @@ const HeroSection = () => {
       </div>
 
       <div
-        className="absolute top-[10%] left-[30%] w-[40%] h-[40%] rounded-full pointer-events-none animate-bloom-pulse"
+        className="absolute top-[10%] left-[30%] w-[40%] h-[40%] rounded-full pointer-events-none animate-bloom-pulse max-md:hidden"
         style={{
           background: "radial-gradient(ellipse, hsl(45 80% 90% / 0.08) 0%, transparent 70%)",
           filter: "blur(40px)",
@@ -281,7 +281,7 @@ const HeroSection = () => {
             style={{ transitionDelay: "600ms" }}
           >
             Book trips to coffee plantations, Mullayanagiri trek, waterfalls & adventure activities. Trusted by
-            5000+ travelers.
+            500+ travellers.
           </p>
 
           <div
@@ -333,7 +333,7 @@ const HeroSection = () => {
             <span className="font-bold text-white text-base">
               <AnimatedStat target={STAT_TARGETS.travelers} suffix="+" />
             </span>
-            <p className="text-white/90 text-[10px]">Travelers</p>
+            <p className="text-white/90 text-[10px]">Travellers</p>
           </div>
           <div className="glass-card px-4 py-2.5 text-center min-w-[85px]">
             <div className="flex items-center justify-center gap-1 mb-0.5">

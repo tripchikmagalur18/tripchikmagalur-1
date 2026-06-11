@@ -5,6 +5,8 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Menu, X, ShoppingCart } from "lucide-react";
 import { useCart } from "@/context/CartContext";
+import { useBodyScrollLock } from "@/hooks/use-body-scroll-lock";
+import { useCoarsePointer } from "@/hooks/use-coarse-pointer";
 
 const focusRing =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunset focus-visible:ring-offset-2 focus-visible:ring-offset-transparent";
@@ -13,7 +15,10 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const { count, openCart } = useCart();
+  const isTouchDevice = useCoarsePointer();
   const mobileMenuId = "mobile-nav-menu";
+
+  useBodyScrollLock(isOpen && isTouchDevice);
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -127,7 +132,7 @@ const Navbar = () => {
             {isOpen && (
               <div
                 id={mobileMenuId}
-                className="md:hidden py-4 border-t border-white/10 animate-fade-up"
+                className="md:hidden py-4 border-t border-white/10 animate-fade-up max-h-[min(70dvh,calc(100dvh-6rem))] overflow-y-auto overscroll-contain [-webkit-overflow-scrolling:touch] touch-pan-y"
                 role="navigation"
                 aria-label="Mobile menu"
               >

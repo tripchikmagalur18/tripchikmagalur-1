@@ -11,7 +11,7 @@ const staticMeta: Record<string, SeoInput> = {
   "/": {
     title: "Chikmagalur Tour Packages 2026 | Stays, Treks & Adventures — Trip Chikmagalur",
     description:
-      "Book Chikmagalur tour packages from ₹3,499. Mullayanagiri trek, Kemmangundi, waterfalls & jeep safari. Govt. verified, 5000+ travelers. Book via WhatsApp instantly.",
+      "Book Chikmagalur tour packages from ₹3,499. Mullayanagiri trek, Kemmangundi, waterfalls & jeep safari. Govt. verified, 500+ travellers. Book via WhatsApp instantly.",
     canonical: "/",
   },
   "/adventure": {

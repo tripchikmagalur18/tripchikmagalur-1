@@ -7,13 +7,12 @@ type FloatingWhatsAppProps = {
   positionClassName?: string;
 };
 
-const FloatingWhatsApp = ({ positionClassName = "bottom-6" }: FloatingWhatsAppProps) => {
+const FloatingWhatsApp = ({ positionClassName = "safe-bottom-fixed" }: FloatingWhatsAppProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div
-      className={`fixed right-4 sm:right-6 z-50 flex items-center gap-3 ${positionClassName}`}
-      style={{ marginBottom: "env(safe-area-inset-bottom, 0px)" }}
+      className={`fixed right-4 sm:right-6 z-40 flex items-center gap-3 ${positionClassName}`}
     >
       <div
         className={`hidden sm:block px-4 py-2 bg-white rounded-full shadow-lg text-sm font-medium text-gray-800 whitespace-nowrap transition-all duration-300 ease-out ${
