@@ -34,6 +34,10 @@ export function buildBlogListingSchema() {
   };
 }
 
+function stripMarkdownLinks(text: string): string {
+  return text.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1");
+}
+
 export function buildFaqPageSchema() {
   return {
     "@context": "https://schema.org",
@@ -43,7 +47,7 @@ export function buildFaqPageSchema() {
       name: faq.question,
       acceptedAnswer: {
         "@type": "Answer",
-        text: faq.answer,
+        text: stripMarkdownLinks(faq.answer),
       },
     })),
   };

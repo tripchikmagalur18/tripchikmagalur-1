@@ -1,10 +1,26 @@
 import type { Metadata } from "next";
 
-export const SITE_URL = "https://tripchikmagalur.com";
+const DEFAULT_SITE_URL = "https://tripchikmagalur.com";
+
+/** Canonical origin — set NEXT_PUBLIC_SITE_URL in Vercel / .env.local */
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? DEFAULT_SITE_URL;
+
 export const SITE_NAME = "Trip Chikmagalur";
 export const SITE_TAGLINE = "Chikmagalur Tour Packages, Stays & Adventures";
 
-export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.webp`;
+/** Static OG images live under /public/og/ */
+export function publicAssetUrl(path: string): string {
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+  return `${SITE_URL}${normalized}`;
+}
+
+export const DEFAULT_OG_IMAGE = publicAssetUrl("/og/default.webp");
+
+export const OG_IMAGES = {
+  default: DEFAULT_OG_IMAGE,
+  legacy: publicAssetUrl("/og-image.webp"),
+} as const;
 
 export const GEO_META = {
   "geo.region": "IN-KA",
@@ -29,7 +45,7 @@ export interface SeoInput {
 
 export function absoluteAssetUrl(src: string): string {
   if (src.startsWith("http")) return src;
-  return `${SITE_URL}${src.startsWith("/") ? src : `/${src}`}`;
+  return publicAssetUrl(src);
 }
 
 export const normalizePath = (path: string): string => {

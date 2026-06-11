@@ -6,6 +6,7 @@ import { PackageOfferPrice } from "@/components/PackageOfferPrice";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { PageJsonLd } from "@/components/page-json-ld";
+import { buildPackageDaySchemas } from "@/lib/package-page-schema";
 import { ArrowLeft, MapPin, Clock, ShoppingCart } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 
@@ -71,23 +72,7 @@ const PackageDayFour = () => {
   return (
     <main className="overflow-x-hidden">
       <PageJsonLd
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "TouristTrip",
-          name: "Belur Heritage — Day 4 Chikmagalur Tour Package",
-          description:
-            "Day 4 Chikmagalur tour package covering Belur Chennakeshava Temple, Halebidu Hoysaleshwara Temple, Hiremagalur Kodanda Rama Temple and Belur Dam.",
-          touristType: ["Heritage", "Family", "Culture"],
-          itinerary: places.map((p, i) => ({ "@type": "ListItem", position: i + 1, name: p.name })),
-          offers: {
-            "@type": "Offer",
-            price: "3499",
-            priceCurrency: "INR",
-            availability: "https://schema.org/InStock",
-            url: "https://tripchikmagalur.com/package/day-4",
-          },
-          provider: { "@type": "TravelAgency", name: "Trip Chikmagalur", url: "https://tripchikmagalur.com" },
-        }}
+        schema={buildPackageDaySchemas("pkg-day-4")}
         breadcrumbs={[
           { name: "Home", path: "/" },
           { name: "Packages", path: "/chikmagalur-tour-packages" },

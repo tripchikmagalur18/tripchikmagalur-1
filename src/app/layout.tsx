@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { Providers } from "@/components/providers";
 import { GlobalJsonLd } from "@/components/global-json-ld";
-import { buildMetadata, DEFAULT_OG_IMAGE, SITE_NAME } from "@/lib/seo";
+import { buildMetadata, DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/seo";
 import Script from "next/script";
 import "./globals.css";
 
@@ -21,7 +21,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    metadataBase: new URL("https://tripchikmagalur.com"),
+    metadataBase: new URL(SITE_URL),
     ...buildMetadata({
       title: "Chikmagalur Tour Packages 2026 | Stays, Treks & Adventures — Trip Chikmagalur",
       description:

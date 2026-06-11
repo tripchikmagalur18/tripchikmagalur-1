@@ -1,70 +1,7 @@
-import { homeFaqItems, homePackages } from "@/data/home-packages";
-import { buildReviewSchemas, buildTravelAgencyReviewsField } from "@/lib/review-schema";
+import { homeFaqItems } from "@/data/home-packages";
+import { buildBusinessSchema } from "@/lib/schemas/business-schema";
+import { buildTourPackagesItemListSchema } from "@/lib/schemas/tour-packages-schema";
 import { SITE_URL } from "@/lib/seo";
-
-const travelAgency = {
-  "@context": "https://schema.org",
-  "@type": "TravelAgency",
-  name: "Trip Chikmagalur",
-  alternateName: "Wanderlust_ckm",
-  url: SITE_URL,
-  logo: `${SITE_URL}/og-image.webp`,
-  image: `${SITE_URL}/og-image.webp`,
-  description:
-    "Chikmagalur tour packages, resort and villa stays, adventure activities, and local travel guides in Karnataka's coffee country.",
-  telephone: "+91-6363131585",
-  email: "tripchikmagalur18@gmail.com",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Chikmagalur",
-    addressRegion: "Karnataka",
-    addressCountry: "IN",
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: 13.3161,
-    longitude: 75.772,
-  },
-  areaServed: [
-    { "@type": "City", name: "Chikmagalur" },
-    { "@type": "City", name: "Bangalore" },
-    { "@type": "City", name: "Mangalore" },
-    { "@type": "City", name: "Mysore" },
-  ],
-  priceRange: "₹₹",
-  sameAs: [
-    "https://wa.me/916363131585",
-    "https://instagram.com/trip_chikmagalur",
-    "https://www.facebook.com/wanderlustckm",
-  ],
-  ...buildTravelAgencyReviewsField(),
-};
-
-const tourPackages = homePackages.map((pkg) => ({
-  "@context": "https://schema.org",
-  "@type": "TouristTrip",
-  name: pkg.name,
-  description: pkg.description,
-  url: `${SITE_URL}${pkg.link}`,
-  touristType: ["Adventure", "Family", "Couples", "Friends"],
-  itinerary: {
-    "@type": "ItemList",
-    name: pkg.duration,
-  },
-  offers: {
-    "@type": "Offer",
-    price: String(pkg.price),
-    priceCurrency: pkg.priceCurrency,
-    availability: "https://schema.org/InStock",
-    url: `${SITE_URL}${pkg.link}`,
-    validFrom: "2026-01-01",
-  },
-  provider: {
-    "@type": "TravelAgency",
-    name: "Trip Chikmagalur",
-    url: SITE_URL,
-  },
-}));
 
 const faqPage = {
   "@context": "https://schema.org",
@@ -96,15 +33,13 @@ const webPage = {
     name: "Chikmagalur, Karnataka, India",
   },
   mainEntity: {
-    "@type": "TravelAgency",
-    name: "Trip Chikmagalur",
+    "@id": `${SITE_URL}/#business`,
   },
 };
 
 export const homePageSchema = [
-  travelAgency,
-  ...tourPackages,
+  buildBusinessSchema(),
+  buildTourPackagesItemListSchema(),
   faqPage,
   webPage,
-  ...buildReviewSchemas(),
 ];

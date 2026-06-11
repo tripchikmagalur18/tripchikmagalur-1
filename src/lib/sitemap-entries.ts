@@ -7,7 +7,9 @@ import { pillarPages } from "@/data/pillarPages";
 import { locationPages } from "@/data/location-pages";
 import { blogLongSlugs } from "@/data/blog-long-posts";
 
-export const SITE_ORIGIN = "https://tripchikmagalur.com";
+import { SITE_URL } from "@/lib/seo";
+
+export const SITE_ORIGIN = SITE_URL;
 
 type SitemapEntry = MetadataRoute.Sitemap[number];
 

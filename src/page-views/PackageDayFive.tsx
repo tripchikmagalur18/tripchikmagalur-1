@@ -6,6 +6,7 @@ import { PackageOfferPrice } from "@/components/PackageOfferPrice";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { PageJsonLd } from "@/components/page-json-ld";
+import { buildPackageDaySchemas } from "@/lib/package-page-schema";
 import { ArrowLeft, MapPin, Clock, ShoppingCart } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 
@@ -80,23 +81,7 @@ const PackageDayFive = () => {
   return (
     <main className="overflow-x-hidden">
       <PageJsonLd
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "TouristTrip",
-          name: "Sringeri & Trek — Day 5 Chikmagalur Tour Package",
-          description:
-            "Day 5 Chikmagalur tour package with Siddhartha Hegde Park, Devaramane Betta, Abbi Waterfalls, Ethina Bhuja trek and Mudigere range viewpoints.",
-          touristType: ["Adventure", "Trekking", "Nature"],
-          itinerary: places.map((p, i) => ({ "@type": "ListItem", position: i + 1, name: p.name })),
-          offers: {
-            "@type": "Offer",
-            price: "5999",
-            priceCurrency: "INR",
-            availability: "https://schema.org/InStock",
-            url: "https://tripchikmagalur.com/package/day-5",
-          },
-          provider: { "@type": "TravelAgency", name: "Trip Chikmagalur", url: "https://tripchikmagalur.com" },
-        }}
+        schema={buildPackageDaySchemas("pkg-day-5")}
         breadcrumbs={[
           { name: "Home", path: "/" },
           { name: "Packages", path: "/chikmagalur-tour-packages" },

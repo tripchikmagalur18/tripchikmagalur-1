@@ -86,6 +86,7 @@ export const testimonials: Testimonial[] = [
   },
 ];
 
+/** Keep in sync with verified Google Business Profile review count when it grows */
 export const AGGREGATE_RATING = {
   ratingValue: 4.9,
   reviewCount: 500,

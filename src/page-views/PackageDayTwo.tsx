@@ -6,6 +6,7 @@ import { PackageOfferPrice } from "@/components/PackageOfferPrice";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { PageJsonLd } from "@/components/page-json-ld";
+import { buildPackageDaySchemas } from "@/lib/package-page-schema";
 import { ArrowLeft, MapPin, Clock, ShoppingCart } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 
@@ -76,22 +77,14 @@ const places = [
 const PackageDayTwo = () => {
   return (
     <main className="overflow-x-hidden">
-      <PageJsonLd schema={{
-          "@context": "https://schema.org",
-          "@type": "TouristTrip",
-          name: "Chikmagalur Weekend Escape — 2 Day Tour Package",
-          description: "2-day Chikmagalur tour package including all Day 1 stops plus Kemmanagundi, Hebbe Falls, Kalhatti Falls, Deviramma Temple and Raj Bhavan rose garden.",
-          touristType: ["Weekend Getaway", "Family", "Couples"],
-          itinerary: places.map((p, i) => ({ "@type": "ListItem", position: i + 1, name: p.name })),
-          offers: {
-            "@type": "Offer",
-            price: "4499",
-            priceCurrency: "INR",
-            availability: "https://schema.org/InStock",
-            url: "https://tripchikmagalur.com/package/day-2",
-          },
-          provider: { "@type": "TravelAgency", name: "Trip Chikmagalur", url: "https://tripchikmagalur.com" },
-        }} breadcrumbs={[{ name: "Home", path: "/" }, { name: "Packages", path: "/chikmagalur-tour-packages" }, { name: "Day 2", path: "/package/day-2" }]} />
+      <PageJsonLd
+        schema={buildPackageDaySchemas("pkg-day-2")}
+        breadcrumbs={[
+          { name: "Home", path: "/" },
+          { name: "Packages", path: "/chikmagalur-tour-packages" },
+          { name: "Day 2", path: "/package/day-2" },
+        ]}
+      />
       <Navbar />
       <section className="pt-28 pb-16 bg-muted/30 min-h-screen">
         <div className="container mx-auto px-4">

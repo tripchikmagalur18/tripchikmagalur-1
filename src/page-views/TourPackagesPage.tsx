@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { PageJsonLd } from "@/components/page-json-ld";
 import Breadcrumbs from "@/components/Breadcrumbs";
-
+import { buildTourPackagesItemListSchema } from "@/lib/schemas/tour-packages-schema";
 import { WHATSAPP_LINK } from "@/lib/whatsapp";
 
 const packages = [
@@ -113,33 +113,6 @@ const faqs = [
 ];
 
 const TourPackagesPage = () => {
-  const itemListSchema = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: "Chikmagalur Tour Packages",
-    itemListElement: packages.map((p, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      item: {
-        "@type": "TouristTrip",
-        name: p.name,
-        description: p.highlights.join(". "),
-        url: `https://tripchikmagalur.com${p.slug}`,
-        offers: {
-          "@type": "Offer",
-          price: p.price,
-          priceCurrency: "INR",
-          availability: "https://schema.org/InStock",
-        },
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: p.rating,
-          reviewCount: p.reviews,
-        },
-      },
-    })),
-  };
-
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -152,7 +125,7 @@ const TourPackagesPage = () => {
 
   return (
     <main className="overflow-x-hidden bg-background">
-      <PageJsonLd schema={[itemListSchema, faqSchema]} breadcrumbs={[
+      <PageJsonLd schema={[buildTourPackagesItemListSchema(), faqSchema]} breadcrumbs={[
           { name: "Home", path: "/" },
           { name: "Chikmagalur Tour Packages", path: "/chikmagalur-tour-packages" },
         ]} />

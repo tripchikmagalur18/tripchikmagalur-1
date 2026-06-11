@@ -81,6 +81,21 @@ export const homeFaqItems = [
   {
     question: "Is Trip Chikmagalur government verified?",
     answer:
-      "Trip Chikmagalur operates verified local tours with experienced guides, safe adventure equipment, and transparent pricing. Over 5,000 travellers have booked through our WhatsApp-first booking flow.",
+      "Trip Chikmagalur is a verified local tour operator with experienced guides, safety-certified adventure equipment, and transparent pricing. We have served over 5,000 travellers and work with Tourism Department of India and WTTC certified partners.",
+  },
+  {
+    question: "What is the best time to visit Chikmagalur?",
+    answer:
+      "September to March is best for cool, pleasant weather (13°C–25°C). Monsoon (June–August) is ideal for lush greenery and full waterfalls, though trekking trails can be slippery. Summer (April–May) works with early morning sightseeing starts.",
+  },
+  {
+    question: "What adventure activities are available in Chikmagalur?",
+    answer:
+      "Trip Chikmagalur offers ziplining, ATV off-road rides, jeep safari on mountain trails, Mullayanagiri trekking, fire camping, and guided waterfall treks. Combine activities with our day packages for transport and local guides.",
+  },
+  {
+    question: "How do I book a Chikmagalur tour package?",
+    answer:
+      "Add packages or stays to the cart on tripchikmagalur.com and checkout via WhatsApp at +91 6363131585. We confirm availability, share payment details, and help customise your itinerary by dates and group size.",
   },
 ] as const;
