@@ -20,61 +20,74 @@ const focusRing =
 function PackageSuggestionCard({
   item,
   onAdd,
+  onView,
   inCart,
 }: {
   item: PackageSuggestion;
   onAdd: () => void;
+  onView: () => void;
   inCart: boolean;
 }) {
   return (
     <article className="min-w-[85%] sm:min-w-[260px] shrink-0 snap-start flex flex-col rounded-xl border border-border bg-card overflow-hidden shadow-sm">
-      <div className="relative aspect-[16/10] bg-muted">
-        <AppImage
-          src={item.image}
-          alt={item.name}
-          fill
-          sizes="260px"
-          className="object-cover"
-        />
-        {item.featured && (
-          <span className="absolute top-2 left-2 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-sunset text-white text-[10px] font-semibold uppercase tracking-wide">
-            <Star className="w-3 h-3 fill-current" aria-hidden="true" />
-            {item.badge ?? "Top pick"}
-          </span>
-        )}
-      </div>
-      <div className="p-3 flex flex-col flex-1 gap-2">
-        <h3 className="text-sm font-semibold text-foreground leading-snug line-clamp-2">
-          {item.name}
-        </h3>
-        <PackageOfferPrice price={item.price} size="sm" align="start" className="!items-start !text-left" />
-        <div className="flex gap-2 mt-auto pt-1">
-          <button
-            type="button"
-            disabled={inCart}
-            onClick={onAdd}
-            className={`flex-1 inline-flex items-center justify-center gap-1.5 min-h-10 px-3 rounded-full bg-sunset text-white text-xs font-medium hover:bg-sunset/90 disabled:opacity-60 transition ${focusRing}`}
-          >
-            <ShoppingCart className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-            {inCart ? "Added" : "Add"}
-          </button>
-          <Link
-            href={item.link}
-            className={`inline-flex items-center justify-center min-h-10 min-w-10 px-2 rounded-full border border-border text-muted-foreground hover:text-foreground hover:border-sunset/40 transition ${focusRing}`}
-            aria-label={`View ${item.name}`}
-          >
-            <ChevronRight className="w-4 h-4" aria-hidden="true" />
-          </Link>
+      <Link
+        href={item.link}
+        onClick={onView}
+        className={`flex flex-col flex-1 hover:bg-muted/30 transition ${focusRing}`}
+        aria-label={`View ${item.name}`}
+      >
+        <div className="relative aspect-[16/10] bg-muted">
+          <AppImage
+            src={item.image}
+            alt={item.name}
+            fill
+            sizes="260px"
+            className="object-cover"
+          />
+          {item.featured && (
+            <span className="absolute top-2 left-2 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-sunset text-white text-[10px] font-semibold uppercase tracking-wide">
+              <Star className="w-3 h-3 fill-current" aria-hidden="true" />
+              {item.badge ?? "Top pick"}
+            </span>
+          )}
         </div>
+        <div className="p-3 flex flex-col gap-2">
+          <h3 className="text-sm font-semibold text-foreground leading-snug line-clamp-2">
+            {item.name}
+          </h3>
+          <PackageOfferPrice price={item.price} size="sm" align="start" className="!items-start !text-left" />
+          <span className="inline-flex items-center gap-1 text-xs font-medium text-sunset">
+            View package
+            <ChevronRight className="w-3.5 h-3.5" aria-hidden="true" />
+          </span>
+        </div>
+      </Link>
+      <div className="px-3 pb-3">
+        <button
+          type="button"
+          disabled={inCart}
+          onClick={onAdd}
+          className={`w-full inline-flex items-center justify-center gap-1.5 min-h-10 px-3 rounded-full bg-sunset text-white text-xs font-medium hover:bg-sunset/90 disabled:opacity-60 transition ${focusRing}`}
+        >
+          <ShoppingCart className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+          {inCart ? "Added" : "Add to cart"}
+        </button>
       </div>
     </article>
   );
 }
 
-function StaySuggestionCard({ item }: { item: Extract<CartSuggestion, { kind: "stay" }> }) {
+function StaySuggestionCard({
+  item,
+  onView,
+}: {
+  item: Extract<CartSuggestion, { kind: "stay" }>;
+  onView: () => void;
+}) {
   return (
     <Link
       href={item.link}
+      onClick={onView}
       className={`min-w-[85%] sm:min-w-[260px] shrink-0 snap-start flex flex-col rounded-xl border border-border bg-card overflow-hidden shadow-sm hover:border-sunset/40 hover:shadow-md transition group ${focusRing}`}
     >
       <div className="relative aspect-[16/10] bg-muted">
@@ -107,7 +120,7 @@ function StaySuggestionCard({ item }: { item: Extract<CartSuggestion, { kind: "s
 }
 
 export function CartSuggestions() {
-  const { items, addItem } = useCart();
+  const { items, addItem, closeCart } = useCart();
   const kind = getCartSuggestionKind(items);
   const suggestions = getCartSuggestions(items);
 
@@ -144,6 +157,7 @@ export function CartSuggestions() {
               key={item.cartId}
               item={item}
               inCart={inCartIds.has(item.cartId)}
+              onView={closeCart}
               onAdd={() =>
                 addItem({
                   id: item.cartId,
@@ -155,7 +169,7 @@ export function CartSuggestions() {
             />
           ) : (
             <div key={item.cartId} role="listitem">
-              <StaySuggestionCard item={item} />
+              <StaySuggestionCard item={item} onView={closeCart} />
             </div>
           ),
         )}
