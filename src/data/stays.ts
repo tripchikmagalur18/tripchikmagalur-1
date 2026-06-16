@@ -47,6 +47,34 @@ import staySrCommonArea from "@/assets/stay-sr/common-area.webp";
 import staySrBathroomVanity from "@/assets/stay-sr/bathroom-vanity.webp";
 import staySrBathroomBlue from "@/assets/stay-sr/bathroom-blue.webp";
 
+import p2PoolForest from "@/assets/resort-p2/pool-forest.webp";
+import p2PoolSunny from "@/assets/resort-p2/pool-sunny.webp";
+import p2ScenicTerraces from "@/assets/resort-p2/scenic-terraces.webp";
+import p2ExteriorBlueStairs from "@/assets/resort-p2/exterior-blue-stairs.webp";
+import p2ExteriorOrangeBrick from "@/assets/resort-p2/exterior-orange-brick.webp";
+import p2ExteriorWoodFacade from "@/assets/resort-p2/exterior-wood-facade.webp";
+import p2RoomTwinRed from "@/assets/resort-p2/room-twin-red-ceiling.webp";
+import p2RoomTwinGreen from "@/assets/resort-p2/room-twin-green-ceiling.webp";
+import p2RoomFamilyLed from "@/assets/resort-p2/room-family-led-ceiling.webp";
+import p2RoomFamilyYellow from "@/assets/resort-p2/room-family-yellow-wall.webp";
+import p2RoomFamilyPink from "@/assets/resort-p2/room-family-pink-ceiling.webp";
+import p2RoomWardrobe from "@/assets/resort-p2/room-wardrobe-mirror.webp";
+import p2BathroomWood from "@/assets/resort-p2/bathroom-wood-tiles.webp";
+import p2BathroomWood2 from "@/assets/resort-p2/bathroom-wood-tiles-2.webp";
+
+import p3PoolBuilding from "@/assets/homestay-p3/pool-building.webp";
+import p3BuildingHillside from "@/assets/homestay-p3/building-hillside.webp";
+import p3BuildingTerrace from "@/assets/homestay-p3/building-terrace.webp";
+import p3EntranceBuddha from "@/assets/homestay-p3/entrance-buddha.webp";
+import p3PorchLawn from "@/assets/homestay-p3/porch-lawn.webp";
+import p3PatioForest from "@/assets/homestay-p3/patio-forest.webp";
+import p3BedroomPatioView from "@/assets/homestay-p3/bedroom-patio-view.webp";
+import p3BedroomWindow from "@/assets/homestay-p3/bedroom-window.webp";
+import p3BedroomPatioSplit from "@/assets/homestay-p3/bedroom-patio-split.webp";
+import p3DiningHall from "@/assets/homestay-p3/dining-hall.webp";
+import p3ForestLounge from "@/assets/homestay-p3/forest-lounge.webp";
+import p3BalconyStripe from "@/assets/homestay-p3/balcony-stripe-floor.webp";
+
 export type StayGalleryImage = {
   src: StaticImageData;
   alt: string;
@@ -73,8 +101,10 @@ export type Stay = {
 };
 
 export const RESORT_CART_ID = "stay-trip-chikmagalur-resort";
+export const RESORT_P2_CART_ID = "stay-trip-chikmagalur-resort-p2";
 export const VILLA_CART_ID = "stay-trip-chikmagalur-villa";
 export const HOMESTAY_CART_ID = "stay-trip-chikmagalur-homestay";
+export const HOMESTAY_P3_CART_ID = "stay-trip-chikmagalur-homestay-p3";
 export const STAY_SR_CART_ID = "stay-trip-chikmagalur-stay-sr";
 
 export const tripChikmagalurResort: Stay = {
@@ -123,6 +153,112 @@ export const tripChikmagalurResort: Stay = {
     { src: playgroundSwings, alt: "Garden swings under palm trees", label: "Garden" },
     { src: photoSpot, alt: "Vintage scooter photo spot under pergola", label: "Photo Spot" },
     { src: roomDorm, alt: "Group dormitory-style room", label: "Group Stay" },
+  ],
+};
+
+export const tripChikmagalurResortP2: Stay = {
+  id: RESORT_P2_CART_ID,
+  slug: "trip-chikmagalur-resort-p2",
+  name: "Trip Chikmagalur Resort P2",
+  shortName: "Resort P2",
+  tagline: "Forest-view resort with pool, spacious rooms & hill-station calm",
+  location: "Chikmagalur, Karnataka",
+  pricePerPerson: 1800,
+  minGuests: 1,
+  maxGuests: 12,
+  rating: 4.9,
+  categoryLabel: "Resort Stay",
+  coverImage: p2PoolForest,
+  description:
+    "Trip Chikmagalur Resort P2 sits in lush Western Ghats greenery — wake to forest views, swim in the resort pool, and unwind in clean, spacious rooms with twin beds, modern bathrooms, and family-friendly layouts. Stone terraces, red-tiled roofs, and a peaceful plantation setting make it ideal for groups, families, and weekend getaways from Bangalore and Mysore.",
+  highlights: [
+    "Swimming pool surrounded by tall forest trees",
+    "Panoramic resort views from stone terraces & lawns",
+    "Spacious twin & family rooms with premium linens",
+    "Modern wood-pattern tiled bathrooms with hot water",
+    "Traditional red-tile architecture with blue-stone stairways",
+    "Ideal for families, friends & corporate weekend groups",
+  ],
+  amenities: [
+    "Swimming pool",
+    "Spacious AC rooms",
+    "Forest & garden views",
+    "Hot water bathrooms",
+    "Parking",
+    "Power backup",
+    "Room service on request",
+  ],
+  gallery: [
+    {
+      src: p2PoolForest,
+      alt: "Trip Chikmagalur Resort P2 swimming pool with forest backdrop and clear blue sky",
+      label: "Pool & Forest View",
+    },
+    {
+      src: p2PoolSunny,
+      alt: "Resort P2 pool area with red-tiled pavilion and guest cottages in Chikmagalur",
+      label: "Pool Area",
+    },
+    {
+      src: p2ScenicTerraces,
+      alt: "Scenic stone terraces and cottage surrounded by forest at Trip Chikmagalur Resort P2",
+      label: "Resort Grounds",
+    },
+    {
+      src: p2ExteriorBlueStairs,
+      alt: "Trip Chikmagalur Resort P2 exterior with blue staircase and cream building in forest setting",
+      label: "Exterior",
+    },
+    {
+      src: p2ExteriorOrangeBrick,
+      alt: "Resort P2 two-storey building with orange brick walls and blue entrance stairs",
+      label: "Building",
+    },
+    {
+      src: p2ExteriorWoodFacade,
+      alt: "Resort P2 wood-pattern facade with lawn and fairy lights among tall trees",
+      label: "Forest Facade",
+    },
+    {
+      src: p2RoomTwinRed,
+      alt: "Twin double beds with towel swan decor and red accent ceiling at Trip Chikmagalur Resort P2",
+      label: "Twin Room",
+    },
+    {
+      src: p2RoomTwinGreen,
+      alt: "Spacious twin bedroom with green accent ceiling and white linens at Resort P2",
+      label: "Double Room",
+    },
+    {
+      src: p2RoomFamilyLed,
+      alt: "Family room with two double beds, LED ceiling lighting and TV at Resort P2",
+      label: "Family Room",
+    },
+    {
+      src: p2RoomFamilyYellow,
+      alt: "Bright family bedroom with yellow accent wall and extra cot at Trip Chikmagalur Resort P2",
+      label: "Group Room",
+    },
+    {
+      src: p2RoomFamilyPink,
+      alt: "Family suite with pink ceiling feature and twin beds at Resort P2 Chikmagalur",
+      label: "Suite",
+    },
+    {
+      src: p2RoomWardrobe,
+      alt: "In-room wardrobe with full-length mirror at Trip Chikmagalur Resort P2",
+      label: "Wardrobe",
+    },
+    {
+      src: p2BathroomWood,
+      alt: "Modern bathroom with wood-pattern wall tiles at Trip Chikmagalur Resort P2",
+      label: "Bathroom",
+    },
+    {
+      src: p2BathroomWood2,
+      alt: "Clean ensuite bathroom with floral tile borders at Resort P2 Chikmagalur",
+      label: "Ensuite",
+    },
   ],
 };
 
@@ -247,6 +383,103 @@ export const tripChikmagalurHomestay: Stay = {
   ],
 };
 
+export const tripChikmagalurHomestayP3: Stay = {
+  id: HOMESTAY_P3_CART_ID,
+  slug: "trip-chikmagalur-homestay-p3",
+  name: "Trip Chikmagalur Homestay P3",
+  shortName: "Homestay P3",
+  tagline: "Modern homestay with pool, forest views & private patio rooms",
+  location: "Chikmagalur, Karnataka",
+  pricePerPerson: 799,
+  minGuests: 1,
+  maxGuests: 8,
+  rating: 4.8,
+  categoryLabel: "Homestay",
+  coverImage: p3PoolBuilding,
+  description:
+    "Trip Chikmagalur Homestay P3 is a contemporary white hillside property surrounded by forest — swim in the resort pool, relax on striped-floor forest-view balconies, and sleep in bright double rooms that open onto private patios. Shared dining hall, glass-walled lounge, and manicured lawns make it perfect for couples, friends, and budget groups who want a clean, modern stay in coffee country.",
+  highlights: [
+    "Swimming pool with modern white building views",
+    "Private double rooms opening to forest patios",
+    "Glass-walled forest lounge & striped-floor balcony",
+    "Shared dining hall with teal seating",
+    "Hillside lawns, stone walkways & Buddha entrance",
+    "Ideal for couples, trek groups & weekend getaways",
+  ],
+  amenities: [
+    "Swimming pool",
+    "Private double rooms",
+    "Private patio access",
+    "Shared dining hall",
+    "Hot water bathrooms",
+    "Ceiling fans",
+    "Parking",
+    "Power backup",
+  ],
+  gallery: [
+    {
+      src: p3PoolBuilding,
+      alt: "Trip Chikmagalur Homestay P3 — modern white building with swimming pool and green hillside",
+      label: "Pool & Building",
+    },
+    {
+      src: p3BuildingHillside,
+      alt: "Homestay P3 three-storey white building on lush green hillside in Chikmagalur",
+      label: "Hillside View",
+    },
+    {
+      src: p3BuildingTerrace,
+      alt: "Homestay P3 exterior with glass balcony terraces and landscaped lawn",
+      label: "Terrace",
+    },
+    {
+      src: p3EntranceBuddha,
+      alt: "Peaceful Buddha entrance with tiered planters at Trip Chikmagalur Homestay P3",
+      label: "Entrance",
+    },
+    {
+      src: p3PorchLawn,
+      alt: "Covered porch with white chairs and manicured lawn at Homestay P3",
+      label: "Porch & Lawn",
+    },
+    {
+      src: p3PatioForest,
+      alt: "Stone patio with forest views and modern outdoor seating at Homestay P3",
+      label: "Forest Patio",
+    },
+    {
+      src: p3ForestLounge,
+      alt: "Indoor-outdoor lounge with black and white striped floor and forest views at Homestay P3",
+      label: "Forest Lounge",
+    },
+    {
+      src: p3BalconyStripe,
+      alt: "Glass-roof balcony with striped floor overlooking dense green forest at Homestay P3",
+      label: "Balcony",
+    },
+    {
+      src: p3DiningHall,
+      alt: "Bright shared dining hall with teal chairs and white tables at Trip Chikmagalur Homestay P3",
+      label: "Dining Hall",
+    },
+    {
+      src: p3BedroomPatioView,
+      alt: "Minimal double bedroom with patio door opening to forest view at Homestay P3",
+      label: "Bedroom",
+    },
+    {
+      src: p3BedroomWindow,
+      alt: "Clean double room with large window and private patio at Trip Chikmagalur Homestay P3",
+      label: "Double Room",
+    },
+    {
+      src: p3BedroomPatioSplit,
+      alt: "Bedroom with private patio seating and lush forest backdrop at Homestay P3",
+      label: "Patio Room",
+    },
+  ],
+};
+
 export const tripChikmagalurStaySr: Stay = {
   id: STAY_SR_CART_ID,
   slug: "trip-chikmagalur-stay-sr",
@@ -330,8 +563,10 @@ export const tripChikmagalurStaySr: Stay = {
 
 export const allStays: Stay[] = [
   tripChikmagalurResort,
+  tripChikmagalurResortP2,
   tripChikmagalurVilla,
   tripChikmagalurHomestay,
+  tripChikmagalurHomestayP3,
   tripChikmagalurStaySr,
 ];
 

@@ -131,6 +131,13 @@ export const STAY_KEYWORDS: Record<string, string[]> = {
     "family resort Chikmagalur",
     "group stay Chikmagalur",
   ),
+  "trip-chikmagalur-resort-p2": pageKeywords(
+    "Trip Chikmagalur Resort P2",
+    "forest resort Chikmagalur",
+    "resort with pool and forest view Chikmagalur",
+    "family resort P2 Chikmagalur",
+    "group stay resort Chikmagalur",
+  ),
   "trip-chikmagalur-villa": pageKeywords(
     "Trip Chikmagalur Villa",
     "private villa Chikmagalur",
@@ -143,6 +150,13 @@ export const STAY_KEYWORDS: Record<string, string[]> = {
     "budget stay Chikmagalur",
     "group stay Chikmagalur homestay",
     "Chikmagalur dormitory stay",
+  ),
+  "trip-chikmagalur-homestay-p3": pageKeywords(
+    "Trip Chikmagalur Homestay P3",
+    "modern homestay Chikmagalur",
+    "homestay with pool Chikmagalur",
+    "forest view homestay Chikmagalur",
+    "budget homestay P3 Chikmagalur",
   ),
   "trip-chikmagalur-stay-sr": pageKeywords(
     "Trip Chikmagalur Stay SR",

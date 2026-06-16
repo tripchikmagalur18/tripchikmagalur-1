@@ -23,7 +23,7 @@ const staticMeta: Record<string, SeoInput> = {
   "/stays": {
     title: "Stays in Chikmagalur — Resort, Villa, Homestay & Stay SR (2026)",
     description:
-      "Book Trip Chikmagalur Resort (₹1,500), Villa (₹1,200), Homestay (₹799) or Stay SR (₹799) per adult/night. Pool, kitchen villa, group rooms, balcony guest house — WhatsApp booking.",
+      "Book Trip Chikmagalur Resort (₹1,500), Resort P2 (₹1,800), Villa (₹1,200), Homestay (₹799), Homestay P3 (₹799) or Stay SR (₹799) per adult/night. Pool, forest views, kitchen villa, group rooms — WhatsApp booking.",
     canonical: "/stays",
   },
   "/food": {
