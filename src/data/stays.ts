@@ -390,14 +390,14 @@ export const tripChikmagalurHomestayP3: Stay = {
   shortName: "Homestay P3",
   tagline: "Modern homestay with pool, forest views & private patio rooms",
   location: "Chikmagalur, Karnataka",
-  pricePerPerson: 799,
+  pricePerPerson: 2500,
   minGuests: 1,
   maxGuests: 8,
   rating: 4.8,
-  categoryLabel: "Homestay",
+  categoryLabel: "Resort Stay",
   coverImage: p3PoolBuilding,
   description:
-    "Trip Chikmagalur Homestay P3 is a contemporary white hillside property surrounded by forest — swim in the resort pool, relax on striped-floor forest-view balconies, and sleep in bright double rooms that open onto private patios. Shared dining hall, glass-walled lounge, and manicured lawns make it perfect for couples, friends, and budget groups who want a clean, modern stay in coffee country.",
+    "Trip Chikmagalur Homestay P3 is a contemporary white hillside property surrounded by forest — swim in the resort pool, relax on striped-floor forest-view balconies, and sleep in bright double rooms that open onto private patios. Shared dining hall, glass-walled lounge, and manicured lawns make it perfect for couples, friends, and groups who want a clean, modern resort stay in coffee country.",
   highlights: [
     "Swimming pool with modern white building views",
     "Private double rooms opening to forest patios",
