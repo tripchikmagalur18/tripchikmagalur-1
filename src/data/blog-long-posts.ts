@@ -21,9 +21,9 @@ export const blogLongPosts: Record<string, BlogLongPost> = {
   "chikmagalur-itinerary-2-days": {
     slug: "chikmagalur-itinerary-2-days",
     keyword: "Chikmagalur itinerary 2 days",
-    title: "Chikmagalur Itinerary 2 Days — Complete Weekend Plan (2026)",
+    title: "2 Day Chikmagalur Itinerary Guide",
     metaDescription:
-      "Chikmagalur 2-day itinerary: Mullayanagiri sunrise, Hebbe Falls, Baba Budangiri, stays & costs. Hour-by-hour plan from Bangalore.",
+      "Chikmagalur 2-day itinerary — Mullayanagiri sunrise, Hebbe Falls, Baba Budangiri, stays & costs. Hour-by-hour plan from Bangalore. Book on WhatsApp.",
     excerpt: "Hour-by-hour 2-day plan with Mullayanagiri, Hebbe Falls, budgets & booking links",
     readTime: "12 min read",
     category: "Itinerary",
@@ -83,9 +83,9 @@ export const blogLongPosts: Record<string, BlogLongPost> = {
   "best-time-to-visit-chikmagalur": {
     slug: "best-time-to-visit-chikmagalur",
     keyword: "best time to visit Chikmagalur",
-    title: "Best Time to Visit Chikmagalur — Month-by-Month Guide (2026)",
+    title: "Best Time to Visit Chikmagalur",
     metaDescription:
-      "Best time to visit Chikmagalur: weather by month, trekking, waterfalls, monsoon vs winter. Plan Mullayanagiri & Hebbe Falls smart.",
+      "Best time to visit Chikmagalur — weather by month, trekking, waterfalls, monsoon vs winter. Plan Mullayanagiri & Hebbe Falls smart. Book on WhatsApp.",
     excerpt: "October–March peak season, monsoon greens, summer tips & festival windows",
     readTime: "11 min read",
     category: "Planning",
@@ -120,9 +120,9 @@ export const blogLongPosts: Record<string, BlogLongPost> = {
   "chikmagalur-waterfalls-list": {
     slug: "chikmagalur-waterfalls-list",
     keyword: "Chikmagalur waterfalls list",
-    title: "Chikmagalur Waterfalls List — Hebbe, Jhari, Kalhatti & Hidden Falls (2026)",
+    title: "Chikmagalur Waterfalls Guide",
     metaDescription:
-      "Full Chikmagalur waterfalls list with how to reach, jeep trails, best season & day packages for Hebbe, Jhari, Kalhatti, Ukkuda.",
+      "Chikmagalur waterfalls guide — Hebbe, Jhari, Kalhatti & Ukkuda with jeep trails, best season & day packages. Full list & tips. Book on WhatsApp.",
     excerpt: "Every major fall near Chikmagalur with access type, season & package links",
     readTime: "13 min read",
     category: "Destinations",
@@ -157,9 +157,9 @@ export const blogLongPosts: Record<string, BlogLongPost> = {
   "mullayanagiri-trek-guide": {
     slug: "mullayanagiri-trek-guide",
     keyword: "Mullayanagiri trek guide",
-    title: "Mullayanagiri Trek Guide — Route, Timing, Fees & Safety (2026)",
+    title: "Mullayanagiri Trek Guide",
     metaDescription:
-      "Mullayanagiri trek guide: Karnataka's highest peak, sunrise hike, steps, parking, fees, best season & booking the day package.",
+      "Mullayanagiri trek guide — Karnataka's highest peak, sunrise hike, steps, parking, fees & best season. Book the guided day package on WhatsApp.",
     excerpt: "Summit route, difficulty, what to pack & how to book the guided day tour",
     readTime: "14 min read",
     category: "Trekking",
@@ -194,9 +194,9 @@ export const blogLongPosts: Record<string, BlogLongPost> = {
   "chikmagalur-vs-coorg": {
     slug: "chikmagalur-vs-coorg",
     keyword: "Chikmagalur vs Coorg",
-    title: "Chikmagalur vs Coorg — Which Hill Station to Choose? (2026)",
+    title: "Chikmagalur vs Coorg Guide",
     metaDescription:
-      "Chikmagalur vs Coorg compared: distance from Bangalore, treks, waterfalls, crowds, stays & costs. Pick the right Karnataka getaway.",
+      "Chikmagalur vs Coorg — distance from Bangalore, treks, waterfalls, crowds, stays & costs. Pick the right Karnataka getaway. Book on WhatsApp.",
     excerpt: "Side-by-side comparison for weekend travellers from Bangalore",
     readTime: "10 min read",
     category: "Travel Guide",
@@ -231,9 +231,9 @@ export const blogLongPosts: Record<string, BlogLongPost> = {
   "chikmagalur-honeymoon-guide": {
     slug: "chikmagalur-honeymoon-guide",
     keyword: "Chikmagalur honeymoon packages",
-    title: "Chikmagalur Honeymoon Guide — Romantic Stays, Tours & Budget (2026)",
+    title: "Chikmagalur Honeymoon Guide",
     metaDescription:
-      "Plan a Chikmagalur honeymoon: best stays, 3-night itinerary, Mullayanagiri sunrise, estate cafés & costs. Villa from ₹1,200/night. Book packages on WhatsApp.",
+      "Chikmagalur honeymoon guide — best stays, 3-night plan, Mullayanagiri sunrise, estate cafés & costs. Villa from ₹1,200/night. Book on WhatsApp.",
     excerpt: "Romantic stays, 3-night plan, sunrise treks and realistic honeymoon budgets",
     readTime: "11 min read",
     category: "Couples",
@@ -268,9 +268,9 @@ export const blogLongPosts: Record<string, BlogLongPost> = {
   "chikmagalur-corporate-outing-guide": {
     slug: "chikmagalur-corporate-outing-guide",
     keyword: "Chikmagalur corporate outing",
-    title: "Chikmagalur Corporate Outing — Team Packages, Stays & Budget (2026)",
+    title: "Chikmagalur Corporate Outing Guide",
     metaDescription:
-      "Plan a Chikmagalur corporate outing: team treks, safari, villa stays for 15–40 people, adventure add-ons & sample budgets. Quotes on WhatsApp.",
+      "Chikmagalur corporate outing — team treks, safari, villa stays for 15–40 people, adventure add-ons & sample budgets. Get team quotes on WhatsApp.",
     excerpt: "Team day plans, villa scaling, adventure add-ons and GST-friendly booking",
     readTime: "10 min read",
     category: "Corporate",
@@ -305,9 +305,9 @@ export const blogLongPosts: Record<string, BlogLongPost> = {
   "chikmagalur-trip-from-mysore": {
     slug: "chikmagalur-trip-from-mysore",
     keyword: "Chikmagalur trip from Mysore",
-    title: "Chikmagalur Trip from Mysore — Distance, Route & Packages (2026)",
+    title: "Chikmagalur Trip from Mysore",
     metaDescription:
-      "Chikmagalur from Mysore: ~170 km, 3.5–4 hr drive, 2–3 day packages, Mullayanagiri & Hebbe Falls. Tour packages from ₹3,499/group.",
+      "Chikmagalur from Mysore — 170 km, 3.5–4 hr drive, 2–3 day packages with Mullayanagiri & Hebbe Falls. Tours from ₹3,499/group. Book on WhatsApp.",
     excerpt: "Drive routes from Mysore, 2-day plan and package links for Mysore travellers",
     readTime: "9 min read",
     category: "Travel Guide",
@@ -342,9 +342,9 @@ export const blogLongPosts: Record<string, BlogLongPost> = {
   "coffee-plantation-tour-guide": {
     slug: "coffee-plantation-tour-guide",
     keyword: "coffee plantation tour Chikmagalur",
-    title: "Coffee Plantation Tour Chikmagalur — Estates, Tasting & Seasons (2026)",
+    title: "Coffee Plantation Tour Chikmagalur",
     metaDescription:
-      "Coffee plantation tour in Chikmagalur: what to expect, best season, Arabica vs Robusta & pairing with tour packages. Estate walks from town.",
+      "Coffee plantation tour in Chikmagalur — what to expect, best season, Arabica vs Robusta & pairing with packages. Estate walks from town. Book on WhatsApp.",
     excerpt: "Estate tour content, harvest seasons and how to book with sightseeing",
     readTime: "8 min read",
     category: "Experiences",
@@ -379,9 +379,9 @@ export const blogLongPosts: Record<string, BlogLongPost> = {
   "3-day-chikmagalur-itinerary-guide": {
     slug: "3-day-chikmagalur-itinerary-guide",
     keyword: "3 day Chikmagalur itinerary",
-    title: "3 Day Chikmagalur Itinerary — Day-by-Day Plan & Costs (2026)",
+    title: "3 Day Chikmagalur Itinerary Guide",
     metaDescription:
-      "3 day Chikmagalur itinerary: Mullayanagiri, Hebbe Falls, Bhadra safari & estates. Hour-by-hour plan, ₹5,500+ budget & bookable packages.",
+      "3-day Chikmagalur itinerary — Mullayanagiri, Hebbe Falls, Bhadra safari & estates. Hour-by-hour plan, ₹5,500+ budget & packages. Book on WhatsApp.",
     excerpt: "Full 3-day schedule with package links and budget breakdown",
     readTime: "13 min read",
     category: "Itinerary",

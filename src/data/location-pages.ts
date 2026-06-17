@@ -12,9 +12,9 @@ export type LocationPageData = {
 export const locationPages: Record<string, LocationPageData> = {
   "chikmagalur-tour-packages-from-bangalore": {
     slug: "chikmagalur-tour-packages-from-bangalore",
-    title: "Chikmagalur Tour Packages from Bangalore — Weekend Deals (2026)",
+    title: "Chikmagalur Packages from Bangalore | Trip Chikmagalur",
     metaDescription:
-      "Chikmagalur tour packages from Bangalore from ₹3,499. 245 km drive, 2-day itineraries, Mullayanagiri & Hebbe Falls. Book cab + guide on WhatsApp.",
+      "Chikmagalur packages from Bangalore from ₹3,499 — 245 km drive, 2-day Mullayanagiri & Hebbe Falls plans. Private cab & guide. Book on WhatsApp.",
     keyword: "Chikmagalur tour packages from Bangalore",
     h1: "Chikmagalur Tour Packages from Bangalore",
     intro:
@@ -48,9 +48,9 @@ export const locationPages: Record<string, LocationPageData> = {
   },
   "chikmagalur-tour-packages-from-mangalore": {
     slug: "chikmagalur-tour-packages-from-mangalore",
-    title: "Chikmagalur Tour Packages from Mangalore — Coastal Weekend (2026)",
+    title: "Chikmagalur Packages from Mangalore | Trip Chikmagalur",
     metaDescription:
-      "Chikmagalur packages from Mangalore — shorter drive, hill station tours, waterfalls & stays. From ₹3,499/group. WhatsApp booking.",
+      "Chikmagalur packages from Mangalore — shorter drive, hill tours, waterfalls & stays from ₹3,499/group. Perfect coastal weekend escape. Book on WhatsApp.",
     keyword: "Chikmagalur tour packages from Mangalore",
     h1: "Chikmagalur Tour Packages from Mangalore",
     intro:
@@ -77,9 +77,9 @@ export const locationPages: Record<string, LocationPageData> = {
   },
   "chikmagalur-weekend-packages": {
     slug: "chikmagalur-weekend-packages",
-    title: "Chikmagalur Weekend Packages — 2-Day Tours & Stays (2026)",
+    title: "Chikmagalur Weekend Tour Packages | Trip Chikmagalur",
     metaDescription:
-      "Chikmagalur weekend packages: 2-day Mullayanagiri + Hebbe Falls, resort stay, ₹3,499+ tours. Perfect Fri–Sun escape. Book on WhatsApp.",
+      "Chikmagalur weekend packages — 2-day Mullayanagiri & Hebbe Falls with resort stay from ₹3,499. Ideal Fri–Sun escape. Book tours on WhatsApp.",
     keyword: "Chikmagalur weekend packages",
     h1: "Chikmagalur Weekend Packages",
     intro:
@@ -106,9 +106,9 @@ export const locationPages: Record<string, LocationPageData> = {
   },
   "chikmagalur-honeymoon-packages": {
     slug: "chikmagalur-honeymoon-packages",
-    title: "Chikmagalur Honeymoon Packages — Romantic Stays & Private Tours (2026)",
+    title: "Chikmagalur Honeymoon Tour Packages | Trip Chikmagalur",
     metaDescription:
-      "Chikmagalur honeymoon packages with private villa or resort stay, Mullayanagiri sunrise, estate cafés & couple-friendly tours from ₹3,499. Book on WhatsApp.",
+      "Chikmagalur honeymoon packages — private villa or resort, Mullayanagiri sunrise, estate cafés & couple tours from ₹3,499. Book your trip on WhatsApp.",
     keyword: "Chikmagalur honeymoon packages",
     h1: "Chikmagalur Honeymoon Packages",
     intro:
@@ -143,9 +143,9 @@ export const locationPages: Record<string, LocationPageData> = {
   },
   "chikmagalur-corporate-outing-packages": {
     slug: "chikmagalur-corporate-outing-packages",
-    title: "Chikmagalur Corporate Outing Packages — Team Treks & Stays (2026)",
+    title: "Chikmagalur Corporate Outing Packages | Trip Chikmagalur",
     metaDescription:
-      "Corporate outing packages in Chikmagalur: team treks, jeep safaris, resort/villa stays, adventure add-ons. From ₹3,499/group. WhatsApp quotes for 10–50 people.",
+      "Corporate outing packages in Chikmagalur — team treks, jeep safaris, resort stays & adventure add-ons from ₹3,499/group. Quotes for 10–50 on WhatsApp.",
     keyword: "Chikmagalur corporate outing packages",
     h1: "Chikmagalur Corporate Outing Packages",
     intro:
@@ -179,9 +179,9 @@ export const locationPages: Record<string, LocationPageData> = {
   },
   "homestays-in-chikmagalur": {
     slug: "homestays-in-chikmagalur",
-    title: "Homestays in Chikmagalur — Estate Stays, Villas & Resort (2026)",
+    title: "Homestays in Chikmagalur — Book Stay | Trip Chikmagalur",
     metaDescription:
-      "Book homestays in Chikmagalur: coffee estate ambience, Trip Chikmagalur Villa (₹1,200/adult/night) & Resort with pool (₹1,500). Compare types & book on WhatsApp.",
+      "Homestays in Chikmagalur — estate ambience, Trip Chikmagalur Villa from ₹1,200 & resort with pool from ₹1,500/person. Compare stays & book on WhatsApp.",
     keyword: "homestays in Chikmagalur",
     h1: "Homestays in Chikmagalur — Estate Stays & Group Villas",
     intro:
@@ -215,9 +215,9 @@ export const locationPages: Record<string, LocationPageData> = {
   },
   "coffee-plantation-tour-chikmagalur": {
     slug: "coffee-plantation-tour-chikmagalur",
-    title: "Coffee Plantation Tour Chikmagalur — Estate Walks & Tasting (2026)",
+    title: "Coffee Plantation Tour Chikmagalur | Trip Chikmagalur",
     metaDescription:
-      "Coffee plantation tour in Chikmagalur: estate walks, Arabica vs Robusta, processing demo & tasting. Combine with tour packages from ₹3,499. Book WhatsApp.",
+      "Coffee plantation tour in Chikmagalur — estate walks, Arabica vs Robusta, processing demo & tasting. Pair with packages from ₹3,499. Book on WhatsApp.",
     keyword: "coffee plantation tour Chikmagalur",
     h1: "Coffee Plantation Tour — Chikmagalur",
     intro:
@@ -250,9 +250,9 @@ export const locationPages: Record<string, LocationPageData> = {
   },
   "chikmagalur-tour-packages-from-mysore": {
     slug: "chikmagalur-tour-packages-from-mysore",
-    title: "Chikmagalur Tour Packages from Mysore — Hill Trip Deals (2026)",
+    title: "Chikmagalur Packages from Mysore | Trip Chikmagalur",
     metaDescription:
-      "Chikmagalur tour packages from Mysore — ~170 km, 3.5–4 hr drive. Mullayanagiri, Hebbe Falls & stays from ₹3,499/group. Book cab + guide on WhatsApp.",
+      "Chikmagalur packages from Mysore — 170 km, 3.5–4 hr drive. Mullayanagiri, Hebbe Falls & stays from ₹3,499/group. Private cab & guide. Book on WhatsApp.",
     keyword: "Chikmagalur tour packages from Mysore",
     h1: "Chikmagalur Tour Packages from Mysore",
     intro:

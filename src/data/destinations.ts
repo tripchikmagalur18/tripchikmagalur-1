@@ -50,9 +50,9 @@ export const destinations: Record<string, DestinationData> = {
   "mullayanagiri-trek": {
     slug: "mullayanagiri-trek",
     primaryKeyword: "Mullayanagiri trek",
-    title: "Mullayanagiri Trek: Complete 2026 Guide | Trip Chikmagalur",
+    title: "Mullayanagiri Trek Guide Chikmagalur | Trip Chikmagalur",
     description:
-      "Mullayanagiri trek guide — Karnataka's highest peak (1,930m). Route, timings, entry fee, difficulty, best season & expert tips for a safe summit.",
+      "Mullayanagiri trek guide — Karnataka's highest peak (1,930 m). Route, timings, entry fee, difficulty, best season & safety tips. Book trek on WhatsApp.",
     h1: "Mullayanagiri Trek — Complete Guide to Karnataka's Highest Peak",
     hero: {
       image: mullayangiri,
@@ -126,9 +126,9 @@ export const destinations: Record<string, DestinationData> = {
   "hebbe-falls": {
     slug: "hebbe-falls",
     primaryKeyword: "Hebbe Falls Chikmagalur",
-    title: "Hebbe Falls Chikmagalur: How to Reach, Entry & Tips 2026",
+    title: "Hebbe Falls Chikmagalur Guide | Trip Chikmagalur",
     description:
-      "Hebbe Falls Chikmagalur — 168 ft two-tier waterfall near Kemmanagundi. Jeep route, entry fee, best season, timings & safety tips for travelers.",
+      "Hebbe Falls Chikmagalur — 168 ft two-tier waterfall near Kemmangundi. Jeep route, entry fee, best season & safety tips. Book day tour on WhatsApp.",
     h1: "Hebbe Falls Chikmagalur — Complete Visitor Guide",
     hero: {
       image: hebbeFalls,
@@ -200,9 +200,9 @@ export const destinations: Record<string, DestinationData> = {
   kemmanagundi: {
     slug: "kemmanagundi",
     primaryKeyword: "Kemmanagundi hill station",
-    title: "Kemmanagundi Hill Station: Complete Travel Guide 2026",
+    title: "Kemmangundi Hill Station Guide | Trip Chikmagalur",
     description:
-      "Kemmanagundi hill station guide — Z Point sunset, Rajbhavan, Hebbe Falls nearby. How to reach, where to stay, best time & itinerary tips.",
+      "Kemmangundi hill station — Z Point sunset, Raj Bhavan, Hebbe Falls nearby. How to reach, where to stay, best time & itinerary. Book on WhatsApp.",
     h1: "Kemmanagundi — Karnataka's Quiet Hill Station Getaway",
     hero: {
       image: kemmanagundi,
@@ -275,9 +275,9 @@ export const destinations: Record<string, DestinationData> = {
   "baba-budangiri": {
     slug: "baba-budangiri",
     primaryKeyword: "Baba Budangiri trek",
-    title: "Baba Budangiri Chikmagalur: Trek, Cave & Travel Guide 2026",
+    title: "Baba Budangiri Trek Guide Chikmagalur | Trip Chikmagalur",
     description:
-      "Baba Budangiri guide — sacred dargah, Manikyadhara Falls, trek route, best time to visit & how to reach from Chikmagalur and Bangalore.",
+      "Baba Budangiri guide — sacred dargah, Manikyadhara Falls & trek route. Best time to visit & how to reach from Chikmagalur. Book tour on WhatsApp.",
     h1: "Baba Budangiri — Sacred Peaks & Trek Guide",
     hero: {
       image: bababudangiri,
@@ -351,9 +351,9 @@ export const destinations: Record<string, DestinationData> = {
   "kalhatti-falls": {
     slug: "kalhatti-falls",
     primaryKeyword: "Kalhatti Falls Chikmagalur",
-    title: "Kalhatti Falls Chikmagalur: Temple Falls Guide 2026",
+    title: "Kalhatti Falls Chikmagalur Guide | Trip Chikmagalur",
     description:
-      "Kalhatti Falls Chikmagalur — sacred 400 ft cascade with Veerabhadra temple. How to reach, timings, entry, best season & travel tips.",
+      "Kalhatti Falls Chikmagalur — sacred 400 ft cascade with Veerabhadra temple. Timings, entry, best season & travel tips. Book nearby tours on WhatsApp.",
     h1: "Kalhatti Falls — Sacred Cascade Near Kemmanagundi",
     hero: {
       image: kalhattiFalls,
@@ -425,9 +425,9 @@ export const destinations: Record<string, DestinationData> = {
   "hirekolale-lake": {
     slug: "hirekolale-lake",
     primaryKeyword: "Hirekolale Lake Chikmagalur",
-    title: "Hirekolale Lake Chikmagalur: Sunset & Travel Guide 2026",
+    title: "Hirekolale Lake Sunset Guide Chikmagalur | Trip Chikmagalur",
     description:
-      "Hirekolale Lake Chikmagalur — best sunset spot 10 km from town. How to reach, ideal timings, photography tips & nearby attractions.",
+      "Hirekolale Lake Chikmagalur — best sunset spot 10 km from town. Ideal timings, photography tips & nearby attractions. Plan visit & book on WhatsApp.",
     h1: "Hirekolale Lake — Chikmagalur's Best Sunset Spot",
     hero: {
       image: hirekolale,
@@ -499,9 +499,9 @@ export const destinations: Record<string, DestinationData> = {
   "kudremukh-national-park": {
     slug: "kudremukh-national-park",
     primaryKeyword: "Kudremukh National Park",
-    title: "Kudremukh National Park: Trek & Wildlife Guide 2026",
+    title: "Kudremukh Trek Guide Chikmagalur | Trip Chikmagalur",
     description:
-      "Kudremukh National Park guide — horse-face peak trek, wildlife, permits, entry fee & how to reach from Chikmagalur. Plan your visit.",
+      "Kudremukh National Park — horse-face peak trek, wildlife, permits & entry fees. How to reach from Chikmagalur. Plan trek & book on WhatsApp.",
     h1: "Kudremukh National Park — Trek, Wildlife & Permits",
     hero: {
       image: muthodi,
@@ -575,9 +575,9 @@ export const destinations: Record<string, DestinationData> = {
   "bhadra-wildlife-sanctuary": {
     slug: "bhadra-wildlife-sanctuary",
     primaryKeyword: "Bhadra Wildlife Sanctuary",
-    title: "Bhadra Wildlife Sanctuary Chikmagalur: Safari Guide 2026",
+    title: "Bhadra Wildlife Safari Guide | Trip Chikmagalur",
     description:
-      "Bhadra Wildlife Sanctuary guide — tiger safari, jeep timings, booking, best time & how to reach from Chikmagalur. Plan your wildlife trip.",
+      "Bhadra Wildlife Sanctuary — tiger safari, jeep timings, booking & best season. How to reach from Chikmagalur. Book Muthodi safari on WhatsApp.",
     h1: "Bhadra Wildlife Sanctuary — Tiger Reserve Travel Guide",
     hero: {
       image: muthodi,
@@ -649,9 +649,9 @@ export const destinations: Record<string, DestinationData> = {
   "coffee-plantations-chikmagalur": {
     slug: "coffee-plantations-chikmagalur",
     primaryKeyword: "coffee plantation Chikmagalur",
-    title: "Coffee Plantations in Chikmagalur: Tour & Stay Guide 2026",
+    title: "Coffee Plantation Tour Guide Chikmagalur | Trip Chikmagalur",
     description:
-      "Coffee plantation Chikmagalur guide — estate tours, harvest season, tasting, best estate stays under ₹2500. Plan your coffee escape.",
+      "Coffee plantations in Chikmagalur — estate tours, harvest season, tasting & budget stays under ₹2,500. Plan your coffee escape. Book on WhatsApp.",
     h1: "Coffee Plantations in Chikmagalur — Tours, Tastings & Stays",
     hero: {
       image: estateCafe,
@@ -723,9 +723,9 @@ export const destinations: Record<string, DestinationData> = {
   "jhari-falls": {
     slug: "jhari-falls",
     primaryKeyword: "Jhari Falls Chikmagalur",
-    title: "Jhari Falls Chikmagalur: Buttermilk Falls Guide 2026",
+    title: "Jhari Falls Chikmagalur Guide | Trip Chikmagalur",
     description:
-      "Jhari Falls (Buttermilk Falls) Chikmagalur — jeep route, entry fee, best time, what to expect. Plan your hidden waterfall trip.",
+      "Jhari Falls (Buttermilk Falls) — jeep route, entry fee & best season near Chikmagalur. What to expect on your hidden waterfall trip. Book on WhatsApp.",
     h1: "Jhari Falls Chikmagalur — The Hidden Buttermilk Falls",
     hero: {
       image: jhariFalls,

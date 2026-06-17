@@ -48,6 +48,27 @@ export function absoluteAssetUrl(src: string): string {
   return publicAssetUrl(src);
 }
 
+/** Trims meta descriptions to SERP-friendly length (default max 160). */
+export function metaDescription(text: string, max = 160): string {
+  const normalized = text.replace(/\s+/g, " ").trim();
+  if (normalized.length <= max) return normalized;
+
+  const cut = normalized.slice(0, max);
+  const lastSpace = cut.lastIndexOf(" ");
+  const trimmed = (lastSpace > 100 ? cut.slice(0, lastSpace) : cut).replace(/[,;:\s]+$/, "");
+  return trimmed.endsWith(".") ? trimmed : `${trimmed}.`;
+}
+
+/** Keeps title tags within typical SERP display range (default max 60). */
+export function metaTitle(text: string, max = 60): string {
+  const normalized = text.replace(/\s+/g, " ").trim();
+  if (normalized.length <= max) return normalized;
+
+  const cut = normalized.slice(0, max);
+  const lastSpace = cut.lastIndexOf(" ");
+  return (lastSpace > 24 ? cut.slice(0, lastSpace) : cut).replace(/[\s|—,-]+$/, "");
+}
+
 export const normalizePath = (path: string): string => {
   if (!path) return "/";
   let p = path.split("?")[0].split("#")[0];
@@ -67,10 +88,12 @@ export const buildMetadata = ({
 }: SeoInput): Metadata => {
   const path = normalizePath(canonical);
   const fullCanonical = `${SITE_URL}${path === "/" ? "" : path}`;
+  const metaDesc = description ? metaDescription(description) : undefined;
+  const metaTitleText = title ? metaTitle(title) : undefined;
 
   return {
-    title,
-    description,
+    title: metaTitleText,
+    description: metaDesc,
     applicationName: SITE_NAME,
     authors: [{ name: "Trip Chikmagalur — Wanderlust_ckm", url: SITE_URL }],
     robots: noindex
@@ -99,8 +122,8 @@ export const buildMetadata = ({
       alternateLocale: ["en_US"],
       siteName: SITE_NAME,
       url: fullCanonical,
-      title,
-      description,
+      title: metaTitleText,
+      description: metaDesc,
       countryName: "India",
       images: [
         {
@@ -115,8 +138,8 @@ export const buildMetadata = ({
       card: "summary_large_image",
       site: "@tripchikmagalur",
       creator: "@tripchikmagalur",
-      title,
-      description,
+      title: metaTitleText,
+      description: metaDesc,
       images: [ogImage],
     },
     other: {

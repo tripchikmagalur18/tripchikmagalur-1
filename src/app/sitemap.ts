@@ -37,6 +37,7 @@ const CORE_STATIC_PAGES: Array<{
   { path: "how-to-reach-chikmagalur", priority: 0.85 },
   { path: "blog", priority: 0.8 },
   { path: "faq", priority: 0.8 },
+  { path: "contact", priority: 0.85 },
   { path: "food", priority: 0.85 },
   { path: "adventure", priority: 0.9, changeFrequency: "weekly" },
   { path: "stays", priority: 0.95, changeFrequency: "weekly" },

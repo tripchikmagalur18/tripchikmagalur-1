@@ -27,7 +27,7 @@ const Navbar = () => {
     { href: "/2-day-chikmagalur-itinerary", label: "Itinerary" },
     { href: "/blog", label: "Blog" },
     { href: "/faq", label: "FAQ" },
-    { href: "/#contact", label: "Contact" },
+    { href: "/contact", label: "Contact" },
   ];
 
   const isHashLink = (href: string) => href.includes("#") && (href.startsWith("/#") || href.startsWith("#"));

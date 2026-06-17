@@ -2,15 +2,17 @@
 
 import Link from "next/link";
 import type { StaticImageData } from "next/image";
-import { ArrowLeft, Clock, Utensils } from "lucide-react";
+import { ArrowLeft, ArrowRight, Clock, Utensils } from "lucide-react";
 import { PageJsonLd } from "@/components/page-json-ld";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { LinkedText } from "@/components/LinkedText";
 import { AppImage } from "@/components/AppImage";
 import categoryFood from "@/assets/category-food.webp";
 import categoryStays from "@/assets/category-stays.webp";
 import sightseeingImg from "@/assets/activity-sightseeing.webp";
 
 import { WHATSAPP_LINK } from "@/lib/whatsapp";
+import { foodPageIntro, foodRelatedLinks } from "@/lib/contextual-links";
 
 const foodExperiences: {
   title: string;
@@ -23,7 +25,7 @@ const foodExperiences: {
     title: "Malnad Thali Experience",
     image: categoryFood,
     description:
-      "Savor the authentic Malnad cuisine with a traditional thali featuring local delicacies like Akki Rotti, Neer Dosa, and Pandi Curry.",
+      "Savor authentic Malnad cuisine with Akki Rotti, Neer Dosa, and Pandi Curry — see our [local food guide](/chikmagalur-local-food) for the best thali spots.",
     type: "Traditional Cuisine",
     duration: "1.5 hours",
   },
@@ -31,7 +33,7 @@ const foodExperiences: {
     title: "Coffee Estate Tour & Tasting",
     image: categoryStays,
     description:
-      "Visit local coffee plantations, learn about coffee processing, and enjoy freshly brewed estate coffee.",
+      "Visit [coffee plantations in Chikmagalur](/places/coffee-plantations-chikmagalur), learn processing, and enjoy estate coffee — or book a [coffee plantation tour](/coffee-plantation-tour-chikmagalur).",
     type: "Coffee Experience",
     duration: "3 hours",
   },
@@ -55,7 +57,7 @@ const foodExperiences: {
     title: "Spice Plantation Visit",
     image: categoryStays,
     description:
-      "Tour aromatic spice gardens, learn about cardamom, pepper, and other spices, with a traditional spice-infused lunch.",
+      "Tour aromatic spice gardens and enjoy a spice-infused lunch — often combined with a [2-day Chikmagalur itinerary](/2-day-chikmagalur-itinerary) or [homestays in Chikmagalur](/homestays-in-chikmagalur).",
     type: "Spice Experience",
     duration: "4 hours",
   },
@@ -115,6 +117,9 @@ const FoodPage = () => {
             ]}
             className="mb-8"
           />
+          <p className="text-foreground/90 leading-relaxed mb-10 max-w-3xl">
+            <LinkedText text={foodPageIntro} />
+          </p>
           <div className="grid grid-cols-1 gap-4">
             {foodExperiences.map((food, index) => (
               <div
@@ -142,9 +147,31 @@ const FoodPage = () => {
                     <Clock className="w-3 h-3" />
                     {food.duration}
                   </span>
-                  <p className="text-muted-foreground text-xs mt-1 line-clamp-2 hidden md:block">{food.description}</p>
+                  <p className="text-muted-foreground text-xs mt-1 line-clamp-2 hidden md:block">
+                    <LinkedText text={food.description} />
+                  </p>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-12 px-4 md:px-8 border-t border-border/50">
+        <div className="container mx-auto max-w-7xl">
+          <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-5">
+            Related Chikmagalur guides
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            {foodRelatedLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="glass rounded-xl px-5 py-4 flex items-center justify-between hover:scale-[1.02] transition-all"
+              >
+                <span className="font-medium text-foreground text-sm">{link.label}</span>
+                <ArrowRight className="w-4 h-4 text-sunset shrink-0 ml-2" />
+              </Link>
             ))}
           </div>
         </div>

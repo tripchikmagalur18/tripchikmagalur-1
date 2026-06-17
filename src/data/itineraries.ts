@@ -33,9 +33,9 @@ export const itineraries: Record<string, ItineraryData> = {
   "chikmagalur-itinerary": {
     slug: "chikmagalur-itinerary",
     primaryKeyword: "Chikmagalur itinerary",
-    title: "Chikmagalur Itinerary 2026 — Best 1, 2 & 3 Day Plans",
+    title: "Chikmagalur Itinerary — 1, 2 & 3 Days | Trip Chikmagalur",
     description:
-      "Complete Chikmagalur itinerary — choose 1, 2 or 3 day plans covering Mullayanagiri, Hebbe Falls, Baba Budangiri, coffee estates & hidden gems.",
+      "Chikmagalur itinerary — 1, 2 or 3 day plans covering Mullayanagiri, Hebbe Falls, Baba Budangiri, coffee estates & hidden gems. Book packages on WhatsApp.",
     h1: "The Complete Chikmagalur Itinerary — 1, 2 & 3 Day Plans",
     intro:
       "A well-planned Chikmagalur itinerary is the difference between rushing through three peaks in a fog and a calm, cinematic weekend in Karnataka's coffee hills. This guide gives you three ready-to-use plans — a tight 1-day taste, a balanced 2-day weekend, and a relaxed 3-day deep dive — covering Mullayanagiri, Hebbe Falls, Baba Budangiri, coffee plantations and the best viewpoints. Pick the one that fits your travel window and skip the planning headache.",
@@ -115,9 +115,9 @@ export const itineraries: Record<string, ItineraryData> = {
   "chikmagalur-2-days-itinerary": {
     slug: "chikmagalur-2-days-itinerary",
     primaryKeyword: "Chikmagalur 2 days itinerary",
-    title: "Chikmagalur 2 Days Itinerary — Perfect Weekend Plan",
+    title: "Chikmagalur 2 Day Weekend Itinerary | Trip Chikmagalur",
     description:
-      "Chikmagalur 2 days itinerary — covers Mullayanagiri, Baba Budangiri, Hebbe Falls, coffee estate. Day-by-day plan with timings & costs.",
+      "Chikmagalur 2-day itinerary — Mullayanagiri, Baba Budangiri, Hebbe Falls & coffee estate. Day-by-day timings, costs & stay tips. Book on WhatsApp.",
     h1: "Chikmagalur 2 Days Itinerary — The Perfect Weekend Plan",
     intro:
       "A Chikmagalur 2 days itinerary is the sweet spot for most travellers — enough time to do the highlights without rushing, and short enough for a Friday-night-to-Sunday-night weekend escape. This plan covers Mullayanagiri sunrise, Baba Budangiri, Hebbe Falls, a coffee plantation walk, and the iconic Hirekolale Lake sunset, with realistic timings and budget breakdown.",
@@ -183,9 +183,9 @@ export const itineraries: Record<string, ItineraryData> = {
   "chikmagalur-itinerary-from-bangalore": {
     slug: "chikmagalur-itinerary-from-bangalore",
     primaryKeyword: "Chikmagalur from Bangalore",
-    title: "Chikmagalur from Bangalore — 2-Day Road Trip Itinerary",
+    title: "Chikmagalur from Bangalore Itinerary | Trip Chikmagalur",
     description:
-      "Chikmagalur from Bangalore — full 2-day road trip plan with route, fuel stops, costs & day-by-day schedule. Perfect for weekend travelers.",
+      "Chikmagalur from Bangalore — 2-day road trip with route, fuel stops, costs & day-by-day schedule. Perfect weekend plan. Book packages on WhatsApp.",
     h1: "Chikmagalur Trip from Bangalore — Complete Road Trip Guide",
     intro:
       "Driving to Chikmagalur from Bangalore is one of South India's most popular weekend escapes — 270 km of NH75 highway leading from urban sprawl into Karnataka's misty coffee country. This itinerary covers the full route with fuel stops, breakfast points, optimal departure times, and a tight 2-day plan that lets you experience Mullayanagiri sunrise, Hebbe Falls and a coffee estate without burning out. Tested for both car and motorbike trips.",
@@ -260,9 +260,9 @@ export const itineraries: Record<string, ItineraryData> = {
   "3-day-chikmagalur-itinerary": {
     slug: "3-day-chikmagalur-itinerary",
     primaryKeyword: "3 day Chikmagalur itinerary",
-    title: "3 Day Chikmagalur Itinerary — Relaxed Coffee Hills Plan (2026)",
+    title: "3 Day Chikmagalur Trip Itinerary Guide | Trip Chikmagalur",
     description:
-      "Best 3 day Chikmagalur itinerary: Mullayanagiri, Hebbe Falls, Bhadra safari, coffee estates & hidden falls. Day-by-day timings, ₹4,500+ budget & package links.",
+      "3-day Chikmagalur itinerary — Mullayanagiri, Hebbe Falls, Bhadra safari & coffee estates. Day-by-day timings, ₹4,500+ budget & packages. Book on WhatsApp.",
     h1: "3 Day Chikmagalur Itinerary — Complete Plan",
     intro:
       "A 3 day Chikmagalur itinerary is the best choice when you want peaks, waterfalls, wildlife, and estate time without rushing a Sunday drive back. This plan sequences Mullayanagiri and Baba Budangiri on day one, Kemmangundi and Hebbe Falls on day two, and Bhadra safari plus Jhari Falls on day three — matching our bookable day packages so you can add transport and guide support on WhatsApp.",

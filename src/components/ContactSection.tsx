@@ -4,6 +4,8 @@ import { MessageCircle, Mail, Phone, Instagram, Facebook, Twitter } from "lucide
 import { useEffect, useRef, useState } from "react";
 
 import { WHATSAPP_LINK } from "@/lib/whatsapp";
+import { BUSINESS_CONTACT } from "@/lib/business-contact";
+import Link from "next/link";
 
 const ContactSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -67,23 +69,31 @@ const ContactSection = () => {
           {/* Contact Info */}
           <div className={`flex flex-wrap justify-center gap-8 mb-12 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <a
-              href="mailto:tripchikmagalur18@gmail.com"
+              href={`mailto:${BUSINESS_CONTACT.email}`}
               className="flex items-center gap-3 text-white/70 hover:text-white transition-colors"
             >
               <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
                 <Mail className="w-5 h-5" />
               </div>
-              <span>tripchikmagalur18@gmail.com</span>
+              <span>{BUSINESS_CONTACT.email}</span>
             </a>
             <a
-              href="tel:+916363131585"
+              href={BUSINESS_CONTACT.phoneLink}
               className="flex items-center gap-3 text-white/70 hover:text-white transition-colors"
             >
               <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
                 <Phone className="w-5 h-5" />
               </div>
-              <span>+91 63631 31585</span>
+              <span>{BUSINESS_CONTACT.phoneDisplay}</span>
             </a>
+            <Link
+              href="/contact"
+              className="flex items-center gap-3 text-white/70 hover:text-white transition-colors w-full sm:w-auto justify-center"
+            >
+              <span className="text-sunset font-medium underline underline-offset-2">
+                Full contact details & map →
+              </span>
+            </Link>
           </div>
 
           {/* Social Links */}

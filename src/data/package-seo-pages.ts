@@ -22,9 +22,9 @@ export type PackageSeoPage = {
 export const packageSeoPages: Record<string, PackageSeoPage> = {
   "mullayanagiri-trek-package": {
     slug: "mullayanagiri-trek-package",
-    title: "Mullayanagiri Trek Package Chikmagalur — Day Tour from ₹3,499 (2026)",
+    title: "Mullayanagiri Trek Package from ₹3,499 | Trip Chikmagalur",
     metaDescription:
-      "Book the Mullayanagiri trek package in Chikmagalur — sunrise peak, Baba Budangiri, Jhari Falls jeep & Z Point. ₹3,499/group, private cab & guide. WhatsApp booking.",
+      "Mullayanagiri trek package — sunrise peak, Baba Budangiri, Jhari Falls jeep & Z Point. ₹3,499/group with private cab & guide. Book on WhatsApp.",
     keyword: "Mullayanagiri trek package Chikmagalur",
     h1: "Mullayanagiri Trek Package — Chikmagalur Day 1 Tour",
     intro:
@@ -77,9 +77,9 @@ export const packageSeoPages: Record<string, PackageSeoPage> = {
   },
   "kemmangundi-tour-package": {
     slug: "kemmangundi-tour-package",
-    title: "Kemmangundi Tour Package — Hebbe Falls & Z Point from ₹4,499 (2026)",
+    title: "Kemmangundi Tour Package from ₹4,499 | Trip Chikmagalur",
     metaDescription:
-      "Kemmangundi tour package with Hebbe Falls jeep, Kalhatti Falls, Raj Bhavan roses & Z Point. ₹4,499/group from Chikmagalur. Book WhatsApp.",
+      "Kemmangundi tour package — Hebbe Falls jeep, Kalhatti Falls, Raj Bhavan roses & Z Point. ₹4,499/group with guide from Chikmagalur. Book on WhatsApp.",
     keyword: "Kemmangundi tour package Chikmagalur",
     h1: "Kemmangundi Tour Package — Hebbe Falls & Hill Station Day",
     intro:
@@ -124,9 +124,9 @@ export const packageSeoPages: Record<string, PackageSeoPage> = {
   },
   "muthodi-safari-package": {
     slug: "muthodi-safari-package",
-    title: "Muthodi Safari Package — Bhadra Wildlife & Lakes from ₹3,999 (2026)",
+    title: "Muthodi Safari Package from ₹3,999 | Trip Chikmagalur",
     metaDescription:
-      "Muthodi forest safari package: Bhadra wildlife jeep, Hirekolale Lake, Ukkuda Falls & Mallandur. ₹3,999/group. Book Chikmagalur nature day tour.",
+      "Muthodi safari package — Bhadra wildlife jeep, Hirekolale Lake, Ukkuda Falls & Mallandur viewpoints. ₹3,999/group. Book nature tour on WhatsApp.",
     keyword: "Muthodi safari package Chikmagalur",
     h1: "Muthodi Safari Package — Bhadra Wildlife Day Tour",
     intro:
@@ -169,9 +169,9 @@ export const packageSeoPages: Record<string, PackageSeoPage> = {
   },
   "belur-heritage-tour-package": {
     slug: "belur-heritage-tour-package",
-    title: "Belur Heritage Tour Package — Hoysala Temples from ₹3,499 (2026)",
+    title: "Belur Heritage Tour from ₹3,499 | Trip Chikmagalur",
     metaDescription:
-      "Belur & Halebidu heritage tour from Chikmagalur — Chennakeshava & Hoysaleshwara temples. ₹3,499/group. Day trip with guide.",
+      "Belur & Halebidu heritage tour — Chennakeshava & Hoysaleshwara temples from Chikmagalur. ₹3,499/group with guide. Book day trip on WhatsApp.",
     keyword: "Belur Halebidu tour package",
     h1: "Belur Heritage Tour Package — Hoysala Temple Day Trip",
     intro:
@@ -207,9 +207,9 @@ export const packageSeoPages: Record<string, PackageSeoPage> = {
   },
   "sringeri-trek-package": {
     slug: "sringeri-trek-package",
-    title: "Sringeri Trek Package — Devaramane & Ethina Bhuja from ₹5,999 (2026)",
+    title: "Sringeri Trek Package from ₹5,999 | Trip Chikmagalur",
     metaDescription:
-      "Sringeri trek package: Devaramane Betta, Ethina Bhuja trek, Abbi Falls, Mudigere views. ₹5,999/group. Adventure day from Chikmagalur.",
+      "Sringeri trek package from Chikmagalur — Devaramane Betta, Ethina Bhuja trek, Abbi Falls & Mudigere views. ₹5,999/group. Book on WhatsApp.",
     keyword: "Sringeri trek package Chikmagalur",
     h1: "Sringeri Trek Package — Mudigere Range Adventure Day",
     intro:

@@ -29,6 +29,13 @@ export const LINKS = {
   howToReach: { label: "how to reach Chikmagalur", href: "/how-to-reach-chikmagalur" },
   budget: { label: "trip budget guide", href: "/chikmagalur-trip-budget" },
   food: { label: "Chikmagalur food guide", href: "/food" },
+  localFood: { label: "Chikmagalur local food guide", href: "/chikmagalur-local-food" },
+  thingsToDo: { label: "things to do in Chikmagalur", href: "/things-to-do-in-chikmagalur" },
+  mullayanagiriPlace: { label: "Mullayanagiri trek guide", href: "/places/mullayanagiri-trek" },
+  hebbeFalls: { label: "Hebbe Falls guide", href: "/places/hebbe-falls" },
+  kudremukhPlace: { label: "Kudremukh trek guide", href: "/places/kudremukh-national-park" },
+  coffeePlantations: { label: "coffee plantations in Chikmagalur", href: "/places/coffee-plantations-chikmagalur" },
+  day1: { label: "Day 1 Mullayanagiri tour", href: "/package/day-1" },
 } as const;
 
 /** Short natural suffix for FAQ answers without an inline link yet */
@@ -104,3 +111,27 @@ export const blogContextualLinks: Partial<Record<number, InternalLink[]>> = {
   26: [LINKS.mullayanagiriPkg, LINKS.kemmangundiPkg],
   27: [LINKS.packages, LINKS.itineraryFull],
 };
+
+/** Intro copy with inline markdown links for /food */
+export const foodPageIntro =
+  "Discover Malnad thali, estate filter coffee, and street-food classics across the hills. Pair a food day with a [coffee plantation tour](/coffee-plantation-tour-chikmagalur), explore [places to visit](/places), and book [stays in Chikmagalur](/stays) for multi-day trips. See our [local food guide](/chikmagalur-local-food) and [Chikmagalur tour packages](/chikmagalur-tour-packages) to plan the full experience.";
+
+export const foodRelatedLinks: InternalLink[] = [
+  LINKS.coffeeTour,
+  LINKS.localFood,
+  LINKS.itinerary,
+  LINKS.thingsToDo,
+  LINKS.bestTime,
+];
+
+/** Intro copy with inline markdown links for /adventure */
+export const adventurePageIntro =
+  "From ziplining and jeep safaris to peak treks, Chikmagalur’s Western Ghats offer year-round thrills. Combine activities with our [Mullayanagiri trek package](/mullayanagiri-trek-package), [trekking in Chikmagalur](/trekking-in-chikmagalur) guide, [waterfalls in Chikmagalur](/waterfalls-in-chikmagalur), and [weekend packages](/chikmagalur-weekend-packages). Browse [Chikmagalur tour packages](/chikmagalur-tour-packages) to mix adventure with sightseeing.";
+
+export const adventureRelatedLinks: InternalLink[] = [
+  LINKS.mullayanagiriPkg,
+  LINKS.muthodiPkg,
+  LINKS.kemmangundiPkg,
+  LINKS.hebbeFalls,
+  LINKS.day1,
+];

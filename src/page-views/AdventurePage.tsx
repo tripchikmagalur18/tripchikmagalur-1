@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import type { StaticImageData } from "next/image";
-import { ArrowLeft, Clock, Mountain } from "lucide-react";
+import { ArrowLeft, ArrowRight, Clock, Mountain } from "lucide-react";
 import { PageJsonLd } from "@/components/page-json-ld";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { LinkedText } from "@/components/LinkedText";
 import { AppImage } from "@/components/AppImage";
 import ziplineImg from "@/assets/activity-zipline.webp";
 import atvImg from "@/assets/activity-atv.webp";
@@ -14,6 +15,7 @@ import campingImg from "@/assets/activity-camping.webp";
 import sightseeingImg from "@/assets/activity-sightseeing.webp";
 
 import { WHATSAPP_LINK } from "@/lib/whatsapp";
+import { adventurePageIntro, adventureRelatedLinks } from "@/lib/contextual-links";
 
 const activities: {
   title: string;
@@ -39,14 +41,16 @@ const activities: {
   {
     title: "Jeep Adventure",
     image: jeepImg,
-    description: "Explore misty mountain trails and hidden waterfalls in a rugged 4x4 jeep safari.",
+    description:
+      "Explore misty mountain trails and hidden waterfalls — popular routes include [Hebbe Falls](/places/hebbe-falls) and the [Kemmangundi tour package](/kemmangundi-tour-package).",
     duration: "4-5 hours",
     difficulty: "Easy",
   },
   {
     title: "Trekking",
     image: trekImg,
-    description: "Conquer scenic peaks like Mullayanagiri and Kudremukh with guided trekking expeditions.",
+    description:
+      "Conquer scenic peaks with our [Mullayanagiri trek guide](/places/mullayanagiri-trek) and [Kudremukh trek guide](/places/kudremukh-national-park) on guided full-day expeditions.",
     duration: "Full day",
     difficulty: "Challenging",
   },
@@ -60,7 +64,8 @@ const activities: {
   {
     title: "Sight Visiting",
     image: sightseeingImg,
-    description: "Discover hidden waterfalls, ancient temples, and breathtaking viewpoints across Chikmagalur.",
+    description:
+      "Discover hidden waterfalls, temples, and viewpoints — browse [places to visit](/places) or add a [Muthodi safari package](/muthodi-safari-package).",
     duration: "Half day",
     difficulty: "Easy",
   },
@@ -112,6 +117,9 @@ const AdventurePage = () => {
             ]}
             className="mb-8"
           />
+          <p className="text-foreground/90 leading-relaxed mb-10 max-w-3xl">
+            <LinkedText text={adventurePageIntro} />
+          </p>
           <div className="grid grid-cols-1 gap-4">
             {activities.map((activity, index) => (
               <div
@@ -139,9 +147,31 @@ const AdventurePage = () => {
                     <Clock className="w-3 h-3" />
                     {activity.duration}
                   </span>
-                  <p className="text-muted-foreground text-xs mt-1 line-clamp-2 hidden md:block">{activity.description}</p>
+                  <p className="text-muted-foreground text-xs mt-1 line-clamp-2 hidden md:block">
+                    <LinkedText text={activity.description} />
+                  </p>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-12 px-4 md:px-8 border-t border-border/50">
+        <div className="container mx-auto max-w-7xl">
+          <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-5">
+            Related packages & guides
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {adventureRelatedLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="glass rounded-xl px-5 py-4 flex items-center justify-between hover:scale-[1.02] transition-all"
+              >
+                <span className="font-medium text-foreground text-sm">{link.label}</span>
+                <ArrowRight className="w-4 h-4 text-sunset shrink-0 ml-2" />
+              </Link>
             ))}
           </div>
         </div>

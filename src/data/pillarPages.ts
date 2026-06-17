@@ -56,9 +56,9 @@ export const pillarPages: Record<string, PillarPageData> = {
   "trekking-in-chikmagalur": {
     slug: "trekking-in-chikmagalur",
     primaryKeyword: "trekking in Chikmagalur",
-    title: "Trekking in Chikmagalur — Complete Trek Guide 2026",
+    title: "Trekking in Chikmagalur Guide | Trip Chikmagalur",
     description:
-      "Trekking in Chikmagalur — full guide to Mullayanagiri, Kudremukh, Z Point, Ballalarayana Durga & more with difficulty, distance, permits & cost.",
+      "Trekking in Chikmagalur — Mullayanagiri, Kudremukh, Z Point & Ballalarayana Durga routes with difficulty, distance, permits & costs. Plan & book on WhatsApp.",
     h1: "Trekking in Chikmagalur — All Trek Routes & Difficulty Guide",
     intro:
       "Trekking in Chikmagalur means walking across the highest peak in Karnataka, climbing through shola grasslands, and waking up above the clouds. The Western Ghats around Chikmagalur hold treks for every level — from the easy 30-minute Mullayanagiri stair walk to the multi-day Kudremukh climb. This guide covers every trek route in detail with difficulty, distance, duration, best season, permits and pro-tips so you can pick the right one.",
@@ -195,9 +195,9 @@ export const pillarPages: Record<string, PillarPageData> = {
   "waterfalls-in-chikmagalur": {
     slug: "waterfalls-in-chikmagalur",
     primaryKeyword: "waterfalls in Chikmagalur",
-    title: "Best Waterfalls in Chikmagalur — Entry Fee, Timings, Guide",
+    title: "Waterfalls in Chikmagalur Guide | Trip Chikmagalur",
     description:
-      "Waterfalls in Chikmagalur — Hebbe, Jhari, Kalhatti, Kadambi, Manikyadhara, Hanuman Gundi & Shanti Falls with entry fee, timings & how to reach.",
+      "Waterfalls in Chikmagalur — Hebbe, Jhari, Kalhatti, Kadambi, Manikyadhara & Shanti Falls with entry fees, timings & jeep routes. Book tours on WhatsApp.",
     h1: "Best Waterfalls in Chikmagalur & Nearby (with Entry Fee & Timings)",
     intro:
       "The waterfalls in Chikmagalur are scattered across the Western Ghats — some inside coffee estates, others reached only by 4x4 jeeps through the forest. Hebbe and Jhari are the headliners, but lesser-known falls like Manikyadhara and Hanuman Gundi reward travellers who venture deeper. This guide lists every accessible waterfall with entry fee, timings, distance and how to reach.",
@@ -353,9 +353,9 @@ export const pillarPages: Record<string, PillarPageData> = {
   "resorts-in-chikmagalur": {
     slug: "resorts-in-chikmagalur",
     primaryKeyword: "resorts in Chikmagalur",
-    title: "Best Resorts & Coffee Estate Stays in Chikmagalur 2026",
+    title: "Best Resorts in Chikmagalur to Book | Trip Chikmagalur",
     description:
-      "Best resorts in Chikmagalur — budget homestays, mid-range resorts, luxury coffee estate stays & honeymoon villas with prices, locations & tips.",
+      "Best resorts in Chikmagalur — homestays, mid-range resorts, estate stays & honeymoon villas with prices, locations & tips. Compare & book on WhatsApp.",
     h1: "Best Resorts & Coffee Estate Stays in Chikmagalur",
     intro:
       "The best resorts in Chikmagalur let you wake up to mist over coffee bushes, the call of Malabar whistling thrushes, and a French press of estate-grown Arabica. From ₹1,800 family homestays to ₹15,000 plantation villas, this guide groups every category — budget, mid-range, luxury and pure coffee-estate stays — with location, price range and what to expect.",
@@ -509,9 +509,9 @@ export const pillarPages: Record<string, PillarPageData> = {
   "chikmagalur-trip-budget": {
     slug: "chikmagalur-trip-budget",
     primaryKeyword: "Chikmagalur trip budget",
-    title: "Chikmagalur Trip Budget — Cost Breakdown 2026 (Solo, Couple, Family)",
+    title: "Chikmagalur Trip Budget Guide | Trip Chikmagalur",
     description:
-      "Chikmagalur trip budget 2026 — full cost breakdown for solo, couple, family. Transport, stay, food, entry fees & total trip cost from Bangalore.",
+      "Chikmagalur trip budget — solo, couple & family cost breakdown for transport, stay, food & entry fees from Bangalore. Plan smart & book on WhatsApp.",
     h1: "Chikmagalur Trip Budget — Complete Cost Breakdown for 2026",
     intro:
       "How much does a Chikmagalur trip really cost? It depends on whether you're a solo backpacker on a Volvo, a couple in a coffee-estate villa, or a family of four in a self-driven SUV. This budget guide breaks down the actual numbers — transport, stay, food, entry fees and activities — for each traveller type, with sample 2-day budgets ranging from ₹3,000 to ₹35,000.",

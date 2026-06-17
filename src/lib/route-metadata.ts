@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { absoluteAssetUrl, buildMetadata, type SeoInput } from "@/lib/seo";
+import { absoluteAssetUrl, buildMetadata, metaDescription, type SeoInput } from "@/lib/seo";
 import { imageSrc } from "@/lib/image-src";
 import { getStayBySlug } from "@/data/stays";
 import { travelInfo } from "@/data/travelInfo";
@@ -9,93 +9,99 @@ import { itineraries } from "@/data/itineraries";
 
 const staticMeta: Record<string, SeoInput> = {
   "/": {
-    title: "Chikmagalur Tour Packages 2026 | Stays, Treks & Adventures — Trip Chikmagalur",
+    title: "Chikmagalur Tour Packages, Stays & Treks | Trip Chikmagalur",
     description:
-      "Book Chikmagalur tour packages from ₹3,499. Mullayanagiri trek, Kemmangundi, waterfalls & jeep safari. Govt. verified, 500+ travellers. Book via WhatsApp instantly.",
+      "Book Chikmagalur tour packages from ₹3,499 — Mullayanagiri trek, Kemmangundi, waterfalls & jeep safari. Govt. verified, 500+ travellers. Book on WhatsApp.",
     canonical: "/",
   },
   "/adventure": {
-    title: "Chikmagalur Adventure Activities — Zipline, ATV, Trek & Jeep Safari (2026)",
+    title: "Chikmagalur Adventure — ATV & Trek | Trip Chikmagalur",
     description:
-      "Book adventure in Chikmagalur: ziplining, ATV, jeep safari, Mullayanagiri trek, fishing & camping. Safe gear, local guides, instant WhatsApp booking.",
+      "Book Chikmagalur adventure — ziplining, ATV, jeep safari, Mullayanagiri trek, fishing & camping. Safe gear, expert guides. Book instantly on WhatsApp.",
     canonical: "/adventure",
   },
   "/stays": {
-    title: "Stays in Chikmagalur — Resort, Villa, Homestay & Stay SR (2026)",
+    title: "Chikmagalur Stays — Resort & Villa | Trip Chikmagalur",
     description:
-      "Book Trip Chikmagalur Resort (₹1,500), Resort P2 (₹1,800), Homestay P3 (₹2,500), Villa (₹1,200), Homestay (₹799) or Stay SR (₹799) per adult/night. Pool, forest views, kitchen villa, group rooms — WhatsApp booking.",
+      "Book Trip Chikmagalur stays from ₹799/person — resort with pool, forest Resort P2, villa & homestay. Group rooms available. Book your dates on WhatsApp.",
     canonical: "/stays",
   },
   "/food": {
-    title: "Chikmagalur Food Guide — Malnad Cuisine, Coffee & Estate Cafés (2026)",
+    title: "Chikmagalur Food Guide — Malnad & Coffee | Trip Chikmagalur",
     description:
-      "Best food in Chikmagalur: Malnad thali, Akki Rotti, Pandi Curry, Neer Dosa, estate filter coffee & rooftop cafés. Local dishes every traveler should try.",
+      "Taste Chikmagalur — Malnad thali, Akki Rotti, Pandi Curry, Neer Dosa & estate filter coffee. Top local dishes & cafés. Plan your food trail on WhatsApp.",
     canonical: "/food",
   },
   "/faq": {
-    title: "Chikmagalur FAQ (2026) — Packages, Resort, Villa, Treks & Costs",
+    title: "Chikmagalur FAQ — Packages, Stays & Treks | Trip Chikmagalur",
     description:
-      "30+ answers on Chikmagalur tour package prices, resort & villa booking, Mullayanagiri trek, Hebbe Falls jeep, honeymoon trips, adventure activities, and weekend plans from Bangalore.",
+      "30+ Chikmagalur FAQs on tour prices, stays, Mullayanagiri trek, Hebbe Falls jeep, honeymoon trips & weekend plans from Bangalore. Get answers & book on WhatsApp.",
     canonical: "/faq",
   },
-  "/blog": {
-    title: "Chikmagalur Travel Blog (2026) — Packages, Stays, Treks & Waterfalls",
+  "/contact": {
+    title: "Contact Trip Chikmagalur — Phone & WhatsApp | Trip Chikmagalur",
     description:
-      "27 expert guides: Chikmagalur tour packages from Bangalore, resort with pool, private villa pricing, Mullayanagiri trek, Hebbe Falls, coffee estates, monsoon trips & corporate outings.",
+      "Contact Trip Chikmagalur — call +91 6363131585, email tripchikmagalur18@gmail.com, or WhatsApp for tour packages, stays & treks. Open daily 7 AM–9 PM IST.",
+    canonical: "/contact",
+  },
+  "/blog": {
+    title: "Chikmagalur Travel Blog — Tips & Guides | Trip Chikmagalur",
+    description:
+      "Chikmagalur travel guides — packages from Bangalore, pool resort, villa stays, Mullayanagiri trek, Hebbe Falls & coffee estates. Read tips & book on WhatsApp.",
     canonical: "/blog",
   },
   "/package/day-1": {
-    title: "Day 1 Chikmagalur Tour — Mullayanagiri, Baba Budangiri & Coffee Estates",
+    title: "Day 1 Chikmagalur — Mullayanagiri Tour | Trip Chikmagalur",
     description:
-      "Day 1 Chikmagalur package: Mullayanagiri sunrise, Baba Budangiri, Honnamma Falls, coffee plantation walk & local sightseeing with guided transport.",
+      "Day 1 Chikmagalur package — Mullayanagiri sunrise, Baba Budangiri, Honnamma Falls & coffee plantation walk. Private cab & guide. Book on WhatsApp.",
     canonical: "/package/day-1",
   },
   "/package/day-2": {
-    title: "Day 2 Chikmagalur Tour — Hebbe Falls, Kemmanagundi & Hill Views",
+    title: "Day 2 Chikmagalur — Hebbe Falls Tour | Trip Chikmagalur",
     description:
-      "Day 2 Chikmagalur package: Hebbe Falls jeep ride, Kemmanagundi Raj Bhavan, Kalhatti Falls & Western Ghats viewpoints — full guided day trip.",
+      "Day 2 Chikmagalur package — Hebbe Falls jeep, Kemmangundi Raj Bhavan, Kalhatti Falls & hill viewpoints. Full guided day trip. Book on WhatsApp.",
     canonical: "/package/day-2",
   },
   "/package/day-3": {
-    title: "Day 3 Chikmagalur Tour — Lakes, Estate Cafés & Bhadra Wildlife Safari",
+    title: "Day 3 Chikmagalur — Bhadra Safari & Lakes | Trip Chikmagalur",
     description:
-      "Day 3 Chikmagalur package: Hirekolale Lake, Estate Café, Mallandur viewpoint, Muthodi forest safari & offbeat waterfalls near Chikmagalur.",
+      "Day 3 Chikmagalur package — Hirekolale Lake, Estate Café, Mallandur viewpoint & Muthodi forest safari. Nature day tour with guide. Book on WhatsApp.",
     canonical: "/package/day-3",
   },
   "/package/day-4": {
-    title: "Day 4 Belur & Halebidu Heritage Tour from Chikmagalur (2026)",
+    title: "Day 4 Belur Halebidu Heritage Tour | Trip Chikmagalur",
     description:
-      "Day 4 package: Belur Chennakeshava Temple, Halebidu Hoysaleshwara Temple, Hiremagalur & Belur Dam — Hoysala heritage day trip from Chikmagalur.",
+      "Day 4 Belur & Halebidu tour — Chennakeshava & Hoysaleshwara temples, Hiremagalur & Belur Dam. Heritage day trip from Chikmagalur. Book on WhatsApp.",
     canonical: "/package/day-4",
   },
   "/package/day-5": {
-    title: "Day 5 Sringeri & Trek Tour — Devaramane, Ethina Bhuja & Abbi Falls",
+    title: "Day 5 Sringeri Trek Package Tour | Trip Chikmagalur",
     description:
-      "Day 5 Chikmagalur package: Devaramane Betta, Ethina Bhuja trek, Abbi Falls, Siddhartha Hegde Park & Mudigere valley views with local guide.",
+      "Day 5 Sringeri trek tour from Chikmagalur — Devaramane Betta, Ethina Bhuja trek, Abbi Falls & Mudigere views. Guided adventure. Book on WhatsApp.",
     canonical: "/package/day-5",
   },
   "/places": {
-    title: "30+ Places to Visit in Chikmagalur — Distances, Timings & Tips (2026)",
+    title: "Best Places to Visit in Chikmagalur | Trip Chikmagalur",
     description:
-      "Complete Chikmagalur places guide: Mullayanagiri, Hebbe Falls, Baba Budangiri, Jhari Falls, Kemmanagundi, coffee estates & hidden gems with 5-day route plan.",
+      "Chikmagalur places guide — Mullayanagiri, Hebbe Falls, Baba Budangiri, Jhari Falls, Kemmangundi & coffee estates. Distances, timings & routes. Book on WhatsApp.",
     canonical: "/places",
   },
   "/chikmagalur-tour-packages": {
-    title: "Chikmagalur Tour Packages — Best Deals from ₹3,499 (2026) | Trip Chikmagalur",
+    title: "Chikmagalur Tour Packages from ₹3,499 | Trip Chikmagalur",
     description:
-      "Book Chikmagalur tour packages from ₹3,499/group — Mullayanagiri, Kemmangundi, Muthodi safari, Belur & Sringeri treks. Weekend, honeymoon & corporate plans from Bangalore, Mysore & Mangalore.",
+      "Chikmagalur tour packages from ₹3,499/group — Mullayanagiri, Kemmangundi, Muthodi safari, Belur & Sringeri treks. Weekend & honeymoon plans. Book on WhatsApp.",
     canonical: "/chikmagalur-tour-packages",
   },
   "/places-to-visit-in-chikmagalur": {
-    title: "Top 10 Places to Visit in Chikmagalur (2026 Guide)",
+    title: "Top 10 Places to Visit in Chikmagalur | Trip Chikmagalur",
     description:
-      "Top places in Chikmagalur ranked — Mullayanagiri, Hebbe Falls, Baba Budangiri, Kemmanagundi, Jhari Falls. Entry fees, best season, distances & insider tips.",
+      "Top 10 places in Chikmagalur — Mullayanagiri, Hebbe Falls, Baba Budangiri, Kemmangundi & Jhari Falls. Entry fees, best season & tips. Book tours on WhatsApp.",
     canonical: "/places-to-visit-in-chikmagalur",
   },
   "/2-day-chikmagalur-itinerary": {
-    title: "2 Day Chikmagalur Itinerary — Perfect Weekend from Bangalore (2026)",
+    title: "2 Day Chikmagalur Weekend Itinerary | Trip Chikmagalur",
     description:
-      "Best 2 day Chikmagalur plan: Mullayanagiri, Hebbe Falls, Baba Budangiri, coffee estate. Hour-by-hour schedule, ₹3,500 budget, packing list & travel FAQs.",
+      "Best 2-day Chikmagalur plan — Mullayanagiri, Hebbe Falls, Baba Budangiri & coffee estate. Hour-by-hour schedule, budget tips & FAQs. Book packages on WhatsApp.",
     canonical: "/2-day-chikmagalur-itinerary",
   },
   "/404": {
@@ -191,10 +197,11 @@ export function metadataForStay(slug: string): Metadata {
     });
   }
   const price = stay.pricePerPerson.toLocaleString("en-IN");
-  const isResort = stay.slug.includes("resort");
   return buildMetadata({
-    title: `${stay.name} — Book ${isResort ? "Resort" : "Villa"} in Chikmagalur (2026)`,
-    description: `${stay.tagline}. ${stay.description.slice(0, 120)}… From ₹${price}/adult/night. Book dates on WhatsApp.`,
+    title: `${stay.name} — ₹${price}/person | Trip Chikmagalur`,
+    description: metaDescription(
+      `${stay.tagline} From ₹${price}/person/night. ${stay.highlights[0]}. Book on WhatsApp.`,
+    ),
     canonical: `/stays/${stay.slug}`,
     ogImage: absoluteAssetUrl(imageSrc(stay.coverImage)),
     ogType: "website",

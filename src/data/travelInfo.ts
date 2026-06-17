@@ -23,9 +23,9 @@ export const travelInfo: Record<string, TravelInfoData> = {
   "best-time-to-visit-chikmagalur": {
     slug: "best-time-to-visit-chikmagalur",
     primaryKeyword: "best time to visit Chikmagalur",
-    title: "Best Time to Visit Chikmagalur — Month-by-Month Guide 2026",
+    title: "Best Time to Visit Chikmagalur | Trip Chikmagalur",
     description:
-      "Best time to visit Chikmagalur — month-by-month weather, season tips and the right window for trekking, waterfalls and coffee tours.",
+      "Best time to visit Chikmagalur — month-by-month weather, trekking, waterfalls & coffee tours. Pick the right season & book packages on WhatsApp.",
     h1: "Best Time to Visit Chikmagalur — Season-by-Season Guide",
     intro:
       "The best time to visit Chikmagalur is between October and February, when the post-monsoon weather brings clear skies, full waterfalls and cool temperatures perfect for trekking and coffee plantation walks. That said, every season has its own appeal — monsoon turns the Western Ghats emerald green, summer is ideal for indoor coffee experiences, and winter mornings offer cinematic mist over Mullayanagiri. This guide breaks it down month by month so you can pick the right window for your trip.",
@@ -81,9 +81,9 @@ export const travelInfo: Record<string, TravelInfoData> = {
   "how-to-reach-chikmagalur": {
     slug: "how-to-reach-chikmagalur",
     primaryKeyword: "how to reach Chikmagalur",
-    title: "How to Reach Chikmagalur — Road, Rail, Flight Guide 2026",
+    title: "How to Reach Chikmagalur by Train & Road | Trip Chikmagalur",
     description:
-      "How to reach Chikmagalur from Bangalore, Mangalore, Mysore — distances, drive times, bus, train, flight options + cab fares.",
+      "How to reach Chikmagalur from Bangalore, Mangalore & Mysore — distances, drive times, bus, train & cab fares. Plan travel & book on WhatsApp.",
     h1: "How to Reach Chikmagalur — From Bangalore, Mangalore & More",
     intro:
       "Chikmagalur is well connected by road from all major South Indian cities, with the closest airport in Mangalore (110 km) and the nearest broad-gauge railway in Kadur (40 km). Whether you're driving from Bangalore for a weekend escape, taking an overnight Volvo or flying in from afar, this guide covers every option — distances, timings, costs and the smartest way to combine them.",
@@ -148,9 +148,9 @@ export const travelInfo: Record<string, TravelInfoData> = {
   "chikmagalur-weather": {
     slug: "chikmagalur-weather",
     primaryKeyword: "Chikmagalur weather",
-    title: "Chikmagalur Weather — Month-by-Month Climate & Tips",
+    title: "Chikmagalur Weather Guide by Season | Trip Chikmagalur",
     description:
-      "Chikmagalur weather guide — month-by-month temperature, rainfall, what to wear and the best time for treks, waterfalls and coffee tours.",
+      "Chikmagalur weather by month — temperature, rainfall & what to wear for treks, waterfalls & coffee tours. Plan your trip & book on WhatsApp.",
     h1: "Chikmagalur Weather — Climate Guide & What to Pack",
     intro:
       "Chikmagalur weather is famously pleasant year-round thanks to its 1,090-metre elevation in the Western Ghats. Temperatures rarely cross 30°C even in peak summer, while winter mornings can dip to 8°C. The region sees three distinct seasons — a cool dry winter (Oct–Feb), a warm dry summer (Mar–May) and a heavy monsoon (Jun–Sep). This guide breaks down month-by-month weather and tells you exactly what to pack.",
@@ -203,9 +203,9 @@ export const travelInfo: Record<string, TravelInfoData> = {
   "things-to-do-in-chikmagalur": {
     slug: "things-to-do-in-chikmagalur",
     primaryKeyword: "things to do in Chikmagalur",
-    title: "20 Best Things to Do in Chikmagalur — 2026 Local Guide",
+    title: "Things to Do in Chikmagalur | Trip Chikmagalur",
     description:
-      "Things to do in Chikmagalur — top 20 experiences from Mullayanagiri trek to coffee tasting, ATV rides, Hebbe Falls, wildlife & more.",
+      "Things to do in Chikmagalur — Mullayanagiri trek, coffee tasting, ATV, Hebbe Falls, wildlife safari & estate cafés. Top picks. Book on WhatsApp.",
     h1: "20 Best Things to Do in Chikmagalur",
     intro:
       "There are far more things to do in Chikmagalur than the typical Mullayanagiri-and-back day trip. From sunrise treks and coffee plantation walks to Bhadra wildlife safaris, ATV rides and hidden waterfalls, the region rewards travellers who slow down. This guide covers 20 specific experiences — many missed by first-timers — sorted by adventure, nature, food, culture and slow travel categories.",
@@ -275,9 +275,9 @@ export const travelInfo: Record<string, TravelInfoData> = {
   "chikmagalur-travel-tips": {
     slug: "chikmagalur-travel-tips",
     primaryKeyword: "Chikmagalur travel tips",
-    title: "Chikmagalur Travel Tips for First-Time Visitors 2026",
+    title: "Chikmagalur Travel Tips for First-Time Visitors | Trip Chikmagalur",
     description:
-      "Chikmagalur travel tips — packing list, road conditions, mobile network, ATM locations, money tips and local etiquette for first-timers.",
+      "Chikmagalur travel tips — packing list, road conditions, mobile network, ATMs & local etiquette for first-time visitors. Plan smart & book on WhatsApp.",
     h1: "Chikmagalur Travel Tips — What First-Timers Should Know",
     intro:
       "These Chikmagalur travel tips come from years of guiding visitors through the region's quirks — patchy mobile networks past Kemmanagundi, ATM scarcity in remote areas, ghat-road driving rules, and the small etiquette things that locals appreciate. Read these before you book, and your trip will be noticeably smoother than the average tourist's.",
@@ -348,9 +348,9 @@ export const travelInfo: Record<string, TravelInfoData> = {
   "chikmagalur-local-food": {
     slug: "chikmagalur-local-food",
     primaryKeyword: "Chikmagalur local food",
-    title: "Chikmagalur Local Food — Malnad Cuisine Guide 2026",
+    title: "Chikmagalur Local Food Guide | Trip Chikmagalur",
     description:
-      "Chikmagalur local food guide — Malnad thali, Akki Rotti, Pandi Curry, Neer Dosa, filter coffee. Where to eat, what to order, prices.",
+      "Chikmagalur local food — Malnad thali, Akki Rotti, Pandi Curry, Neer Dosa & filter coffee. Where to eat, what to order & prices. Book trip on WhatsApp.",
     h1: "Chikmagalur Local Food — A Malnad Cuisine Guide",
     intro:
       "Chikmagalur local food is rooted in Malnad cuisine — the rice, coconut, jaggery and forest-greens cooking style of the Western Ghats highlands. It's heavier on coconut than coastal Karnataka cooking and lighter on chillies than coastal Konkan food. From traditional Malnad thalis at family-run kitchens to estate cafés serving wood-fired filter coffee, here's what to order and where to find it.",

@@ -23,9 +23,9 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     metadataBase: new URL(SITE_URL),
     ...buildMetadata({
-      title: "Chikmagalur Tour Packages 2026 | Stays, Treks & Adventures — Trip Chikmagalur",
+      title: "Chikmagalur Tour Packages, Stays & Treks | Trip Chikmagalur",
       description:
-        "Book Chikmagalur tour packages from ₹3,499. Mullayanagiri trek, Kemmangundi, waterfalls & jeep safari. Govt. verified, 500+ travellers. Book via WhatsApp instantly.",
+        "Book Chikmagalur tour packages from ₹3,499 — Mullayanagiri trek, Kemmangundi, waterfalls & jeep safari. Govt. verified, 500+ travellers. Book on WhatsApp.",
       canonical: "/",
       ogImage: DEFAULT_OG_IMAGE,
     }),

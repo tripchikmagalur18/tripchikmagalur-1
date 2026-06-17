@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props) {
     });
   }
   return buildMetadata({
-    title: `${post.title} | Trip Chikmagalur Blog`,
+    title: `${post.title} | Trip Chikmagalur`,
     description: post.metaDescription,
     canonical: `/blog/${post.slug}`,
     ogType: "article",
