@@ -38,6 +38,7 @@ const CORE_STATIC_PAGES: Array<{
   { path: "blog", priority: 0.8 },
   { path: "faq", priority: 0.8 },
   { path: "contact", priority: 0.85 },
+  { path: "mullayanagiri-entry-pass", priority: 0.92, changeFrequency: "weekly" },
   { path: "food", priority: 0.85 },
   { path: "adventure", priority: 0.9, changeFrequency: "weekly" },
   { path: "stays", priority: 0.95, changeFrequency: "weekly" },

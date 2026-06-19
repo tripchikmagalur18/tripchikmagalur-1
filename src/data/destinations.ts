@@ -64,7 +64,7 @@ export const destinations: Record<string, DestinationData> = {
       distanceFromChikmagalur: "26 km (45 min by road)",
       bestTime: "September to February",
       duration: "1.5 – 2 hours one way",
-      entryFee: "Free (parking ₹50)",
+      entryFee: "Govt. vehicle pass (book online)",
       elevation: "1,930 m",
       difficulty: "Easy to Moderate",
     },
@@ -103,7 +103,7 @@ export const destinations: Record<string, DestinationData> = {
       },
       {
         q: "Is there an entry fee for Mullayanagiri?",
-        a: "Entry to the peak is free. Parking near the base costs ₹50 for cars and ₹20 for two-wheelers.",
+        a: "A government vehicle entry pass is required to drive to Mullayanagiri Peak — book online on the official Chikkamagaluru district portal. Fees depend on vehicle type (from around ₹50 for bikes). See our Mullayanagiri entry pass guide for the booking link and steps. Summit parking is separate.",
       },
       {
         q: "Can I drive to Mullayanagiri peak directly?",

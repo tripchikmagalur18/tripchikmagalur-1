@@ -54,7 +54,7 @@ export const faqItems: FaqItem[] = [
     keyword: "mullayanagiri permission booking",
     question: "Do I need permission to visit Mullayanagiri?",
     answer:
-      "During weekends and peak season, online vehicle entry booking may be required to manage traffic at Mullayanagiri. Arrive early morning for parking. Our [Mullayanagiri trek package](/mullayanagiri-trek-package) includes route planning and timing advice.",
+      "Yes — a mandatory online vehicle entry pass is required for Mullayanagiri Peak and Inam Dattathreya Peeta. Book on the [official Chikkamagaluru district portal](https://pgbiz.omniware.in/chikkamagalurutourism) before you drive up. See our complete [Mullayanagiri entry pass guide](/mullayanagiri-entry-pass) for time slots, fees, and step-by-step booking.",
   },
   {
     id: 8,

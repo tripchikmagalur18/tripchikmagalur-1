@@ -34,6 +34,7 @@ export const packageSeoPages: Record<string, PackageSeoPage> = {
     packageDayLink: "/package/day-1",
     cartId: "pkg-day-1",
     relatedLinks: [
+      { label: "Mullayanagiri entry pass guide", href: "/mullayanagiri-entry-pass" },
       { label: "2-day Chikmagalur itinerary", href: "/2-day-chikmagalur-itinerary" },
       { label: "Kemmangundi tour package", href: "/kemmangundi-tour-package" },
       { label: "Places to visit", href: "/places/mullayanagiri-trek" },
@@ -54,6 +55,10 @@ export const packageSeoPages: Record<string, PackageSeoPage> = {
           "Difficulty is easy to moderate. Monsoon months bring slippery steps — we adjust start times and footwear advice accordingly. Winter (October–February) is peak season for photography and comfortable trekking temperatures.",
         ],
         h3: [
+          {
+            title: "Government vehicle entry pass",
+            body: "If you are self-driving to Mullayanagiri, book the mandatory online vehicle entry pass on the official Chikkamagaluru district portal before you travel. Our package page does not replace this government pass — see our Mullayanagiri entry pass guide for the booking link, time slots, and fees.",
+          },
           {
             title: "Best season for the Mullayanagiri trek package",
             body: "October to March offers the clearest skies. Post-monsoon waterfalls on the same route run strong through October. December–January is busiest — book transport and stays early.",

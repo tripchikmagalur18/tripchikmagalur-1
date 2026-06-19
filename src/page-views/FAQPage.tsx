@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Plus, Minus, HelpCircle } from "lucide-react";
+import { Plus, Minus, HelpCircle, ExternalLink } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -11,6 +11,7 @@ import { faqItems } from "@/data/faq-content";
 import { faqContextualLinks, faqLinkSuffix } from "@/lib/contextual-links";
 import { cn } from "@/lib/utils";
 import { WHATSAPP_LINK } from "@/lib/whatsapp";
+import { MULLAYANAGIRI_PASS_BOOKING_URL } from "@/data/mullayanagiri-entry-pass";
 
 const FAQPage = () => {
   const [openId, setOpenId] = useState<number | null>(null);
@@ -129,6 +130,42 @@ const FAQPage = () => {
                   </div>
                 </article>
               ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Mullayanagiri govt entry pass */}
+      <section className="pb-12 md:pb-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto glass-card-light rounded-2xl p-6 md:p-8 border border-sunset/20">
+            <p className="text-xs font-semibold uppercase tracking-wider text-sunset mb-2">
+              Official entry pass
+            </p>
+            <h2 className="text-xl md:text-2xl font-display font-bold text-foreground mb-3">
+              Mullayanagiri vehicle entry pass
+            </h2>
+            <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-5">
+              Driving to Mullayanagiri or Inam Dattathreya Peeta? Book your mandatory government
+              vehicle pass online before you travel — especially if coming from Bangalore on a
+              weekend.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <a
+                href={MULLAYANAGIRI_PASS_BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-sunset px-6 py-3 text-sm font-semibold text-white hover:bg-sunset/90 transition-colors"
+              >
+                Book pass — official portal
+                <ExternalLink className="w-4 h-4" />
+              </a>
+              <Link
+                href="/mullayanagiri-entry-pass"
+                className="inline-flex items-center justify-center rounded-full border border-border px-6 py-3 text-sm font-semibold text-foreground hover:bg-muted/50 transition-colors"
+              >
+                Full booking guide
+              </Link>
             </div>
           </div>
         </div>
