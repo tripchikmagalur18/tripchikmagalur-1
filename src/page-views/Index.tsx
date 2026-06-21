@@ -11,12 +11,11 @@ import PartnersSection from "@/components/PartnersSection";
 import HomeFAQSection from "@/components/HomeFAQSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
-import LeadFormPopup from "@/components/LeadFormPopup";
+import HomeFloatingActions from "@/components/HomeFloatingActions";
+
 const Index = () => {
   return (
     <main className="overflow-x-hidden">
-      
       <Navbar />
       <HeroSection />
       <OffersSection />
@@ -28,8 +27,7 @@ const Index = () => {
       <PartnersSection />
       <ContactSection />
       <Footer />
-      <FloatingWhatsApp />
-      <LeadFormPopup />
+      <HomeFloatingActions />
     </main>
   );
 };
