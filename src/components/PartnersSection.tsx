@@ -3,9 +3,7 @@
 import { Award, Star, CheckCircle } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-import { AppImage } from "@/components/AppImage";
 import { partnerLogos, type PartnerLogo } from "@/data/partners";
-import { useCoarsePointer } from "@/hooks/use-coarse-pointer";
 
 const certifications = [
   { label: "Tourism Dept. of India", icon: Award },
@@ -15,14 +13,17 @@ const certifications = [
 ];
 
 function PartnerLogoItem({ partner }: { partner: PartnerLogo }) {
-  const content = (
-    <div className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full overflow-hidden bg-white shadow-md ring-1 ring-border/40 flex-shrink-0">
-      <AppImage
-        src={partner.logo}
-        alt={`${partner.name} — Trip Chikmagalur partner`}
-        fill
-        sizes="(max-width: 640px) 64px, (max-width: 768px) 80px, 96px"
-        className="object-cover"
+  const logo = (
+    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden bg-white shadow-md ring-1 ring-border/40 flex-shrink-0 flex items-center justify-center p-2">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={partner.logo.src}
+        alt={partner.name}
+        width={partner.logo.width}
+        height={partner.logo.height}
+        className="max-w-full max-h-full object-contain"
+        loading="lazy"
+        decoding="async"
       />
     </div>
   );
@@ -36,27 +37,21 @@ function PartnerLogoItem({ partner }: { partner: PartnerLogo }) {
         className="mx-6 sm:mx-8 md:mx-10 flex-shrink-0 hover:scale-105 transition-transform duration-300"
         aria-label={partner.name}
       >
-        {content}
+        {logo}
       </a>
     );
   }
 
   return (
-    <div
-      className="mx-6 sm:mx-8 md:mx-10 flex-shrink-0"
-      title={partner.name}
-      aria-label={partner.name}
-    >
-      {content}
+    <div className="mx-6 sm:mx-8 md:mx-10 flex-shrink-0" title={partner.name}>
+      {logo}
     </div>
   );
 }
 
 const PartnersSection = () => {
-  const isTouchDevice = useCoarsePointer();
   const sectionRef = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-  const autoScroll = !isTouchDevice;
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -65,7 +60,7 @@ const PartnersSection = () => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.3 },
+      { threshold: 0.05 },
     );
 
     if (sectionRef.current) {
@@ -97,27 +92,20 @@ const PartnersSection = () => {
 
         <div className="border-t border-border mb-10" />
 
-        <div
-          className={`text-center mb-8 transition-all duration-1000 delay-300 ${isVisible ? "opacity-100" : "opacity-0"}`}
-        >
+        <div className="text-center mb-8">
           <span className="text-sm text-muted-foreground uppercase tracking-[0.2em]">
             Associated Partners
           </span>
         </div>
       </div>
 
-      <div
-        className={`relative transition-all duration-1000 delay-500 ${isVisible ? "opacity-100" : "opacity-0"}`}
-      >
+      <div className="relative overflow-hidden">
         <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
         <div
-          className={`flex items-center py-2 ${autoScroll ? "animate-carousel-slow" : ""}`}
-          style={{
-            animationDirection: autoScroll ? "reverse" : "normal",
-            animationPlayState: autoScroll ? "running" : "paused",
-          }}
+          className="flex items-center py-2 w-max animate-carousel-slow"
+          style={{ animationDirection: "reverse" }}
         >
           {duplicatedPartners.map((partner, index) => (
             <PartnerLogoItem key={`${partner.id}-${index}`} partner={partner} />

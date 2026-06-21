@@ -46,6 +46,23 @@ html body dialog::backdrop {
   background: transparent !important;
 }
 
+/* Chat widget — solid panel, no glass / blur */
+#chat-widget-root,
+#chat-widget-root *,
+#__cw_portal,
+#__cw_portal * {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+#__cw_portal > div,
+html body dialog[open] > div,
+html body dialog[open] form,
+html body dialog[open] section {
+  background-color: #ffffff !important;
+  background-image: none !important;
+}
+
 @media (max-width: 640px) {
   html body dialog,
   html body dialog[open] {

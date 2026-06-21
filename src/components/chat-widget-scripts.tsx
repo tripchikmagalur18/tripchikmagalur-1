@@ -100,7 +100,7 @@ export function ChatWidgetScripts() {
     s.setProperty("top", "auto", "important");
     s.setProperty("left", "auto", "important");
     s.setProperty("right", isMobile() ? "8px" : "16px", "important");
-    s.setProperty("bottom", isMobile() ? "calc(5.25rem + env(safe-area-inset-bottom, 0px))" : "88px", "important");
+    s.setProperty("bottom", isMobile() ? "calc(5.75rem + env(safe-area-inset-bottom, 0px))" : "88px", "important");
     s.setProperty("margin", "0", "important");
     s.setProperty("width", isMobile() ? "calc(100vw - 16px)" : "min(380px, calc(100vw - 32px))", "important");
     s.setProperty("max-width", "calc(100vw - 16px)", "important");
@@ -109,7 +109,16 @@ export function ChatWidgetScripts() {
     s.setProperty("z-index", "40", "important");
     s.setProperty("pointer-events", "auto", "important");
     s.setProperty("border-radius", "16px", "important");
-    s.setProperty("box-shadow", "0 20px 60px rgba(0,0,0,0.2)", "important");
+    s.setProperty("box-shadow", "0 8px 24px rgba(0,0,0,0.15)", "important");
+    s.setProperty("background", "#ffffff", "important");
+    s.setProperty("background-color", "#ffffff", "important");
+    s.setProperty("backdrop-filter", "none", "important");
+    s.setProperty("-webkit-backdrop-filter", "none", "important");
+    el.querySelectorAll("*").forEach(function (child) {
+      var cs = child.style;
+      cs.setProperty("backdrop-filter", "none", "important");
+      cs.setProperty("-webkit-backdrop-filter", "none", "important");
+    });
   }
   function findChatPanel() {
     var ta = document.querySelector('textarea[placeholder*="Write your message" i]');

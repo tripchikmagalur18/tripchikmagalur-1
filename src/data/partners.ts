@@ -1,12 +1,12 @@
 import type { StaticImageData } from "next/image";
 
-import bookingLogo from "@/assets/partners/booking.png";
-import fundayBitesLogo from "@/assets/partners/funday-bites.png";
-import kaimaraBeltLogo from "@/assets/partners/kaimara-belt.png";
-import lotsaIcecreamLogo from "@/assets/partners/lotsa-icecream.png";
-import makemytripLogo from "@/assets/partners/makemytrip.png";
-import redbusLogo from "@/assets/partners/redbus.png";
-import tripadvisorLogo from "@/assets/partners/tripadvisor.png";
+import bookingLogo from "@/assets/partners/booking.jpg";
+import fundayBitesLogo from "@/assets/partners/funday-bites.jpg";
+import kaimaraBeltLogo from "@/assets/partners/kaimara-belt.jpg";
+import lotsaIcecreamLogo from "@/assets/partners/lotsa-icecream.jpg";
+import makemytripLogo from "@/assets/partners/makemytrip.jpg";
+import redbusLogo from "@/assets/partners/redbus.jpg";
+import tripadvisorLogo from "@/assets/partners/tripadvisor.jpg";
 
 export type PartnerLogo = {
   id: string;
