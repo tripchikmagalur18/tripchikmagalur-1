@@ -73,21 +73,21 @@ html body dialog::backdrop {
   }
 
   body.home-page {
-    padding-bottom: calc(4.75rem + env(safe-area-inset-bottom, 0px));
+    padding-bottom: calc(5.75rem + env(safe-area-inset-bottom, 0px));
   }
 
   body.home-page #chat-widget-root,
   body.home-page #__cw_portal {
-    bottom: calc(4.75rem + env(safe-area-inset-bottom, 0px)) !important;
+    bottom: calc(5.75rem + env(safe-area-inset-bottom, 0px)) !important;
     right: 8px !important;
   }
 
   body.home-page dialog,
   body.home-page dialog[open] {
     right: 8px !important;
-    bottom: calc(5.25rem + env(safe-area-inset-bottom, 0px)) !important;
-    inset: auto 8px calc(5.25rem + env(safe-area-inset-bottom, 0px)) auto !important;
-    max-height: calc(100dvh - 6.5rem - env(safe-area-inset-bottom, 0px)) !important;
+    bottom: calc(6.25rem + env(safe-area-inset-bottom, 0px)) !important;
+    inset: auto 8px calc(6.25rem + env(safe-area-inset-bottom, 0px)) auto !important;
+    max-height: calc(100dvh - 7.5rem - env(safe-area-inset-bottom, 0px)) !important;
   }
 }
 
