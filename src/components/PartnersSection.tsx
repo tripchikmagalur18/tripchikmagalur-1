@@ -12,18 +12,21 @@ const certifications = [
   { label: "Incredible India", icon: Award },
 ];
 
+const LOGO_SIZE = 72;
+
 function PartnerLogoItem({ partner }: { partner: PartnerLogo }) {
   const logo = (
-    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden bg-white shadow-md ring-1 ring-border/40 flex-shrink-0 flex items-center justify-center p-2">
+    <div className="partner-logo-circle relative w-[4.5rem] h-[4.5rem] sm:w-20 sm:h-20 md:w-[5.25rem] md:h-[5.25rem] flex-shrink-0">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={partner.logo.src}
         alt={partner.name}
-        width={partner.logo.width}
-        height={partner.logo.height}
-        className="max-w-full max-h-full object-contain"
+        width={LOGO_SIZE}
+        height={LOGO_SIZE}
+        className="absolute inset-0 h-full w-full object-cover object-center select-none"
         loading="lazy"
         decoding="async"
+        draggable={false}
       />
     </div>
   );
@@ -34,7 +37,7 @@ function PartnerLogoItem({ partner }: { partner: PartnerLogo }) {
         href={partner.href}
         target="_blank"
         rel="noopener noreferrer"
-        className="mx-6 sm:mx-8 md:mx-10 flex-shrink-0 hover:scale-105 transition-transform duration-300"
+        className="mx-6 sm:mx-8 md:mx-10 flex-shrink-0 hover:scale-105 transition-transform duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunset/40 focus-visible:ring-offset-2 rounded-full"
         aria-label={partner.name}
       >
         {logo}
