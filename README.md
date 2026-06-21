@@ -31,7 +31,7 @@ All original paths are preserved (26 static + 10 `/places/[slug]` + 404).
 1. Import this folder as a new project (or replace the existing one).
 2. Set env vars if needed:
    - `NEXT_PUBLIC_SUPABASE_URL`
-   - `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
+   - `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`an
 3. Deploy — no SPA rewrite rules required.
 
 ## Project layout

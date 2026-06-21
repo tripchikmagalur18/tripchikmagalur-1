@@ -114,6 +114,13 @@ export function ChatWidgetScripts() {
     s.setProperty("background-color", "#ffffff", "important");
     s.setProperty("backdrop-filter", "none", "important");
     s.setProperty("-webkit-backdrop-filter", "none", "important");
+    el.querySelectorAll("footer, form, header").forEach(function (child) {
+      var cs = child.style;
+      cs.setProperty("background", "#ffffff", "important");
+      cs.setProperty("background-color", "#ffffff", "important");
+      cs.setProperty("backdrop-filter", "none", "important");
+      cs.setProperty("-webkit-backdrop-filter", "none", "important");
+    });
     el.querySelectorAll("*").forEach(function (child) {
       var cs = child.style;
       cs.setProperty("backdrop-filter", "none", "important");
@@ -132,6 +139,8 @@ export function ChatWidgetScripts() {
   }
   function scan() {
     var panel = findChatPanel();
+    var chatOpen = !!document.querySelector("body dialog[open]") || !!panel;
+    document.body.classList.toggle("chat-widget-open", chatOpen);
     if (panel) {
       var portal = ensurePortal();
       if (panel.parentElement !== portal) portal.appendChild(panel);

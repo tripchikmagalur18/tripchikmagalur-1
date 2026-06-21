@@ -14,7 +14,7 @@ import HomeContactDock from "@/components/HomeContactDock";
 
 const Index = () => {
   return (
-    <main className="overflow-x-hidden">
+    <main className="overflow-x-clip">
       <Navbar />
       <HeroSection />
       <OffersSection />

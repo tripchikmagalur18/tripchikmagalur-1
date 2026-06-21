@@ -20,6 +20,12 @@ function clearBodyLockStyles() {
   body.removeAttribute("data-scroll-locked");
 }
 
+function restoreTouchScroll() {
+  if (typeof document === "undefined") return;
+  document.body.style.touchAction = "pan-y pinch-zoom";
+  document.documentElement.style.setProperty("-webkit-overflow-scrolling", "touch");
+}
+
 /** iOS-safe scroll lock with ref counting for stacked modals/drawers. */
 export function lockBodyScroll(): () => void {
   if (typeof document === "undefined") return () => undefined;
@@ -46,6 +52,7 @@ export function lockBodyScroll(): () => void {
 
     const scrollY = savedScrollY;
     clearBodyLockStyles();
+    restoreTouchScroll();
     window.scrollTo(0, scrollY);
   };
 }
@@ -60,6 +67,7 @@ export function forceUnlockBodyScroll() {
 
   lockCount = 0;
   clearBodyLockStyles();
+  restoreTouchScroll();
 
   if (scrollY > 0) {
     window.scrollTo(0, scrollY);
@@ -74,6 +82,7 @@ export function recoverBodyScrollIfStuck() {
 
   const scrollY = Math.abs(parseInt(document.body.style.top, 10) || 0) || savedScrollY;
   clearBodyLockStyles();
+  restoreTouchScroll();
   if (scrollY > 0) {
     window.scrollTo(0, scrollY);
   }

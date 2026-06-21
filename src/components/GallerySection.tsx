@@ -86,7 +86,7 @@ const GallerySection = () => {
     setHoveredIndex(null);
   };
 
-  const autoScroll = !isTouchDevice && !isPaused && !isDragging;
+  const autoScroll = isTouchDevice ? !isPaused : !isPaused && !isDragging;
 
   return (
     <section 
@@ -116,7 +116,9 @@ const GallerySection = () => {
       {/* Scrolling Gallery with Tilted Cards */}
       <div
         ref={scrollContainerRef}
-        className={`relative py-8 overflow-x-auto scrollbar-hide touch-pan-x overscroll-x-contain [-webkit-overflow-scrolling:touch] ${
+        className={`relative py-8 scrollbar-hide smooth-touch-x ${
+          isTouchDevice ? "overflow-hidden" : "overflow-x-auto"
+        } ${
           isDragging ? "cursor-grabbing" : "md:cursor-grab"
         }`}
         onPointerDown={handlePointerDown}

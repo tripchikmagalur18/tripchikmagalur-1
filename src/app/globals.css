@@ -108,6 +108,38 @@ html body dialog[open] section {
   }
 }
 
+/* Mobile bottom dock — solid bar behind chatbot, no glass */
+.home-contact-dock {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+.home-contact-dock * {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+/* Chat open: panel above dock; dock stays solid white underneath */
+body.chat-widget-open dialog,
+body.chat-widget-open dialog[open],
+body.chat-widget-open #__cw_portal > div {
+  z-index: 10000 !important;
+}
+
+#__cw_portal footer,
+html body dialog[open] footer,
+#__cw_portal form,
+html body dialog[open] form {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
 /* Hide scrollbar for manual drag scroll */
 .scrollbar-hide {
   -ms-overflow-style: none;
@@ -270,15 +302,21 @@ html body dialog[open] section {
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    overflow-x: clip;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: auto;
+    touch-action: pan-y pinch-zoom;
     -webkit-tap-highlight-color: transparent;
   }
 
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
-    overflow-x: clip;
+    height: 100%;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
   }
 
   button,
@@ -319,18 +357,34 @@ html body dialog[open] section {
       opacity: 0 !important;
     }
 
-    .animate-carousel-slow,
-    .animate-slide-left-slow {
+    .testimonial-card {
       animation: none !important;
     }
+  }
 
-    .testimonial-card {
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    .animate-carousel-slow,
+    .animate-slide-left-slow,
+    .animate-slide-left,
+    .animate-scroll-left {
       animation: none !important;
     }
   }
 }
 
 @layer utilities {
+  .smooth-touch-x {
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-behavior: smooth;
+    touch-action: pan-x pan-y;
+  }
+
   .font-price {
     @apply font-sans font-semibold tabular-nums tracking-tight text-foreground;
   }
@@ -605,18 +659,18 @@ html body dialog[open] section {
 }
 
 @keyframes slide-left {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
 }
 
 @keyframes slide-left-slow {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
 }
 
 @keyframes carousel-slow {
-  from { transform: translateX(0); }
-  to { transform: translateX(-33.333%); }
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-33.333%, 0, 0); }
 }
 
 @keyframes glow-pulse {
@@ -735,10 +789,9 @@ html body dialog[open] section {
 
 .animate-slide-left {
   animation: slide-left 60s linear infinite;
-}
-
-.animate-slide-left-slow {
-  animation: slide-left-slow 35s linear infinite;
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .animate-scroll-left {
@@ -751,6 +804,16 @@ html body dialog[open] section {
 
 .animate-carousel-slow {
   animation: carousel-slow 18s linear infinite;
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.animate-slide-left-slow {
+  animation: slide-left-slow 35s linear infinite;
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .animate-float-gentle {

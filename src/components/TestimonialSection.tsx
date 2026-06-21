@@ -102,7 +102,7 @@ const TestimonialSection = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
-  const autoScroll = !isTouchDevice && !isPaused && !isDragging;
+  const autoScroll = isTouchDevice ? !isPaused : !isPaused && !isDragging;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -171,7 +171,9 @@ const TestimonialSection = () => {
       {/* Carousel Container */}
       <div 
         ref={scrollContainerRef}
-        className={`relative overflow-x-auto scrollbar-hide transition-all duration-1000 delay-300 touch-pan-x overscroll-x-contain [-webkit-overflow-scrolling:touch] ${
+        className={`relative scrollbar-hide transition-all duration-1000 delay-300 touch-pan-x overscroll-x-contain [-webkit-overflow-scrolling:touch] ${
+          isTouchDevice ? "overflow-hidden" : "overflow-x-auto"
+        } ${
           isDragging ? "cursor-grabbing" : "md:cursor-grab"
         } ${isVisible ? "opacity-100" : "opacity-0"}`}
         onPointerDown={handlePointerDown}

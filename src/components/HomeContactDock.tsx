@@ -72,7 +72,7 @@ export default function HomeContactDock() {
       {/* Mobile bottom dock — Call · Sara · WhatsApp */}
       <nav
         aria-label="Contact options"
-        className="md:hidden fixed inset-x-0 bottom-0 z-[9998] pointer-events-none bg-white dark:bg-card border-t border-border pb-[env(safe-area-inset-bottom,0px)] shadow-[0_-4px_16px_rgba(0,0,0,0.08)]"
+        className="home-contact-dock md:hidden fixed inset-x-0 bottom-0 z-[9998] pointer-events-none border-t border-gray-200 pb-[env(safe-area-inset-bottom,0px)]"
       >
         <div className="flex items-stretch justify-around gap-2 px-3 pt-2 pb-2 pointer-events-auto max-w-lg mx-auto">
           <a href={PHONE_LINK} className={fabClass} aria-label="Call us">
