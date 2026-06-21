@@ -81,49 +81,30 @@ html body dialog[open] section {
 
 @media (max-width: 640px) {
   .safe-bottom-fixed {
-    bottom: calc(5rem + env(safe-area-inset-bottom, 0px));
+    bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
   }
 
-  /* Homepage mobile: unified bottom dock — hide duplicate call + chat pill */
+  /* Homepage mobile: hide global call FAB (HomeContactDock has Call) */
   body.home-page .home-call-fab {
     display: none !important;
   }
 
-  body.home-page {
-    padding-bottom: calc(5.75rem + env(safe-area-inset-bottom, 0px));
-  }
-
   body.home-page #chat-widget-root,
   body.home-page #__cw_portal {
-    bottom: calc(5.75rem + env(safe-area-inset-bottom, 0px)) !important;
+    bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px)) !important;
     right: 8px !important;
   }
 
   body.home-page dialog,
   body.home-page dialog[open] {
     right: 8px !important;
-    bottom: calc(6.25rem + env(safe-area-inset-bottom, 0px)) !important;
-    inset: auto 8px calc(6.25rem + env(safe-area-inset-bottom, 0px)) auto !important;
-    max-height: calc(100dvh - 7.5rem - env(safe-area-inset-bottom, 0px)) !important;
+    bottom: calc(6rem + env(safe-area-inset-bottom, 0px)) !important;
+    inset: auto 8px calc(6rem + env(safe-area-inset-bottom, 0px)) auto !important;
+    max-height: calc(100dvh - 7rem - env(safe-area-inset-bottom, 0px)) !important;
   }
 }
 
-/* Mobile bottom dock — solid bar behind chatbot, no glass */
-.home-contact-dock {
-  background: #ffffff !important;
-  background-color: #ffffff !important;
-  background-image: none !important;
-  -webkit-backdrop-filter: none !important;
-  backdrop-filter: none !important;
-  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.08) !important;
-}
-
-.home-contact-dock * {
-  -webkit-backdrop-filter: none !important;
-  backdrop-filter: none !important;
-}
-
-/* Chat open: panel above dock; dock stays solid white underneath */
+/* Chat open: panel above sticky FABs */
 body.chat-widget-open dialog,
 body.chat-widget-open dialog[open],
 body.chat-widget-open #__cw_portal > div {

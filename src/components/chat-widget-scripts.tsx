@@ -100,7 +100,7 @@ export function ChatWidgetScripts() {
     s.setProperty("top", "auto", "important");
     s.setProperty("left", "auto", "important");
     s.setProperty("right", isMobile() ? "8px" : "16px", "important");
-    s.setProperty("bottom", isMobile() ? "calc(5.75rem + env(safe-area-inset-bottom, 0px))" : "88px", "important");
+    s.setProperty("bottom", isMobile() ? "calc(5.5rem + env(safe-area-inset-bottom, 0px))" : "88px", "important");
     s.setProperty("margin", "0", "important");
     s.setProperty("width", isMobile() ? "calc(100vw - 16px)" : "min(380px, calc(100vw - 32px))", "important");
     s.setProperty("max-width", "calc(100vw - 16px)", "important");
