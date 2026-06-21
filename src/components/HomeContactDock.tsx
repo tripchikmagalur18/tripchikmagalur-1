@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { MessageCircle, Phone, Ticket } from "lucide-react";
 import { MULLAYANAGIRI_PASS_BOOKING_URL } from "@/data/mullayanagiri-entry-pass";
-import { hideChatLauncherForMobileDock, openChatWidget } from "@/lib/open-chat-widget";
+import { syncChatLauncher, openChatWidget } from "@/lib/open-chat-widget";
 import { PHONE_LINK, WHATSAPP_LINK } from "@/lib/whatsapp";
 
 const PASS_SESSION_KEY = "trip_ckm_home_pass_icon_v3";
@@ -41,13 +41,13 @@ export default function HomeContactDock() {
   }, []);
 
   useEffect(() => {
-    hideChatLauncherForMobileDock();
-    const observer = new MutationObserver(hideChatLauncherForMobileDock);
+    syncChatLauncher();
+    const observer = new MutationObserver(syncChatLauncher);
     observer.observe(document.body, { childList: true, subtree: true });
-    window.addEventListener("resize", hideChatLauncherForMobileDock, { passive: true });
+    window.addEventListener("resize", syncChatLauncher, { passive: true });
     return () => {
       observer.disconnect();
-      window.removeEventListener("resize", hideChatLauncherForMobileDock);
+      window.removeEventListener("resize", syncChatLauncher);
     };
   }, []);
 

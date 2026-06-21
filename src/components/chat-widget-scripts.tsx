@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import Script from "next/script";
 import { useEffect } from "react";
 import { useCart } from "@/context/CartContext";
+import { syncChatLauncher } from "@/lib/open-chat-widget";
 
 const CHAT_WIDGET_LABEL = "Chat with Sara";
 const LEGACY_CHAT_WIDGET_LABEL = "Chat with Saif";
@@ -63,8 +64,12 @@ export function ChatWidgetScripts() {
     if (!isHome) return;
 
     renameChatWidgetLabel();
-    const observer = new MutationObserver(renameChatWidgetLabel);
+    const observer = new MutationObserver(() => {
+      renameChatWidgetLabel();
+      syncChatLauncher();
+    });
     observer.observe(document.body, { childList: true, subtree: true, characterData: true });
+    syncChatLauncher();
 
     return () => observer.disconnect();
   }, [isHome]);

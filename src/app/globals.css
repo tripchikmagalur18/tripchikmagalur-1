@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Third-party chat widget — constrain known roots only (avoid broad body > div rules on iOS) */
+/* Third-party chat widget — launcher root (icon duplicates hidden via syncChatLauncher) */
 #chat-widget-root,
 #__cw_portal {
   position: fixed !important;
@@ -17,6 +17,26 @@
   max-height: calc(100dvh - 32px);
   z-index: 40;
   pointer-events: auto;
+}
+
+@media (min-width: 641px) {
+  body.home-page #chat-widget-root {
+    left: 50% !important;
+    right: auto !important;
+    bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px)) !important;
+    transform: translateX(-50%) !important;
+    width: auto !important;
+    height: auto !important;
+    pointer-events: none;
+  }
+
+  body.home-page #chat-widget-root [data-chat-launcher-fixed="true"] {
+    pointer-events: auto !important;
+  }
+
+  body.home-page.chat-widget-open #chat-widget-root [data-chat-launcher-fixed="true"] {
+    display: none !important;
+  }
 }
 
 /* Constrain the chat widget's open dialog panel to bottom-right.
