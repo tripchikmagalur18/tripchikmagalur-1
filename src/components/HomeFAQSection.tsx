@@ -25,7 +25,7 @@ const HomeFAQSection = () => {
             return (
               <div
                 key={faq.question}
-                className="rounded-2xl border border-border bg-card overflow-hidden"
+                className="rounded-2xl glass-card-light overflow-hidden"
               >
                 <button
                   type="button"

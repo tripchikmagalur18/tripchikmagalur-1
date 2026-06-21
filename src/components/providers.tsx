@@ -8,7 +8,7 @@ import { CartProvider } from "@/context/CartContext";
 import CartDrawer from "@/components/CartDrawer";
 import { ScrollLockRecovery } from "@/components/ScrollLockRecovery";
 import { ChatWidgetScripts } from "@/components/chat-widget-scripts";
-import FloatingCallButton from "@/components/FloatingCallButton";
+import { GlobalFloatingCallButton } from "@/components/GlobalFloatingCallButton";
 import { useState } from "react";
 
 export function Providers({ children }: { children: React.ReactNode }) {
@@ -21,7 +21,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
           <ScrollLockRecovery />
           {children}
           <CartDrawer />
-          <FloatingCallButton />
+          <GlobalFloatingCallButton />
           <ChatWidgetScripts />
           <Toaster />
           <Sonner />

@@ -9,9 +9,8 @@ import PackagesSection from "@/components/PackagesSection";
 import GallerySection from "@/components/GallerySection";
 import PartnersSection from "@/components/PartnersSection";
 import HomeFAQSection from "@/components/HomeFAQSection";
-import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
-import HomeFloatingActions from "@/components/HomeFloatingActions";
+import HomeContactDock from "@/components/HomeContactDock";
 
 const Index = () => {
   return (
@@ -25,9 +24,8 @@ const Index = () => {
       <GallerySection />
       <HomeFAQSection />
       <PartnersSection />
-      <ContactSection />
       <Footer />
-      <HomeFloatingActions />
+      <HomeContactDock />
     </main>
   );
 };

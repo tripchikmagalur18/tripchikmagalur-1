@@ -10,13 +10,15 @@ const offers: {
   title: string;
   description: string;
   href: string;
+  external?: boolean;
   imageClassName?: string;
 }[] = [
   {
     image: categoryFood,
     title: "Food",
-    description: "Savor authentic Malnad delicacies and fresh coffee from local estates.",
-    href: "/food",
+    description: "Order Malnad food online in Chikmagalur — Funday Bites delivery.",
+    href: "https://funday-bites.vercel.app/",
+    external: true,
   },
   {
     image: categoryAdventure,
@@ -50,43 +52,61 @@ const OffersSection = () => {
 
         {/* Round Elevated Image Cards */}
         <div className="flex justify-center gap-4 sm:gap-8 md:gap-16 max-w-5xl mx-auto">
-          {offers.map((offer, index) => (
-            <Link
-              href={offer.href}
-              key={offer.title}
-              className="group relative animate-fade-up flex flex-col items-center"
-              style={{ animationDelay: `${(index + 2) * 0.1}s` }}
-            >
-              {/* Round Image Card */}
-              <div className="relative w-24 h-24 sm:w-40 sm:h-40 md:w-52 md:h-52 rounded-full overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer group-hover:scale-105 group-hover:-translate-y-2">
-                <AppImage
-                  src={offer.image}
-                  alt={`${offer.title} — Trip Chikmagalur`}
-                  fill
-                  sizes="(max-width: 640px) 96px, (max-width: 768px) 160px, 208px"
-                  className={
-                    offer.imageClassName ??
-                    "object-cover transition-transform duration-700 group-hover:scale-110"
-                  }
-                />
-                
-                {/* Subtle overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-              
-              {/* Title below card */}
-              <h3 className="text-sm sm:text-xl md:text-2xl font-display font-bold text-foreground mt-3 sm:mt-6 text-center transition-colors duration-300 group-hover:text-sunset">
-                {offer.title}
-              </h3>
-              
-              {/* Description tooltip on hover */}
-              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-64 opacity-0 group-hover:opacity-100 group-hover:-bottom-2 transition-all duration-300 pointer-events-none" style={{ top: 'calc(100% + 1rem)' }}>
-                <p className="glass-dark text-white/90 text-sm text-center py-3 px-4 rounded-2xl shadow-lg">
-                  {offer.description}
-                </p>
-              </div>
-            </Link>
-          ))}
+          {offers.map((offer, index) => {
+            const cardClass =
+              "group relative animate-fade-up flex flex-col items-center";
+            const cardStyle = { animationDelay: `${(index + 2) * 0.1}s` };
+            const cardContent = (
+              <>
+                <div className="relative w-24 h-24 sm:w-40 sm:h-40 md:w-52 md:h-52 rounded-full overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer group-hover:scale-105 group-hover:-translate-y-2">
+                  <AppImage
+                    src={offer.image}
+                    alt={`${offer.title} — Trip Chikmagalur`}
+                    fill
+                    sizes="(max-width: 640px) 96px, (max-width: 768px) 160px, 208px"
+                    className={
+                      offer.imageClassName ??
+                      "object-cover transition-transform duration-700 group-hover:scale-110"
+                    }
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+                <h3 className="text-sm sm:text-xl md:text-2xl font-display font-bold text-foreground mt-3 sm:mt-6 text-center transition-colors duration-300 group-hover:text-sunset">
+                  {offer.title}
+                </h3>
+                <div
+                  className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-64 opacity-0 group-hover:opacity-100 group-hover:-bottom-2 transition-all duration-300 pointer-events-none"
+                  style={{ top: "calc(100% + 1rem)" }}
+                >
+                  <p className="glass-dark text-white/90 text-sm text-center py-3 px-4 rounded-2xl shadow-lg">
+                    {offer.description}
+                  </p>
+                </div>
+              </>
+            );
+
+            if (offer.external) {
+              return (
+                <a
+                  href={offer.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  key={offer.title}
+                  className={cardClass}
+                  style={cardStyle}
+                  aria-label={`${offer.title} — opens Funday Bites in a new tab`}
+                >
+                  {cardContent}
+                </a>
+              );
+            }
+
+            return (
+              <Link href={offer.href} key={offer.title} className={cardClass} style={cardStyle}>
+                {cardContent}
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>

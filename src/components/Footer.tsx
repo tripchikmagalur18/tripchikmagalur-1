@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { Heart, Mail, MapPin, Phone } from "lucide-react";
+import { ExternalLink, Heart, Mail, MapPin, Phone } from "lucide-react";
 import { BUSINESS_CONTACT } from "@/lib/business-contact";
+import { MULLAYANAGIRI_PASS_BOOKING_URL } from "@/data/mullayanagiri-entry-pass";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -41,7 +42,7 @@ const Footer = () => {
           </nav>
 
           {/* Contact — prominent */}
-          <div className="glass rounded-2xl p-5 border border-white/10 bg-white/5">
+          <div className="glass-dark rounded-2xl p-5">
             <Link
               href="/contact"
               className="inline-flex items-center gap-2 text-lg font-display font-semibold text-sunset hover:text-sunset/90 transition-colors"
@@ -75,12 +76,23 @@ const Footer = () => {
                 <span>{BUSINESS_CONTACT.address.formatted}</span>
               </li>
             </ul>
-            <Link
-              href="/contact"
-              className="mt-4 inline-flex w-full sm:w-auto items-center justify-center rounded-full bg-sunset px-5 py-2.5 text-sm font-semibold text-white hover:bg-sunset/90 transition-colors"
-            >
-              View contact page
-            </Link>
+            <div className="mt-4 flex flex-col gap-2.5">
+              <Link
+                href="/contact"
+                className="inline-flex w-full items-center justify-center rounded-full bg-sunset px-5 py-2.5 text-sm font-semibold text-white hover:bg-sunset/90 transition-colors"
+              >
+                View contact page
+              </Link>
+              <a
+                href={MULLAYANAGIRI_PASS_BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-sunset/50 bg-sunset/10 px-5 py-2.5 text-sm font-semibold text-sunset hover:bg-sunset/20 transition-colors"
+              >
+                Book Mullayanagiri Online Pass
+                <ExternalLink className="w-3.5 h-3.5 shrink-0" />
+              </a>
+            </div>
           </div>
         </div>
 
