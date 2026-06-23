@@ -15,7 +15,7 @@ import galleryAboveCloudsSummit from "@/assets/gallery/gallery-above-clouds-summ
 import galleryResortPoolVilla from "@/assets/gallery/gallery-resort-pool-villa.webp";
 import type { StaticImageData } from "next/image";
 import { AppImage } from "@/components/AppImage";
-import { useCoarsePointer } from "@/hooks/use-coarse-pointer";
+import { useManualAutoCarousel } from "@/hooks/use-manual-auto-carousel";
 
 const GALLERY_SIZES = "(max-width: 768px) 256px, 288px";
 
@@ -35,17 +35,16 @@ const galleryImages: { src: StaticImageData; alt: string; caption: string; rotat
 ];
 
 const GallerySection = () => {
-  const isTouchDevice = useCoarsePointer();
-  const [isPaused, setIsPaused] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
 
-  // Duplicate images for seamless loop
+  const { scrollRef, isPaused, scrollProps } = useManualAutoCarousel({
+    active: isVisible,
+    segments: 2,
+    speed: 0.7,
+  });
+
   const duplicatedImages = [...galleryImages, ...galleryImages];
 
   useEffect(() => {
@@ -55,7 +54,7 @@ const GallerySection = () => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
 
     if (sectionRef.current) {
@@ -65,39 +64,16 @@ const GallerySection = () => {
     return () => observer.disconnect();
   }, []);
 
-  const handlePointerDown = (e: React.PointerEvent) => {
-    if (e.pointerType !== "mouse" || !scrollContainerRef.current) return;
-    setIsDragging(true);
-    setIsPaused(true);
-    setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
-    setScrollLeft(scrollContainerRef.current.scrollLeft);
-  };
-
-  const handlePointerMove = (e: React.PointerEvent) => {
-    if (e.pointerType !== "mouse" || !isDragging || !scrollContainerRef.current) return;
-    const x = e.pageX - scrollContainerRef.current.offsetLeft;
-    const walk = (x - startX) * 1.5;
-    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
-  };
-
-  const endDrag = () => {
-    setIsDragging(false);
-    setIsPaused(false);
-    setHoveredIndex(null);
-  };
-
-  const autoScroll = isTouchDevice ? !isPaused : !isPaused && !isDragging;
-
   return (
-    <section 
+    <section
       ref={sectionRef}
-      id="gallery" 
+      id="gallery"
       className="py-24 bg-muted/30 overflow-hidden relative"
     >
-      
       <div className="container mx-auto px-4 relative z-10">
-        {/* Section Header */}
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div
+          className={`text-center mb-16 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+        >
           <span className="text-sunset font-medium text-sm uppercase tracking-[0.2em]">
             Captured Moments
           </span>
@@ -108,96 +84,81 @@ const GallerySection = () => {
             Glimpses of the magical experiences awaiting you in Chikmagalur
           </p>
           <p className="text-muted-foreground/60 mt-2 text-sm">
-            {isTouchDevice ? "Swipe to explore →" : "Drag to explore →"}
+            Swipe or drag left ↔ right — auto-scroll {isPaused ? "paused" : "playing"}
           </p>
         </div>
       </div>
 
-      {/* Scrolling Gallery with Tilted Cards */}
-      <div
-        ref={scrollContainerRef}
-        className={`relative py-8 scrollbar-hide smooth-touch-x ${
-          isTouchDevice ? "overflow-hidden" : "overflow-x-auto"
-        } ${
-          isDragging ? "cursor-grabbing" : "md:cursor-grab"
-        }`}
-        onPointerDown={handlePointerDown}
-        onPointerMove={handlePointerMove}
-        onPointerUp={endDrag}
-        onPointerLeave={endDrag}
-        onPointerCancel={endDrag}
-        style={{ scrollBehavior: "auto" }}
-      >
+      <div className="relative">
+        <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-24 bg-gradient-to-r from-muted/30 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-24 bg-gradient-to-l from-muted/30 to-transparent z-10 pointer-events-none" />
+
         <div
-          className={`flex gap-8 ${autoScroll ? "animate-slide-left-slow" : ""}`}
-          style={{
-            animationPlayState: autoScroll ? "running" : "paused",
-            width: "max-content",
-          }}
+          ref={scrollRef}
+          className={`carousel-manual-scroll scrollbar-hide py-8 px-4 ${isPaused ? "is-dragging" : ""}`}
+          {...scrollProps}
         >
-          {duplicatedImages.map((image, index) => {
-            const isHovered = hoveredIndex === index;
-            const baseRotation = image.rotation;
-            
-            return (
-              <div
-                key={`${image.alt}-${index}`}
-                className="relative shrink-0 cursor-pointer transition-all duration-500 ease-out"
-                style={{
-                  transform: isHovered 
-                    ? `rotate(${baseRotation * 0.3}deg) translateY(-8px)` 
-                    : `rotate(${baseRotation}deg)`,
-                  zIndex: isHovered ? 50 : 1,
-                }}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-              >
-                {/* Card with shadow */}
+          <div className="flex gap-8 w-max">
+            {duplicatedImages.map((image, index) => {
+              const isHovered = hoveredIndex === index;
+              const baseRotation = image.rotation;
+
+              return (
                 <div
-                  className="relative w-64 h-80 md:w-72 md:h-96 rounded-2xl overflow-hidden transition-all duration-500"
+                  key={`${image.alt}-${index}`}
+                  className="relative shrink-0 cursor-pointer transition-all duration-500 ease-out"
                   style={{
-                    boxShadow: isHovered
-                      ? "0 20px 40px -12px rgba(0,0,0,0.5)"
-                      : "0 10px 30px -10px rgba(0,0,0,0.4)",
+                    transform: isHovered
+                      ? `rotate(${baseRotation * 0.3}deg) translateY(-8px)`
+                      : `rotate(${baseRotation}deg)`,
+                    zIndex: isHovered ? 50 : 1,
                   }}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
                 >
-                  <AppImage
-                    src={image.src}
-                    alt={image.alt}
-                    fill
-                    sizes={GALLERY_SIZES}
-                    className="transition-transform duration-700"
+                  <div
+                    className="relative w-64 h-80 md:w-72 md:h-96 rounded-2xl overflow-hidden transition-all duration-500"
                     style={{
-                      transform: isHovered ? "scale(1.05)" : "scale(1)",
-                    }}
-                  />
-                  
-                  {/* Gradient overlay */}
-                  <div 
-                    className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent transition-opacity duration-300"
-                    style={{ opacity: isHovered ? 1 : 0.5 }}
-                  />
-                  
-                  {/* Caption */}
-                  <div 
-                    className="absolute bottom-0 left-0 right-0 p-5 transition-all duration-300"
-                    style={{
-                      transform: isHovered ? 'translateY(0)' : 'translateY(10px)',
-                      opacity: isHovered ? 1 : 0.8,
+                      boxShadow: isHovered
+                        ? "0 20px 40px -12px rgba(0,0,0,0.5)"
+                        : "0 10px 30px -10px rgba(0,0,0,0.4)",
                     }}
                   >
-                    <p className="text-white font-semibold text-lg">{image.caption}</p>
+                    <AppImage
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      sizes={GALLERY_SIZES}
+                      className="transition-transform duration-700"
+                      style={{
+                        transform: isHovered ? "scale(1.05)" : "scale(1)",
+                      }}
+                    />
+
+                    <div
+                      className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent transition-opacity duration-300"
+                      style={{ opacity: isHovered ? 1 : 0.5 }}
+                    />
+
+                    <div
+                      className="absolute bottom-0 left-0 right-0 p-5 transition-all duration-300"
+                      style={{
+                        transform: isHovered ? "translateY(0)" : "translateY(10px)",
+                        opacity: isHovered ? 1 : 0.8,
+                      }}
+                    >
+                      <p className="text-white font-semibold text-lg">{image.caption}</p>
+                    </div>
                   </div>
+
+                  <div
+                    className="absolute inset-0 rounded-2xl border-4 border-white/20 pointer-events-none transition-opacity duration-300"
+                    style={{ opacity: isHovered ? 0 : 1 }}
+                  />
                 </div>
-                
-                {/* Decorative scattered-photo border effect */}
-                <div 
-                  className="absolute inset-0 rounded-2xl border-4 border-white/20 pointer-events-none transition-opacity duration-300"
-                  style={{ opacity: isHovered ? 0 : 1 }}
-                />
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { AppImage } from "@/components/AppImage";
 import { testimonials } from "@/data/testimonials";
-import { useCoarsePointer } from "@/hooks/use-coarse-pointer";
+import { useManualAutoCarousel } from "@/hooks/use-manual-auto-carousel";
 
 function TestimonialCard({ testimonial, index }: { testimonial: typeof testimonials[0]; index: number }) {
   const [liked, setLiked] = useState(false);
@@ -70,9 +70,14 @@ function TestimonialCard({ testimonial, index }: { testimonial: typeof testimoni
 }
 
 const TestimonialSection = () => {
-  const isTouchDevice = useCoarsePointer();
   const sectionRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+
+  const { scrollRef, isPaused, scrollProps } = useManualAutoCarousel({
+    active: isVisible,
+    segments: 3,
+    speed: 0.55,
+  });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -107,23 +112,29 @@ const TestimonialSection = () => {
             What Our Travelers Say
           </h2>
           <p className="text-muted-foreground mt-4 text-sm">
-            {isTouchDevice ? "Scroll the page — cards keep moving →" : "Hover cards — page scroll still works →"}
+            Swipe or drag left ↔ right — auto-scroll {isPaused ? "paused" : "playing"}
           </p>
         </div>
       </div>
 
       <div
-        className={`testimonials-carousel relative overflow-hidden transition-all duration-1000 delay-300 ${
+        className={`relative transition-all duration-1000 delay-300 ${
           isVisible ? "opacity-100" : "opacity-0"
         }`}
       >
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-muted/30 to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-muted/30 to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-muted/30 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-muted/30 to-transparent z-10 pointer-events-none" />
 
-        <div className="flex py-4 w-max animate-carousel-slow">
-          {duplicatedTestimonials.map((testimonial, index) => (
-            <TestimonialCard key={`${testimonial.id}-${index}`} testimonial={testimonial} index={index} />
-          ))}
+        <div
+          ref={scrollRef}
+          className={`testimonials-carousel carousel-manual-scroll scrollbar-hide py-2 ${isPaused ? "is-dragging" : ""}`}
+          {...scrollProps}
+        >
+          <div className="flex py-4 w-max">
+            {duplicatedTestimonials.map((testimonial, index) => (
+              <TestimonialCard key={`${testimonial.id}-${index}`} testimonial={testimonial} index={index} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

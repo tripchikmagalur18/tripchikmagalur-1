@@ -6,6 +6,7 @@ import { X, MapPin, Clock, ShoppingCart } from "lucide-react";
 import { AspectImage } from "@/components/AspectImage";
 import { PackageOfferPrice } from "@/components/PackageOfferPrice";
 import { useCart } from "@/context/CartContext";
+import { usePackagePricing } from "@/context/PackagePricingContext";
 import type { PackageDetail } from "@/data/package-places";
 
 const focusRing =
@@ -18,6 +19,7 @@ type PackageKnowMoreModalProps = {
 
 export function PackageKnowMoreModal({ detail, onClose }: PackageKnowMoreModalProps) {
   const { addItem, items } = useCart();
+  const { getDisplayPrice } = usePackagePricing();
   const closeRef = useRef<HTMLButtonElement>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
 
@@ -45,11 +47,13 @@ export function PackageKnowMoreModal({ detail, onClose }: PackageKnowMoreModalPr
 
   if (!detail) return null;
 
+  const displayPrice = getDisplayPrice(detail.price);
+
   const handleAddToCart = () => {
     addItem({
       id: detail.cartId,
       name: detail.name,
-      price: detail.price,
+      price: displayPrice,
       link: detail.packageDayLink,
     });
   };
@@ -100,7 +104,7 @@ export function PackageKnowMoreModal({ detail, onClose }: PackageKnowMoreModalPr
           </div>
 
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 rounded-xl bg-card border border-sunset/25 px-4 py-3 shadow-sm">
-            <PackageOfferPrice price={detail.price} size="md" align="start" />
+            <PackageOfferPrice price={displayPrice} size="md" align="start" />
             <button
               type="button"
               disabled={inCart}

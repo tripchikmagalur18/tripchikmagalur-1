@@ -6,9 +6,11 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { AppImage } from "@/components/AppImage";
 import { PackageOfferPrice } from "@/components/PackageOfferPrice";
+import { PackageWeekdayWeekendToggle } from "@/components/PackageWeekdayWeekendToggle";
 import { PageJsonLd } from "@/components/page-json-ld";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { homePackages, homeFaqItems } from "@/data/home-packages";
+import { usePackagePricing } from "@/context/PackagePricingContext";
 import { buildTourPackagesItemListSchema } from "@/lib/schemas/tour-packages-schema";
 import { WHATSAPP_LINK } from "@/lib/whatsapp";
 
@@ -40,6 +42,8 @@ const faqs = [
 ];
 
 const TourPackagesPage = () => {
+  const { getDisplayPrice } = usePackagePricing();
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -144,7 +148,12 @@ const TourPackagesPage = () => {
                     ))}
                   </ul>
 
-                  <PackageOfferPrice price={pkg.price} size="md" align="start" className="mb-2" />
+                  <PackageOfferPrice
+                    price={getDisplayPrice(pkg.price)}
+                    size="md"
+                    align="start"
+                    className="mb-2"
+                  />
                   <p className="text-[10px] text-muted-foreground/80 italic mb-5">
                     *Terms and conditions apply on places
                   </p>
@@ -175,6 +184,8 @@ const TourPackagesPage = () => {
               </article>
             ))}
           </div>
+
+          <PackageWeekdayWeekendToggle className="mt-10" />
         </div>
       </section>
 

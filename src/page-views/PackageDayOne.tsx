@@ -3,12 +3,15 @@
 import Link from "next/link";
 import { AspectImage } from "@/components/AspectImage";
 import { PackageOfferPrice } from "@/components/PackageOfferPrice";
+import { PackageDayBookButton } from "@/components/PackageDayBookButton";
+import { PackageWeekdayWeekendToggle } from "@/components/PackageWeekdayWeekendToggle";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { PageJsonLd } from "@/components/page-json-ld";
 import { buildPackageDaySchemas } from "@/lib/package-page-schema";
-import { ArrowLeft, MapPin, Clock, ShoppingCart } from "lucide-react";
-import { useCart } from "@/context/CartContext";
+import { ArrowLeft, MapPin, Clock } from "lucide-react";
+import { usePackagePricing } from "@/context/PackagePricingContext";
+import { getHomePackageByCartId } from "@/data/home-packages";
 
 import siriNatureRoost from "@/assets/places/siri-nature-roost.webp";
 import jhariFalls from "@/assets/places/jhari-falls.webp";
@@ -20,24 +23,6 @@ import zPoint from "@/assets/places/z-point.webp";
 import zipLining from "@/assets/places/zip-lining.webp";
 
 import { WHATSAPP_LINK } from "@/lib/whatsapp";
-
-const BookButton = () => {
-  const { addItem, items } = useCart();
-  const id = "pkg-day-1";
-  const inCart = items.some((i) => i.id === id);
-  return (
-    <button
-      onClick={() =>
-        addItem({ id, name: "Mullayangiri Package (Day 1)", price: 3499, link: "/package/day-1" })
-      }
-      disabled={inCart}
-      className="inline-flex items-center gap-2 bg-sunset hover:bg-sunset/90 disabled:opacity-70 disabled:cursor-not-allowed text-white px-8 py-4 rounded-full text-lg font-medium transition-all"
-    >
-      <ShoppingCart className="w-5 h-5" />
-      {inCart ? "Added to Cart" : "Add to Cart — ₹3,499/group"}
-    </button>
-  );
-};
 
 const places = [
   {
@@ -99,6 +84,9 @@ const places = [
 ];
 
 const PackageDayOne = () => {
+  const { getDisplayPrice } = usePackagePricing();
+  const pkg = getHomePackageByCartId("pkg-day-1")!;
+
   return (
     <main className="overflow-x-hidden">
       <PageJsonLd
@@ -120,7 +108,8 @@ const PackageDayOne = () => {
             <span className="text-sunset font-medium text-sm uppercase tracking-[0.2em]">Day 1</span>
             <h1 className="text-4xl md:text-5xl font-display font-bold text-foreground mt-2">Mullayangiri Package</h1>
             <p className="text-muted-foreground mt-3 text-lg max-w-2xl">Explore 8 stunning locations in one action-packed day — from misty peaks to hidden waterfalls and thrilling adventures.</p>
-            <PackageOfferPrice price={3499} size="md" align="start" className="mt-4" />
+            <PackageOfferPrice price={getDisplayPrice(pkg.price)} size="md" align="start" className="mt-4" />
+            <PackageWeekdayWeekendToggle className="mt-4 items-start" />
           </div>
 
           {/* Places Grid */}
@@ -149,7 +138,7 @@ const PackageDayOne = () => {
 
           {/* CTA */}
           <div className="text-center mt-12">
-            <BookButton />
+            <PackageDayBookButton cartId="pkg-day-1" />
           </div>
         </div>
       </section>

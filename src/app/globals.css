@@ -3,8 +3,20 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Third-party chat widget — launcher root (icon duplicates hidden via syncChatLauncher) */
-#chat-widget-root,
+/* Third-party chat widget — hidden launcher; SaraChatStickyButton is the visible UI */
+#chat-widget-root {
+  position: fixed !important;
+  left: -9999px !important;
+  top: auto !important;
+  bottom: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  z-index: -1 !important;
+}
+
 #__cw_portal {
   position: fixed !important;
   bottom: 16px !important;
@@ -19,29 +31,17 @@
   pointer-events: auto;
 }
 
-/* Homepage — sticky bottom-center "Chat with Sara" pill (mobile + desktop) */
-body.home-page #chat-widget-root {
-  left: 50% !important;
-  right: auto !important;
-  bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px)) !important;
-  transform: translateX(-50%) !important;
-  width: auto !important;
-  height: auto !important;
-  max-width: none !important;
-  pointer-events: none;
+/* Sticky Sara CTA — contained, never overflows viewport */
+.sara-chat-sticky {
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
-body.home-page #chat-widget-root button,
-body.home-page #chat-widget-root a,
-body.home-page #chat-widget-root [data-chat-launcher-fixed="true"] {
-  pointer-events: auto !important;
+.sara-chat-sticky-btn {
+  max-width: calc(100% - 0.5rem);
 }
 
-body.home-page #chat-widget-root [data-chat-launcher-fixed="true"] {
-  max-width: calc(100vw - 8.75rem);
-}
-
-body.home-page.chat-widget-open #chat-widget-root [data-chat-launcher-fixed="true"] {
+body.chat-widget-open .sara-chat-sticky {
   display: none !important;
 }
 
@@ -401,13 +401,28 @@ html body dialog[open] form {
     touch-action: pan-x pan-y;
   }
 
-  /* Testimonials — vertical page scroll + horizontal carousel animation */
-  .testimonials-carousel {
-    touch-action: pan-y;
-    pointer-events: none;
+  /* Manual + auto horizontal carousels (testimonials, gallery) */
+  .carousel-manual-scroll {
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    scroll-behavior: auto;
+    touch-action: pan-x pan-y;
+    cursor: grab;
   }
 
-  .testimonials-carousel .testimonial-card {
+  .carousel-manual-scroll.is-dragging {
+    cursor: grabbing;
+    scroll-behavior: auto;
+  }
+
+  .carousel-manual-scroll:active {
+    cursor: grabbing;
+  }
+
+  /* Testimonials — cards remain interactive inside scroll track */
+  .testimonials-carousel.carousel-manual-scroll .testimonial-card {
     pointer-events: auto;
   }
 

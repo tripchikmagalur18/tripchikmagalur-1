@@ -3,35 +3,20 @@
 import Link from "next/link";
 import { AspectImage } from "@/components/AspectImage";
 import { PackageOfferPrice } from "@/components/PackageOfferPrice";
+import { PackageDayBookButton } from "@/components/PackageDayBookButton";
+import { PackageWeekdayWeekendToggle } from "@/components/PackageWeekdayWeekendToggle";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { PageJsonLd } from "@/components/page-json-ld";
 import { buildPackageDaySchemas } from "@/lib/package-page-schema";
-import { ArrowLeft, MapPin, Clock, ShoppingCart } from "lucide-react";
-import { useCart } from "@/context/CartContext";
+import { ArrowLeft, MapPin, Clock } from "lucide-react";
+import { usePackagePricing } from "@/context/PackagePricingContext";
+import { getHomePackageByCartId } from "@/data/home-packages";
 
 import chennakeshava from "@/assets/place-chennakeshava.webp";
 import hoysaleshwara from "@/assets/place-hoysaleshwara.webp";
 import hiremangalore from "@/assets/place-hiremangalore.webp";
 import belurDam from "@/assets/place-belur-dam.webp";
-
-const BookButton = () => {
-  const { addItem, items } = useCart();
-  const id = "pkg-day-4";
-  const inCart = items.some((i) => i.id === id);
-  return (
-    <button
-      onClick={() =>
-        addItem({ id, name: "Belur Package (Day 4)", price: 3499, link: "/package/day-4" })
-      }
-      disabled={inCart}
-      className="inline-flex items-center gap-2 bg-sunset hover:bg-sunset/90 disabled:opacity-70 disabled:cursor-not-allowed text-white px-8 py-4 rounded-full text-lg font-medium transition-all"
-    >
-      <ShoppingCart className="w-5 h-5" />
-      {inCart ? "Added to Cart" : "Add to Cart — ₹3,499/group"}
-    </button>
-  );
-};
 
 const places = [
   {
@@ -69,6 +54,9 @@ const places = [
 ];
 
 const PackageDayFour = () => {
+  const { getDisplayPrice } = usePackagePricing();
+  const pkg = getHomePackageByCartId("pkg-day-4")!;
+
   return (
     <main className="overflow-x-hidden">
       <PageJsonLd
@@ -95,7 +83,8 @@ const PackageDayFour = () => {
               A full-day heritage circuit — Hoysala temples at Belur and Halebidu plus Hiremagalur&apos;s protected
               monument.
             </p>
-            <PackageOfferPrice price={3499} size="md" align="start" className="mt-4" />
+            <PackageOfferPrice price={getDisplayPrice(pkg.price)} size="md" align="start" className="mt-4" />
+            <PackageWeekdayWeekendToggle className="mt-4 items-start" />
           </div>
 
           <h2 className="text-2xl font-display font-bold text-foreground mb-6">Day 4 Destinations</h2>
@@ -132,7 +121,7 @@ const PackageDayFour = () => {
           </div>
 
           <div className="text-center mt-12">
-            <BookButton />
+            <PackageDayBookButton cartId="pkg-day-4" />
           </div>
         </div>
       </section>

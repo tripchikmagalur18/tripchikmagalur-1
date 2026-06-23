@@ -126,6 +126,14 @@ export const homePackages: readonly HomePackage[] = [
   },
 ] as const;
 
+export function getHomePackageByCartId(cartId: string): HomePackage | undefined {
+  return homePackages.find((pkg) => pkg.cartId === cartId);
+}
+
+export function getHomePackageByDayLink(link: string): HomePackage | undefined {
+  return homePackages.find((pkg) => pkg.packageDayLink === link);
+}
+
 export const homeFaqItems = [
   {
     question: "How much do Chikmagalur tour packages cost?",

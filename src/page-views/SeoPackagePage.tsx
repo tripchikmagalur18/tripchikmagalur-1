@@ -8,13 +8,18 @@ import { PageJsonLd } from "@/components/page-json-ld";
 import { packageSeoPages, type PackageSeoPage } from "@/data/package-seo-pages";
 import { ShoppingCart, MessageCircle } from "lucide-react";
 import { useCart } from "@/context/CartContext";
+import { usePackagePricing } from "@/context/PackagePricingContext";
 import { WHATSAPP_LINK } from "@/lib/whatsapp";
 import { PackageOfferPrice } from "@/components/PackageOfferPrice";
+import { PackageWeekdayWeekendToggle } from "@/components/PackageWeekdayWeekendToggle";
+import { formatPackageInr } from "@/lib/package-offer-price";
 import { buildPackagePageSchemas } from "@/lib/package-page-schema";
 
 function BookCta({ page }: { page: PackageSeoPage }) {
   const { addItem, items } = useCart();
+  const { getDisplayPrice } = usePackagePricing();
   const inCart = items.some((i) => i.id === page.cartId);
+  const displayPrice = getDisplayPrice(page.price);
   return (
     <div className="flex flex-wrap gap-3 justify-center mt-8">
       <button
@@ -24,14 +29,14 @@ function BookCta({ page }: { page: PackageSeoPage }) {
           addItem({
             id: page.cartId,
             name: page.h1,
-            price: page.price,
+            price: displayPrice,
             link: page.packageDayLink,
           })
         }
         className="inline-flex items-center gap-2 bg-sunset hover:bg-sunset/90 disabled:opacity-70 text-white px-6 py-3 rounded-full font-medium"
       >
         <ShoppingCart className="w-5 h-5" />
-        {inCart ? "Added to Cart" : `Add to Cart — ₹${page.price.toLocaleString("en-IN")}/group`}
+        {inCart ? "Added to Cart" : `Add to Cart — ${formatPackageInr(displayPrice)}/group`}
       </button>
       <a
         href={WHATSAPP_LINK}
@@ -54,7 +59,10 @@ function BookCta({ page }: { page: PackageSeoPage }) {
 
 export default function SeoPackagePage({ slug }: { slug: string }) {
   const page = packageSeoPages[slug];
+  const { getDisplayPrice } = usePackagePricing();
   if (!page) return null;
+
+  const displayPrice = getDisplayPrice(page.price);
 
   return (
     <main className="overflow-x-hidden">
@@ -80,7 +88,8 @@ export default function SeoPackagePage({ slug }: { slug: string }) {
             <p className="text-sunset text-sm font-medium uppercase tracking-wider">{page.duration} tour</p>
             <h1 className="text-3xl md:text-4xl font-display font-bold text-foreground mt-2">{page.h1}</h1>
             <p className="text-lg text-muted-foreground mt-4 leading-relaxed">{page.intro}</p>
-            <PackageOfferPrice price={page.price} size="md" align="start" className="mt-4" />
+            <PackageOfferPrice price={displayPrice} size="md" align="start" className="mt-4" />
+            <PackageWeekdayWeekendToggle className="mt-4 items-start" />
           </header>
 
           {page.sections.map((section) => (

@@ -4,10 +4,12 @@ import { useRouter } from "next/navigation";
 import { AppImage } from "@/components/AppImage";
 import { PackageKnowMoreModal } from "@/components/PackageKnowMoreModal";
 import { PackageOfferPrice } from "@/components/PackageOfferPrice";
+import { PackageWeekdayWeekendToggle } from "@/components/PackageWeekdayWeekendToggle";
 import { homePackages } from "@/data/home-packages";
 import { getPackageDetail } from "@/data/package-places";
 import { formatPackageInr, getPackageOfferPrices } from "@/lib/package-offer-price";
 import { useCart } from "@/context/CartContext";
+import { usePackagePricing } from "@/context/PackagePricingContext";
 import { Sparkles, Info, ChevronLeft, ChevronRight, ShoppingCart } from "lucide-react";
 import { useEffect, useState, useCallback, useRef } from "react";
 
@@ -19,6 +21,7 @@ const btnBase =
 const PackagesSection = () => {
   const router = useRouter();
   const { addItem, items } = useCart();
+  const { getDisplayPrice } = usePackagePricing();
   const [activeIndex, setActiveIndex] = useState(0);
   const [visible, setVisible] = useState(false);
   const [knowMoreCartId, setKnowMoreCartId] = useState<string | null>(null);
@@ -99,7 +102,7 @@ const PackagesSection = () => {
     addItem({
       id: pkg.cartId,
       name: pkg.name,
-      price: pkg.price,
+      price: getDisplayPrice(pkg.price),
       link: pkg.packageDayLink,
     });
   };
@@ -138,6 +141,7 @@ const PackagesSection = () => {
             const style = getCardStyle(index);
             const isActive = index === activeIndex;
             const inCart = items.some((i) => i.id === pkg.cartId);
+            const displayPrice = getDisplayPrice(pkg.price);
 
             return (
               <div
@@ -151,7 +155,7 @@ const PackagesSection = () => {
                 <article
                   role="button"
                   tabIndex={0}
-                  aria-label={`${pkg.name}, ${formatPackageInr(pkg.price)} per group, offer was ${formatPackageInr(getPackageOfferPrices(pkg.price).scratchedPrice)}. ${isActive ? "Open package details" : "Select package"}`}
+                  aria-label={`${pkg.name}, ${formatPackageInr(displayPrice)} per group, offer was ${formatPackageInr(getPackageOfferPrices(displayPrice).scratchedPrice)}. ${isActive ? "Open package details" : "Select package"}`}
                   onClick={() => handleCardClick(index, pkg.link)}
                   onKeyDown={(e) => {
                     if (e.key === "Enter" || e.key === " ") {
@@ -203,7 +207,7 @@ const PackagesSection = () => {
                       ))}
                     </ul>
 
-                    <PackageOfferPrice price={pkg.price} size="sm" className="mb-3" />
+                    <PackageOfferPrice price={displayPrice} size="sm" className="mb-3" />
                     <p className="text-[10px] text-muted-foreground/80 italic mb-4 -mt-1">
                       *Terms and conditions apply on places
                     </p>
@@ -271,6 +275,8 @@ const PackagesSection = () => {
             <ChevronRight className="w-4 h-4" />
           </button>
         </div>
+
+        <PackageWeekdayWeekendToggle className="mt-8" />
       </div>
 
       <PackageKnowMoreModal
