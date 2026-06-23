@@ -52,12 +52,25 @@ function hideLauncher(el: HTMLElement): void {
 }
 
 function isChatOpen(): boolean {
+  const dialogOpen = !!document.querySelector("body dialog[open]");
+  if (dialogOpen) return true;
+
+  const textarea = document.querySelector<HTMLTextAreaElement>(
+    'textarea[placeholder*="Write your message" i]',
+  );
+  if (!textarea) return false;
+
+  const panel = textarea.closest("dialog, [role='dialog']") ?? textarea.parentElement;
+  if (!panel) return false;
+
+  const rect = panel.getBoundingClientRect();
+  if (rect.width < 4 || rect.height < 4) return false;
+
+  const style = window.getComputedStyle(panel);
   return (
-    document.body.classList.contains("chat-widget-open") ||
-    !!document.querySelector("body dialog[open]") ||
-    !!document.querySelector(
-      '#chat-widget-root textarea[placeholder*="Write your message" i]',
-    )
+    style.display !== "none" &&
+    style.visibility !== "hidden" &&
+    Number(style.opacity) > 0.05
   );
 }
 

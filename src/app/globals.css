@@ -34,10 +34,11 @@
 /* Sticky Sara pill — bottom center, contained between mobile FABs */
 .sara-chat-sticky {
   box-sizing: border-box;
+  max-width: calc(100vw - 8.75rem);
 }
 
-body.chat-widget-open .sara-chat-sticky {
-  display: none !important;
+.sara-chat-sticky-btn {
+  box-sizing: border-box;
 }
 
 /* Constrain the chat widget's open dialog panel to bottom-right.

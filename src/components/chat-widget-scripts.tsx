@@ -35,6 +35,8 @@ function setChatWidgetsVisible(visible: boolean) {
   });
 
   document.querySelectorAll("button, a").forEach((el) => {
+    if (el.closest(".sara-chat-sticky")) return;
+
     if (
       el.textContent?.includes(CHAT_WIDGET_LABEL) ||
       el.textContent?.includes(LEGACY_CHAT_WIDGET_LABEL)
@@ -43,8 +45,10 @@ function setChatWidgetsVisible(visible: boolean) {
       (el as HTMLElement).style.pointerEvents = pointerEvents;
       const parent = el.parentElement;
       if (parent && parent !== document.body && parent.childElementCount <= 2) {
-        parent.style.display = display;
-        parent.style.pointerEvents = pointerEvents;
+        if (!parent.closest(".sara-chat-sticky")) {
+          parent.style.display = display;
+          parent.style.pointerEvents = pointerEvents;
+        }
       }
     }
   });
@@ -135,11 +139,19 @@ export function ChatWidgetScripts() {
     }
     return null;
   }
+  function isPanelVisible(el) {
+    if (!el) return false;
+    var r = el.getBoundingClientRect();
+    if (r.width < 4 || r.height < 4) return false;
+    var st = window.getComputedStyle(el);
+    return st.display !== "none" && st.visibility !== "hidden" && Number(st.opacity) > 0.05;
+  }
   function scan() {
     var panel = findChatPanel();
-    var chatOpen = !!document.querySelector("body dialog[open]") || !!panel;
+    var dialogOpen = !!document.querySelector("body dialog[open]");
+    var chatOpen = dialogOpen || isPanelVisible(panel);
     document.body.classList.toggle("chat-widget-open", chatOpen);
-    if (panel) {
+    if (panel && chatOpen) {
       var portal = ensurePortal();
       if (panel.parentElement !== portal) portal.appendChild(panel);
       applyStyles(panel);
