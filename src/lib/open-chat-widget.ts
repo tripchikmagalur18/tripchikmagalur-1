@@ -1,14 +1,21 @@
+const CHAT_ROOT_ID = "chat-widget-root";
 const CHAT_LABELS = ["Chat with Sara", "Chat with Saif"];
 
 function isChatLabel(text: string): boolean {
   return CHAT_LABELS.some((label) => text.includes(label));
 }
 
+function getChatRoot(): HTMLElement | null {
+  if (typeof document === "undefined") return null;
+  return document.getElementById(CHAT_ROOT_ID);
+}
+
 function findChatLaunchers(): HTMLElement[] {
-  if (typeof document === "undefined") return [];
+  const root = getChatRoot();
+  if (!root) return [];
 
   const launchers: HTMLElement[] = [];
-  for (const el of document.querySelectorAll("button, a")) {
+  for (const el of root.querySelectorAll("button, a")) {
     const text = el.textContent?.trim() ?? "";
     if (isChatLabel(text)) {
       launchers.push(el as HTMLElement);
@@ -39,26 +46,44 @@ function hideLauncher(el: HTMLElement): void {
 }
 
 function applyFixedLauncherStyles(primary: HTMLElement): void {
-  if (primary.parentElement && primary.parentElement !== document.body) {
-    document.body.appendChild(primary);
-  }
-
+  // Keep launcher inside #chat-widget-root so third-party handlers stay wired.
   primary.setAttribute("data-chat-launcher-fixed", "true");
   primary.style.setProperty("display", "", "important");
   primary.style.setProperty("visibility", "visible", "important");
   primary.style.setProperty("pointer-events", "auto", "important");
-  primary.style.setProperty("position", "fixed", "important");
-  primary.style.setProperty("left", "50%", "important");
-  primary.style.setProperty("right", "auto", "important");
-  primary.style.setProperty("top", "auto", "important");
-  primary.style.setProperty("bottom", "calc(1.25rem + env(safe-area-inset-bottom, 0px))", "important");
-  primary.style.setProperty("transform", "translateX(-50%)", "important");
-  primary.style.setProperty("z-index", "9998", "important");
+  primary.style.setProperty("position", "relative", "important");
+  primary.style.setProperty("z-index", "1", "important");
   primary.style.setProperty("margin", "0", "important");
   primary.style.setProperty("opacity", "1", "important");
   primary.style.setProperty("width", "auto", "important");
   primary.style.setProperty("height", "auto", "important");
   primary.style.setProperty("overflow", "visible", "important");
+}
+
+function isChatOpen(): boolean {
+  return (
+    document.body.classList.contains("chat-widget-open") ||
+    !!document.querySelector("body dialog[open]") ||
+    !!document.querySelector(
+      '#chat-widget-root textarea[placeholder*="Write your message" i]',
+    )
+  );
+}
+
+function tryOpenChatDialog(): boolean {
+  const dialog = document.querySelector<HTMLDialogElement>(
+    "#chat-widget-root dialog, body dialog",
+  );
+  if (dialog && !dialog.open) {
+    try {
+      dialog.showModal();
+      return true;
+    } catch {
+      dialog.show();
+      return true;
+    }
+  }
+  return false;
 }
 
 /** Clicks the third-party Sara chat launcher if present. */
@@ -67,12 +92,30 @@ export function openChatWidget(): void {
 
   const primary = pickPrimaryLauncher(findChatLaunchers());
   if (primary) {
+    primary.dispatchEvent(
+      new MouseEvent("click", { bubbles: true, cancelable: true, view: window }),
+    );
     primary.click();
+
+    window.setTimeout(() => {
+      if (!isChatOpen()) tryOpenChatDialog();
+    }, 120);
     return;
   }
 
-  const hidden = document.querySelector<HTMLElement>('[data-chat-launcher-hidden="true"]');
-  hidden?.click();
+  const hidden = document.querySelector<HTMLElement>(
+    '#chat-widget-root [data-chat-launcher-hidden="true"]',
+  );
+  if (hidden) {
+    hidden.style.removeProperty("display");
+    hidden.style.removeProperty("pointer-events");
+    hidden.style.removeProperty("visibility");
+    hidden.click();
+    hidden.setAttribute("data-chat-launcher-hidden", "true");
+    return;
+  }
+
+  tryOpenChatDialog();
 }
 
 /**
@@ -81,6 +124,9 @@ export function openChatWidget(): void {
 export function syncChatLauncher(): void {
   if (typeof window === "undefined") return;
 
+  const root = getChatRoot();
+  if (!root) return;
+
   const launchers = findChatLaunchers();
   const primary = pickPrimaryLauncher(launchers);
 
@@ -88,22 +134,9 @@ export function syncChatLauncher(): void {
     if (el !== primary) hideLauncher(el);
   });
 
-  document.querySelectorAll("#chat-widget-root button, #chat-widget-root a").forEach((el) => {
-    const node = el as HTMLElement;
-    if (primary && (node === primary || primary.contains(node) || node.contains(primary))) return;
-    const text = node.textContent?.trim() ?? "";
-    if (!text || !isChatLabel(text)) {
-      hideLauncher(node);
-    }
-  });
-
   if (!primary) return;
 
-  const chatOpen =
-    document.body.classList.contains("chat-widget-open") ||
-    !!document.querySelector("body dialog[open]");
-
-  if (chatOpen) {
+  if (isChatOpen()) {
     primary.style.setProperty("display", "none", "important");
     return;
   }

@@ -31,8 +31,13 @@ body.home-page #chat-widget-root {
   pointer-events: none;
 }
 
+body.home-page #chat-widget-root button,
+body.home-page #chat-widget-root a,
 body.home-page #chat-widget-root [data-chat-launcher-fixed="true"] {
   pointer-events: auto !important;
+}
+
+body.home-page #chat-widget-root [data-chat-launcher-fixed="true"] {
   max-width: calc(100vw - 8.75rem);
 }
 
@@ -86,12 +91,16 @@ html body dialog[open] section {
 
 @media (max-width: 640px) {
   html body dialog,
-  html body dialog[open] {
+  html body dialog[open],
+  body.chat-widget-open #__cw_portal > div {
     right: 8px !important;
-    bottom: 80px !important;
-    inset: auto 8px 80px auto !important;
-    width: calc(100vw - 16px) !important;
-    max-height: calc(100dvh - 100px) !important;
+    left: auto !important;
+    bottom: calc(6rem + env(safe-area-inset-bottom, 0px)) !important;
+    inset: auto 8px calc(6rem + env(safe-area-inset-bottom, 0px)) auto !important;
+    width: min(320px, calc(100vw - 24px)) !important;
+    max-width: min(320px, calc(100vw - 24px)) !important;
+    height: auto !important;
+    max-height: min(360px, calc(100dvh - 11rem - env(safe-area-inset-bottom, 0px))) !important;
   }
 }
 
@@ -118,11 +127,15 @@ html body dialog[open] section {
   }
 
   body.home-page dialog,
-  body.home-page dialog[open] {
+  body.home-page dialog[open],
+  body.home-page.chat-widget-open #__cw_portal > div {
     right: 8px !important;
-    bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px)) !important;
-    inset: auto 8px calc(5.5rem + env(safe-area-inset-bottom, 0px)) auto !important;
-    max-height: calc(100dvh - 6.5rem - env(safe-area-inset-bottom, 0px)) !important;
+    left: auto !important;
+    bottom: calc(6rem + env(safe-area-inset-bottom, 0px)) !important;
+    inset: auto 8px calc(6rem + env(safe-area-inset-bottom, 0px)) auto !important;
+    width: min(320px, calc(100vw - 24px)) !important;
+    max-width: min(320px, calc(100vw - 24px)) !important;
+    max-height: min(360px, calc(100dvh - 11rem - env(safe-area-inset-bottom, 0px))) !important;
   }
 }
 
@@ -386,6 +399,16 @@ html body dialog[open] form {
     overscroll-behavior-x: contain;
     scroll-behavior: smooth;
     touch-action: pan-x pan-y;
+  }
+
+  /* Testimonials — vertical page scroll + horizontal carousel animation */
+  .testimonials-carousel {
+    touch-action: pan-y;
+    pointer-events: none;
+  }
+
+  .testimonials-carousel .testimonial-card {
+    pointer-events: auto;
   }
 
   /* Partner carousel — premium flush round logos */

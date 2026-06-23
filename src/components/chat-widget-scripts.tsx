@@ -1,6 +1,5 @@
 "use client";
 
-import { usePathname } from "next/navigation";
 import Script from "next/script";
 import { useEffect } from "react";
 import { useCart } from "@/context/CartContext";
@@ -52,17 +51,13 @@ function setChatWidgetsVisible(visible: boolean) {
 }
 
 export function ChatWidgetScripts() {
-  const pathname = usePathname();
-  const isHome = pathname === "/";
   const { isOpen: isCartOpen } = useCart();
 
   useEffect(() => {
-    setChatWidgetsVisible(isHome && !isCartOpen);
-  }, [isHome, isCartOpen]);
+    setChatWidgetsVisible(!isCartOpen);
+  }, [isCartOpen]);
 
   useEffect(() => {
-    if (!isHome) return;
-
     renameChatWidgetLabel();
     const observer = new MutationObserver(() => {
       renameChatWidgetLabel();
@@ -72,9 +67,7 @@ export function ChatWidgetScripts() {
     syncChatLauncher();
 
     return () => observer.disconnect();
-  }, [isHome]);
-
-  if (!isHome) return null;
+  }, []);
 
   return (
     <>
@@ -105,12 +98,12 @@ export function ChatWidgetScripts() {
     s.setProperty("top", "auto", "important");
     s.setProperty("left", "auto", "important");
     s.setProperty("right", isMobile() ? "8px" : "16px", "important");
-    s.setProperty("bottom", isMobile() ? "calc(5.5rem + env(safe-area-inset-bottom, 0px))" : "88px", "important");
+    s.setProperty("bottom", isMobile() ? "calc(6rem + env(safe-area-inset-bottom, 0px))" : "88px", "important");
     s.setProperty("margin", "0", "important");
-    s.setProperty("width", isMobile() ? "calc(100vw - 16px)" : "min(380px, calc(100vw - 32px))", "important");
-    s.setProperty("max-width", "calc(100vw - 16px)", "important");
-    s.setProperty("height", isMobile() ? "calc(100dvh - 100px)" : "min(560px, calc(100dvh - 120px))", "important");
-    s.setProperty("max-height", isMobile() ? "calc(100dvh - 100px)" : "min(560px, calc(100dvh - 120px))", "important");
+    s.setProperty("width", isMobile() ? "min(320px, calc(100vw - 24px))" : "min(380px, calc(100vw - 32px))", "important");
+    s.setProperty("max-width", isMobile() ? "min(320px, calc(100vw - 24px))" : "calc(100vw - 32px)", "important");
+    s.setProperty("height", isMobile() ? "min(360px, calc(100dvh - 11rem - env(safe-area-inset-bottom, 0px)))" : "min(560px, calc(100dvh - 120px))", "important");
+    s.setProperty("max-height", isMobile() ? "min(360px, calc(100dvh - 11rem - env(safe-area-inset-bottom, 0px)))" : "min(560px, calc(100dvh - 120px))", "important");
     s.setProperty("z-index", "40", "important");
     s.setProperty("pointer-events", "auto", "important");
     s.setProperty("border-radius", "16px", "important");
