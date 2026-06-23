@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { MessageCircle, Phone, Ticket } from "lucide-react";
+import { Phone, Ticket } from "lucide-react";
 import { MULLAYANAGIRI_PASS_BOOKING_URL } from "@/data/mullayanagiri-entry-pass";
-import { syncChatLauncher, openChatWidget } from "@/lib/open-chat-widget";
+import { syncChatLauncher } from "@/lib/open-chat-widget";
 import { PHONE_LINK, WHATSAPP_LINK } from "@/lib/whatsapp";
 
 const PASS_SESSION_KEY = "trip_ckm_home_pass_icon_v3";
@@ -17,7 +17,7 @@ const FAB_CLASS =
 
 /**
  * Homepage contact UI:
- * - Mobile: Call (left) · Sara chat (center) · WhatsApp (right) — sticky FABs, no bar
+ * - Mobile: Call (left) · Chat with Sara pill (center) · WhatsApp (right)
  * - Desktop: pass popup + WhatsApp FAB (call stays global left)
  */
 export default function HomeContactDock() {
@@ -68,30 +68,21 @@ export default function HomeContactDock() {
 
   return createPortal(
     <>
-      {/* Mobile — sticky corner FABs + Sara in the middle */}
+      {/* Mobile — Call + WhatsApp corners; Chat with Sara pill is synced via syncChatLauncher */}
       <div className="md:hidden" aria-label="Contact options">
         <a
           href={PHONE_LINK}
-          className={`fixed left-4 z-[9998] ${FAB_BOTTOM} ${FAB_CLASS}`}
+          className={`fixed left-4 z-[9997] ${FAB_BOTTOM} ${FAB_CLASS}`}
           aria-label="Call us"
         >
           <Phone className="w-6 h-6 text-white" strokeWidth={2.25} />
         </a>
 
-        <button
-          type="button"
-          onClick={openChatWidget}
-          className={`fixed left-1/2 -translate-x-1/2 z-[9998] ${FAB_BOTTOM} ${FAB_CLASS}`}
-          aria-label="Chat with Sara"
-        >
-          <MessageCircle className="w-6 h-6 text-white" strokeWidth={2.25} />
-        </button>
-
         <a
           href={WHATSAPP_LINK}
           target="_blank"
           rel="noopener noreferrer"
-          className={`fixed right-4 z-[9998] ${FAB_BOTTOM} ${FAB_CLASS}`}
+          className={`fixed right-4 z-[9997] ${FAB_BOTTOM} ${FAB_CLASS}`}
           aria-label="WhatsApp us"
         >
           <svg
@@ -108,7 +99,7 @@ export default function HomeContactDock() {
 
       {/* Pass popup + desktop WhatsApp */}
       <div
-        className="fixed right-3 sm:right-6 z-[9999] flex flex-col items-end gap-2.5 pointer-events-none bottom-[calc(5.5rem+env(safe-area-inset-bottom,0px))] md:bottom-[calc(1.5rem+env(safe-area-inset-bottom,0px))]"
+        className="fixed right-3 sm:right-6 z-[9999] flex flex-col items-end gap-2.5 pointer-events-none bottom-[calc(5rem+env(safe-area-inset-bottom,0px))] md:bottom-[calc(1.5rem+env(safe-area-inset-bottom,0px))]"
         aria-hidden={false}
       >
         {showPassIcon && (

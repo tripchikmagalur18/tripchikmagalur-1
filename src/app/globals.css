@@ -19,24 +19,25 @@
   pointer-events: auto;
 }
 
-@media (min-width: 641px) {
-  body.home-page #chat-widget-root {
-    left: 50% !important;
-    right: auto !important;
-    bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px)) !important;
-    transform: translateX(-50%) !important;
-    width: auto !important;
-    height: auto !important;
-    pointer-events: none;
-  }
+/* Homepage — sticky bottom-center "Chat with Sara" pill (mobile + desktop) */
+body.home-page #chat-widget-root {
+  left: 50% !important;
+  right: auto !important;
+  bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px)) !important;
+  transform: translateX(-50%) !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: none !important;
+  pointer-events: none;
+}
 
-  body.home-page #chat-widget-root [data-chat-launcher-fixed="true"] {
-    pointer-events: auto !important;
-  }
+body.home-page #chat-widget-root [data-chat-launcher-fixed="true"] {
+  pointer-events: auto !important;
+  max-width: calc(100vw - 8.75rem);
+}
 
-  body.home-page.chat-widget-open #chat-widget-root [data-chat-launcher-fixed="true"] {
-    display: none !important;
-  }
+body.home-page.chat-widget-open #chat-widget-root [data-chat-launcher-fixed="true"] {
+  display: none !important;
 }
 
 /* Constrain the chat widget's open dialog panel to bottom-right.
@@ -109,18 +110,19 @@ html body dialog[open] section {
     display: none !important;
   }
 
-  body.home-page #chat-widget-root,
   body.home-page #__cw_portal {
-    bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px)) !important;
+    bottom: calc(5rem + env(safe-area-inset-bottom, 0px)) !important;
     right: 8px !important;
+    left: auto !important;
+    transform: none !important;
   }
 
   body.home-page dialog,
   body.home-page dialog[open] {
     right: 8px !important;
-    bottom: calc(6rem + env(safe-area-inset-bottom, 0px)) !important;
-    inset: auto 8px calc(6rem + env(safe-area-inset-bottom, 0px)) auto !important;
-    max-height: calc(100dvh - 7rem - env(safe-area-inset-bottom, 0px)) !important;
+    bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px)) !important;
+    inset: auto 8px calc(5.5rem + env(safe-area-inset-bottom, 0px)) auto !important;
+    max-height: calc(100dvh - 6.5rem - env(safe-area-inset-bottom, 0px)) !important;
   }
 }
 

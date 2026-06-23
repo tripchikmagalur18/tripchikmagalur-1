@@ -38,71 +38,7 @@ function hideLauncher(el: HTMLElement): void {
   el.style.setProperty("visibility", "hidden", "important");
 }
 
-/** Clicks the third-party Sara chat launcher if present. */
-export function openChatWidget(): void {
-  if (typeof document === "undefined") return;
-
-  const primary = pickPrimaryLauncher(findChatLaunchers());
-  if (primary) {
-    primary.click();
-    return;
-  }
-
-  const hidden = document.querySelector<HTMLElement>('[data-chat-launcher-hidden="true"]');
-  hidden?.click();
-}
-
-/**
- * One visible chat launcher:
- * - Mobile: hidden (HomeContactDock center FAB opens chat)
- * - Desktop: fixed bottom-center "Chat with Sara" pill — does not scroll
- */
-export function syncChatLauncher(): void {
-  if (typeof window === "undefined") return;
-
-  const launchers = findChatLaunchers();
-  const primary = pickPrimaryLauncher(launchers);
-  const isMobile = window.innerWidth <= 640;
-
-  launchers.forEach((el) => {
-    if (el !== primary) hideLauncher(el);
-  });
-
-  // Hide icon-only duplicates inside the widget root (above the pill)
-  document.querySelectorAll("#chat-widget-root button, #chat-widget-root a").forEach((el) => {
-    const node = el as HTMLElement;
-    if (primary && (node === primary || primary.contains(node) || node.contains(primary))) return;
-    const text = node.textContent?.trim() ?? "";
-    if (!text || !isChatLabel(text)) {
-      hideLauncher(node);
-    }
-  });
-
-  if (!primary) return;
-
-  const chatOpen =
-    document.body.classList.contains("chat-widget-open") ||
-    !!document.querySelector("body dialog[open]");
-
-  if (isMobile) {
-    primary.setAttribute("data-chat-launcher", "true");
-    primary.style.setProperty("position", "fixed", "important");
-    primary.style.setProperty("opacity", "0", "important");
-    primary.style.setProperty("width", "1px", "important");
-    primary.style.setProperty("height", "1px", "important");
-    primary.style.setProperty("overflow", "hidden", "important");
-    primary.style.setProperty("pointer-events", "none", "important");
-    primary.style.setProperty("bottom", "0", "important");
-    primary.style.setProperty("left", "0", "important");
-    return;
-  }
-
-  if (chatOpen) {
-    primary.style.setProperty("display", "none", "important");
-    return;
-  }
-
-  // Desktop — sticky bottom-center pill
+function applyFixedLauncherStyles(primary: HTMLElement): void {
   if (primary.parentElement && primary.parentElement !== document.body) {
     document.body.appendChild(primary);
   }
@@ -123,6 +59,56 @@ export function syncChatLauncher(): void {
   primary.style.setProperty("width", "auto", "important");
   primary.style.setProperty("height", "auto", "important");
   primary.style.setProperty("overflow", "visible", "important");
+}
+
+/** Clicks the third-party Sara chat launcher if present. */
+export function openChatWidget(): void {
+  if (typeof document === "undefined") return;
+
+  const primary = pickPrimaryLauncher(findChatLaunchers());
+  if (primary) {
+    primary.click();
+    return;
+  }
+
+  const hidden = document.querySelector<HTMLElement>('[data-chat-launcher-hidden="true"]');
+  hidden?.click();
+}
+
+/**
+ * One visible chat launcher — fixed bottom-center "Chat with Sara" pill (mobile + desktop).
+ */
+export function syncChatLauncher(): void {
+  if (typeof window === "undefined") return;
+
+  const launchers = findChatLaunchers();
+  const primary = pickPrimaryLauncher(launchers);
+
+  launchers.forEach((el) => {
+    if (el !== primary) hideLauncher(el);
+  });
+
+  document.querySelectorAll("#chat-widget-root button, #chat-widget-root a").forEach((el) => {
+    const node = el as HTMLElement;
+    if (primary && (node === primary || primary.contains(node) || node.contains(primary))) return;
+    const text = node.textContent?.trim() ?? "";
+    if (!text || !isChatLabel(text)) {
+      hideLauncher(node);
+    }
+  });
+
+  if (!primary) return;
+
+  const chatOpen =
+    document.body.classList.contains("chat-widget-open") ||
+    !!document.querySelector("body dialog[open]");
+
+  if (chatOpen) {
+    primary.style.setProperty("display", "none", "important");
+    return;
+  }
+
+  applyFixedLauncherStyles(primary);
 }
 
 /** @deprecated Use syncChatLauncher */

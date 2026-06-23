@@ -1,5 +1,28 @@
-/** Package cards on homepage — shared with JSON-LD TourPackage schema */
-export const homePackages = [
+import type { StaticImageData } from "next/image";
+
+import packageBelur from "@/assets/packages/package-belur.webp";
+import packageKemmangundi from "@/assets/packages/package-kemmangundi.webp";
+import packageMullayanagiri from "@/assets/packages/package-mullayanagiri.webp";
+import packageMuthodi from "@/assets/packages/package-muthodi.webp";
+import packageSringeri from "@/assets/packages/package-sringeri.webp";
+
+export type HomePackage = {
+  name: string;
+  slug: string;
+  duration: string;
+  price: number;
+  priceCurrency: "INR";
+  link: string;
+  packageDayLink: string;
+  cartId: string;
+  description: string;
+  highlights: readonly string[];
+  image: StaticImageData;
+  popular?: boolean;
+};
+
+/** Package cards — homepage carousel & /chikmagalur-tour-packages */
+export const homePackages: readonly HomePackage[] = [
   {
     name: "Mullayangiri Package",
     slug: "mullayanagiri-trek-package",
@@ -8,8 +31,19 @@ export const homePackages = [
     priceCurrency: "INR",
     link: "/mullayanagiri-trek-package",
     packageDayLink: "/package/day-1",
+    cartId: "pkg-day-1",
+    popular: true,
+    image: packageMullayanagiri,
     description:
       "One-day Chikmagalur tour covering Mullayanagiri peak, Baba Budangiri, Jhari Falls jeep ride, and adventure add-ons.",
+    highlights: [
+      "Siri Nature Roost Coffee Point",
+      "Jhari (Butter) Falls Jeep Ride",
+      "Mullayangiri — Karnataka's Highest Peak",
+      "Seethalayyangiri & Honnamana Halla Falls",
+      "Baba Budangiri",
+      "Z Point Sunset & Zip Lining",
+    ],
   },
   {
     name: "Kemmangundi Package",
@@ -19,8 +53,17 @@ export const homePackages = [
     priceCurrency: "INR",
     link: "/kemmangundi-tour-package",
     packageDayLink: "/package/day-2",
+    cartId: "pkg-day-2",
+    image: packageKemmangundi,
     description:
       "Hill-station day tour with Kemmanagundi, Hebbe Falls jeep trail, Kalhatti Falls, and Raj Bhavan rose garden.",
+    highlights: [
+      "Deviramma Temple Hilltop",
+      "Kalhatti Falls",
+      "Kemmangundi Z-Point",
+      "Raj Bhavan Rose Garden",
+      "Hebbe Falls Jeep Trail",
+    ],
   },
   {
     name: "Muthodi Package",
@@ -30,8 +73,17 @@ export const homePackages = [
     priceCurrency: "INR",
     link: "/muthodi-safari-package",
     packageDayLink: "/package/day-3",
+    cartId: "pkg-day-3",
+    image: packageMuthodi,
     description:
       "Nature and wildlife day with Hirekolale Lake, Bhadra Muthodi forest safari, Ukkuda Falls, and Mallandur viewpoints.",
+    highlights: [
+      "Hirekolale Lake Sunset",
+      "Muthodi Forest Safari",
+      "Ukkuda Falls Hidden Trail",
+      "Bande Kal Gudda Viewpoint",
+      "Wildlife & Birding Spots",
+    ],
   },
   {
     name: "Belur Package",
@@ -41,8 +93,16 @@ export const homePackages = [
     priceCurrency: "INR",
     link: "/belur-heritage-tour-package",
     packageDayLink: "/package/day-4",
+    cartId: "pkg-day-4",
+    image: packageBelur,
     description:
       "Heritage tour to Belur Chennakeshava Temple, Halebidu Hoysaleshwara Temple, and Hiremagalur temples.",
+    highlights: [
+      "Belur Chennakeshava Temple",
+      "Halebidu Hoysaleshwara Temple",
+      "Hiremagalur Kodanda Rama Temple",
+      "Heritage & Hoysala Architecture",
+    ],
   },
   {
     name: "Sringeri & Trek Package",
@@ -52,8 +112,17 @@ export const homePackages = [
     priceCurrency: "INR",
     link: "/sringeri-trek-package",
     packageDayLink: "/package/day-5",
+    cartId: "pkg-day-5",
+    image: packageSringeri,
     description:
       "Trek-focused day with Devaramane Betta, Ethina Bhuja, Abbi Falls, and Mudigere range viewpoints.",
+    highlights: [
+      "Siddhartha Hegde Park",
+      "Devaramane Betta Viewpoint",
+      "Abbi Waterfalls",
+      "Ethina Bhuja Trek",
+      "Scenic Mudigere Range",
+    ],
   },
 ] as const;
 

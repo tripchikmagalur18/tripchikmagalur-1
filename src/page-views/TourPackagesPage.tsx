@@ -4,71 +4,13 @@ import Link from "next/link";
 import { MessageCircle, Check, Star, Shield, Clock, Users, MapPin } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { AppImage } from "@/components/AppImage";
+import { PackageOfferPrice } from "@/components/PackageOfferPrice";
 import { PageJsonLd } from "@/components/page-json-ld";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { homePackages, homeFaqItems } from "@/data/home-packages";
 import { buildTourPackagesItemListSchema } from "@/lib/schemas/tour-packages-schema";
 import { WHATSAPP_LINK } from "@/lib/whatsapp";
-
-const packages = [
-  {
-    slug: "/package/day-1",
-    name: "Day Explorer — 1 Day Chikmagalur Tour Package",
-    duration: "1 Day",
-    price: 2999,
-    originalPrice: 3999,
-    rating: 4.8,
-    reviews: 412,
-    highlights: [
-      "8 destinations in one action-packed day",
-      "Mullayanagiri sunrise + Baba Budangiri",
-      "Jhari Falls (Buttermilk Falls) jeep ride",
-      "Coffee estate visit + Hirekolale Lake sunset",
-      "Private cab + experienced local guide",
-    ],
-    inclusions: ["AC private cab", "Driver & fuel", "Local guide", "All entry fees", "Mineral water"],
-    bestFor: "Couples, friends, photographers — short on time",
-    keyword: "1 day Chikmagalur tour package",
-  },
-  {
-    slug: "/package/day-2",
-    name: "Weekend Escape — 2 Day Chikmagalur Tour Package",
-    duration: "2 Days / 1 Night",
-    price: 3499,
-    originalPrice: 4999,
-    rating: 4.9,
-    reviews: 738,
-    highlights: [
-      "Day 1 covers all Day Explorer locations",
-      "Day 2: Hebbe Falls, Kemmanagundi, Z Point",
-      "Coffee estate homestay (1 night)",
-      "Malnad cuisine breakfast & dinner included",
-      "Most popular weekend pick from Bangalore",
-    ],
-    inclusions: ["1 night stay", "Breakfast + dinner", "AC private cab", "All entries + jeep rides", "24x7 support"],
-    bestFor: "Weekend travellers from Bangalore, Mysore, Mangalore",
-    keyword: "2 day Chikmagalur tour package",
-    badge: "Most Popular",
-  },
-  {
-    slug: "/package/day-3",
-    name: "Deep Dive — 3 Day Chikmagalur Tour Package",
-    duration: "3 Days / 2 Nights",
-    price: 5499,
-    originalPrice: 7499,
-    rating: 4.9,
-    reviews: 286,
-    highlights: [
-      "Everything in 2-day plan + Day 3 wildlife",
-      "Bhadra Wildlife Sanctuary jeep safari",
-      "Hidden waterfalls — Jhari, Kalhatti",
-      "2 nights in premium coffee estate stay",
-      "All meals included (Malnad cuisine)",
-    ],
-    inclusions: ["2 nights stay", "All meals", "AC private cab", "Bhadra safari booking", "Photo guide on request"],
-    bestFor: "Families, slow travellers, wildlife & coffee enthusiasts",
-    keyword: "3 day Chikmagalur tour package",
-  },
-];
 
 const trustSignals = [
   { icon: Shield, label: "Govt. Approved", sub: "Karnataka Tourism" },
@@ -78,37 +20,22 @@ const trustSignals = [
 ];
 
 const faqs = [
-  {
-    q: "How much does a Chikmagalur tour package cost?",
-    a: "Chikmagalur tour packages start at ₹2,999 per person for a 1-day trip, ₹3,499 for a 2-day weekend escape, and ₹5,499 for a 3-day deep-dive. Prices include cab, stay, food, entries and a local guide. Group sizes of 4+ get additional discounts.",
-  },
-  {
-    q: "Which is the best Chikmagalur tour package from Bangalore?",
-    a: "The 2-day Weekend Escape (₹3,499) is the most popular package from Bangalore. It covers Mullayanagiri, Baba Budangiri, Hebbe Falls, Kemmanagundi and a coffee estate homestay — perfect for a Friday-night-to-Sunday-night trip.",
-  },
+  ...homeFaqItems.map((item) => ({ q: item.question, a: item.answer })),
   {
     q: "What is included in your Chikmagalur tour packages?",
-    a: "All packages include AC private cab with driver, fuel, all entry fees, jeep rides where mandatory (Hebbe & Jhari Falls), local guide, mineral water and 24x7 WhatsApp support. Multi-day packages also include coffee estate stay and meals.",
+    a: "All day packages include private cab with driver, fuel, local guide support, and curated sightseeing as per the itinerary. Jeep rides and entry fees apply where listed on each package page. Add resort or villa stays separately from our Stays section.",
   },
   {
     q: "Are the Chikmagalur tour packages customisable?",
-    a: "Yes — every package is fully customisable. Add Bhadra wildlife safari, Kudremukh trek, premium resort stays, or extend by extra days. Message us on WhatsApp with your dates and group size for a tailored quote.",
+    a: "Yes — every package is fully customisable. Combine Day 1 and Day 2 for a weekend, add Bhadra safari, or extend with estate stays. Message us on WhatsApp with your dates and group size for a tailored quote.",
   },
   {
-    q: "Are the packages safe for solo female travellers and families?",
-    a: "Yes. We are a Karnataka Tourism-approved operator with verified drivers, female-friendly homestays, and 24x7 emergency support. Over 30% of our travellers are solo women and families with children.",
+    q: "Which package covers Mullayanagiri and Hebbe Falls?",
+    a: "Mullayanagiri, Baba Budangiri, and Jhari Falls are on the Day 1 Mullayanagiri package (₹3,499/group). Hebbe Falls and Kemmanagundi are on the Day 2 Kemmangundi package (₹4,499/group). Many guests book both for a 2-day weekend.",
   },
   {
-    q: "What is the cancellation policy on Chikmagalur tour packages?",
-    a: "Free cancellation up to 7 days before the trip. 50% refund between 3–7 days. No refund within 72 hours, but you can reschedule to any date within 6 months at no extra cost.",
-  },
-  {
-    q: "Which is the best time to book a Chikmagalur tour package?",
-    a: "October to March is the peak season — book 3–4 weeks in advance. For monsoon waterfall trips (June–September), book 2 weeks ahead. Weekends and long weekends sell out fastest.",
-  },
-  {
-    q: "Do you offer Chikmagalur tour packages from Mysore and Mangalore?",
-    a: "Yes — we offer pickup from Bangalore, Mysore, Mangalore, Hassan and Shimoga. Cab fare from your city is added to the base package price.",
+    q: "How do I book a Chikmagalur tour package?",
+    a: "Add packages to the cart on tripchikmagalur.com and checkout via WhatsApp at +91 6363131585. We confirm availability, share payment details, and help customise your itinerary by dates and group size.",
   },
 ];
 
@@ -147,12 +74,12 @@ const TourPackagesPage = () => {
               Chikmagalur Tour Packages 2026
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight">
-              Chikmagalur Tour Packages — From ₹2,999
+              Chikmagalur Tour Packages — From ₹3,499
             </h1>
             <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
-              Hand-crafted Chikmagalur tour packages covering Mullayanagiri, Baba Budangiri, Hebbe Falls,
-              coffee estates and hidden waterfalls. Govt.-approved operator, 4.9★ rated by 500+ travellers,
-              fully customisable, with 24x7 WhatsApp support.
+              Day-wise guided Chikmagalur tour packages — Mullayanagiri, Kemmangundi, Muthodi wildlife,
+              Belur heritage, and Sringeri treks. Same prices as our homepage packages: ₹3,499–₹5,999
+              per group with pre-book offers. Govt.-approved operator with 24x7 WhatsApp support.
             </p>
 
             <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -175,43 +102,41 @@ const TourPackagesPage = () => {
             Compare Chikmagalur Tour Packages
           </h2>
           <p className="text-muted-foreground mb-10 max-w-2xl">
-            All packages include private AC cab, entries, jeep rides and a local guide. Multi-day plans
-            include estate stays and Malnad meals. Pick the one that fits your timeline.
+            Five day-wise packages — same prices and highlights as on our homepage. Pick one day or
+            combine multiple days for a weekend. All prices are per group with pre-book offers.
           </p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {packages.map((pkg) => (
+            {homePackages.map((pkg) => (
               <article
-                key={pkg.slug}
-                className="relative bg-card border border-border rounded-2xl overflow-hidden hover:shadow-xl transition-all"
+                key={pkg.cartId}
+                className="relative bg-card border border-border rounded-2xl overflow-hidden hover:shadow-xl transition-all flex flex-col"
               >
-                {pkg.badge && (
+                {pkg.popular && (
                   <span className="absolute top-4 right-4 bg-sunset text-white text-xs font-bold px-3 py-1 rounded-full z-10">
-                    {pkg.badge}
+                    Most Popular
                   </span>
                 )}
-                <div className="p-6">
+
+                <div className="relative aspect-[4/3] w-full">
+                  <AppImage
+                    src={pkg.image}
+                    alt={`${pkg.name} — guided Chikmagalur day tour`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover"
+                  />
+                </div>
+
+                <div className="p-6 flex flex-col flex-1">
                   <div className="flex items-center gap-2 text-xs text-muted-foreground mb-2">
                     <Clock className="w-3.5 h-3.5" /> {pkg.duration}
-                    <span className="mx-1">•</span>
-                    <Star className="w-3.5 h-3.5 fill-sunset text-sunset" />
-                    {pkg.rating} ({pkg.reviews})
                   </div>
-                  <h3 className="text-xl font-display font-bold text-foreground mb-3">{pkg.name}</h3>
+                  <h3 className="text-xl font-display font-bold text-foreground mb-2">{pkg.name}</h3>
+                  <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{pkg.description}</p>
 
-                  <div className="flex items-baseline gap-2 mb-4">
-                    <span className="text-3xl font-bold text-foreground">₹{pkg.price.toLocaleString()}</span>
-                    <span className="text-muted-foreground line-through text-sm">
-                      ₹{pkg.originalPrice.toLocaleString()}
-                    </span>
-                    <span className="text-xs text-green-600 font-bold">
-                      {Math.round(((pkg.originalPrice - pkg.price) / pkg.originalPrice) * 100)}% OFF
-                    </span>
-                  </div>
-                  <p className="text-xs text-muted-foreground mb-4">per person, on twin sharing</p>
-
-                  <ul className="space-y-2 mb-5">
-                    {pkg.highlights.slice(0, 4).map((h) => (
+                  <ul className="space-y-2 mb-5 flex-1">
+                    {pkg.highlights.map((h) => (
                       <li key={h} className="flex items-start gap-2 text-sm text-foreground/80">
                         <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
                         <span>{h}</span>
@@ -219,12 +144,21 @@ const TourPackagesPage = () => {
                     ))}
                   </ul>
 
-                  <p className="text-xs text-muted-foreground italic mb-5">Best for: {pkg.bestFor}</p>
+                  <PackageOfferPrice price={pkg.price} size="md" align="start" className="mb-2" />
+                  <p className="text-[10px] text-muted-foreground/80 italic mb-5">
+                    *Terms and conditions apply on places
+                  </p>
 
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-2 mt-auto">
                     <Link
-                      href={pkg.slug}
+                      href={pkg.link}
                       className="block text-center bg-foreground text-background py-3 rounded-full font-medium text-sm hover:opacity-90 transition"
+                    >
+                      View Package Details
+                    </Link>
+                    <Link
+                      href={pkg.packageDayLink}
+                      className="block text-center border border-border py-3 rounded-full font-medium text-sm text-foreground hover:border-sunset/40 transition"
                     >
                       View Full Itinerary
                     </Link>

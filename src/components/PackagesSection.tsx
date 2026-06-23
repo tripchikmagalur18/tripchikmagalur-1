@@ -4,101 +4,14 @@ import { useRouter } from "next/navigation";
 import { AppImage } from "@/components/AppImage";
 import { PackageKnowMoreModal } from "@/components/PackageKnowMoreModal";
 import { PackageOfferPrice } from "@/components/PackageOfferPrice";
+import { homePackages } from "@/data/home-packages";
 import { getPackageDetail } from "@/data/package-places";
 import { formatPackageInr, getPackageOfferPrices } from "@/lib/package-offer-price";
 import { useCart } from "@/context/CartContext";
 import { Sparkles, Info, ChevronLeft, ChevronRight, ShoppingCart } from "lucide-react";
 import { useEffect, useState, useCallback, useRef } from "react";
 
-import packageMullayanagiri from "@/assets/packages/package-mullayanagiri.webp";
-import packageBelur from "@/assets/packages/package-belur.webp";
-import packageMuthodi from "@/assets/packages/package-muthodi.webp";
-import packageSringeri from "@/assets/packages/package-sringeri.webp";
-import packageKemmangundi from "@/assets/packages/package-kemmangundi.webp";
-
-const packages = [
-  {
-    name: "Mullayangiri Package",
-    duration: "Day 1",
-    price: 3499,
-    popular: true,
-    image: packageMullayanagiri,
-    link: "/mullayanagiri-trek-package",
-    packageDayLink: "/package/day-1",
-    cartId: "pkg-day-1",
-    highlights: [
-      "Siri Nature Roost Coffee Point",
-      "Jhari (Butter) Falls Jeep Ride",
-      "Mullayangiri — Karnataka's Highest Peak",
-      "Seethalayyangiri & Honnamana Halla Falls",
-      "Baba Budangiri",
-      "Z Point Sunset & Zip Lining",
-    ],
-  },
-  {
-    name: "Kemmangundi Package",
-    duration: "Day 2",
-    price: 4499,
-    image: packageKemmangundi,
-    link: "/kemmangundi-tour-package",
-    packageDayLink: "/package/day-2",
-    cartId: "pkg-day-2",
-    highlights: [
-      "Deviramma Temple Hilltop",
-      "Kalhatti Falls",
-      "Kemmangundi Z-Point",
-      "Raj Bhavan Rose Garden",
-      "Hebbe Falls Jeep Trail",
-    ],
-  },
-  {
-    name: "Muthodi Package",
-    duration: "Day 3",
-    price: 3999,
-    image: packageMuthodi,
-    link: "/muthodi-safari-package",
-    packageDayLink: "/package/day-3",
-    cartId: "pkg-day-3",
-    highlights: [
-      "Hirekolale Lake Sunset",
-      "Muthodi Forest Safari",
-      "Ukkuda Falls Hidden Trail",
-      "Bande Kal Gudda Viewpoint",
-      "Wildlife & Birding Spots",
-    ],
-  },
-  {
-    name: "Belur Package",
-    duration: "Day 4",
-    price: 3499,
-    image: packageBelur,
-    link: "/belur-heritage-tour-package",
-    packageDayLink: "/package/day-4",
-    cartId: "pkg-day-4",
-    highlights: [
-      "Belur Chennakeshava Temple",
-      "Halebidu Hoysaleshwara Temple",
-      "Hiremagalur Kodanda Rama Temple",
-      "Heritage & Hoysala Architecture",
-    ],
-  },
-  {
-    name: "Sringeri & Trek Package",
-    duration: "Day 5",
-    price: 5999,
-    image: packageSringeri,
-    link: "/sringeri-trek-package",
-    packageDayLink: "/package/day-5",
-    cartId: "pkg-day-5",
-    highlights: [
-      "Siddhartha Hegde Park",
-      "Devaramane Betta Viewpoint",
-      "Abbi Waterfalls",
-      "Ethina Bhuja Trek",
-      "Scenic Mudigere Range",
-    ],
-  },
-] as const;
+const packages = homePackages;
 
 const btnBase =
   "inline-flex items-center justify-center gap-1.5 flex-1 min-h-10 rounded-full text-xs font-semibold transition-all duration-300 active:scale-95";
