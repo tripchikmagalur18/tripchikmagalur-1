@@ -7,7 +7,7 @@ export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? DEFAULT_SITE_URL;
 
 export const SITE_NAME = "Trip Chikmagalur";
-export const SITE_TAGLINE = "Chikmagalur Tour Packages, Stays & Adventures";
+export const SITE_TAGLINE = "Hills are calling";
 
 /** Static OG images live under /public/og/ */
 export function publicAssetUrl(path: string): string {

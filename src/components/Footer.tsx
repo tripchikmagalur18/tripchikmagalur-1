@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ExternalLink, Heart, Mail, MapPin, Phone } from "lucide-react";
 import { BUSINESS_CONTACT } from "@/lib/business-contact";
 import { MULLAYANAGIRI_PASS_BOOKING_URL } from "@/data/mullayanagiri-entry-pass";
+import { SITE_TAGLINE } from "@/lib/seo";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -23,9 +24,7 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <span className="text-2xl font-display font-bold">Trip Chikmagalur</span>
-            <p className="text-white/50 mt-1 text-sm">
-              Your gateway to the Western Ghats
-            </p>
+            <p className="text-white/50 mt-1 text-sm">{SITE_TAGLINE}</p>
           </div>
 
           {/* Nav links */}
