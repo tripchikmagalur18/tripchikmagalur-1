@@ -395,7 +395,7 @@ export const tripChikmagalurHomestayP3: Stay = {
   maxGuests: 8,
   rating: 4.8,
   categoryLabel: "Homestay",
-  coverImage: p3ExteriorNightMain,
+  coverImage: p3RooftopGazebo,
   description:
     "Trip Chikmagalur Homestay P3 is a clean, modern three-storey property with teal-and-white exteriors, private double rooms, studio units with kitchenettes, and a lit rooftop gazebo over a manicured lawn. Wall-mounted TV, hot-water marble bathrooms, and budget-friendly pricing at ₹799 per person make it ideal for friends, families, and trek groups visiting coffee country.",
   highlights: [
@@ -417,6 +417,11 @@ export const tripChikmagalurHomestayP3: Stay = {
   ],
   gallery: [
     {
+      src: p3RooftopGazebo,
+      alt: "Outdoor dining gazebo with warm string lights at Trip Chikmagalur Homestay P3",
+      label: "Rooftop Gazebo",
+    },
+    {
       src: p3ExteriorNightMain,
       alt: "Trip Chikmagalur Homestay P3 — three-storey modern building lit at night in Chikmagalur",
       label: "Exterior",
@@ -434,12 +439,7 @@ export const tripChikmagalurHomestayP3: Stay = {
     {
       src: p3LawnGazeboNight,
       alt: "Elevated rooftop gazebo with string lights overlooking lawn at Trip Chikmagalur Homestay P3",
-      label: "Rooftop Gazebo",
-    },
-    {
-      src: p3RooftopGazebo,
-      alt: "Outdoor dining gazebo with warm string lights at Homestay P3 Chikmagalur",
-      label: "Outdoor Dining",
+      label: "Gazebo View",
     },
     {
       src: p3GroundFloorFacade,
