@@ -62,18 +62,18 @@ import p2RoomWardrobe from "@/assets/resort-p2/room-wardrobe-mirror.webp";
 import p2BathroomWood from "@/assets/resort-p2/bathroom-wood-tiles.webp";
 import p2BathroomWood2 from "@/assets/resort-p2/bathroom-wood-tiles-2.webp";
 
-import p3PoolBuilding from "@/assets/homestay-p3/pool-building.webp";
-import p3BuildingHillside from "@/assets/homestay-p3/building-hillside.webp";
-import p3BuildingTerrace from "@/assets/homestay-p3/building-terrace.webp";
-import p3EntranceBuddha from "@/assets/homestay-p3/entrance-buddha.webp";
-import p3PorchLawn from "@/assets/homestay-p3/porch-lawn.webp";
-import p3PatioForest from "@/assets/homestay-p3/patio-forest.webp";
-import p3BedroomPatioView from "@/assets/homestay-p3/bedroom-patio-view.webp";
-import p3BedroomWindow from "@/assets/homestay-p3/bedroom-window.webp";
-import p3BedroomPatioSplit from "@/assets/homestay-p3/bedroom-patio-split.webp";
-import p3DiningHall from "@/assets/homestay-p3/dining-hall.webp";
-import p3ForestLounge from "@/assets/homestay-p3/forest-lounge.webp";
-import p3BalconyStripe from "@/assets/homestay-p3/balcony-stripe-floor.webp";
+import p3ExteriorNightMain from "@/assets/homestay-p3/exterior-night-main.webp";
+import p3ExteriorNightFacade from "@/assets/homestay-p3/exterior-night-facade.webp";
+import p3RooftopGazebo from "@/assets/homestay-p3/rooftop-gazebo.webp";
+import p3BathroomMarble from "@/assets/homestay-p3/bathroom-marble.webp";
+import p3BedroomTvTeal from "@/assets/homestay-p3/bedroom-tv-teal.webp";
+import p3StudioKitchenette from "@/assets/homestay-p3/studio-kitchenette.webp";
+import p3BedroomGeometricRunner from "@/assets/homestay-p3/bedroom-geometric-runner.webp";
+import p3BedroomDoorTeal from "@/assets/homestay-p3/bedroom-door-teal.webp";
+import p3RoomLoungeTv from "@/assets/homestay-p3/room-lounge-tv.webp";
+import p3LawnGazeboNight from "@/assets/homestay-p3/lawn-gazebo-night.webp";
+import p3CourtyardNight from "@/assets/homestay-p3/courtyard-night.webp";
+import p3GroundFloorFacade from "@/assets/homestay-p3/ground-floor-facade.webp";
 
 export type StayGalleryImage = {
   src: StaticImageData;
@@ -388,94 +388,93 @@ export const tripChikmagalurHomestayP3: Stay = {
   slug: "trip-chikmagalur-homestay-p3",
   name: "Trip Chikmagalur Homestay P3",
   shortName: "Homestay P3",
-  tagline: "Modern homestay with pool, forest views & private patio rooms",
+  tagline: "Modern multi-storey homestay with rooftop gazebo, lawn & clean rooms",
   location: "Chikmagalur, Karnataka",
-  pricePerPerson: 2500,
+  pricePerPerson: 799,
   minGuests: 1,
   maxGuests: 8,
   rating: 4.8,
-  categoryLabel: "Resort Stay",
-  coverImage: p3PoolBuilding,
+  categoryLabel: "Homestay",
+  coverImage: p3ExteriorNightMain,
   description:
-    "Trip Chikmagalur Homestay P3 is a contemporary white hillside property surrounded by forest — swim in the resort pool, relax on striped-floor forest-view balconies, and sleep in bright double rooms that open onto private patios. Shared dining hall, glass-walled lounge, and manicured lawns make it perfect for couples, friends, and groups who want a clean, modern resort stay in coffee country.",
+    "Trip Chikmagalur Homestay P3 is a clean, modern three-storey property with teal-and-white exteriors, private double rooms, studio units with kitchenettes, and a lit rooftop gazebo over a manicured lawn. Wall-mounted TV, hot-water marble bathrooms, and budget-friendly pricing at ₹799 per person make it ideal for friends, families, and trek groups visiting coffee country.",
   highlights: [
-    "Swimming pool with modern white building views",
-    "Private double rooms opening to forest patios",
-    "Glass-walled forest lounge & striped-floor balcony",
-    "Shared dining hall with teal seating",
-    "Hillside lawns, stone walkways & Buddha entrance",
-    "Ideal for couples, trek groups & weekend getaways",
+    "Three-storey homestay with balcony rooms on every floor",
+    "Rooftop gazebo with string lights & lawn courtyard",
+    "Private double bedrooms with TV & fresh white linens",
+    "Studio rooms with kitchenette sink & seating area",
+    "Modern marble-tile bathrooms with hot water",
+    "Ideal for budget groups, students & weekend gangs",
   ],
   amenities: [
-    "Swimming pool",
-    "Private double rooms",
-    "Private patio access",
-    "Shared dining hall",
+    "Private & studio rooms",
+    "Kitchenette (select rooms)",
+    "Wall-mounted TV",
     "Hot water bathrooms",
-    "Ceiling fans",
+    "Rooftop gazebo & lawn",
     "Parking",
     "Power backup",
   ],
   gallery: [
     {
-      src: p3PoolBuilding,
-      alt: "Trip Chikmagalur Homestay P3 — modern white building with swimming pool and green hillside",
-      label: "Pool & Building",
+      src: p3ExteriorNightMain,
+      alt: "Trip Chikmagalur Homestay P3 — three-storey modern building lit at night in Chikmagalur",
+      label: "Exterior",
     },
     {
-      src: p3BuildingHillside,
-      alt: "Homestay P3 three-storey white building on lush green hillside in Chikmagalur",
-      label: "Hillside View",
+      src: p3ExteriorNightFacade,
+      alt: "Homestay P3 two-storey facade with balcony, warm lights and private room entrances",
+      label: "Building",
     },
     {
-      src: p3BuildingTerrace,
-      alt: "Homestay P3 exterior with glass balcony terraces and landscaped lawn",
-      label: "Terrace",
+      src: p3CourtyardNight,
+      alt: "Homestay P3 courtyard with green lawn and illuminated rooftop gazebo at night",
+      label: "Courtyard",
     },
     {
-      src: p3EntranceBuddha,
-      alt: "Peaceful Buddha entrance with tiered planters at Trip Chikmagalur Homestay P3",
-      label: "Entrance",
+      src: p3LawnGazeboNight,
+      alt: "Elevated rooftop gazebo with string lights overlooking lawn at Trip Chikmagalur Homestay P3",
+      label: "Rooftop Gazebo",
     },
     {
-      src: p3PorchLawn,
-      alt: "Covered porch with white chairs and manicured lawn at Homestay P3",
-      label: "Porch & Lawn",
+      src: p3RooftopGazebo,
+      alt: "Outdoor dining gazebo with warm string lights at Homestay P3 Chikmagalur",
+      label: "Outdoor Dining",
     },
     {
-      src: p3PatioForest,
-      alt: "Stone patio with forest views and modern outdoor seating at Homestay P3",
-      label: "Forest Patio",
+      src: p3GroundFloorFacade,
+      alt: "Ground floor rooms with checkered walkway and warm exterior lighting at Homestay P3",
+      label: "Ground Floor",
     },
     {
-      src: p3ForestLounge,
-      alt: "Indoor-outdoor lounge with black and white striped floor and forest views at Homestay P3",
-      label: "Forest Lounge",
-    },
-    {
-      src: p3BalconyStripe,
-      alt: "Glass-roof balcony with striped floor overlooking dense green forest at Homestay P3",
-      label: "Balcony",
-    },
-    {
-      src: p3DiningHall,
-      alt: "Bright shared dining hall with teal chairs and white tables at Trip Chikmagalur Homestay P3",
-      label: "Dining Hall",
-    },
-    {
-      src: p3BedroomPatioView,
-      alt: "Minimal double bedroom with patio door opening to forest view at Homestay P3",
+      src: p3BedroomTvTeal,
+      alt: "Double bedroom with wall TV, teal curtains and white linens at Trip Chikmagalur Homestay P3",
       label: "Bedroom",
     },
     {
-      src: p3BedroomWindow,
-      alt: "Clean double room with large window and private patio at Trip Chikmagalur Homestay P3",
+      src: p3BedroomGeometricRunner,
+      alt: "Clean double room with geometric bed runner at Homestay P3",
       label: "Double Room",
     },
     {
-      src: p3BedroomPatioSplit,
-      alt: "Bedroom with private patio seating and lush forest backdrop at Homestay P3",
-      label: "Patio Room",
+      src: p3BedroomDoorTeal,
+      alt: "Bright bedroom with wooden bed frame and teal accent rug at Trip Chikmagalur Homestay P3",
+      label: "Private Room",
+    },
+    {
+      src: p3StudioKitchenette,
+      alt: "Studio room with kitchenette sink, wardrobe and seating at Homestay P3",
+      label: "Studio Room",
+    },
+    {
+      src: p3RoomLoungeTv,
+      alt: "Room lounge area with TV, wardrobe and white chairs at Trip Chikmagalur Homestay P3",
+      label: "Lounge",
+    },
+    {
+      src: p3BathroomMarble,
+      alt: "Modern bathroom with marble-pattern tiles and rainfall shower at Homestay P3",
+      label: "Bathroom",
     },
   ],
 };

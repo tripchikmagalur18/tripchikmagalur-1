@@ -58,3 +58,16 @@ export function stayLineTotal(item: {
   const nights = stayNights(item.checkInDate, item.checkOutDate);
   return item.price * guests * nights;
 }
+
+const STAY_PER_PERSON_SPLIT_MIN_GUESTS = 8;
+
+/** Per-person share when a stay has 8+ adults (line total ÷ guests). */
+export function stayPerPersonShare(
+  lineTotal: number,
+  guests: number,
+): number | null {
+  if (guests < STAY_PER_PERSON_SPLIT_MIN_GUESTS) return null;
+  return Math.round(lineTotal / guests);
+}
+
+export { STAY_PER_PERSON_SPLIT_MIN_GUESTS };

@@ -401,8 +401,9 @@ html body dialog[open] form {
   .carousel-manual-scroll {
     -webkit-overflow-scrolling: touch;
     overflow-x: auto;
-    overflow-y: hidden;
+    overflow-y: visible;
     overscroll-behavior-x: contain;
+    overscroll-behavior-y: auto;
     scroll-behavior: auto;
     touch-action: pan-x pan-y;
     cursor: grab;
@@ -415,6 +416,22 @@ html body dialog[open] form {
 
   .carousel-manual-scroll:active {
     cursor: grabbing;
+  }
+
+  /* Card hover / press — desktop hover + mobile touch */
+  .carousel-interactive-card {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  @media (hover: hover) {
+    .carousel-interactive-card:hover {
+      filter: brightness(1.03);
+    }
+  }
+
+  .carousel-interactive-card.carousel-card-active,
+  .carousel-interactive-card:active {
+    filter: brightness(1.05);
   }
 
   /* Testimonials — cards remain interactive inside scroll track */

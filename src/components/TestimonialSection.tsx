@@ -5,12 +5,21 @@ import { useEffect, useRef, useState } from "react";
 
 import { AppImage } from "@/components/AppImage";
 import { testimonials } from "@/data/testimonials";
-import { useManualAutoCarousel } from "@/hooks/use-manual-auto-carousel";
+import {
+  CAROUSEL_SUPER_SLOW,
+  useManualAutoCarousel,
+} from "@/hooks/use-manual-auto-carousel";
 
-function TestimonialCard({ testimonial, index }: { testimonial: typeof testimonials[0]; index: number }) {
+function TestimonialCard({
+  testimonial,
+  index,
+}: {
+  testimonial: (typeof testimonials)[0];
+  index: number;
+}) {
   const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(testimonial.likes);
-  const [isHovered, setIsHovered] = useState(false);
+  const [isActive, setIsActive] = useState(false);
 
   const handleLike = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -24,12 +33,16 @@ function TestimonialCard({ testimonial, index }: { testimonial: typeof testimoni
 
   return (
     <div
-      className={`testimonial-card min-w-[320px] max-w-[320px] md:min-w-[380px] md:max-w-[380px] p-6 mx-4 flex-shrink-0 transition-all duration-700 ease-out cursor-default ${
-        isHovered ? "scale-[1.02] testimonial-card-hovered" : ""
+      data-carousel-no-drag
+      className={`testimonial-card carousel-interactive-card min-w-[320px] max-w-[320px] md:min-w-[380px] md:max-w-[380px] p-6 mx-4 flex-shrink-0 transition-all duration-500 ease-out cursor-default ${
+        isActive ? "scale-[1.02] testimonial-card-hovered carousel-card-active" : ""
       }`}
       style={{ animationDelay: `${index * 0.5}s` }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseEnter={() => setIsActive(true)}
+      onMouseLeave={() => setIsActive(false)}
+      onPointerDown={() => setIsActive(true)}
+      onPointerUp={() => setIsActive(false)}
+      onPointerCancel={() => setIsActive(false)}
     >
       <div className="flex items-center gap-4 mb-4">
         <AppImage
@@ -55,7 +68,7 @@ function TestimonialCard({ testimonial, index }: { testimonial: typeof testimoni
         className={`group/like flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-500 ease-out ${
           liked
             ? "bg-sunset/20 text-sunset"
-            : "bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground"
+            : "bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground active:bg-muted"
         }`}
       >
         <Heart
@@ -76,23 +89,19 @@ const TestimonialSection = () => {
   const { scrollRef, isPaused, scrollProps } = useManualAutoCarousel({
     active: isVisible,
     segments: 3,
-    segmentDurationMs: 18000,
+    segmentDurationMs: CAROUSEL_SUPER_SLOW.testimonialsMs,
+    direction: "rtl",
   });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
+        if (entry.isIntersecting) setIsVisible(true);
       },
       { threshold: 0.2 },
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
@@ -111,8 +120,9 @@ const TestimonialSection = () => {
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground mt-4">
             What Our Travelers Say
           </h2>
-          <p className="text-muted-foreground mt-4 text-sm">
-            Swipe or drag left ↔ right — auto-scroll {isPaused ? "paused" : "playing"}
+          <p className="text-muted-foreground mt-4 text-sm max-w-lg mx-auto">
+            Super-slow drift right → left · swipe/drag ↔ or scroll ↑↓ on mobile & desktop
+            {isPaused ? " · paused" : ""}
           </p>
         </div>
       </div>

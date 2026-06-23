@@ -21,7 +21,7 @@ import galleryKalasaParadise from "@/assets/gallery/gallery-kalasa-paradise.jpg"
 import galleryNightViewStay from "@/assets/gallery/gallery-night-view-stay.jpg";
 import type { StaticImageData } from "next/image";
 import { AppImage } from "@/components/AppImage";
-import { useManualAutoCarousel } from "@/hooks/use-manual-auto-carousel";
+import { useManualAutoCarousel, CAROUSEL_SUPER_SLOW } from "@/hooks/use-manual-auto-carousel";
 
 const GALLERY_SIZES = "(max-width: 768px) 256px, 288px";
 
@@ -84,7 +84,8 @@ const GallerySection = () => {
   const { scrollRef, isPaused, scrollProps } = useManualAutoCarousel({
     active: isVisible,
     segments: 2,
-    segmentDurationMs: 35000,
+    segmentDurationMs: CAROUSEL_SUPER_SLOW.galleryMs,
+    direction: "rtl",
   });
 
   const duplicatedImages = [...galleryImages, ...galleryImages];
@@ -125,8 +126,9 @@ const GallerySection = () => {
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto text-lg">
             Glimpses of the magical experiences awaiting you in Chikmagalur
           </p>
-          <p className="text-muted-foreground/60 mt-2 text-sm">
-            Swipe or drag left ↔ right — auto-scroll {isPaused ? "paused" : "playing"}
+          <p className="text-muted-foreground/60 mt-2 text-sm max-w-lg mx-auto">
+            Super-slow drift right → left · swipe/drag ↔ or scroll ↑↓ on mobile & desktop
+            {isPaused ? " · paused" : ""}
           </p>
         </div>
       </div>
@@ -148,7 +150,10 @@ const GallerySection = () => {
               return (
                 <div
                   key={`${image.caption}-${index}`}
-                  className="relative shrink-0 cursor-pointer transition-all duration-500 ease-out"
+                  data-carousel-no-drag
+                  className={`carousel-interactive-card relative shrink-0 cursor-pointer transition-all duration-500 ease-out ${
+                    isHovered ? "carousel-card-active" : ""
+                  }`}
                   style={{
                     transform: isHovered
                       ? `rotate(${baseRotation * 0.3}deg) translateY(-8px)`
@@ -157,6 +162,9 @@ const GallerySection = () => {
                   }}
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
+                  onPointerDown={() => setHoveredIndex(index)}
+                  onPointerUp={() => setHoveredIndex(null)}
+                  onPointerCancel={() => setHoveredIndex(null)}
                 >
                   <div
                     className="relative w-64 h-80 md:w-72 md:h-96 rounded-2xl overflow-hidden transition-all duration-500"

@@ -4,7 +4,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
 import { ShoppingCart, X, Trash2, MessageCircle, Minus, Plus } from "lucide-react";
 import { useCart, isStayCartItem } from "@/context/CartContext";
-import { formatBookingDate, stayLineTotal, stayNights } from "@/lib/booking-date";
+import { formatBookingDate, stayLineTotal, stayNights, stayPerPersonShare } from "@/lib/booking-date";
 import { reserveBookingId } from "@/lib/booking-id";
 import { buildCartWhatsAppMessage } from "@/lib/cart-whatsapp";
 import { whatsappUrl } from "@/lib/whatsapp";
@@ -104,6 +104,7 @@ const CartDrawer = () => {
                   const isStay = isStayCartItem(item);
                   const nights = isStay ? stayNights(item.checkInDate, item.checkOutDate) : 1;
                   const lineTotal = isStay ? stayLineTotal(item) : item.price * qty;
+                  const perPersonShare = isStay ? stayPerPersonShare(lineTotal, qty) : null;
                   return (
                     <li
                       key={item.id}
@@ -149,6 +150,15 @@ const CartDrawer = () => {
                                 : "/group"}
                           </span>
                         </p>
+
+                        {perPersonShare !== null && (
+                          <p className="text-xs font-medium text-foreground mt-1.5">
+                            ₹{perPersonShare.toLocaleString("en-IN")}{" "}
+                            <span className="text-muted-foreground font-normal">
+                              per person ({qty} adults · ₹{lineTotal.toLocaleString("en-IN")} ÷ {qty})
+                            </span>
+                          </p>
+                        )}
 
                         {item.perPerson && (
                           <div className="flex items-center flex-wrap gap-2 mt-3">

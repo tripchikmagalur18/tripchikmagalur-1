@@ -154,9 +154,9 @@ export const STAY_KEYWORDS: Record<string, string[]> = {
   "trip-chikmagalur-homestay-p3": pageKeywords(
     "Trip Chikmagalur Homestay P3",
     "modern homestay Chikmagalur",
-    "homestay with pool Chikmagalur",
-    "forest view homestay Chikmagalur",
-    "budget homestay P3 Chikmagalur",
+    "budget homestay Chikmagalur ₹799",
+    "group homestay Chikmagalur P3",
+    "rooftop gazebo homestay Chikmagalur",
   ),
   "trip-chikmagalur-stay-sr": pageKeywords(
     "Trip Chikmagalur Stay SR",

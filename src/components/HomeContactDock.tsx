@@ -68,7 +68,7 @@ export default function HomeContactDock() {
 
   return createPortal(
     <>
-      {/* Mobile — Call + WhatsApp corners; Chat with Sara sticky pill is global */}
+      {/* Mobile — Call + WhatsApp corners; Chat with Sara sticky pill is homepage-only */}
       <div className="md:hidden" aria-label="Contact options">
         <a
           href={PHONE_LINK}
