@@ -5,8 +5,8 @@ import { useCallback, useEffect, useRef, useState, type PointerEventHandler } fr
 type UseManualAutoCarouselOptions = {
   /** Enable auto-scroll (e.g. when section is visible). */
   active?: boolean;
-  /** Horizontal scroll speed in px per animation frame. */
-  speed?: number;
+  /** Ms to scroll one duplicated segment (matches original CSS animation duration). */
+  segmentDurationMs?: number;
   /** How many times content is duplicated for seamless looping. */
   segments?: number;
   /** Ms before auto-scroll resumes after manual interaction. */
@@ -15,7 +15,7 @@ type UseManualAutoCarouselOptions = {
 
 export function useManualAutoCarousel({
   active = true,
-  speed = 0.65,
+  segmentDurationMs = 35000,
   segments = 2,
   resumeDelayMs = 2500,
 }: UseManualAutoCarouselOptions = {}) {
@@ -86,17 +86,24 @@ export function useManualAutoCarousel({
     if (!el) return;
 
     let raf = 0;
-    const tick = () => {
-      isAutoScrolling.current = true;
-      el.scrollLeft += speed;
-      normalizeScroll();
-      isAutoScrolling.current = false;
+    let lastTime = performance.now();
+
+    const tick = (now: number) => {
+      const segment = el.scrollWidth / segments;
+      if (segment > 0) {
+        const delta = Math.min(now - lastTime, 50);
+        lastTime = now;
+        isAutoScrolling.current = true;
+        el.scrollLeft += (segment / segmentDurationMs) * delta;
+        normalizeScroll();
+        isAutoScrolling.current = false;
+      }
       raf = requestAnimationFrame(tick);
     };
 
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [active, isPaused, speed, normalizeScroll]);
+  }, [active, isPaused, segmentDurationMs, segments, normalizeScroll]);
 
   useEffect(() => () => clearResumeTimer(), [clearResumeTimer]);
 

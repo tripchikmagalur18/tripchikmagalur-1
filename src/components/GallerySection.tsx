@@ -13,6 +13,12 @@ import galleryMullayanagiriSunset from "@/assets/gallery/gallery-mullayanagiri-s
 import galleryWaterfallTrek from "@/assets/gallery/gallery-waterfall-trek.webp";
 import galleryAboveCloudsSummit from "@/assets/gallery/gallery-above-clouds-summit.webp";
 import galleryResortPoolVilla from "@/assets/gallery/gallery-resort-pool-villa.webp";
+import galleryChikmagalurHills from "@/assets/gallery/gallery-chikmagalur-hills.jpg";
+import galleryEstateCoffee from "@/assets/gallery/gallery-estate-coffee.jpg";
+import galleryResortPoolStay from "@/assets/gallery/gallery-resort-pool-stay.jpg";
+import galleryMonsoonKarnataka from "@/assets/gallery/gallery-monsoon-karnataka.jpg";
+import galleryKalasaParadise from "@/assets/gallery/gallery-kalasa-paradise.jpg";
+import galleryNightViewStay from "@/assets/gallery/gallery-night-view-stay.jpg";
 import type { StaticImageData } from "next/image";
 import { AppImage } from "@/components/AppImage";
 import { useManualAutoCarousel } from "@/hooks/use-manual-auto-carousel";
@@ -20,6 +26,42 @@ import { useManualAutoCarousel } from "@/hooks/use-manual-auto-carousel";
 const GALLERY_SIZES = "(max-width: 768px) 256px, 288px";
 
 const galleryImages: { src: StaticImageData; alt: string; caption: string; rotation: number }[] = [
+  {
+    src: galleryChikmagalurHills,
+    alt: "Lush green Chikmagalur hills and mountain ridge under cloudy sky in Karnataka",
+    caption: "Chikmagalur hills",
+    rotation: -3,
+  },
+  {
+    src: galleryEstateCoffee,
+    alt: "Latte art coffee cup overlooking misty coffee estate forest in Chikmagalur",
+    caption: "Estate coffee moments",
+    rotation: 4,
+  },
+  {
+    src: galleryResortPoolStay,
+    alt: "Trip Chikmagalur resort with swimming pool and terracotta villa in the Western Ghats",
+    caption: "Resort with pool — stay",
+    rotation: -2,
+  },
+  {
+    src: galleryMonsoonKarnataka,
+    alt: "Monsoon motorcycle ride through misty Karnataka hills and waterfall valley",
+    caption: "Monsoon Karnataka",
+    rotation: 5,
+  },
+  {
+    src: galleryKalasaParadise,
+    alt: "Kalasa green paradise — misty valley and forest views near Chikmagalur",
+    caption: "Kalasa — the green paradise",
+    rotation: -4,
+  },
+  {
+    src: galleryNightViewStay,
+    alt: "Night view from Chikmagalur stay — pool lights and hills under starry sky",
+    caption: "Night view from the stay",
+    rotation: 3,
+  },
   { src: heroImg, alt: "Misty Chikmagalur mountain panorama at sunrise over coffee country Karnataka", caption: "Coffee country sunrise", rotation: -3 },
   { src: galleryAboveCloudsSummit, alt: "Trekkers standing above the clouds at Mullayanagiri summit Chikmagalur Karnataka", caption: "Above the clouds — Mullayanagiri", rotation: 4 },
   { src: galleryMullayanagiriSunset, alt: "Friends celebrating sunset at Mullayanagiri peak viewpoint on Chikmagalur tour package", caption: "Sunset at Mullayanagiri peak", rotation: -2 },
@@ -42,7 +84,7 @@ const GallerySection = () => {
   const { scrollRef, isPaused, scrollProps } = useManualAutoCarousel({
     active: isVisible,
     segments: 2,
-    speed: 0.7,
+    segmentDurationMs: 35000,
   });
 
   const duplicatedImages = [...galleryImages, ...galleryImages];
@@ -105,7 +147,7 @@ const GallerySection = () => {
 
               return (
                 <div
-                  key={`${image.alt}-${index}`}
+                  key={`${image.caption}-${index}`}
                   className="relative shrink-0 cursor-pointer transition-all duration-500 ease-out"
                   style={{
                     transform: isHovered
@@ -129,7 +171,7 @@ const GallerySection = () => {
                       alt={image.alt}
                       fill
                       sizes={GALLERY_SIZES}
-                      className="transition-transform duration-700"
+                      className="object-cover transition-transform duration-700"
                       style={{
                         transform: isHovered ? "scale(1.05)" : "scale(1)",
                       }}

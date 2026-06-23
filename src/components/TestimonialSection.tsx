@@ -76,7 +76,7 @@ const TestimonialSection = () => {
   const { scrollRef, isPaused, scrollProps } = useManualAutoCarousel({
     active: isVisible,
     segments: 3,
-    speed: 0.55,
+    segmentDurationMs: 18000,
   });
 
   useEffect(() => {

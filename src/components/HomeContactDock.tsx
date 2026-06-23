@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { Phone, Ticket } from "lucide-react";
 import { MULLAYANAGIRI_PASS_BOOKING_URL } from "@/data/mullayanagiri-entry-pass";
+import { syncChatLauncher } from "@/lib/open-chat-widget";
 import { PHONE_LINK, WHATSAPP_LINK } from "@/lib/whatsapp";
 
 const PASS_SESSION_KEY = "trip_ckm_home_pass_icon_v3";
@@ -16,7 +17,7 @@ const FAB_CLASS =
 
 /**
  * Homepage contact UI:
- * - Mobile: Call (left) · Sara sticky pill (center, global) · WhatsApp (right)
+ * - Mobile: Call (left) · Chat with Sara pill (center, widget) · WhatsApp (right)
  * - Desktop: pass popup + WhatsApp FAB (call stays global left)
  */
 export default function HomeContactDock() {
@@ -40,6 +41,17 @@ export default function HomeContactDock() {
   }, []);
 
   useEffect(() => {
+    syncChatLauncher();
+    const observer = new MutationObserver(syncChatLauncher);
+    observer.observe(document.body, { childList: true, subtree: true });
+    window.addEventListener("resize", syncChatLauncher, { passive: true });
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", syncChatLauncher);
+    };
+  }, []);
+
+  useEffect(() => {
     if (!showPassIcon) return;
 
     sessionStorage.setItem(PASS_SESSION_KEY, "1");
@@ -56,7 +68,7 @@ export default function HomeContactDock() {
 
   return createPortal(
     <>
-      {/* Mobile — Call + WhatsApp corners; Sara sticky pill is global (SaraChatStickyButton) */}
+      {/* Mobile — Call + WhatsApp corners; Chat with Sara pill via syncChatLauncher */}
       <div className="md:hidden" aria-label="Contact options">
         <a
           href={PHONE_LINK}

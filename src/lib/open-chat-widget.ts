@@ -40,18 +40,23 @@ function pickPrimaryLauncher(launchers: HTMLElement[]): HTMLElement | null {
 
 function hideLauncher(el: HTMLElement): void {
   el.setAttribute("data-chat-launcher-hidden", "true");
-  el.style.setProperty("position", "absolute", "important");
-  el.style.setProperty("width", "1px", "important");
-  el.style.setProperty("height", "1px", "important");
-  el.style.setProperty("margin", "-1px", "important");
-  el.style.setProperty("padding", "0", "important");
-  el.style.setProperty("overflow", "hidden", "important");
-  el.style.setProperty("clip", "rect(0,0,0,0)", "important");
-  el.style.setProperty("white-space", "nowrap", "important");
-  el.style.setProperty("border", "0", "important");
-  el.style.setProperty("opacity", "0", "important");
+  el.style.setProperty("display", "none", "important");
   el.style.setProperty("pointer-events", "none", "important");
   el.style.setProperty("visibility", "hidden", "important");
+}
+
+function applyLauncherStyles(primary: HTMLElement): void {
+  primary.setAttribute("data-chat-launcher-fixed", "true");
+  primary.style.setProperty("display", "", "important");
+  primary.style.setProperty("visibility", "visible", "important");
+  primary.style.setProperty("pointer-events", "auto", "important");
+  primary.style.setProperty("position", "relative", "important");
+  primary.style.setProperty("z-index", "1", "important");
+  primary.style.setProperty("margin", "0", "important");
+  primary.style.setProperty("opacity", "1", "important");
+  primary.style.setProperty("width", "auto", "important");
+  primary.style.setProperty("height", "auto", "important");
+  primary.style.setProperty("overflow", "visible", "important");
 }
 
 function isChatOpen(): boolean {
@@ -108,7 +113,7 @@ export function openChatWidget(): void {
   tryOpenChatDialog();
 }
 
-/** Hide all third-party launchers — custom SaraChatStickyButton is the visible UI. */
+/** One visible launcher — bottom-center on homepage, bottom-right elsewhere. */
 export function syncChatLauncher(): void {
   if (typeof window === "undefined") return;
 
@@ -116,13 +121,20 @@ export function syncChatLauncher(): void {
   if (!root) return;
 
   const launchers = findChatLaunchers();
-  launchers.forEach(hideLauncher);
+  const primary = pickPrimaryLauncher(launchers);
 
-  root.querySelectorAll("button, a").forEach((el) => {
-    const node = el as HTMLElement;
-    const text = node.textContent?.trim() ?? "";
-    if (!text) hideLauncher(node);
+  launchers.forEach((el) => {
+    if (el !== primary) hideLauncher(el);
   });
+
+  if (!primary) return;
+
+  if (isChatOpen()) {
+    primary.style.setProperty("display", "none", "important");
+    return;
+  }
+
+  applyLauncherStyles(primary);
 }
 
 /** @deprecated Use syncChatLauncher */

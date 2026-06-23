@@ -3,20 +3,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Third-party chat widget — hidden launcher; SaraChatStickyButton is the visible UI */
-#chat-widget-root {
-  position: fixed !important;
-  left: -9999px !important;
-  top: auto !important;
-  bottom: 0 !important;
-  width: 1px !important;
-  height: 1px !important;
-  overflow: hidden !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-  z-index: -1 !important;
-}
-
+/* Third-party chat widget — launcher root */
+#chat-widget-root,
 #__cw_portal {
   position: fixed !important;
   bottom: 16px !important;
@@ -27,21 +15,33 @@
   height: auto !important;
   max-width: min(400px, calc(100vw - 32px));
   max-height: calc(100dvh - 32px);
-  z-index: 40;
+  z-index: 9998;
   pointer-events: auto;
 }
 
-/* Sticky Sara CTA — contained, never overflows viewport */
-.sara-chat-sticky {
-  box-sizing: border-box;
-  overflow: hidden;
+/* Homepage — bottom-center "Chat with Sara" pill (between Call & WhatsApp) */
+body.home-page #chat-widget-root {
+  left: 50% !important;
+  right: auto !important;
+  bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px)) !important;
+  transform: translateX(-50%) !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: none !important;
+  pointer-events: none;
 }
 
-.sara-chat-sticky-btn {
-  max-width: calc(100% - 0.5rem);
+body.home-page #chat-widget-root button,
+body.home-page #chat-widget-root a,
+body.home-page #chat-widget-root [data-chat-launcher-fixed="true"] {
+  pointer-events: auto !important;
 }
 
-body.chat-widget-open .sara-chat-sticky {
+body.home-page #chat-widget-root [data-chat-launcher-fixed="true"] {
+  max-width: calc(100vw - 8.75rem);
+}
+
+body.home-page.chat-widget-open #chat-widget-root [data-chat-launcher-fixed="true"] {
   display: none !important;
 }
 
