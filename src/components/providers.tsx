@@ -9,6 +9,7 @@ import { PackagePricingProvider } from "@/context/PackagePricingContext";
 import CartDrawer from "@/components/CartDrawer";
 import { ScrollLockRecovery } from "@/components/ScrollLockRecovery";
 import { ChatWidgetScripts } from "@/components/chat-widget-scripts";
+import { SaraChatStickyButton } from "@/components/SaraChatStickyButton";
 import { GlobalFloatingCallButton } from "@/components/GlobalFloatingCallButton";
 import { useState } from "react";
 
@@ -25,6 +26,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
           <CartDrawer />
           <GlobalFloatingCallButton />
           <ChatWidgetScripts />
+          <SaraChatStickyButton />
           <Toaster />
           <Sonner />
           </PackagePricingProvider>

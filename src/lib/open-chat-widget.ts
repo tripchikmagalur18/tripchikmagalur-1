@@ -24,7 +24,6 @@ function findChatLaunchers(): HTMLElement[] {
   return launchers;
 }
 
-/** Prefer the full "Chat with Sara" pill over icon-only duplicates. */
 function pickPrimaryLauncher(launchers: HTMLElement[]): HTMLElement | null {
   if (launchers.length === 0) return null;
 
@@ -40,23 +39,16 @@ function pickPrimaryLauncher(launchers: HTMLElement[]): HTMLElement | null {
 
 function hideLauncher(el: HTMLElement): void {
   el.setAttribute("data-chat-launcher-hidden", "true");
-  el.style.setProperty("display", "none", "important");
+  el.style.setProperty("position", "absolute", "important");
+  el.style.setProperty("width", "1px", "important");
+  el.style.setProperty("height", "1px", "important");
+  el.style.setProperty("margin", "-1px", "important");
+  el.style.setProperty("padding", "0", "important");
+  el.style.setProperty("overflow", "hidden", "important");
+  el.style.setProperty("clip", "rect(0,0,0,0)", "important");
+  el.style.setProperty("opacity", "0", "important");
   el.style.setProperty("pointer-events", "none", "important");
   el.style.setProperty("visibility", "hidden", "important");
-}
-
-function applyLauncherStyles(primary: HTMLElement): void {
-  primary.setAttribute("data-chat-launcher-fixed", "true");
-  primary.style.setProperty("display", "", "important");
-  primary.style.setProperty("visibility", "visible", "important");
-  primary.style.setProperty("pointer-events", "auto", "important");
-  primary.style.setProperty("position", "relative", "important");
-  primary.style.setProperty("z-index", "1", "important");
-  primary.style.setProperty("margin", "0", "important");
-  primary.style.setProperty("opacity", "1", "important");
-  primary.style.setProperty("width", "auto", "important");
-  primary.style.setProperty("height", "auto", "important");
-  primary.style.setProperty("overflow", "visible", "important");
 }
 
 function isChatOpen(): boolean {
@@ -85,17 +77,20 @@ function tryOpenChatDialog(): boolean {
   return false;
 }
 
+function clickLauncher(el: HTMLElement): void {
+  el.dispatchEvent(
+    new MouseEvent("click", { bubbles: true, cancelable: true, view: window }),
+  );
+  el.click();
+}
+
 /** Clicks the third-party Sara chat launcher if present. */
 export function openChatWidget(): void {
   if (typeof document === "undefined") return;
 
   const primary = pickPrimaryLauncher(findChatLaunchers());
   if (primary) {
-    primary.dispatchEvent(
-      new MouseEvent("click", { bubbles: true, cancelable: true, view: window }),
-    );
-    primary.click();
-
+    clickLauncher(primary);
     window.setTimeout(() => {
       if (!isChatOpen()) tryOpenChatDialog();
     }, 120);
@@ -106,35 +101,30 @@ export function openChatWidget(): void {
     '#chat-widget-root [data-chat-launcher-hidden="true"]',
   );
   if (hidden) {
-    hidden.click();
+    clickLauncher(hidden);
+    window.setTimeout(() => {
+      if (!isChatOpen()) tryOpenChatDialog();
+    }, 120);
     return;
   }
 
   tryOpenChatDialog();
 }
 
-/** One visible launcher — bottom-center on homepage, bottom-right elsewhere. */
+/** Hide native launchers — SaraChatStickyButton is the visible sticky UI. */
 export function syncChatLauncher(): void {
   if (typeof window === "undefined") return;
 
   const root = getChatRoot();
   if (!root) return;
 
-  const launchers = findChatLaunchers();
-  const primary = pickPrimaryLauncher(launchers);
+  findChatLaunchers().forEach(hideLauncher);
 
-  launchers.forEach((el) => {
-    if (el !== primary) hideLauncher(el);
+  root.querySelectorAll("button, a").forEach((el) => {
+    const node = el as HTMLElement;
+    const text = node.textContent?.trim() ?? "";
+    if (!text) hideLauncher(node);
   });
-
-  if (!primary) return;
-
-  if (isChatOpen()) {
-    primary.style.setProperty("display", "none", "important");
-    return;
-  }
-
-  applyLauncherStyles(primary);
 }
 
 /** @deprecated Use syncChatLauncher */

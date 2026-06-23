@@ -17,7 +17,7 @@ const FAB_CLASS =
 
 /**
  * Homepage contact UI:
- * - Mobile: Call (left) · Chat with Sara pill (center, widget) · WhatsApp (right)
+ * - Mobile: Call (left) · Chat with Sara pill (center, sticky) · WhatsApp (right)
  * - Desktop: pass popup + WhatsApp FAB (call stays global left)
  */
 export default function HomeContactDock() {
@@ -68,7 +68,7 @@ export default function HomeContactDock() {
 
   return createPortal(
     <>
-      {/* Mobile — Call + WhatsApp corners; Chat with Sara pill via syncChatLauncher */}
+      {/* Mobile — Call + WhatsApp corners; Chat with Sara sticky pill is global */}
       <div className="md:hidden" aria-label="Contact options">
         <a
           href={PHONE_LINK}

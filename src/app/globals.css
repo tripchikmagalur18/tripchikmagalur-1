@@ -3,8 +3,20 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Third-party chat widget — launcher root */
-#chat-widget-root,
+/* Third-party chat widget — hidden launcher; sticky SaraChatStickyButton is visible UI */
+#chat-widget-root {
+  position: fixed !important;
+  left: -9999px !important;
+  top: auto !important;
+  bottom: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  z-index: -1 !important;
+}
+
 #__cw_portal {
   position: fixed !important;
   bottom: 16px !important;
@@ -15,33 +27,16 @@
   height: auto !important;
   max-width: min(400px, calc(100vw - 32px));
   max-height: calc(100dvh - 32px);
-  z-index: 9998;
+  z-index: 40;
   pointer-events: auto;
 }
 
-/* Homepage — bottom-center "Chat with Sara" pill (between Call & WhatsApp) */
-body.home-page #chat-widget-root {
-  left: 50% !important;
-  right: auto !important;
-  bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px)) !important;
-  transform: translateX(-50%) !important;
-  width: auto !important;
-  height: auto !important;
-  max-width: none !important;
-  pointer-events: none;
+/* Sticky Sara pill — bottom center, contained between mobile FABs */
+.sara-chat-sticky {
+  box-sizing: border-box;
 }
 
-body.home-page #chat-widget-root button,
-body.home-page #chat-widget-root a,
-body.home-page #chat-widget-root [data-chat-launcher-fixed="true"] {
-  pointer-events: auto !important;
-}
-
-body.home-page #chat-widget-root [data-chat-launcher-fixed="true"] {
-  max-width: calc(100vw - 8.75rem);
-}
-
-body.home-page.chat-widget-open #chat-widget-root [data-chat-launcher-fixed="true"] {
+body.chat-widget-open .sara-chat-sticky {
   display: none !important;
 }
 
