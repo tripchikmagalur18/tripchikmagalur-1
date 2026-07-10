@@ -36,6 +36,10 @@ const faqs = [
     a: "Mullayanagiri, Baba Budangiri, and Jhari Falls are on the Day 1 Mullayanagiri package (₹3,499/group). Hebbe Falls and Kemmanagundi are on the Day 2 Kemmangundi package (₹4,499/group). Many guests book both for a 2-day weekend.",
   },
   {
+    q: "Are Chikmagalur tour packages good for solo travelers?",
+    a: "Yes — day packages are priced per group (from ₹3,499), so solo travelers get a private cab and local driver for the full day. Pair the Mullayanagiri trek package with a homestay from ₹799/person. See our solo traveler packages page and blog guide for 2-day plans and budgets.",
+  },
+  {
     q: "How do I book a Chikmagalur tour package?",
     a: "Add packages to the cart on tripchikmagalur.com and checkout via WhatsApp at +91 6363131585. We confirm availability, share payment details, and help customise your itinerary by dates and group size.",
   },

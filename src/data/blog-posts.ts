@@ -280,6 +280,16 @@ export const blogPosts: BlogPost[] = [
     readTime: "3 min read",
     category: "Destinations",
   },
+  {
+    id: 28,
+    keyword: "chikmagalur solo traveler packages",
+    title: "Chikmagalur Solo Traveler Packages — Safe Hill Trip from ₹3,499",
+    excerpt: "Budget homestays, guided day tours & 2-day solo plans from Bangalore",
+    content:
+      "Chikmagalur is one of Karnataka's best solo travel destinations — safe town roads, budget homestays from ₹799/person, and day packages from ₹3,499/group with a private driver so you are never navigating ghats alone. Solo travellers typically take KSRTC from Bangalore, stay at Trip Chikmagalur Homestay or Stay SR, and book the [Mullayanagiri trek package](/mullayanagiri-trek-package) for day one and [Kemmangundi tour package](/kemmangundi-tour-package) for day two. A full 2-day solo trip often costs under ₹5,000 including stay and one guided tour. See our [solo traveler packages](/chikmagalur-solo-traveler-packages) and [solo travel guide](/blog/chikmagalur-solo-travelers-guide) for plans and safety tips.",
+    readTime: "4 min read",
+    category: "Solo Travel",
+  },
 ];
 
 export const blogKeywords = blogPosts.map((p) => p.keyword);

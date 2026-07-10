@@ -82,7 +82,7 @@ export const faqItems: FaqItem[] = [
     keyword: "chikmagalur solo travel safe",
     question: "Is Chikmagalur safe for solo travelers?",
     answer:
-      "Yes, Chikmagalur is generally safe for solo travellers. Stick to marked trails, avoid isolated forest areas at night, and book registered cabs or packages. WhatsApp support is available from Trip Chikmagalur for route help.",
+      "Yes, Chikmagalur is generally safe for solo travellers. Stick to marked trails, avoid isolated forest areas at night, and book registered cabs or packages. Budget homestays from ₹799/person and guided day tours from ₹3,499/group make solo trips affordable. See our [solo traveler packages](/chikmagalur-solo-traveler-packages) and [solo travel guide](/blog/chikmagalur-solo-travelers-guide). WhatsApp support is available from Trip Chikmagalur for route help.",
   },
   {
     id: 12,
@@ -216,6 +216,34 @@ export const faqItems: FaqItem[] = [
     question: "Can I visit Belur and Halebidu from Chikmagalur?",
     answer:
       "Yes — both temples are about 1–1.5 hours away. Our [Belur heritage tour package](/belur-heritage-tour-package) covers Chennakeshava Temple, Halebidu, Hiremagalur, and Belur Dam in one day (₹3,499/group).",
+  },
+  {
+    id: 31,
+    keyword: "chikmagalur solo traveler packages",
+    question: "Do you offer Chikmagalur packages for solo travelers?",
+    answer:
+      "Yes — solo travelers can book any day package (priced per group from ₹3,499) with a private cab and local driver. Popular combo: [Mullayanagiri trek package](/mullayanagiri-trek-package) day one + [Kemmangundi tour package](/kemmangundi-tour-package) day two. Pair with homestays from ₹799/person. See [solo traveler packages](/chikmagalur-solo-traveler-packages) for plans and budgets.",
+  },
+  {
+    id: 32,
+    keyword: "chikmagalur solo trip budget",
+    question: "How much does a solo trip to Chikmagalur cost?",
+    answer:
+      "A 2-day solo trip from Bangalore often costs ₹5,000–7,000 — KSRTC or cab transport, homestay at ₹799/person/night, meals, and one guided day tour (₹3,499/group). DIY solo trips under ₹5,000 are possible with Volvo bus and one package only. Read our [solo travel guide](/blog/chikmagalur-solo-travelers-guide) and [trip budget page](/chikmagalur-trip-budget).",
+  },
+  {
+    id: 33,
+    keyword: "chikmagalur solo female traveler",
+    question: "Is Chikmagalur safe for solo female travelers?",
+    answer:
+      "Yes — Chikmagalur is generally safe for solo women travellers. Book verified homestays through our [stays page](/stays), start Mullayanagiri before 8 AM, avoid isolated ghat roads after dark, and use guided [solo traveler packages](/chikmagalur-solo-traveler-packages) instead of unknown local cabs. WhatsApp support is available throughout your trip.",
+  },
+  {
+    id: 34,
+    keyword: "best package solo traveler chikmagalur",
+    question: "Which is the best Chikmagalur package for a solo traveler?",
+    answer:
+      "The [Mullayanagiri trek package](/mullayanagiri-trek-package) (₹3,499/group) is the top pick for solo travelers — sunrise peak, Baba Budangiri, Jhari Falls jeep, and Z Point in one guided day with private transport. Add a second day with the [Kemmangundi tour package](/kemmangundi-tour-package) for Hebbe Falls. Stay at Trip Chikmagalur Homestay or Stay SR from ₹799/person.",
   },
 ];
 

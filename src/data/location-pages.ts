@@ -283,4 +283,48 @@ export const locationPages: Record<string, LocationPageData> = {
       { label: "Belur heritage tour", href: "/belur-heritage-tour-package" },
     ],
   },
+  "chikmagalur-solo-traveler-packages": {
+    slug: "chikmagalur-solo-traveler-packages",
+    title: "Chikmagalur Solo Traveler Packages | Trip Chikmagalur",
+    metaDescription:
+      "Chikmagalur solo traveler packages from ₹3,499 — private cab day tours, homestays from ₹799 & safe 2-day plans. Ideal for solo travellers from Bangalore. Book on WhatsApp.",
+    keyword: "Chikmagalur solo traveler packages",
+    h1: "Chikmagalur Solo Traveler Packages",
+    intro:
+      "Solo traveler packages in Chikmagalur bundle private cab day tours, budget homestay stays from ₹799/person, and local route coordination — so you explore Mullayanagiri, Hebbe Falls, and coffee country without navigating ghats alone. Packages are priced per group (₹3,499–5,999), meaning one solo guest still gets a dedicated vehicle and driver for the full day.",
+    sections: [
+      {
+        h2: "Best packages for solo travelers",
+        paragraphs: [
+          "Day 1 — Mullayanagiri trek package (₹3,499/group): Karnataka's highest peak at sunrise, Baba Budangiri, Jhari Falls jeep ride, and Z Point sunset. The most booked solo-friendly tour — fixed route, known parking, and jeep timing handled for you.",
+          "Day 2 — Kemmangundi tour package (₹4,499/group): Hebbe Falls forest jeep, Kalhatti Falls, Kemmangundi viewpoints. Pairs with day one for a complete weekend. Alternative: Muthodi safari package (₹3,999/group) for wildlife and Hirekolale Lake.",
+        ],
+      },
+      {
+        h2: "Solo stay options from ₹799/person",
+        paragraphs: [
+          "Trip Chikmagalur Homestay, Homestay P3, and Stay SR start at ₹799 per adult per night — private doubles and twin rooms suited to solo guests. Homestay P3 has studio rooms with kitchenette for longer solo stays. Add check-in and check-out dates on our stays page; cart shows total before WhatsApp checkout.",
+        ],
+      },
+      {
+        h2: "Sample 2-day solo plan & budget",
+        paragraphs: [
+          "Friday night: KSRTC Volvo from Bangalore (₹600–1,200). Saturday: Mullayanagiri package + homestay check-in. Sunday: Kemmangundi package, depart evening. Total often ₹5,000–7,000 including stay, food, transport, and one or two guided days — under ₹5,000 if you self-drive and book one package only.",
+          "Read the full [solo travelers guide](/blog/chikmagalur-solo-travelers-guide) for safety tips, packing lists, and monsoon advice.",
+        ],
+      },
+      {
+        h2: "Booking tips for solo travelers",
+        paragraphs: [
+          "Mention solo travel on WhatsApp — we adjust pickup timing and confirm Mullayanagiri entry pass steps. Book December–January stays three weeks ahead. Weekday mornings at Mullayanagiri are quieter than long weekends. Combine packages with our [2-day Chikmagalur itinerary](/2-day-chikmagalur-itinerary) for hour-by-hour planning.",
+        ],
+      },
+    ],
+    packageLinks: [
+      { label: "Mullayanagiri trek package", href: "/mullayanagiri-trek-package" },
+      { label: "Solo travel blog guide", href: "/blog/chikmagalur-solo-travelers-guide" },
+      { label: "Homestays from ₹799", href: "/homestays-in-chikmagalur" },
+      { label: "All tour packages", href: "/chikmagalur-tour-packages" },
+    ],
+  },
 };

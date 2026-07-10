@@ -35,7 +35,7 @@ const staticMeta: Record<string, SeoInput> = {
   "/faq": {
     title: "Chikmagalur FAQ — Packages, Stays & Treks | Trip Chikmagalur",
     description:
-      "30+ Chikmagalur FAQs on tour prices, stays, Mullayanagiri trek, Hebbe Falls jeep, honeymoon trips & weekend plans from Bangalore. Get answers & book on WhatsApp.",
+      "34+ Chikmagalur FAQs on tour prices, solo traveler packages, stays, Mullayanagiri trek, Hebbe Falls jeep & weekend plans from Bangalore. Get answers & book on WhatsApp.",
     canonical: "/faq",
   },
   "/contact": {

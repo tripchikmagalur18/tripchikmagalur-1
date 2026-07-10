@@ -18,6 +18,8 @@ export const LINKS = {
   fromMangalore: { label: "packages from Mangalore", href: "/chikmagalur-tour-packages-from-mangalore" },
   honeymoon: { label: "honeymoon packages", href: "/chikmagalur-honeymoon-packages" },
   corporate: { label: "corporate outing packages", href: "/chikmagalur-corporate-outing-packages" },
+  soloTraveler: { label: "solo traveler packages", href: "/chikmagalur-solo-traveler-packages" },
+  soloBlog: { label: "solo travelers guide", href: "/blog/chikmagalur-solo-travelers-guide" },
   homestays: { label: "homestays in Chikmagalur", href: "/homestays-in-chikmagalur" },
   coffeeTour: { label: "coffee plantation tour", href: "/coffee-plantation-tour-chikmagalur" },
   stays: { label: "stays in Chikmagalur", href: "/stays" },
@@ -60,7 +62,7 @@ export const faqContextualLinks: Partial<Record<number, InternalLink[]>> = {
   8: [LINKS.honeymoon, LINKS.stays],
   9: [LINKS.muthodiPkg, LINKS.adventure],
   10: [LINKS.kemmangundiPkg, LINKS.waterfalls],
-  11: [LINKS.packages, LINKS.budget],
+  11: [LINKS.soloTraveler, LINKS.soloBlog, LINKS.packages],
   12: [LINKS.packages, LINKS.itinerary],
   13: [LINKS.stays, LINKS.homestays],
   14: [LINKS.adventure, LINKS.corporate],
@@ -80,6 +82,10 @@ export const faqContextualLinks: Partial<Record<number, InternalLink[]>> = {
   28: [LINKS.fromMysore, LINKS.packages],
   29: [LINKS.itinerary, LINKS.mullayanagiriPkg, LINKS.kemmangundiPkg],
   30: [LINKS.belurPkg, LINKS.packages],
+  31: [LINKS.soloTraveler, LINKS.mullayanagiriPkg],
+  32: [LINKS.soloBlog, LINKS.budget],
+  33: [LINKS.soloTraveler, LINKS.stays],
+  34: [LINKS.mullayanagiriPkg, LINKS.kemmangundiPkg, LINKS.homestays],
 };
 
 /** Per blog post contextual links shown below article body */
@@ -111,6 +117,7 @@ export const blogContextualLinks: Partial<Record<number, InternalLink[]>> = {
   25: [LINKS.muthodiPkg, LINKS.mullayanagiriPkg],
   26: [LINKS.mullayanagiriPkg, LINKS.kemmangundiPkg],
   27: [LINKS.packages, LINKS.itineraryFull],
+  28: [LINKS.soloTraveler, LINKS.soloBlog, LINKS.mullayanagiriPkg, LINKS.homestays],
 };
 
 /** Intro copy with inline markdown links for /food */
